@@ -10,6 +10,7 @@
 #include "SweepHit.hpp"
 #include "TriangleHit.hpp"
 #include "GrapesHit.hpp"
+#include "BuckshotHit.hpp"
 
 class ofApp : public ofBaseApp{
 

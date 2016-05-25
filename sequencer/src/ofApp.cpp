@@ -67,6 +67,7 @@ void ofApp::keyPressed(int key){
     if (key == '2')     makeNewTestHit(2);
     if (key == '3')     makeNewTestHit(3);
     if (key == '4')     makeNewTestHit(4);
+    if (key == '5')     makeNewTestHit(5);
 }
 
 //--------------------------------------------------------------
@@ -151,6 +152,7 @@ void ofApp::makeNewTestHit(int idNum){
     if (idNum == 2)     thisHit = new SweepHit();
     if (idNum == 3)     thisHit = new TriangleHit();
     if (idNum == 4)     thisHit = new GrapesHit();
+    if (idNum == 5)     thisHit = new BuckshotHit();
     
     thisHit->setup(bandsOn, ofGetWidth(), ofGetHeight());
     
