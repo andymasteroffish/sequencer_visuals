@@ -11,6 +11,8 @@
 #include "TriangleHit.hpp"
 #include "GrapesHit.hpp"
 #include "BuckshotHit.hpp"
+#include "ChaserHit.hpp"
+#include "SlashHit.hpp"
 
 class ofApp : public ofBaseApp{
 

@@ -3,6 +3,8 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+    ofBackground(240);
+    
     fft.setup(NUM_BANDS);
     showFFT = false;
 
@@ -68,6 +70,9 @@ void ofApp::keyPressed(int key){
     if (key == '3')     makeNewTestHit(3);
     if (key == '4')     makeNewTestHit(4);
     if (key == '5')     makeNewTestHit(5);
+    if (key == '6')     makeNewTestHit(6);
+    if (key == '7')     makeNewTestHit(7);
+    
 }
 
 //--------------------------------------------------------------
@@ -132,7 +137,7 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
 //        cout<<bandsOn[i];
 //    }
 //    cout<<endl;
-    Hit * thisHit = new TriangleHit();
+    Hit * thisHit = new DemoHit();
     thisHit->setup(bandsOn, ofGetWidth(), ofGetHeight());
     
     hits.push_back(thisHit);
@@ -153,6 +158,8 @@ void ofApp::makeNewTestHit(int idNum){
     if (idNum == 3)     thisHit = new TriangleHit();
     if (idNum == 4)     thisHit = new GrapesHit();
     if (idNum == 5)     thisHit = new BuckshotHit();
+    if (idNum == 6)     thisHit = new ChaserHit();
+    if (idNum == 7)     thisHit = new SlashHit();
     
     thisHit->setup(bandsOn, ofGetWidth(), ofGetHeight());
     

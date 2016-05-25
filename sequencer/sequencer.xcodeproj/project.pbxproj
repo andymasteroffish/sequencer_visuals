@@ -26,6 +26,8 @@
 		578A30B31CF501D900B16A44 /* GrapesHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578A30B11CF501D900B16A44 /* GrapesHit.cpp */; };
 		578C72E81CF62B8000FC88B3 /* BuckshotHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72E61CF62B8000FC88B3 /* BuckshotHit.cpp */; };
 		578C72EB1CF62BD500FC88B3 /* Buckshot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72E91CF62BD500FC88B3 /* Buckshot.cpp */; };
+		578C72EE1CF6304000FC88B3 /* ChaserHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72EC1CF6304000FC88B3 /* ChaserHit.cpp */; };
+		578C72F11CF6354F00FC88B3 /* SlashHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72EF1CF6354F00FC88B3 /* SlashHit.cpp */; };
 		5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC5DA1C87211D4F6377DA719 /* tinyxmlparser.cpp */; };
 		5AB5747E5EF615D728FE9C67 /* guiTypeLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC7A1F656C34688D0EA0D0C /* guiTypeLabel.cpp */; };
 		5FD445ED4A5BB42065A63EC5 /* guiTextBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A234A6E775BFC7C47B1E336 /* guiTextBase.cpp */; };
@@ -125,6 +127,10 @@
 		578C72E71CF62B8000FC88B3 /* BuckshotHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BuckshotHit.hpp; sourceTree = "<group>"; };
 		578C72E91CF62BD500FC88B3 /* Buckshot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Buckshot.cpp; sourceTree = "<group>"; };
 		578C72EA1CF62BD500FC88B3 /* Buckshot.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Buckshot.hpp; sourceTree = "<group>"; };
+		578C72EC1CF6304000FC88B3 /* ChaserHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChaserHit.cpp; sourceTree = "<group>"; };
+		578C72ED1CF6304000FC88B3 /* ChaserHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChaserHit.hpp; sourceTree = "<group>"; };
+		578C72EF1CF6354F00FC88B3 /* SlashHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SlashHit.cpp; sourceTree = "<group>"; };
+		578C72F01CF6354F00FC88B3 /* SlashHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SlashHit.hpp; sourceTree = "<group>"; };
 		589362A07AEB006B1B8BE93F /* guiTypeLogger.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = guiTypeLogger.cpp; path = ../../../addons/ofxControlPanel/src/guiTypeLogger.cpp; sourceTree = SOURCE_ROOT; };
 		58CD3D723218B3955B51605A /* ofxFFTBase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFFTBase.h; path = ../../../addons/ofxFFT_julapy/src/ofxFFTBase.h; sourceTree = SOURCE_ROOT; };
 		5CD68CA8FE136C3BE208703B /* guiTypeSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = guiTypeSlider.cpp; path = ../../../addons/ofxControlPanel/src/guiTypeSlider.cpp; sourceTree = SOURCE_ROOT; };
@@ -331,6 +337,10 @@
 				578C72E61CF62B8000FC88B3 /* BuckshotHit.cpp */,
 				578C72EA1CF62BD500FC88B3 /* Buckshot.hpp */,
 				578C72E91CF62BD500FC88B3 /* Buckshot.cpp */,
+				578C72ED1CF6304000FC88B3 /* ChaserHit.hpp */,
+				578C72EC1CF6304000FC88B3 /* ChaserHit.cpp */,
+				578C72F01CF6354F00FC88B3 /* SlashHit.hpp */,
+				578C72EF1CF6354F00FC88B3 /* SlashHit.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -518,6 +528,7 @@
 				578A30A71CF4D41300B16A44 /* SweepHit.cpp in Sources */,
 				849341DBC7A5374C26AC0524 /* guiTypeToggle.cpp in Sources */,
 				871AF250136390C0A8F657DA /* guiTypeVairableLister.cpp in Sources */,
+				578C72EE1CF6304000FC88B3 /* ChaserHit.cpp in Sources */,
 				578A309A1CF4C2D600B16A44 /* Hit.cpp in Sources */,
 				DBF52D494F6E2499E17ACBF8 /* guiTypeVideo.cpp in Sources */,
 				578A30B01CF4FBE700B16A44 /* Grape.cpp in Sources */,
@@ -535,6 +546,7 @@
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				578A30B31CF501D900B16A44 /* GrapesHit.cpp in Sources */,
+				578C72F11CF6354F00FC88B3 /* SlashHit.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 			);

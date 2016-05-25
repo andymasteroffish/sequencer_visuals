@@ -11,7 +11,7 @@
 
 void TriangleHit::setupCustom(){
     
-    float size = 100;
+    float size = 80;
     
     float padding = size + 20;
     centerPos.set( ofRandom(padding, gameW-padding), ofRandom(padding,gameH-padding));

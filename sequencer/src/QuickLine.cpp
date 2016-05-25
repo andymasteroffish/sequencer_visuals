@@ -32,7 +32,7 @@ void QuickLine::update(float deltaTime){
 void QuickLine::draw(){
     
     //connect
-    if (timer < timeToConnect){
+    if (timer >= 0 && timer < timeToConnect){
         float prc = timer / timeToConnect;
         prc = powf(prc, curveConnect);
         
@@ -47,7 +47,7 @@ void QuickLine::draw(){
     }
     
     //disconnect
-    else if (timer < timeToDisconnect){
+    else if (timer >= timeToPause && timer < timeToDisconnect){
         float prc = (timer-timeToPause) / (timeToDisconnect-timeToPause);
         prc = powf(prc, curveDisconnect);
         
