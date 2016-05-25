@@ -14,6 +14,7 @@
 #include "ChaserHit.hpp"
 #include "SlashHit.hpp"
 #include "SquareHit.hpp"
+#include "TrapazoidHit.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -42,6 +43,7 @@ class ofApp : public ofBaseApp{
     FFT fft;
     bool showFFT;
     
+    bool autoPlay;
    
     
     //tracking hits

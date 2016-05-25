@@ -30,11 +30,11 @@ void SquareHit::setupCustom(){
     lines[1].setup(0, 0, 0, size, growTime, pauseTime, shrinkTime);
     
     //bottom
-    lines[2].setup(0, size, size, size, growTime, pauseTime+growTime, shrinkTime);
+    lines[2].setup(0, size, size, size, growTime, pauseTime+0.45, shrinkTime);
     lines[2].timer = -growTime;
     
     //right
-    lines[3].setup(size, 0, size, size, growTime, pauseTime+growTime, shrinkTime);
+    lines[3].setup(size, 0, size, size, growTime, pauseTime+0.45, shrinkTime);
     lines[3].timer = -growTime;
     
     for (int i=0; i<4; i++){
@@ -69,6 +69,10 @@ void SquareHit::updateCustom(){
         angle = prc * angleEnd + (1-prc)*angleOvershoot;
         //float xeno = 0.9;
         //angle = xeno*angle + (1-xeno)*angleEnd;
+    }
+    
+    if (lines[3].timer > lines[3].timeToDisconnect){
+        killMe = true;
     }
 }
 

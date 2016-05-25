@@ -7,6 +7,7 @@ void ofApp::setup(){
     
     fft.setup(NUM_BANDS);
     showFFT = false;
+    autoPlay = false;
 
     prevFrameTime = ofGetElapsedTimef();
     deltaTime = 0;
@@ -38,6 +39,10 @@ void ofApp::update(){
         }
     }
     
+    if (autoPlay && ofGetFrameNum() % 10 == 0){
+        makeNewTestHit(ofRandom(1,10));
+    }
+    
     //cout<<"hits: "<<hits.size()<<endl;
 }
 
@@ -64,6 +69,9 @@ void ofApp::keyPressed(int key){
     if (key == 'h'){
         showFFT = !showFFT;
     }
+    if (key == 'a'){
+        autoPlay = !autoPlay;
+    }
     
     if (key == '1')     makeNewTestHit(1);
     if (key == '2')     makeNewTestHit(2);
@@ -73,6 +81,7 @@ void ofApp::keyPressed(int key){
     if (key == '6')     makeNewTestHit(6);
     if (key == '7')     makeNewTestHit(7);
     if (key == '8')     makeNewTestHit(8);
+    if (key == '9')     makeNewTestHit(9);
     
 }
 
@@ -170,9 +179,9 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
 //--------------------------------------------------------------
 void ofApp::makeNewTestHit(int idNum){
     
-    bool bandsOn[NUM_BANDS/2];
+    bool bandsOnMicro[NUM_BANDS/2];
     for (int i=0; i<NUM_BANDS/2; i++){
-        bandsOn[i] = ofRandomuf() > 0.5;
+        bandsOnMicro[i] = ofRandomuf() > 0.5;
     }
     
     Hit * thisHit;
@@ -185,8 +194,9 @@ void ofApp::makeNewTestHit(int idNum){
     if (idNum == 6)     thisHit = new ChaserHit();
     if (idNum == 7)     thisHit = new SlashHit();
     if (idNum == 8)     thisHit = new SquareHit();
+    if (idNum == 9)     thisHit = new TrapazoidHit();
     
-    thisHit->setup(bandsOn, ofGetWidth(), ofGetHeight());
+    thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight());
     
     hits.push_back(thisHit);
     
