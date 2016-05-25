@@ -12,7 +12,7 @@ void ofApp::setup(){
     deltaTime = 0;
     
     timeSinceLastHit = 0;
-    minTimeForNextHit = 0.02;
+    minTimeForNextHit = 0.03;
 }
 
 //--------------------------------------------------------------
@@ -72,6 +72,7 @@ void ofApp::keyPressed(int key){
     if (key == '5')     makeNewTestHit(5);
     if (key == '6')     makeNewTestHit(6);
     if (key == '7')     makeNewTestHit(7);
+    if (key == '8')     makeNewTestHit(8);
     
 }
 
@@ -132,13 +133,36 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
     }
     
     timeSinceLastHit = 0;
-//    cout<<"beat ";
-//    for (int i=0; i<NUM_BANDS; i++){
-//        cout<<bandsOn[i];
-//    }
-//    cout<<endl;
-    Hit * thisHit = new DemoHit();
-    thisHit->setup(bandsOn, ofGetWidth(), ofGetHeight());
+    
+    //set half bands
+    bool bandsOnMicro[NUM_BANDS/2];
+    for (int i=0; i<NUM_BANDS; i+=2){
+        bandsOnMicro[i/2] = bandsOn[i] || bandsOn[i+1];
+    }
+    
+    //get the total value
+    int idNum = 0;
+    for (int i=0; i<NUM_BANDS/2; i++){
+        if(bandsOnMicro[i]){
+            idNum += pow(2,i);
+        }
+    }
+    
+    //testing
+    idNum = idNum % 8;
+    
+    Hit * thisHit;
+    
+    if (idNum == 0)     thisHit = new TunnelHit();
+    if (idNum == 1)     thisHit = new SweepHit();
+    if (idNum == 2)     thisHit = new TriangleHit();
+    if (idNum == 3)     thisHit = new GrapesHit();
+    if (idNum == 4)     thisHit = new BuckshotHit();
+    if (idNum == 5)     thisHit = new ChaserHit();
+    if (idNum == 6)     thisHit = new SlashHit();
+    if (idNum == 7)     thisHit = new SquareHit();
+    
+    thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight());
     
     hits.push_back(thisHit);
 }
@@ -146,8 +170,8 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
 //--------------------------------------------------------------
 void ofApp::makeNewTestHit(int idNum){
     
-    bool bandsOn[NUM_BANDS];
-    for (int i=0; i<NUM_BANDS; i++){
+    bool bandsOn[NUM_BANDS/2];
+    for (int i=0; i<NUM_BANDS/2; i++){
         bandsOn[i] = ofRandomuf() > 0.5;
     }
     
@@ -160,6 +184,7 @@ void ofApp::makeNewTestHit(int idNum){
     if (idNum == 5)     thisHit = new BuckshotHit();
     if (idNum == 6)     thisHit = new ChaserHit();
     if (idNum == 7)     thisHit = new SlashHit();
+    if (idNum == 8)     thisHit = new SquareHit();
     
     thisHit->setup(bandsOn, ofGetWidth(), ofGetHeight());
     

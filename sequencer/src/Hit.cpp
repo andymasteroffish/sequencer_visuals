@@ -9,18 +9,18 @@
 #include "Hit.hpp"
 
 
-void Hit::setup(bool _bandsOn[NUM_BANDS], int _gameW, int _gameH){
+void Hit::setup(bool _bandsOnMicro[NUM_BANDS/2], int _gameW, int _gameH){
     gameW = _gameW;
     gameH = _gameH;
     
-    //set full bands
-    for (int i=0; i<NUM_BANDS; i++){
-        bandsOn[i] = _bandsOn[i];
-    }
+//    //set full bands
+//    for (int i=0; i<NUM_BANDS; i++){
+//        bandsOn[i] = _bandsOn[i];
+//    }
     
     //set half bands
-    for (int i=0; i<NUM_BANDS; i+=2){
-        bandsOnMicro[i/2] = bandsOn[i] || bandsOn[i+1];
+    for (int i=0; i<NUM_BANDS/2; i+=2){
+        bandsOnMicro[i] = _bandsOnMicro[i];
     }
     
     killMe = false;

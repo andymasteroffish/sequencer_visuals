@@ -13,6 +13,7 @@
 #include "BuckshotHit.hpp"
 #include "ChaserHit.hpp"
 #include "SlashHit.hpp"
+#include "SquareHit.hpp"
 
 class ofApp : public ofBaseApp{
 
