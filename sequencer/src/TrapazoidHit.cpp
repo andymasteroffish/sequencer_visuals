@@ -22,7 +22,13 @@ void TrapazoidHit::setupCustom(){
     
     height = 50;
     
-    pos.set(ofRandom(bottomW, gameW-bottomW), ofRandom(0, gameH-height*2));
+    pos.x = ofRandom(bottomW, gameW-bottomW);
+    pos.y = ofRandom(0, gameH-height*2);
+    
+    if (ofRandomuf() > 0.5){
+        pos.y = ofRandom(height*2, gameH);
+        height *= -1;
+    }
     
     fallTime = 0.39;
     
