@@ -39,6 +39,7 @@ void ofApp::update(){
         }
     }
     
+    
     if (autoPlay && ofGetFrameNum() % 10 == 0){
         makeNewTestHit(ofRandom(1,10));
     }
