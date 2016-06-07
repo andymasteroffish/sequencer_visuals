@@ -92,7 +92,7 @@ void Grape::draw(){
     ofNoFill();
     ofSetColor(0);
     ofSetLineWidth(1);
-    
+    ofSetCircleResolution(30);
     if (timer < popTime){
         ofDrawCircle(pos.x, pos.y, size);
     }

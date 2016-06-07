@@ -90,6 +90,7 @@ void SlashHit::draw(){
     ofTranslate(pos.x, pos.y);
     
     ofFill();
+    ofSetCircleResolution(20);
     ofDrawCircle(0,0, circleSize);
     
     lineA.draw();

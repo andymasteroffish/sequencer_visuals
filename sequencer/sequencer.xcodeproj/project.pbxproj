@@ -32,6 +32,7 @@
 		578C72F71CF64D1F00FC88B3 /* TrapazoidHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72F51CF64D1F00FC88B3 /* TrapazoidHit.cpp */; };
 		57F95DCA1D075C9E00BC6CE0 /* DotPolygonHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F95DC81D075C9E00BC6CE0 /* DotPolygonHit.cpp */; };
 		57F95DD01D0766BD00BC6CE0 /* SizzleHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F95DCE1D0766BD00BC6CE0 /* SizzleHit.cpp */; };
+		57F95DD31D07700600BC6CE0 /* DrunkTriangleHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F95DD11D07700600BC6CE0 /* DrunkTriangleHit.cpp */; };
 		5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC5DA1C87211D4F6377DA719 /* tinyxmlparser.cpp */; };
 		5AB5747E5EF615D728FE9C67 /* guiTypeLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC7A1F656C34688D0EA0D0C /* guiTypeLabel.cpp */; };
 		5FD445ED4A5BB42065A63EC5 /* guiTextBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A234A6E775BFC7C47B1E336 /* guiTextBase.cpp */; };
@@ -143,6 +144,8 @@
 		57F95DC91D075C9E00BC6CE0 /* DotPolygonHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DotPolygonHit.hpp; sourceTree = "<group>"; };
 		57F95DCE1D0766BD00BC6CE0 /* SizzleHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SizzleHit.cpp; sourceTree = "<group>"; };
 		57F95DCF1D0766BD00BC6CE0 /* SizzleHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SizzleHit.hpp; sourceTree = "<group>"; };
+		57F95DD11D07700600BC6CE0 /* DrunkTriangleHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrunkTriangleHit.cpp; sourceTree = "<group>"; };
+		57F95DD21D07700600BC6CE0 /* DrunkTriangleHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DrunkTriangleHit.hpp; sourceTree = "<group>"; };
 		589362A07AEB006B1B8BE93F /* guiTypeLogger.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = guiTypeLogger.cpp; path = ../../../addons/ofxControlPanel/src/guiTypeLogger.cpp; sourceTree = SOURCE_ROOT; };
 		58CD3D723218B3955B51605A /* ofxFFTBase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFFTBase.h; path = ../../../addons/ofxFFT_julapy/src/ofxFFTBase.h; sourceTree = SOURCE_ROOT; };
 		5CD68CA8FE136C3BE208703B /* guiTypeSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = guiTypeSlider.cpp; path = ../../../addons/ofxControlPanel/src/guiTypeSlider.cpp; sourceTree = SOURCE_ROOT; };
@@ -361,6 +364,8 @@
 				57F95DC81D075C9E00BC6CE0 /* DotPolygonHit.cpp */,
 				57F95DCF1D0766BD00BC6CE0 /* SizzleHit.hpp */,
 				57F95DCE1D0766BD00BC6CE0 /* SizzleHit.cpp */,
+				57F95DD21D07700600BC6CE0 /* DrunkTriangleHit.hpp */,
+				57F95DD11D07700600BC6CE0 /* DrunkTriangleHit.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -521,6 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F95DD31D07700600BC6CE0 /* DrunkTriangleHit.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				CBA68AD61765B24C0BFD9886 /* guiBaseObject.cpp in Sources */,

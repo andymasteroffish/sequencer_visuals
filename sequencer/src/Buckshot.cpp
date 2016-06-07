@@ -57,6 +57,6 @@ void Buckshot::draw(){
     ofSetColor(0);
     ofSetLineWidth(1);
     ofNoFill();
-    
+    ofSetCircleResolution(20);
     ofDrawCircle(pos.x, pos.y, size);
 }

@@ -39,6 +39,7 @@ void DemoHit::draw(){
         }else{
             ofNoFill();
         }
+        ofSetCircleResolution(30);
         ofDrawCircle((circleSize*2)*i, 0, circleSize);
     }
     
