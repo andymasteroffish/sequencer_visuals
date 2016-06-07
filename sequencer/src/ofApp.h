@@ -50,5 +50,6 @@ class ofApp : public ofBaseApp{
     vector<Hit *> hits;
     float timeSinceLastHit; //control panel
     float minTimeForNextHit;    //control panel
+    
 		
 };

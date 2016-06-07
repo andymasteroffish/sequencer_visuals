@@ -14,6 +14,7 @@ void ofApp::setup(){
     
     timeSinceLastHit = 0;
     minTimeForNextHit = 0.03;
+    
 }
 
 //--------------------------------------------------------------
@@ -135,6 +136,9 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
+
+
+
 
 //--------------------------------------------------------------
 void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
