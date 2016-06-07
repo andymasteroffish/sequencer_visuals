@@ -85,6 +85,7 @@ void ofApp::keyPressed(int key){
     if (key == '8')     makeNewTestHit(8);
     if (key == '9')     makeNewTestHit(9);
     if (key == '0')     makeNewTestHit(10);
+    if (key == 'q')     makeNewTestHit(11);
     
 }
 
@@ -206,6 +207,7 @@ void ofApp::makeNewTestHit(int idNum){
     if (idNum == 8)     thisHit = new SquareHit();
     if (idNum == 9)     thisHit = new TrapazoidHit();
     if (idNum == 10)     thisHit = new DotPolygonHit();
+    if (idNum == 11)     thisHit = new SizzleHit();
     
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight());
     

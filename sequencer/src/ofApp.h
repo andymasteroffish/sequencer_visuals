@@ -16,6 +16,7 @@
 #include "SquareHit.hpp"
 #include "TrapazoidHit.hpp"
 #include "DotPolygonHit.hpp"
+#include "SizzleHit.hpp"
 
 class ofApp : public ofBaseApp{
 
