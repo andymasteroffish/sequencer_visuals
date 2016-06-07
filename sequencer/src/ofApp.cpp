@@ -179,6 +179,7 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
     if (idNum == 7)     thisHit = new SlashHit();
     if (idNum == 8)     thisHit = new SquareHit();
     if (idNum == 9)     thisHit = new TrapazoidHit();
+    if (idNum == 10)     thisHit = new DotPolygonHit();
     
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight());
     

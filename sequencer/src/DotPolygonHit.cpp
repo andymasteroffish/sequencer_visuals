@@ -105,14 +105,18 @@ void DotPolygonHit::updateCustom(){
         
     }
     
+    if (pointSize[numPoints-1] <= 0){
+        killMe = true;
+    }
+    
     
 }
 
 void DotPolygonHit::draw(){
     
-    cout<<"draw"<<endl;
     
     ofSetColor(0);
+    ofSetLineWidth(1);
     for (int i=0; i<numPoints; i++){
         lines[i].draw();
     }
