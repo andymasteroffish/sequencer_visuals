@@ -15,6 +15,7 @@
 #include "SlashHit.hpp"
 #include "SquareHit.hpp"
 #include "TrapazoidHit.hpp"
+#include "DotPolygonHit.hpp"
 
 class ofApp : public ofBaseApp{
 

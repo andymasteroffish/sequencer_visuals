@@ -84,6 +84,7 @@ void ofApp::keyPressed(int key){
     if (key == '7')     makeNewTestHit(7);
     if (key == '8')     makeNewTestHit(8);
     if (key == '9')     makeNewTestHit(9);
+    if (key == '0')     makeNewTestHit(10);
     
 }
 
@@ -163,18 +164,21 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
     }
     
     //testing
-    idNum = idNum % 8;
+    idNum = idNum % 9;
     
     Hit * thisHit;
     
-    if (idNum == 0)     thisHit = new TunnelHit();
-    if (idNum == 1)     thisHit = new SweepHit();
-    if (idNum == 2)     thisHit = new TriangleHit();
-    if (idNum == 3)     thisHit = new GrapesHit();
-    if (idNum == 4)     thisHit = new BuckshotHit();
-    if (idNum == 5)     thisHit = new ChaserHit();
-    if (idNum == 6)     thisHit = new SlashHit();
-    if (idNum == 7)     thisHit = new SquareHit();
+    if (idNum == 0)     thisHit = new TunnelHit();  //THIS CAN NEVER BE 0, BECAUSE AT LEAST ONE BAND MUST BE ON
+    
+    if (idNum == 1)     thisHit = new TunnelHit();
+    if (idNum == 2)     thisHit = new SweepHit();
+    if (idNum == 3)     thisHit = new TriangleHit();
+    if (idNum == 4)     thisHit = new GrapesHit();
+    if (idNum == 5)     thisHit = new BuckshotHit();
+    if (idNum == 6)     thisHit = new ChaserHit();
+    if (idNum == 7)     thisHit = new SlashHit();
+    if (idNum == 8)     thisHit = new SquareHit();
+    if (idNum == 9)     thisHit = new TrapazoidHit();
     
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight());
     
@@ -200,6 +204,7 @@ void ofApp::makeNewTestHit(int idNum){
     if (idNum == 7)     thisHit = new SlashHit();
     if (idNum == 8)     thisHit = new SquareHit();
     if (idNum == 9)     thisHit = new TrapazoidHit();
+    if (idNum == 10)     thisHit = new DotPolygonHit();
     
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight());
     
