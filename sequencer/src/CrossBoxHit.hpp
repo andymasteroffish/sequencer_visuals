@@ -19,7 +19,11 @@ public:
     void updateCustom();
     void draw();
     
-    QuickLine lines[8];
+    QuickLine lines[6];
+    
+    int numPopLines;
+    QuickLine popLines[5];
+    
     
     ofVec2f pos;
     
