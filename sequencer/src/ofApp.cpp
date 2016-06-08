@@ -42,7 +42,7 @@ void ofApp::update(){
     
     
     if (autoPlay && ofGetFrameNum() % 10 == 0){
-        makeNewTestHit(ofRandom(1,10));
+        makeNewTestHit(ofRandom(1,16));
     }
     
     //cout<<"hits: "<<hits.size()<<endl;
@@ -74,6 +74,9 @@ void ofApp::keyPressed(int key){
     if (key == 'a'){
         autoPlay = !autoPlay;
     }
+    if (key == 'f'){
+        ofToggleFullscreen();
+    }
     
     if (key == '1')     makeNewTestHit(1);
     if (key == '2')     makeNewTestHit(2);
@@ -89,6 +92,7 @@ void ofApp::keyPressed(int key){
     if (key == 'w')     makeNewTestHit(12);
     if (key == 'e')     makeNewTestHit(13);
     if (key == 'r')     makeNewTestHit(14);
+    if (key == 't')     makeNewTestHit(15);
     
 }
 
@@ -188,6 +192,7 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
     if (idNum == 12)     thisHit = new DrunkTriangleHit();
     if (idNum == 13)     thisHit = new CrossBoxHit();
     if (idNum == 14)     thisHit = new ClapHit();
+    if (idNum == 15)     thisHit = new WaveColumnHit();
     
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
     
@@ -218,6 +223,7 @@ void ofApp::makeNewTestHit(int idNum){
     if (idNum == 12)     thisHit = new DrunkTriangleHit();
     if (idNum == 13)     thisHit = new CrossBoxHit();
     if (idNum == 14)     thisHit = new ClapHit();
+    if (idNum == 15)     thisHit = new WaveColumnHit();
     
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
     

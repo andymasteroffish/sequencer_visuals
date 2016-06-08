@@ -20,6 +20,7 @@
 #include "DrunkTriangleHit.hpp"
 #include "CrossBoxHit.hpp"
 #include "ClapHit.hpp"
+#include "WaveColumnHit.hpp"
 
 class ofApp : public ofBaseApp{
 
