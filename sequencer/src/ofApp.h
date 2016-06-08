@@ -18,6 +18,7 @@
 #include "DotPolygonHit.hpp"
 #include "SizzleHit.hpp"
 #include "DrunkTriangleHit.hpp"
+#include "CrossBoxHit.hpp"
 
 class ofApp : public ofBaseApp{
 
