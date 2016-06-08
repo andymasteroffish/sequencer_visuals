@@ -58,5 +58,8 @@ class ofApp : public ofBaseApp{
     float timeSinceLastHit; //control panel
     float minTimeForNextHit;    //control panel
     
+    //randomzing what hits respond to what bands
+    int hitIDs[15];
+    
 		
 };

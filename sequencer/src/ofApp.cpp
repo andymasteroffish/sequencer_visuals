@@ -15,6 +15,23 @@ void ofApp::setup(){
     timeSinceLastHit = 0;
     minTimeForNextHit = 0.03;
     
+    //randomzie hit IDs on start
+    for (int i=0; i<15; i++){
+        hitIDs[i] = i+1;
+    }
+    for (int i=0; i<1000; i++){
+        int a = (int)ofRandom(15);
+        int b = (int)ofRandom(15);
+        int temp = hitIDs[a];
+        hitIDs[a] = hitIDs[b];
+        hitIDs[b] = temp;
+    }
+    
+    //tetsing
+    for (int i=0; i<15; i++){
+        cout<<i<<" is "<<hitIDs[i]<<endl;
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -172,27 +189,27 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
     }
     
     //testing
-    idNum = idNum % 9;
+    //idNum = idNum % 9;
     
     Hit * thisHit;
     
     if (idNum == 0)     thisHit = new TunnelHit();  //THIS CAN NEVER BE 0, BECAUSE AT LEAST ONE BAND MUST BE ON
     
-    if (idNum == 1)     thisHit = new TunnelHit();
-    if (idNum == 2)     thisHit = new SweepHit();
-    if (idNum == 3)     thisHit = new TriangleHit();
-    if (idNum == 4)     thisHit = new GrapesHit();
-    if (idNum == 5)     thisHit = new BuckshotHit();
-    if (idNum == 6)     thisHit = new ChaserHit();
-    if (idNum == 7)     thisHit = new SlashHit();
-    if (idNum == 8)     thisHit = new SquareHit();
-    if (idNum == 9)     thisHit = new TrapazoidHit();
-    if (idNum == 10)     thisHit = new DotPolygonHit();
-    if (idNum == 11)     thisHit = new SizzleHit();
-    if (idNum == 12)     thisHit = new DrunkTriangleHit();
-    if (idNum == 13)     thisHit = new CrossBoxHit();
-    if (idNum == 14)     thisHit = new ClapHit();
-    if (idNum == 15)     thisHit = new WaveColumnHit();
+    if (idNum == hitIDs[0])     thisHit = new TunnelHit();
+    if (idNum == hitIDs[1])     thisHit = new SweepHit();
+    if (idNum == hitIDs[2])     thisHit = new TriangleHit();
+    if (idNum == hitIDs[3])     thisHit = new GrapesHit();
+    if (idNum == hitIDs[4])     thisHit = new BuckshotHit();
+    if (idNum == hitIDs[5])     thisHit = new ChaserHit();
+    if (idNum == hitIDs[6])     thisHit = new SlashHit();
+    if (idNum == hitIDs[7])     thisHit = new SquareHit();
+    if (idNum == hitIDs[8])     thisHit = new TrapazoidHit();
+    if (idNum == hitIDs[9])     thisHit = new DotPolygonHit();
+    if (idNum == hitIDs[10])    thisHit = new SizzleHit();
+    if (idNum == hitIDs[11])    thisHit = new DrunkTriangleHit();
+    if (idNum == hitIDs[12])    thisHit = new CrossBoxHit();
+    if (idNum == hitIDs[13])    thisHit = new ClapHit();
+    if (idNum == hitIDs[14])    thisHit = new WaveColumnHit();
     
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
     
