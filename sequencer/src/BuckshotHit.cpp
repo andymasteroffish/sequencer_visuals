@@ -13,7 +13,7 @@ void BuckshotHit::setupCustom(){
     
     int numShots = ofRandom(9,15);
     
-    float range = 60;
+    float range = 90;//60;
     float padding = 100;
     
     float centerX = ofRandom(padding, gameW-padding);

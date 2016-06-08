@@ -11,8 +11,8 @@
 
 void CrossBoxHit::setupCustom(){
     
-    int boxSize = 50;
-    int minDist = 15;
+    int boxSize = 60;
+    int minDist = 20;
 
     ofVec2f top( ofRandom(-boxSize/2, boxSize/2), ofRandom(-minDist,-boxSize));
     ofVec2f botLeft( ofRandom(-minDist, -boxSize), ofRandom(minDist,boxSize));

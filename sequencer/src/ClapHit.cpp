@@ -16,7 +16,7 @@ void ClapHit::setupCustom(){
     startScale = 3;
     impactTime = 0.16;
     
-    pntStartDist = 50;
+    pntStartDist = 70;
     pntDist = pntStartDist;
     
     firstClapTime = 0.2;
@@ -110,13 +110,14 @@ void ClapHit::draw(){
     
     //draw the lines
     ofSetColor(0);
-    ofSetLineWidth(2);
+    ofSetLineWidth(3);
     ofDrawLine(0, 0, pntA.x, pntA.y);
     ofDrawLine(0, 0, pntB.x, pntB.y);
     
     //draw the pop circles
     ofNoFill();
-    ofSetLineWidth(1);
+    ofSetLineWidth(2);
+    ofSetCircleResolution(20);
     if (leftPopCircleSize > 0){
         ofDrawCircle(-popCircleDist, 0, leftPopCircleSize);
     }

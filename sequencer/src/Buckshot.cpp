@@ -17,9 +17,9 @@ void Buckshot::setup(float x, float y, float delayTime){
     pauseTime = startTime+0.6;
     popTime = pauseTime+0.3;
     
-    startSize = 10;
-    normSize = 8;
-    popSize = -25;
+    startSize = 20;//10;
+    normSize = 16;//8;
+    popSize = -40;//-25;
     
     size = startSize;
     
