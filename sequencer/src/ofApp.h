@@ -19,6 +19,7 @@
 #include "SizzleHit.hpp"
 #include "DrunkTriangleHit.hpp"
 #include "CrossBoxHit.hpp"
+#include "ClapHit.hpp"
 
 class ofApp : public ofBaseApp{
 

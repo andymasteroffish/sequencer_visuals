@@ -109,6 +109,7 @@ void CrossBoxHit::draw(){
     
     ofSetColor(0);
     ofSetLineWidth(2);
+    
     for (int i=0; i<6; i++){
         lines[i].draw();
     }

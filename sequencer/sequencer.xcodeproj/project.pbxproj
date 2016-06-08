@@ -16,6 +16,7 @@
 		4A71E37D7F36F23AA123EB0B /* guiTypeSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CD68CA8FE136C3BE208703B /* guiTypeSlider.cpp */; };
 		4AD26D3FD81EE11D9A7E6EA5 /* ofxFFTFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6706A6E3206367429709EA3 /* ofxFFTFile.cpp */; };
 		5775EEBF1D08B4E4007B0E3A /* CrossBoxHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5775EEBD1D08B4E4007B0E3A /* CrossBoxHit.cpp */; };
+		5775EEC21D08C061007B0E3A /* ClapHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5775EEC01D08C061007B0E3A /* ClapHit.cpp */; };
 		578A309A1CF4C2D600B16A44 /* Hit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578A30981CF4C2D600B16A44 /* Hit.cpp */; };
 		578A309D1CF4CA7700B16A44 /* FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578A309B1CF4CA7700B16A44 /* FFT.cpp */; };
 		578A30A11CF4D0EF00B16A44 /* DemoHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578A309F1CF4D0EF00B16A44 /* DemoHit.cpp */; };
@@ -113,6 +114,8 @@
 		50DF87D612C5AAE17AAFA6C0 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxXmlSettings.cpp; path = ../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp; sourceTree = SOURCE_ROOT; };
 		5775EEBD1D08B4E4007B0E3A /* CrossBoxHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CrossBoxHit.cpp; sourceTree = "<group>"; };
 		5775EEBE1D08B4E4007B0E3A /* CrossBoxHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CrossBoxHit.hpp; sourceTree = "<group>"; };
+		5775EEC01D08C061007B0E3A /* ClapHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClapHit.cpp; sourceTree = "<group>"; };
+		5775EEC11D08C061007B0E3A /* ClapHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ClapHit.hpp; sourceTree = "<group>"; };
 		578A30981CF4C2D600B16A44 /* Hit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hit.cpp; sourceTree = "<group>"; };
 		578A30991CF4C2D600B16A44 /* Hit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Hit.hpp; sourceTree = "<group>"; };
 		578A309B1CF4CA7700B16A44 /* FFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFT.cpp; sourceTree = "<group>"; };
@@ -371,6 +374,8 @@
 				57F95DD11D07700600BC6CE0 /* DrunkTriangleHit.cpp */,
 				5775EEBE1D08B4E4007B0E3A /* CrossBoxHit.hpp */,
 				5775EEBD1D08B4E4007B0E3A /* CrossBoxHit.cpp */,
+				5775EEC11D08C061007B0E3A /* ClapHit.hpp */,
+				5775EEC01D08C061007B0E3A /* ClapHit.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -551,6 +556,7 @@
 				EDA6787F2E8DEF6246CF24D3 /* guiTypeLogger.cpp in Sources */,
 				CBE57D7C657C0B7FD0102864 /* guiTypeMultiToggle.cpp in Sources */,
 				9D97FDF450CC66E11F05E279 /* guiTypePanel.cpp in Sources */,
+				5775EEC21D08C061007B0E3A /* ClapHit.cpp in Sources */,
 				4A71E37D7F36F23AA123EB0B /* guiTypeSlider.cpp in Sources */,
 				9B36FEC1F9A02AF09246572B /* guiTypeText.cpp in Sources */,
 				578A30AD1CF4F0FA00B16A44 /* TriangleHit.cpp in Sources */,

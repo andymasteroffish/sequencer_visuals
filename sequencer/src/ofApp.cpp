@@ -88,6 +88,7 @@ void ofApp::keyPressed(int key){
     if (key == 'q')     makeNewTestHit(11);
     if (key == 'w')     makeNewTestHit(12);
     if (key == 'e')     makeNewTestHit(13);
+    if (key == 'r')     makeNewTestHit(14);
     
 }
 
@@ -186,6 +187,7 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
     if (idNum == 11)     thisHit = new SizzleHit();
     if (idNum == 12)     thisHit = new DrunkTriangleHit();
     if (idNum == 13)     thisHit = new CrossBoxHit();
+    if (idNum == 14)     thisHit = new ClapHit();
     
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
     
@@ -215,6 +217,7 @@ void ofApp::makeNewTestHit(int idNum){
     if (idNum == 11)     thisHit = new SizzleHit();
     if (idNum == 12)     thisHit = new DrunkTriangleHit();
     if (idNum == 13)     thisHit = new CrossBoxHit();
+    if (idNum == 14)     thisHit = new ClapHit();
     
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
     
