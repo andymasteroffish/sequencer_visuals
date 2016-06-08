@@ -32,8 +32,8 @@ void DotPolygonHit::setupCustom(){
     startDeathTimes.resize(numPoints);
     lines.resize(numPoints);
     
-    float basePauseTime = 1.5;
-    float deathSpacing = 0.2;
+    float basePauseTime = 0.6;
+    float deathSpacing = 0.15;
     
     float curAngle = ofRandom(TWO_PI);
     
@@ -126,7 +126,7 @@ void DotPolygonHit::draw(){
     for (int i=0; i<numPoints; i++){
         ofSetColor(0);
         ofDrawCircle(points[i].x, points[i].y, pointSize[i]);
-        ofSetColor(255);
+        ofSetColor(whiteVal);
         ofDrawCircle(points[i].x, points[i].y, pointSize[i]*0.6);
     }
 }

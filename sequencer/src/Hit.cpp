@@ -9,9 +9,11 @@
 #include "Hit.hpp"
 
 
-void Hit::setup(bool _bandsOnMicro[NUM_BANDS/2], int _gameW, int _gameH){
+void Hit::setup(bool _bandsOnMicro[NUM_BANDS/2], int _gameW, int _gameH, int _whiteVal){
     gameW = _gameW;
     gameH = _gameH;
+    
+    whiteVal = _whiteVal;
     
 //    //set full bands
 //    for (int i=0; i<NUM_BANDS; i++){

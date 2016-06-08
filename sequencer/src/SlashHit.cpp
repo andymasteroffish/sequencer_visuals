@@ -96,7 +96,7 @@ void SlashHit::draw(){
     lineA.draw();
     lineB.draw();
     
-    ofSetColor(255);
+    ofSetColor(whiteVal);
     ofSetLineWidth(1);
     lineA.draw();
     lineB.draw();

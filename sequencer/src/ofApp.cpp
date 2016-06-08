@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    
-    ofBackground(240);
+    whiteVal = 240;
+    ofBackground(whiteVal);
     
     fft.setup(NUM_BANDS);
     showFFT = false;
@@ -183,7 +183,7 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
     if (idNum == 9)     thisHit = new TrapazoidHit();
     if (idNum == 10)     thisHit = new DotPolygonHit();
     
-    thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight());
+    thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
     
     hits.push_back(thisHit);
 }
@@ -211,7 +211,7 @@ void ofApp::makeNewTestHit(int idNum){
     if (idNum == 11)     thisHit = new SizzleHit();
     if (idNum == 12)     thisHit = new DrunkTriangleHit();
     
-    thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight());
+    thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
     
     hits.push_back(thisHit);
     

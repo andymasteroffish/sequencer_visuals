@@ -48,6 +48,7 @@ class ofApp : public ofBaseApp{
     
     bool autoPlay;
    
+    int whiteVal;
     
     //tracking hits
     vector<Hit *> hits;
