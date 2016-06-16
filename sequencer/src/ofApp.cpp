@@ -44,7 +44,7 @@ void ofApp::update(){
     fft.update();
     
     //check if the FFT has a new hit for is
-    if (fft.haveNewHit){
+    if (fft.haveNewHit){ 
         makeNewHit(fft.bandsOn);
     }
         
