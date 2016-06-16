@@ -46,6 +46,8 @@ class ofApp : public ofBaseApp{
     
     float deltaTime, prevFrameTime;
     
+    bool disableMic;
+    
     FFT fft;
     bool showFFT;
     
@@ -60,6 +62,10 @@ class ofApp : public ofBaseApp{
     
     //randomzing what hits respond to what bands
     int hitIDs[15];
+    
+    //testing playing audio
+#define NUM_SOUNDS 10
+    ofSoundPlayer sounds[NUM_SOUNDS];
     
 		
 };

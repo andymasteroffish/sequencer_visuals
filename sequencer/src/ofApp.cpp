@@ -2,12 +2,16 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofSetFrameRate(60);
+    
     whiteVal = 240;
     ofBackground(whiteVal);
     
     fft.setup(NUM_BANDS);
     showFFT = false;
     autoPlay = false;
+    
+    disableMic = true;
 
     prevFrameTime = ofGetElapsedTimef();
     deltaTime = 0;
@@ -32,6 +36,20 @@ void ofApp::setup(){
         cout<<i<<" is "<<hitIDs[i]<<endl;
     }
     
+    string soundFolder = "/Users/awallace/Documents/projects/sequencer/sounds/high_depth/";
+    sounds[0].load(soundFolder+"agogo.wav");
+    sounds[1].load(soundFolder+"cl_hat.wav");
+    sounds[2].load(soundFolder+"clap.wav");
+    sounds[3].load(soundFolder+"claves.wav");
+    sounds[4].load(soundFolder+"crash.wav");
+    sounds[5].load(soundFolder+"high_tom.wav");
+    sounds[6].load(soundFolder+"kick.wav");
+    sounds[7].load(soundFolder+"lo_tom.wav");
+    sounds[8].load(soundFolder+"op_hat.wav");
+    sounds[9].load(soundFolder+"snare.wav");
+    for (int i=0; i<NUM_SOUNDS; i++){
+        sounds[i].setMultiPlay(true);
+    }
 }
 
 //--------------------------------------------------------------
@@ -44,7 +62,7 @@ void ofApp::update(){
     fft.update();
     
     //check if the FFT has a new hit for is
-    if (fft.haveNewHit){ 
+    if (fft.haveNewHit && !disableMic){
         makeNewHit(fft.bandsOn);
     }
         
@@ -80,6 +98,9 @@ void ofApp::draw(){
     for (int i=0; i<hits.size(); i++){
         hits[i]->draw();
     }
+    
+    ofSetColor(0);
+    ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 15);
 }
 
 
@@ -245,5 +266,13 @@ void ofApp::makeNewTestHit(int idNum){
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
     
     hits.push_back(thisHit);
+    
+    //testing
+    if (idNum < NUM_SOUNDS){
+        sounds[idNum].play();
+    }
+    if (idNum == NUM_SOUNDS){
+        sounds[0].play();
+    }
     
 }
