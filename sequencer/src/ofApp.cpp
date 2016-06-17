@@ -8,10 +8,13 @@ void ofApp::setup(){
     ofBackground(whiteVal);
     
     bpm.reset();
-    bpm.start();
-    bpm.setBpm(180);
+    bpmStartValue = 160;
+    bpmValue = bpmStartValue;
+    bpm.setBpm(bpmValue);
     bpm.setBeatPerBar(8);
     ofAddListener(bpm.beatEvent, this, &ofApp::hitBeat);
+    bpm.start();
+    
     thisBeat = 0;
     
     fft.setup(NUM_BANDS);
@@ -26,10 +29,6 @@ void ofApp::setup(){
     timeSinceLastHit = 0;
     minTimeForNextHit = 0.03;
     
-    //beat timing
-    
-//    beatSpacing = 0.1;
-//    beatTimer = 0;
     
     //randomzie hit IDs on start
     for (int i=0; i<15; i++){
@@ -59,6 +58,8 @@ void ofApp::setup(){
         sounds[i].setMultiPlay(true);
     }
     
+    clearBeats();
+    
     //set the markers
     beatXSpacing = 40;
     beatYDistFromBottom = 40;
@@ -66,9 +67,6 @@ void ofApp::setup(){
     for (int i=0; i<NUM_BEATS; i++){
         beatMarkers[i].setup(beatXPadding+beatXSpacing*i, ofGetHeight()-beatYDistFromBottom);
     }
-    
-    
-    clearBeats();
     
 }
 
@@ -82,12 +80,15 @@ void ofApp::hitBeat(void){
     //play anything that's on
     for (int k=0; k<NUM_SOUNDS; k++){
         if (beatsOn[thisBeat][k]){
-            makeNewTestHit(k);
+            makeNewHit(k);
         }
     }
     
     beatMarkers[thisBeat].triggerBeat();
     
+    if (autoPlay && ofRandomuf() < 0.2){
+        makeNewHit(ofRandom(15));
+    }
 }
 
 //--------------------------------------------------------------
@@ -112,30 +113,6 @@ void ofApp::update(){
             hits.erase(hits.begin()+i);
         }
     }
-    
-    
-    if (autoPlay && ofGetFrameNum() % 10 == 0){
-        makeNewTestHit(ofRandom(1,16));
-    }
-    
-    //update the beats
-//    beatTimer += deltaTime;
-//    if (beatTimer >= beatSpacing){
-//        beatTimer = 0;
-//        thisBeat++;
-//        if (thisBeat >= NUM_BEATS){
-//            thisBeat = 0;
-//        }
-//        
-//        //play anything that's on
-//        for (int k=0; k<NUM_SOUNDS; k++){
-//            if (beatsOn[thisBeat][k]){
-//                makeNewTestHit(k);
-//            }
-//        }
-//        
-//        beatMarkers[thisBeat].triggerBeat();
-//    }
     
     //update the markers
     for (int i=0; i<NUM_BEATS; i++){
@@ -191,58 +168,39 @@ void ofApp::keyPressed(int key){
         clearBeats();
     }
     
-    if (key == '1')     makeNewTestHit(1);
-    if (key == '2')     makeNewTestHit(2);
-    if (key == '3')     makeNewTestHit(3);
-    if (key == '4')     makeNewTestHit(4);
-    if (key == '5')     makeNewTestHit(5);
-    if (key == '6')     makeNewTestHit(6);
-    if (key == '7')     makeNewTestHit(7);
-    if (key == '8')     makeNewTestHit(8);
-    if (key == '9')     makeNewTestHit(9);
-    if (key == '0')     makeNewTestHit(10);
-    if (key == 'q')     makeNewTestHit(11);
-    if (key == 'w')     makeNewTestHit(12);
-    if (key == 'e')     makeNewTestHit(13);
-    if (key == 'r')     makeNewTestHit(14);
-    if (key == 't')     makeNewTestHit(15);
+    if (key == OF_KEY_UP){
+        bpmValue += 10;
+        bpmValue = MIN(bpmValue, 400);
+        bpm.setBpm(bpmValue);
+    }
+    if (key == OF_KEY_DOWN){
+        bpmValue -= 10;
+        bpmValue = MAX(bpmValue, 50);
+        bpm.setBpm(bpmValue);
+    }
+    if (key == OF_KEY_LEFT){
+        bpmValue = bpmStartValue;
+        bpm.setBpm(bpmValue);
+    }
+    
+    if (key == '0')     makeNewHit(0);
+    if (key == '1')     makeNewHit(1);
+    if (key == '2')     makeNewHit(2);
+    if (key == '3')     makeNewHit(3);
+    if (key == '4')     makeNewHit(4);
+    if (key == '5')     makeNewHit(5);
+    if (key == '6')     makeNewHit(6);
+    if (key == '7')     makeNewHit(7);
+    if (key == '8')     makeNewHit(8);
+    if (key == '9')     makeNewHit(9);
+    if (key == 'q')     makeNewHit(11);
+    if (key == 'w')     makeNewHit(12);
+    if (key == 'e')     makeNewHit(13);
+    if (key == 'r')     makeNewHit(14);
+    if (key == 't')     makeNewHit(15);
     
 }
 
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
-
-}
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
@@ -252,19 +210,6 @@ void ofApp::windowResized(int w, int h){
         beatMarkers[i].pos.set(beatXPadding+beatXSpacing*i, ofGetHeight()-beatYDistFromBottom);
     }
 }
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
-}
-
-
-
 
 //--------------------------------------------------------------
 void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
@@ -317,7 +262,7 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
 }
 
 //--------------------------------------------------------------
-void ofApp::makeNewTestHit(int idNum){
+void ofApp::makeNewHit(int idNum){
     
     bool bandsOnMicro[NUM_BANDS/2];
     for (int i=0; i<NUM_BANDS/2; i++){
@@ -326,35 +271,31 @@ void ofApp::makeNewTestHit(int idNum){
     
     Hit * thisHit;
     
-    if (idNum == 1)     thisHit = new TunnelHit();
-    if (idNum == 2)     thisHit = new SweepHit();
-    if (idNum == 3)     thisHit = new TriangleHit();
-    if (idNum == 4)     thisHit = new GrapesHit();
-    if (idNum == 5)     thisHit = new BuckshotHit();
-    if (idNum == 6)     thisHit = new ChaserHit();
-    if (idNum == 7)     thisHit = new SlashHit();
-    if (idNum == 8)     thisHit = new SquareHit();
-    if (idNum == 9)     thisHit = new TrapazoidHit();
-    if (idNum == 10)     thisHit = new DotPolygonHit();
-    if (idNum == 11)     thisHit = new SizzleHit();
-    if (idNum == 12)     thisHit = new DrunkTriangleHit();
-    if (idNum == 13)     thisHit = new CrossBoxHit();
-    if (idNum == 14)     thisHit = new ClapHit();
-    if (idNum == 15)     thisHit = new WaveColumnHit();
+    if (idNum == 0)     thisHit = new TunnelHit();
+    if (idNum == 1)     thisHit = new SweepHit();
+    if (idNum == 2)     thisHit = new TriangleHit();
+    if (idNum == 3)     thisHit = new GrapesHit();
+    if (idNum == 4)     thisHit = new BuckshotHit();
+    if (idNum == 5)     thisHit = new ChaserHit();
+    if (idNum == 6)     thisHit = new SlashHit();
+    if (idNum == 7)     thisHit = new SquareHit();
+    if (idNum == 8)     thisHit = new TrapazoidHit();
+    if (idNum == 9)     thisHit = new DotPolygonHit();
+    if (idNum == 10)     thisHit = new SizzleHit();
+    if (idNum == 11)     thisHit = new DrunkTriangleHit();
+    if (idNum == 12)     thisHit = new CrossBoxHit();
+    if (idNum == 13)     thisHit = new ClapHit();
+    if (idNum == 14)     thisHit = new WaveColumnHit();
     
     thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
     
     hits.push_back(thisHit);
     
-    //testing
+    //turnign this beat on
     if (idNum < NUM_SOUNDS){
         sounds[idNum].play();
         beatsOn[thisBeat][idNum] = true;
     }
-//    if (idNum == NUM_SOUNDS){
-//        sounds[0].play();
-//        beatsOn[thisBeat][0] = true;
-//    }
     
 }
 

@@ -19,7 +19,6 @@ public:
     void triggerBeat();
     void triggerClear();
     void draw(bool hasSound);
-    //void windowResized();
     
     ofVec2f pos;
     float curSize;

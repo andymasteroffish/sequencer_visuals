@@ -98,6 +98,7 @@ void BeatMarker::draw(bool hasSound){
     
     ofSetColor(0);
     ofSetLineWidth(1);
+    ofSetCircleResolution(20);
     
     if (hasSound)   ofFill();
     else            ofNoFill();

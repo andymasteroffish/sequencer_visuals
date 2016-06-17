@@ -35,19 +35,10 @@ public:
     void draw();
 
     void keyPressed(int key);
-    void keyReleased(int key);
-    void mouseMoved(int x, int y );
-    void mouseDragged(int x, int y, int button);
-    void mousePressed(int x, int y, int button);
-    void mouseReleased(int x, int y, int button);
-    void mouseEntered(int x, int y);
-    void mouseExited(int x, int y);
     void windowResized(int w, int h);
-    void dragEvent(ofDragInfo dragInfo);
-    void gotMessage(ofMessage msg);
     
     void makeNewHit(bool bandsOn[NUM_BANDS]);
-    void makeNewTestHit(int idNum);
+    void makeNewHit(int idNum);
     
     void clearBeats();
     
@@ -57,6 +48,7 @@ public:
     
     //ofxBPM tools by mirrorboy714
     //https://github.com/mirrorboy714/ofxBpm
+    int bpmValue, bpmStartValue;
     ofxBpm bpm;
     
     //fft stuff
@@ -81,8 +73,6 @@ public:
 #define NUM_SOUNDS 10
     ofSoundPlayer sounds[NUM_SOUNDS];
     
-//    float beatSpacing;
-//    float beatTimer;
 #define NUM_BEATS 16
     int thisBeat;
     bool beatsOn[NUM_BEATS][NUM_SOUNDS];
@@ -92,6 +82,19 @@ public:
     float beatYDistFromBottom;
     BeatMarker beatMarkers[NUM_BEATS];
     
+    
+    
+    
+    
+    //    void keyReleased(int key);
+    //    void mouseMoved(int x, int y );
+    //    void mouseDragged(int x, int y, int button);
+    //    void mousePressed(int x, int y, int button);
+    //    void mouseReleased(int x, int y, int button);
+    //    void mouseEntered(int x, int y);
+    //    void mouseExited(int x, int y);
+    //    void dragEvent(ofDragInfo dragInfo);
+    //    void gotMessage(ofMessage msg);
     
 		
 };
