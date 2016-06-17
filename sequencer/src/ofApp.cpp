@@ -19,6 +19,11 @@ void ofApp::setup(){
     timeSinceLastHit = 0;
     minTimeForNextHit = 0.03;
     
+    //beat timing
+    thisBeat = 0;
+    beatSpacing = 0.1;
+    beatTimer = 0;
+    
     //randomzie hit IDs on start
     for (int i=0; i<15; i++){
         hitIDs[i] = i+1;
@@ -31,11 +36,7 @@ void ofApp::setup(){
         hitIDs[b] = temp;
     }
     
-    //tetsing
-    for (int i=0; i<15; i++){
-        cout<<i<<" is "<<hitIDs[i]<<endl;
-    }
-    
+    //set the sounds
     string soundFolder = "/Users/awallace/Documents/projects/sequencer/sounds/high_depth/";
     sounds[0].load(soundFolder+"agogo.wav");
     sounds[1].load(soundFolder+"cl_hat.wav");
@@ -51,9 +52,14 @@ void ofApp::setup(){
         sounds[i].setMultiPlay(true);
     }
     
-    thisBeat = 0;
-    beatSpacing = 0.1;
-    beatTimer = 0;
+    //set the markers
+    beatXSpacing = 40;
+    beatYDistFromBottom = 40;
+    float beatXPadding = (ofGetWidth()-(beatXSpacing*NUM_BEATS))/2;
+    for (int i=0; i<NUM_BEATS; i++){
+        beatMarkers[i].setup(beatXPadding+beatXSpacing*i, ofGetHeight()-beatYDistFromBottom, beatSpacing);
+    }
+    
     
     clearBeats();
     
@@ -102,6 +108,13 @@ void ofApp::update(){
                 makeNewTestHit(k);
             }
         }
+        
+        beatMarkers[thisBeat].triggerBeat();
+    }
+    
+    //update the markers
+    for (int i=0; i<NUM_BEATS; i++){
+        beatMarkers[i].update(deltaTime);
     }
 }
 
@@ -124,23 +137,14 @@ void ofApp::draw(){
     ofSetColor(0);
     ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 15);
     
-    float circleSize = 10;
-    float circleSizeOn = circleSize * 1.5;
-    ofSetColor(0);
-    ofSetLineWidth(1);
+    //draw the markers
     for (int i=0; i<NUM_BEATS; i++){
         bool anyOn = false;
         for (int k=0; k<NUM_SOUNDS; k++){
             if (beatsOn[i][k])  anyOn = true;
         }
-        
-        if (anyOn)  ofFill();
-        else        ofNoFill();
-        
-        ofSetCircleResolution(15);
-        float thisSize = i == thisBeat ? circleSize : circleSizeOn;
-        ofDrawCircle(40+circleSize*4*i, ofGetHeight()-circleSize*2, thisSize);
-        
+
+        beatMarkers[i].draw(anyOn);
     }
 }
 
@@ -215,7 +219,11 @@ void ofApp::mouseExited(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-
+    //set the markers
+    float beatXPadding = (ofGetWidth()-(beatXSpacing*NUM_BEATS))/2;
+    for (int i=0; i<NUM_BEATS; i++){
+        beatMarkers[i].setup(beatXPadding+beatXSpacing*i, ofGetHeight()-beatYDistFromBottom, beatSpacing);
+    }
 }
 
 //--------------------------------------------------------------
@@ -329,5 +337,6 @@ void ofApp::clearBeats(){
         for (int k=0; k<NUM_SOUNDS; k++){
             beatsOn[i][k] = false;
         }
+        beatMarkers[i].triggerClear();
     }
 }

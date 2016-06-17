@@ -4,6 +4,8 @@
 
 #include "FFT.hpp"
 
+#include "BeatMarker.hpp"
+
 #include "Hit.hpp"
 #include "DemoHit.hpp"
 #include "TunnelHit.hpp"
@@ -71,9 +73,14 @@ class ofApp : public ofBaseApp{
     
     float beatSpacing;
     float beatTimer;
-#define NUM_BEATS 16
+#define NUM_BEATS 24//16
     int thisBeat;
     bool beatsOn[NUM_BEATS][NUM_SOUNDS];
+    
+    //float beatXPadding,
+    float beatXSpacing;
+    float beatYDistFromBottom;
+    BeatMarker beatMarkers[NUM_BEATS];
     
 		
 };

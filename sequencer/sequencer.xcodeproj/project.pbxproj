@@ -33,6 +33,7 @@
 		578C72F11CF6354F00FC88B3 /* SlashHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72EF1CF6354F00FC88B3 /* SlashHit.cpp */; };
 		578C72F41CF6413D00FC88B3 /* SquareHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72F21CF6413D00FC88B3 /* SquareHit.cpp */; };
 		578C72F71CF64D1F00FC88B3 /* TrapazoidHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72F51CF64D1F00FC88B3 /* TrapazoidHit.cpp */; };
+		57A73DDE1D14448B0090785D /* BeatMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57A73DDC1D14448B0090785D /* BeatMarker.cpp */; };
 		57F95DCA1D075C9E00BC6CE0 /* DotPolygonHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F95DC81D075C9E00BC6CE0 /* DotPolygonHit.cpp */; };
 		57F95DD01D0766BD00BC6CE0 /* SizzleHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F95DCE1D0766BD00BC6CE0 /* SizzleHit.cpp */; };
 		57F95DD31D07700600BC6CE0 /* DrunkTriangleHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F95DD11D07700600BC6CE0 /* DrunkTriangleHit.cpp */; };
@@ -149,6 +150,8 @@
 		578C72F31CF6413D00FC88B3 /* SquareHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SquareHit.hpp; sourceTree = "<group>"; };
 		578C72F51CF64D1F00FC88B3 /* TrapazoidHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrapazoidHit.cpp; sourceTree = "<group>"; };
 		578C72F61CF64D1F00FC88B3 /* TrapazoidHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TrapazoidHit.hpp; sourceTree = "<group>"; };
+		57A73DDC1D14448B0090785D /* BeatMarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeatMarker.cpp; sourceTree = "<group>"; };
+		57A73DDD1D14448B0090785D /* BeatMarker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BeatMarker.hpp; sourceTree = "<group>"; };
 		57F95DC81D075C9E00BC6CE0 /* DotPolygonHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DotPolygonHit.cpp; sourceTree = "<group>"; };
 		57F95DC91D075C9E00BC6CE0 /* DotPolygonHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DotPolygonHit.hpp; sourceTree = "<group>"; };
 		57F95DCE1D0766BD00BC6CE0 /* SizzleHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SizzleHit.cpp; sourceTree = "<group>"; };
@@ -339,6 +342,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
+				57A73DDD1D14448B0090785D /* BeatMarker.hpp */,
+				57A73DDC1D14448B0090785D /* BeatMarker.cpp */,
 				578A309C1CF4CA7700B16A44 /* FFT.hpp */,
 				578A309B1CF4CA7700B16A44 /* FFT.cpp */,
 				578A30991CF4C2D600B16A44 /* Hit.hpp */,
@@ -544,6 +549,7 @@
 				5775EEC51D08C93A007B0E3A /* WaveColumnHit.cpp in Sources */,
 				57F95DD31D07700600BC6CE0 /* DrunkTriangleHit.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				57A73DDE1D14448B0090785D /* BeatMarker.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				CBA68AD61765B24C0BFD9886 /* guiBaseObject.cpp in Sources */,
 				7830622D2831D72613A1D3CE /* guiCallback.cpp in Sources */,
