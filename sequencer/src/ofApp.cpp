@@ -50,6 +50,13 @@ void ofApp::setup(){
     for (int i=0; i<NUM_SOUNDS; i++){
         sounds[i].setMultiPlay(true);
     }
+    
+    thisBeat = 0;
+    beatSpacing = 0.1;
+    beatTimer = 0;
+    
+    clearBeats();
+    
 }
 
 //--------------------------------------------------------------
@@ -80,7 +87,22 @@ void ofApp::update(){
         makeNewTestHit(ofRandom(1,16));
     }
     
-    //cout<<"hits: "<<hits.size()<<endl;
+    //update the beats
+    beatTimer += deltaTime;
+    if (beatTimer >= beatSpacing){
+        beatTimer = 0;
+        thisBeat++;
+        if (thisBeat >= NUM_BEATS){
+            thisBeat = 0;
+        }
+        
+        //play anything that's on
+        for (int k=0; k<NUM_SOUNDS; k++){
+            if (beatsOn[thisBeat][k]){
+                makeNewTestHit(k);
+            }
+        }
+    }
 }
 
 //--------------------------------------------------------------
@@ -101,6 +123,25 @@ void ofApp::draw(){
     
     ofSetColor(0);
     ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 15);
+    
+    float circleSize = 10;
+    float circleSizeOn = circleSize * 1.5;
+    ofSetColor(0);
+    ofSetLineWidth(1);
+    for (int i=0; i<NUM_BEATS; i++){
+        bool anyOn = false;
+        for (int k=0; k<NUM_SOUNDS; k++){
+            if (beatsOn[i][k])  anyOn = true;
+        }
+        
+        if (anyOn)  ofFill();
+        else        ofNoFill();
+        
+        ofSetCircleResolution(15);
+        float thisSize = i == thisBeat ? circleSize : circleSizeOn;
+        ofDrawCircle(40+circleSize*4*i, ofGetHeight()-circleSize*2, thisSize);
+        
+    }
 }
 
 
@@ -114,6 +155,9 @@ void ofApp::keyPressed(int key){
     }
     if (key == 'f'){
         ofToggleFullscreen();
+    }
+    if (key == 'c'){
+        clearBeats();
     }
     
     if (key == '1')     makeNewTestHit(1);
@@ -270,9 +314,20 @@ void ofApp::makeNewTestHit(int idNum){
     //testing
     if (idNum < NUM_SOUNDS){
         sounds[idNum].play();
+        beatsOn[thisBeat][idNum] = true;
     }
-    if (idNum == NUM_SOUNDS){
-        sounds[0].play();
-    }
+//    if (idNum == NUM_SOUNDS){
+//        sounds[0].play();
+//        beatsOn[thisBeat][0] = true;
+//    }
     
+}
+
+//--------------------------------------------------------------
+void ofApp::clearBeats(){
+    for (int i=0; i<NUM_BEATS; i++){
+        for (int k=0; k<NUM_SOUNDS; k++){
+            beatsOn[i][k] = false;
+        }
+    }
 }

@@ -44,6 +44,8 @@ class ofApp : public ofBaseApp{
     void makeNewHit(bool bandsOn[NUM_BANDS]);
     void makeNewTestHit(int idNum);
     
+    void clearBeats();
+    
     float deltaTime, prevFrameTime;
     
     bool disableMic;
@@ -66,6 +68,12 @@ class ofApp : public ofBaseApp{
     //testing playing audio
 #define NUM_SOUNDS 10
     ofSoundPlayer sounds[NUM_SOUNDS];
+    
+    float beatSpacing;
+    float beatTimer;
+#define NUM_BEATS 16
+    int thisBeat;
+    bool beatsOn[NUM_BEATS][NUM_SOUNDS];
     
 		
 };
