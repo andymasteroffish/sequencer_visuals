@@ -7,6 +7,13 @@ void ofApp::setup(){
     whiteVal = 240;
     ofBackground(whiteVal);
     
+    bpm.reset();
+    bpm.start();
+    bpm.setBpm(180);
+    bpm.setBeatPerBar(8);
+    ofAddListener(bpm.beatEvent, this, &ofApp::hitBeat);
+    thisBeat = 0;
+    
     fft.setup(NUM_BANDS);
     showFFT = false;
     autoPlay = false;
@@ -20,9 +27,9 @@ void ofApp::setup(){
     minTimeForNextHit = 0.03;
     
     //beat timing
-    thisBeat = 0;
-    beatSpacing = 0.1;
-    beatTimer = 0;
+    
+//    beatSpacing = 0.1;
+//    beatTimer = 0;
     
     //randomzie hit IDs on start
     for (int i=0; i<15; i++){
@@ -57,11 +64,29 @@ void ofApp::setup(){
     beatYDistFromBottom = 40;
     float beatXPadding = (ofGetWidth()-(beatXSpacing*NUM_BEATS))/2;
     for (int i=0; i<NUM_BEATS; i++){
-        beatMarkers[i].setup(beatXPadding+beatXSpacing*i, ofGetHeight()-beatYDistFromBottom, beatSpacing);
+        beatMarkers[i].setup(beatXPadding+beatXSpacing*i, ofGetHeight()-beatYDistFromBottom);
     }
     
     
     clearBeats();
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::hitBeat(void){
+    thisBeat++;
+    if (thisBeat >= NUM_BEATS){
+        thisBeat = 0;
+    }
+    
+    //play anything that's on
+    for (int k=0; k<NUM_SOUNDS; k++){
+        if (beatsOn[thisBeat][k]){
+            makeNewTestHit(k);
+        }
+    }
+    
+    beatMarkers[thisBeat].triggerBeat();
     
 }
 
@@ -94,23 +119,23 @@ void ofApp::update(){
     }
     
     //update the beats
-    beatTimer += deltaTime;
-    if (beatTimer >= beatSpacing){
-        beatTimer = 0;
-        thisBeat++;
-        if (thisBeat >= NUM_BEATS){
-            thisBeat = 0;
-        }
-        
-        //play anything that's on
-        for (int k=0; k<NUM_SOUNDS; k++){
-            if (beatsOn[thisBeat][k]){
-                makeNewTestHit(k);
-            }
-        }
-        
-        beatMarkers[thisBeat].triggerBeat();
-    }
+//    beatTimer += deltaTime;
+//    if (beatTimer >= beatSpacing){
+//        beatTimer = 0;
+//        thisBeat++;
+//        if (thisBeat >= NUM_BEATS){
+//            thisBeat = 0;
+//        }
+//        
+//        //play anything that's on
+//        for (int k=0; k<NUM_SOUNDS; k++){
+//            if (beatsOn[thisBeat][k]){
+//                makeNewTestHit(k);
+//            }
+//        }
+//        
+//        beatMarkers[thisBeat].triggerBeat();
+//    }
     
     //update the markers
     for (int i=0; i<NUM_BEATS; i++){
@@ -134,18 +159,20 @@ void ofApp::draw(){
         hits[i]->draw();
     }
     
-    ofSetColor(0);
-    ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 15);
-    
     //draw the markers
     for (int i=0; i<NUM_BEATS; i++){
         bool anyOn = false;
         for (int k=0; k<NUM_SOUNDS; k++){
             if (beatsOn[i][k])  anyOn = true;
         }
-
+        
         beatMarkers[i].draw(anyOn);
     }
+    
+//    ofSetColor(0);
+//    ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 15);
+    
+    
 }
 
 
@@ -222,7 +249,7 @@ void ofApp::windowResized(int w, int h){
     //set the markers
     float beatXPadding = (ofGetWidth()-(beatXSpacing*NUM_BEATS))/2;
     for (int i=0; i<NUM_BEATS; i++){
-        beatMarkers[i].setup(beatXPadding+beatXSpacing*i, ofGetHeight()-beatYDistFromBottom, beatSpacing);
+        beatMarkers[i].pos.set(beatXPadding+beatXSpacing*i, ofGetHeight()-beatYDistFromBottom);
     }
 }
 
@@ -330,6 +357,8 @@ void ofApp::makeNewTestHit(int idNum){
 //    }
     
 }
+
+
 
 //--------------------------------------------------------------
 void ofApp::clearBeats(){

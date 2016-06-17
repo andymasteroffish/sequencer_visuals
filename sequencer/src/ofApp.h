@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 
+#include "ofxBpm.h"
+
 #include "FFT.hpp"
 
 #include "BeatMarker.hpp"
@@ -26,22 +28,23 @@
 
 class ofApp : public ofBaseApp{
 
-	public:
-		void setup();
-		void update();
-		void draw();
+public:
+    void setup();
+    void hitBeat(void);
+    void update();
+    void draw();
 
-		void keyPressed(int key);
-		void keyReleased(int key);
-		void mouseMoved(int x, int y );
-		void mouseDragged(int x, int y, int button);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void mouseEntered(int x, int y);
-		void mouseExited(int x, int y);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
+    void keyPressed(int key);
+    void keyReleased(int key);
+    void mouseMoved(int x, int y );
+    void mouseDragged(int x, int y, int button);
+    void mousePressed(int x, int y, int button);
+    void mouseReleased(int x, int y, int button);
+    void mouseEntered(int x, int y);
+    void mouseExited(int x, int y);
+    void windowResized(int w, int h);
+    void dragEvent(ofDragInfo dragInfo);
+    void gotMessage(ofMessage msg);
     
     void makeNewHit(bool bandsOn[NUM_BANDS]);
     void makeNewTestHit(int idNum);
@@ -52,11 +55,18 @@ class ofApp : public ofBaseApp{
     
     bool disableMic;
     
+    //ofxBPM tools by mirrorboy714
+    //https://github.com/mirrorboy714/ofxBpm
+    ofxBpm bpm;
+    
+    //fft stuff
     FFT fft;
     bool showFFT;
     
+    //demo?
     bool autoPlay;
    
+    //drawing
     int whiteVal;
     
     //tracking hits
@@ -71,9 +81,9 @@ class ofApp : public ofBaseApp{
 #define NUM_SOUNDS 10
     ofSoundPlayer sounds[NUM_SOUNDS];
     
-    float beatSpacing;
-    float beatTimer;
-#define NUM_BEATS 24//16
+//    float beatSpacing;
+//    float beatTimer;
+#define NUM_BEATS 16
     int thisBeat;
     bool beatsOn[NUM_BEATS][NUM_SOUNDS];
     
@@ -81,6 +91,7 @@ class ofApp : public ofBaseApp{
     float beatXSpacing;
     float beatYDistFromBottom;
     BeatMarker beatMarkers[NUM_BEATS];
+    
     
 		
 };

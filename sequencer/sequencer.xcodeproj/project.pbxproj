@@ -34,6 +34,7 @@
 		578C72F41CF6413D00FC88B3 /* SquareHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72F21CF6413D00FC88B3 /* SquareHit.cpp */; };
 		578C72F71CF64D1F00FC88B3 /* TrapazoidHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72F51CF64D1F00FC88B3 /* TrapazoidHit.cpp */; };
 		57A73DDE1D14448B0090785D /* BeatMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57A73DDC1D14448B0090785D /* BeatMarker.cpp */; };
+		57A73DE51D1450410090785D /* ofxBpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57A73DE31D1450410090785D /* ofxBpm.cpp */; };
 		57F95DCA1D075C9E00BC6CE0 /* DotPolygonHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F95DC81D075C9E00BC6CE0 /* DotPolygonHit.cpp */; };
 		57F95DD01D0766BD00BC6CE0 /* SizzleHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F95DCE1D0766BD00BC6CE0 /* SizzleHit.cpp */; };
 		57F95DD31D07700600BC6CE0 /* DrunkTriangleHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F95DD11D07700600BC6CE0 /* DrunkTriangleHit.cpp */; };
@@ -152,6 +153,8 @@
 		578C72F61CF64D1F00FC88B3 /* TrapazoidHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TrapazoidHit.hpp; sourceTree = "<group>"; };
 		57A73DDC1D14448B0090785D /* BeatMarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeatMarker.cpp; sourceTree = "<group>"; };
 		57A73DDD1D14448B0090785D /* BeatMarker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BeatMarker.hpp; sourceTree = "<group>"; };
+		57A73DE31D1450410090785D /* ofxBpm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBpm.cpp; sourceTree = "<group>"; };
+		57A73DE41D1450410090785D /* ofxBpm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBpm.h; sourceTree = "<group>"; };
 		57F95DC81D075C9E00BC6CE0 /* DotPolygonHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DotPolygonHit.cpp; sourceTree = "<group>"; };
 		57F95DC91D075C9E00BC6CE0 /* DotPolygonHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DotPolygonHit.hpp; sourceTree = "<group>"; };
 		57F95DCE1D0766BD00BC6CE0 /* SizzleHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SizzleHit.cpp; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 				5775EEC01D08C061007B0E3A /* ClapHit.cpp */,
 				5775EEC41D08C93A007B0E3A /* WaveColumnHit.hpp */,
 				5775EEC31D08C93A007B0E3A /* WaveColumnHit.cpp */,
+				57A73DE41D1450410090785D /* ofxBpm.h */,
+				57A73DE31D1450410090785D /* ofxBpm.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -601,6 +606,7 @@
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				578A30B31CF501D900B16A44 /* GrapesHit.cpp in Sources */,
 				578C72F11CF6354F00FC88B3 /* SlashHit.cpp in Sources */,
+				57A73DE51D1450410090785D /* ofxBpm.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 			);

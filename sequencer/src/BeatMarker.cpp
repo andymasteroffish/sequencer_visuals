@@ -9,14 +9,14 @@
 #include "BeatMarker.hpp"
 
 
-void BeatMarker::setup(float x, float y, float beatTime){
+void BeatMarker::setup(float x, float y){
     
     pos.set(x,y);
     
     normSize = 10;
     pulseSize = normSize * 2;
     
-    pulseTime = beatTime * 0.75;
+    pulseTime = 0.15;
     pulseTimer = pulseTime;
     
     beingCleared = false;
