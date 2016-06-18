@@ -57,6 +57,7 @@ public:
     
     //demo?
     bool autoPlay;
+    bool recording;
    
     //drawing
     int whiteVal;
@@ -70,7 +71,7 @@ public:
     int hitIDs[15];
     
     //testing playing audio
-#define NUM_SOUNDS 10
+#define NUM_SOUNDS 15
     ofSoundPlayer sounds[NUM_SOUNDS];
     
 #define NUM_BEATS 16

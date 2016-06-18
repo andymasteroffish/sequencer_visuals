@@ -21,6 +21,8 @@ void ofApp::setup(){
     showFFT = false;
     autoPlay = false;
     
+    recording = false;
+    
     disableMic = true;
 
     prevFrameTime = ofGetElapsedTimef();
@@ -43,17 +45,44 @@ void ofApp::setup(){
     }
     
     //set the sounds
-    string soundFolder = "/Users/awallace/Documents/projects/sequencer/sounds/high_depth/";
-    sounds[0].load(soundFolder+"agogo.wav");
-    sounds[1].load(soundFolder+"cl_hat.wav");
-    sounds[2].load(soundFolder+"clap.wav");
-    sounds[3].load(soundFolder+"claves.wav");
-    sounds[4].load(soundFolder+"crash.wav");
-    sounds[5].load(soundFolder+"high_tom.wav");
-    sounds[6].load(soundFolder+"kick.wav");
-    sounds[7].load(soundFolder+"lo_tom.wav");
-    sounds[8].load(soundFolder+"op_hat.wav");
-    sounds[9].load(soundFolder+"snare.wav");
+    string soundFolder = "/Users/awallace/Documents/projects/sequencer/sounds/good_ones_edits/";
+    
+    sounds[0].load(soundFolder+"low_depth_0_deep_kick.wav");
+    sounds[1].load(soundFolder+"clap.wav");
+    sounds[2].load(soundFolder+"mid_time_8_long_clang.wav");
+    sounds[3].load(soundFolder+"mid_time_9_foil.wav");
+    sounds[4].load(soundFolder+"lo_tom.wav");
+    sounds[5].load(soundFolder+"low_depth_2.wav");
+    sounds[6].load(soundFolder+"randoms_0.wav");
+    sounds[7].load(soundFolder+"low_depth_8_clang.wav");
+    sounds[8].load(soundFolder+"randoms_4_clink.wav");
+    sounds[9].load(soundFolder+"low_depth_6_clap.wav");
+    sounds[10].load(soundFolder+"randoms_3_bend_laser.wav");
+    sounds[11].load(soundFolder+"mid_time_3.wav");
+    sounds[12].load(soundFolder+"low_depth_1.wav");
+    sounds[13].load(soundFolder+"low_depth_5_sizzle.wav");
+    sounds[14].load(soundFolder+"mid_time_4.wav");
+    
+    
+    ofDirectory dir;
+//    dir.listDir(soundFolder);
+//    for (int i=0; i<NUM_SOUNDS; i++){
+//        sounds[i].load(dir.getPath(9));
+//        cout<<i<<" : "<<dir.getPath(9)<<endl;
+//    }
+    
+//    sounds[0].load(soundFolder+"agogo.wav");
+//    sounds[1].load(soundFolder+"cl_hat.wav");
+//    sounds[2].load(soundFolder+"clap.wav");
+//    sounds[3].load(soundFolder+"claves.wav");
+//    sounds[4].load(soundFolder+"crash.wav");
+//    sounds[5].load(soundFolder+"high_tom.wav");
+//    sounds[6].load(soundFolder+"kick.wav");
+//    sounds[7].load(soundFolder+"lo_tom.wav");
+//    sounds[8].load(soundFolder+"op_hat.wav");
+//    sounds[9].load(soundFolder+"snare.wav");
+    
+    
     for (int i=0; i<NUM_SOUNDS; i++){
         sounds[i].setMultiPlay(true);
     }
@@ -146,8 +175,10 @@ void ofApp::draw(){
         beatMarkers[i].draw(anyOn);
     }
     
-//    ofSetColor(0);
-//    ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 15);
+    if (recording){
+        ofSetColor(0);
+        ofDrawBitmapString("recording", 10, 15);
+    }
     
     
 }
@@ -164,8 +195,11 @@ void ofApp::keyPressed(int key){
     if (key == 'f'){
         ofToggleFullscreen();
     }
-    if (key == 'c'){
+    if (key == 'c' || key == 127){  //backspace
         clearBeats();
+    }
+    if (key == ' '){
+        recording = !recording;
     }
     
     if (key == OF_KEY_UP){
@@ -193,11 +227,11 @@ void ofApp::keyPressed(int key){
     if (key == '7')     makeNewHit(7);
     if (key == '8')     makeNewHit(8);
     if (key == '9')     makeNewHit(9);
-    if (key == 'q')     makeNewHit(11);
-    if (key == 'w')     makeNewHit(12);
-    if (key == 'e')     makeNewHit(13);
-    if (key == 'r')     makeNewHit(14);
-    if (key == 't')     makeNewHit(15);
+    if (key == 'q')     makeNewHit(10);
+    if (key == 'w')     makeNewHit(11);
+    if (key == 'e')     makeNewHit(12);
+    if (key == 'r')     makeNewHit(13);
+    if (key == 't')     makeNewHit(14);
     
 }
 
@@ -294,7 +328,9 @@ void ofApp::makeNewHit(int idNum){
     //turnign this beat on
     if (idNum < NUM_SOUNDS){
         sounds[idNum].play();
-        beatsOn[thisBeat][idNum] = true;
+        if (recording){
+            beatsOn[thisBeat][idNum] = true;
+        }
     }
     
 }
