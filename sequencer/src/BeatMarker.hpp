@@ -18,7 +18,7 @@ public:
     void update(float deltaTime);
     void triggerBeat();
     void triggerClear();
-    void draw(bool hasSound);
+    void draw(bool hasSound, bool isRecording);
     
     ofVec2f pos;
     float curSize;

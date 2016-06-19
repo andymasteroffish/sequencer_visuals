@@ -44,7 +44,7 @@ public:
     
     float deltaTime, prevFrameTime;
     
-    bool disableMic;
+    bool useNumpadKeys;
     
     //ofxBPM tools by mirrorboy714
     //https://github.com/mirrorboy714/ofxBpm
@@ -52,6 +52,7 @@ public:
     ofxBpm bpm;
     
     //fft stuff
+    bool usingFFT;
     FFT fft;
     bool showFFT;
     

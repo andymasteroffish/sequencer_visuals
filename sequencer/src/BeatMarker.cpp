@@ -94,14 +94,22 @@ void BeatMarker::triggerClear(){
     clearTimer = -ofRandom(clearPauseRange);
 }
 
-void BeatMarker::draw(bool hasSound){
+void BeatMarker::draw(bool hasSound, bool isRecording){
     
     ofSetColor(0);
     ofSetLineWidth(1);
     ofSetCircleResolution(20);
     
-    if (hasSound)   ofFill();
-    else            ofNoFill();
+    if (hasSound && isRecording)    ofFill();
+    else                            ofNoFill();
     
     ofDrawCircle(pos.x, pos.y+fallY, curSize * curScale);
+    
+    //if it has a sound but we're not recording, draw a smaller circle inside
+    if (hasSound && !isRecording){
+        ofFill();
+        ofDrawCircle(pos.x, pos.y+fallY, curSize * curScale * 0.25);
+    }
+    
+    
 }

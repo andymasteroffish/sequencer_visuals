@@ -2,6 +2,13 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    
+    usingFFT = false;
+    useNumpadKeys = true;
+    
+    autoPlay = false;
+    recording = true;
+    
     ofSetFrameRate(60);
     
     whiteVal = 240;
@@ -17,13 +24,11 @@ void ofApp::setup(){
     
     thisBeat = 0;
     
-    fft.setup(NUM_BANDS);
-    showFFT = false;
-    autoPlay = false;
+    if (usingFFT){
+        fft.setup(NUM_BANDS);
+        showFFT = false;
+    }
     
-    recording = false;
-    
-    disableMic = true;
 
     prevFrameTime = ofGetElapsedTimef();
     deltaTime = 0;
@@ -32,7 +37,7 @@ void ofApp::setup(){
     minTimeForNextHit = 0.03;
     
     
-    //randomzie hit IDs on start
+    //randomzie hit IDs on start (for FFT)
     for (int i=0; i<15; i++){
         hitIDs[i] = i+1;
     }
@@ -62,26 +67,6 @@ void ofApp::setup(){
     sounds[12].load(soundFolder+"low_depth_1.wav");
     sounds[13].load(soundFolder+"low_depth_5_sizzle.wav");
     sounds[14].load(soundFolder+"mid_time_4.wav");
-    
-    
-    ofDirectory dir;
-//    dir.listDir(soundFolder);
-//    for (int i=0; i<NUM_SOUNDS; i++){
-//        sounds[i].load(dir.getPath(9));
-//        cout<<i<<" : "<<dir.getPath(9)<<endl;
-//    }
-    
-//    sounds[0].load(soundFolder+"agogo.wav");
-//    sounds[1].load(soundFolder+"cl_hat.wav");
-//    sounds[2].load(soundFolder+"clap.wav");
-//    sounds[3].load(soundFolder+"claves.wav");
-//    sounds[4].load(soundFolder+"crash.wav");
-//    sounds[5].load(soundFolder+"high_tom.wav");
-//    sounds[6].load(soundFolder+"kick.wav");
-//    sounds[7].load(soundFolder+"lo_tom.wav");
-//    sounds[8].load(soundFolder+"op_hat.wav");
-//    sounds[9].load(soundFolder+"snare.wav");
-    
     
     for (int i=0; i<NUM_SOUNDS; i++){
         sounds[i].setMultiPlay(true);
@@ -127,13 +112,15 @@ void ofApp::update(){
     
     timeSinceLastHit += deltaTime;
     
-    fft.update();
-    
-    //check if the FFT has a new hit for is
-    if (fft.haveNewHit && !disableMic){
-        makeNewHit(fft.bandsOn);
-    }
+    if (usingFFT){
+        fft.update();
         
+        //check if the FFT has a new hit for is
+        if (fft.haveNewHit){
+            makeNewHit(fft.bandsOn);
+        }
+    }
+    
     for (int i=hits.size()-1; i>=0; i--){
         hits[i]->update(deltaTime);
         if (hits[i]->killMe){
@@ -172,13 +159,13 @@ void ofApp::draw(){
             if (beatsOn[i][k])  anyOn = true;
         }
         
-        beatMarkers[i].draw(anyOn);
+        beatMarkers[i].draw(anyOn, recording);
     }
     
-    if (recording){
-        ofSetColor(0);
-        ofDrawBitmapString("recording", 10, 15);
-    }
+//    if (recording){
+//        ofSetColor(0);
+//        ofDrawBitmapString("recording", 10, 15);
+//    }
     
     
 }
@@ -186,6 +173,7 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    //cout<<"key "<<key<<endl;
     if (key == 'h'){
         showFFT = !showFFT;
     }
@@ -195,9 +183,7 @@ void ofApp::keyPressed(int key){
     if (key == 'f'){
         ofToggleFullscreen();
     }
-    if (key == 'c' || key == 127){  //backspace
-        clearBeats();
-    }
+    
     if (key == ' '){
         recording = !recording;
     }
@@ -217,21 +203,58 @@ void ofApp::keyPressed(int key){
         bpm.setBpm(bpmValue);
     }
     
-    if (key == '0')     makeNewHit(0);
-    if (key == '1')     makeNewHit(1);
-    if (key == '2')     makeNewHit(2);
-    if (key == '3')     makeNewHit(3);
-    if (key == '4')     makeNewHit(4);
-    if (key == '5')     makeNewHit(5);
-    if (key == '6')     makeNewHit(6);
-    if (key == '7')     makeNewHit(7);
-    if (key == '8')     makeNewHit(8);
-    if (key == '9')     makeNewHit(9);
-    if (key == 'q')     makeNewHit(10);
-    if (key == 'w')     makeNewHit(11);
-    if (key == 'e')     makeNewHit(12);
-    if (key == 'r')     makeNewHit(13);
-    if (key == 't')     makeNewHit(14);
+    if (useNumpadKeys){
+        if (key == 63289)   makeNewHit(0);  //num lock
+        if (key == '/')     makeNewHit(1);
+        if (key == '*')     makeNewHit(2);
+        if (key == 127)     makeNewHit(3);  //backspace
+        
+        if (key == '7')     makeNewHit(4);
+        if (key == '8')     makeNewHit(5);
+        if (key == '9')     makeNewHit(6);
+        if (key == '-')     makeNewHit(7);
+        
+        if (key == '4')     makeNewHit(8);
+        if (key == '5')     makeNewHit(9);
+        if (key == '6')     makeNewHit(10);
+        if (key == '+')     makeNewHit(11);
+        
+        if (key == '1')     makeNewHit(12);
+        if (key == '2')     makeNewHit(13);
+        if (key == '3')     makeNewHit(14);
+        
+        if (key == '0') {
+            recording = !recording;
+        }
+        
+        if (key == 13){  //Enter
+            clearBeats();
+        }
+    }
+    
+    //laptop control
+    if (!useNumpadKeys){
+        if (key == '0')     makeNewHit(0);
+        if (key == '1')     makeNewHit(1);
+        if (key == '2')     makeNewHit(2);
+        if (key == '3')     makeNewHit(3);
+        if (key == '4')     makeNewHit(4);
+        if (key == '5')     makeNewHit(5);
+        if (key == '6')     makeNewHit(6);
+        if (key == '7')     makeNewHit(7);
+        if (key == '8')     makeNewHit(8);
+        if (key == '9')     makeNewHit(9);
+        if (key == 'q')     makeNewHit(10);
+        if (key == 'w')     makeNewHit(11);
+        if (key == 'e')     makeNewHit(12);
+        if (key == 'r')     makeNewHit(13);
+        if (key == 't')     makeNewHit(14);
+        
+        if (key == 'c' || key == 127){  //backspace
+            clearBeats();
+        }
+    }
+    
     
 }
 
