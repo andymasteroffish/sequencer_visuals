@@ -56,9 +56,10 @@ public:
     FFT fft;
     bool showFFT;
     
-    //demo?
+    //states and such?
     bool autoPlay;
     bool recording;
+    bool turnOnRecordingWhenClearing;
    
     //drawing
     int whiteVal;

@@ -8,6 +8,7 @@ void ofApp::setup(){
     
     autoPlay = false;
     recording = true;
+    turnOnRecordingWhenClearing = true;
     
     ofSetFrameRate(60);
     
@@ -183,6 +184,9 @@ void ofApp::keyPressed(int key){
     if (key == 'f'){
         ofToggleFullscreen();
     }
+    if (key == 'c'){
+        turnOnRecordingWhenClearing = !turnOnRecordingWhenClearing;
+    }
     
     if (key == ' '){
         recording = !recording;
@@ -250,7 +254,7 @@ void ofApp::keyPressed(int key){
         if (key == 'r')     makeNewHit(13);
         if (key == 't')     makeNewHit(14);
         
-        if (key == 'c' || key == 127){  //backspace
+        if (key == 127){  //backspace
             clearBeats();
         }
     }
@@ -301,14 +305,17 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
     if (idNum == hitIDs[1])     thisHit = new SweepHit();
     if (idNum == hitIDs[2])     thisHit = new TriangleHit();
     if (idNum == hitIDs[3])     thisHit = new GrapesHit();
+    
     if (idNum == hitIDs[4])     thisHit = new BuckshotHit();
     if (idNum == hitIDs[5])     thisHit = new ChaserHit();
     if (idNum == hitIDs[6])     thisHit = new SlashHit();
     if (idNum == hitIDs[7])     thisHit = new SquareHit();
+    
     if (idNum == hitIDs[8])     thisHit = new TrapazoidHit();
     if (idNum == hitIDs[9])     thisHit = new DotPolygonHit();
     if (idNum == hitIDs[10])    thisHit = new SizzleHit();
     if (idNum == hitIDs[11])    thisHit = new DrunkTriangleHit();
+    
     if (idNum == hitIDs[12])    thisHit = new CrossBoxHit();
     if (idNum == hitIDs[13])    thisHit = new ClapHit();
     if (idNum == hitIDs[14])    thisHit = new WaveColumnHit();
@@ -367,5 +374,8 @@ void ofApp::clearBeats(){
             beatsOn[i][k] = false;
         }
         beatMarkers[i].triggerClear();
+    }
+    if (turnOnRecordingWhenClearing){
+        recording = true;
     }
 }

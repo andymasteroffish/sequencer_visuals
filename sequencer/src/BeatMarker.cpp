@@ -23,6 +23,8 @@ void BeatMarker::setup(float x, float y){
     fallY = 0;
     fallDist = ofGetHeight() - y + pulseSize + 10;
     
+    notRecordingYMaxDist = ofGetHeight() - y;
+    
     clearPauseRange = 0.1;
     fallTime = 0.3;
     pauseTime = fallTime + 0.2;
@@ -32,6 +34,8 @@ void BeatMarker::setup(float x, float y){
     
     curScale = 1;
     curSize = normSize;
+    
+    notRecordingYOffset = 0;
 }
 
 void BeatMarker::update(float deltaTime){
@@ -83,6 +87,14 @@ void BeatMarker::update(float deltaTime){
         curScale = xeno * curScale + (1-xeno) * 1;
     }
     
+    //when we're not recording, move to the bottom
+    float notRecordingXeno = 0.9;
+    if (isRecording){
+        notRecordingYOffset = notRecordingYOffset * notRecordingXeno;
+    }else{
+        notRecordingYOffset = notRecordingYOffset * notRecordingXeno + notRecordingYMaxDist * (1-notRecordingXeno);
+    }
+    
 }
 
 void BeatMarker::triggerBeat(){
@@ -94,7 +106,9 @@ void BeatMarker::triggerClear(){
     clearTimer = -ofRandom(clearPauseRange);
 }
 
-void BeatMarker::draw(bool hasSound, bool isRecording){
+void BeatMarker::draw(bool hasSound, bool _isRecording){
+    
+    isRecording = _isRecording;
     
     ofSetColor(0);
     ofSetLineWidth(1);
@@ -103,12 +117,12 @@ void BeatMarker::draw(bool hasSound, bool isRecording){
     if (hasSound && isRecording)    ofFill();
     else                            ofNoFill();
     
-    ofDrawCircle(pos.x, pos.y+fallY, curSize * curScale);
+    ofDrawCircle(pos.x, pos.y+fallY+notRecordingYOffset, curSize * curScale);
     
     //if it has a sound but we're not recording, draw a smaller circle inside
     if (hasSound && !isRecording){
         ofFill();
-        ofDrawCircle(pos.x, pos.y+fallY, curSize * curScale * 0.25);
+        ofDrawCircle(pos.x, pos.y+fallY+notRecordingYOffset, curSize * curScale * 0.5);
     }
     
     

@@ -18,7 +18,7 @@ public:
     void update(float deltaTime);
     void triggerBeat();
     void triggerClear();
-    void draw(bool hasSound, bool isRecording);
+    void draw(bool hasSound, bool _isRecording);
     
     ofVec2f pos;
     float curSize;
@@ -34,6 +34,9 @@ public:
     float clearTimer;
     float fallY, fallDist;
     
+    float notRecordingYMaxDist;
+    float notRecordingYOffset;
+    
     float clearPauseRange;
     float fallTime;
     float pauseTime;
@@ -41,6 +44,8 @@ public:
     float growHighScale;
     
     float curScale;     //for growing fresh
+    
+    bool isRecording;
     
 };
 
