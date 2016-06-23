@@ -16,7 +16,7 @@
 class Hit{
 public:
     
-    void setup(bool _bandsOnMicro[NUM_BANDS/2], int _gameW, int _gameH, int _whiteVal);
+    void setup(int _gameW, int _gameH, int _whiteVal);
     virtual void setupCustom(){}
     void update(float _deltaTime);
     virtual void updateCustom(){}
@@ -29,10 +29,6 @@ public:
     
     int gameW, gameH;
     int whiteVal;
-    
-    //bool bandsOn[NUM_BANDS];
-    bool bandsOnMicro[NUM_BANDS/2];
-    
     
     bool killMe;
     

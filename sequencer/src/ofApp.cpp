@@ -329,7 +329,7 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
     if (idNum == hitIDs[13])    thisHit = new ClapHit();
     if (idNum == hitIDs[14])    thisHit = new WaveColumnHit();
     
-    thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
+    thisHit->setup(ofGetWidth(), ofGetHeight(), whiteVal);
     
     hits.push_back(thisHit);
 }
@@ -349,14 +349,6 @@ void ofApp::makeNewHit(int idNum){
             beatPos = (thisBeat+1)%NUM_BEATS;
         }
         beatsOn[beatPos][idNum] = true;
-    }
-    
-    
-    
-    //KILL ME
-    bool bandsOnMicro[NUM_BANDS/2];
-    for (int i=0; i<NUM_BANDS/2; i++){
-        bandsOnMicro[i] = ofRandomuf() > 0.5;
     }
     
     //Making the hit
@@ -379,7 +371,7 @@ void ofApp::makeNewHit(int idNum){
         if (idNum == 13)     thisHit = new ClapHit();
         if (idNum == 14)     thisHit = new WaveColumnHit();
         
-        thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
+        thisHit->setup(ofGetWidth(), ofGetHeight(), whiteVal);
         
         hits.push_back(thisHit);
     }

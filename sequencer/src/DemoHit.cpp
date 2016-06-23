@@ -31,17 +31,17 @@ void DemoHit::draw(){
     ofPushMatrix();
     ofTranslate(pos.x, pos.y);
     
-    for (int i=0; i<NUM_BANDS/2; i++){
-        float circleSize = 10;
-        ofSetColor(210,100,100);
-        if (bandsOnMicro[i]){
-            ofFill();
-        }else{
-            ofNoFill();
-        }
-        ofSetCircleResolution(30);
-        ofDrawCircle((circleSize*2)*i, 0, circleSize);
-    }
+//    for (int i=0; i<NUM_BANDS/2; i++){
+//        float circleSize = 10;
+//        ofSetColor(210,100,100);
+//        if (bandsOnMicro[i]){
+//            ofFill();
+//        }else{
+//            ofNoFill();
+//        }
+//        ofSetCircleResolution(30);
+//        ofDrawCircle((circleSize*2)*i, 0, circleSize);
+//    }
     
     ofPopMatrix();
 }
