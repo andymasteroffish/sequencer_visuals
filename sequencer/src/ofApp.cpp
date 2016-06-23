@@ -18,17 +18,21 @@ void ofApp::setup(){
     publicRelease = false;
     
     usingFFT = false;
-    useNumpadKeys = true;
+    useNumpadKeys = false;
     usePreHitDetection = true;
     
     autoPlay = false;
     recording = true;
     turnOnRecordingWhenClearing = true;
     
+    stepMode = false;
+    curStepSound = 0;
+    
     ofSetFrameRate(60);
     
     whiteVal = 240;
     ofBackground(whiteVal);
+    stepModeIcons.whiteVal = whiteVal;
     
     showHelp = false;
     
@@ -212,14 +216,29 @@ void ofApp::draw(){
     //draw the markers
     for (int i=0; i<NUM_BEATS; i++){
         bool anyOn = false;
-        for (int k=0; k<NUM_SOUNDS; k++){
-            if (beatsOn[i][k])  anyOn = true;
+        if (!stepMode){
+            for (int k=0; k<NUM_SOUNDS; k++){
+                if (beatsOn[i][k])  anyOn = true;
+            }
+        }else{
+            anyOn = beatsOn[i][curStepSound];
         }
         
         beatMarkers[i].draw(anyOn, recording);
     }
     
      shader.end();
+    
+    //are we in step mode?
+    if (stepMode){
+        //draw the current icon
+        ofSetColor(0);
+        ofPushMatrix();
+        ofTranslate(beatMarkers[0].pos.x - 80, beatMarkers[0].pos.y);
+        stepModeIcons.draw(curStepSound);
+        ofPopMatrix();
+        //ofDrawBitmapString(ofToString(curStepSound), beatMarkers[0].pos.x - 70, beatMarkers[0].pos.y+10);
+    }
     
     if (!publicRelease){
         ofSetColor(0);
@@ -233,7 +252,11 @@ void ofApp::draw(){
         ofSetColor(0);
         string text = "";
         if (!useNumpadKeys){
-            text += "keys 1-0 & q-t for sounds\n";
+            if (!stepMode){
+                text += "keys 1-0 & q-t for sounds\n";
+            }else{
+                text += "keys 1-0 & q-y to toggle current step mode sound\n";
+            }
         }else{
             text += "most numpad keys for sound (including non-numbers)\n";
         }
@@ -244,18 +267,26 @@ void ofApp::draw(){
              text += "0 to start/stop recording\n";
         }
         text += "\n";
-        text += "Up & down to change BPM (currently "+ofToString(bpmValue)+")\n";
-        text += "Left to reset BPM\n";
+        text += "up & down to change BPM (currently "+ofToString(bpmValue)+")\n";
+        text += "b to reset BPM\n";
         text += "\n";
         text += "f to toggle full screen\n";
+        text += "\n";
+        string stepModeStatus = (stepMode ? "on" : "off");
+        text += "s to toggle step mode (currently "+stepModeStatus+")\n";
+        text += "left and right to change sound when in step mode\n";
+        text += "currently step mode is keyboard mode only (no numpad)\n";
+        text += "\n";
         string turnOnRecordStatus = (turnOnRecordingWhenClearing ? "on" : "off");
         text += "c to toggle turning on record when clearing (currently "+turnOnRecordStatus+")\n";
         string preHitStatus = (usePreHitDetection ? "on" : "off");
         text += "p to toggle pre hit detection (currently "+preHitStatus+")\n";
         string autoStatus = (autoPlay ? "on" : "off");
         text += "a for auto play (currently "+autoStatus+")\n";
+        text += "\n";
         string numPadStatus = (useNumpadKeys ? "on" : "off");
         text += "n to toggle numpad key mapping (currently "+numPadStatus+")\n";
+        text += "\n";
         text += "h to hide this\n";
         
         ofDrawBitmapString(text, 10, 90);
@@ -270,6 +301,9 @@ void ofApp::keyPressed(int key){
     //cout<<"key "<<key<<endl;
     if (key == 'h' || key == 'H'){
         showHelp = !showHelp;
+    }
+    if (key == 's'){
+        stepMode = !stepMode;
     }
     if (key == 'a'){
         autoPlay = !autoPlay;
@@ -304,7 +338,7 @@ void ofApp::keyPressed(int key){
         bpmValue = MAX(bpmValue, 50);
         bpm.setBpm(bpmValue);
     }
-    if (key == OF_KEY_LEFT){
+    if (key == 'b'){
         bpmValue = bpmStartValue;
         bpm.setBpm(bpmValue);
     }
@@ -344,21 +378,49 @@ void ofApp::keyPressed(int key){
     
     //laptop control
     if (!useNumpadKeys){
-        if (key == '0')     makeNewHit(0);
-        if (key == '1')     makeNewHit(1);
-        if (key == '2')     makeNewHit(2);
-        if (key == '3')     makeNewHit(3);
-        if (key == '4')     makeNewHit(4);
-        if (key == '5')     makeNewHit(5);
-        if (key == '6')     makeNewHit(6);
-        if (key == '7')     makeNewHit(7);
-        if (key == '8')     makeNewHit(8);
-        if (key == '9')     makeNewHit(9);
-        if (key == 'q')     makeNewHit(10);
-        if (key == 'w')     makeNewHit(11);
-        if (key == 'e')     makeNewHit(12);
-        if (key == 'r')     makeNewHit(13);
-        if (key == 't')     makeNewHit(14);
+        if (!stepMode){
+            if (key == '0')     makeNewHit(0);
+            if (key == '1')     makeNewHit(1);
+            if (key == '2')     makeNewHit(2);
+            if (key == '3')     makeNewHit(3);
+            if (key == '4')     makeNewHit(4);
+            if (key == '5')     makeNewHit(5);
+            if (key == '6')     makeNewHit(6);
+            if (key == '7')     makeNewHit(7);
+            if (key == '8')     makeNewHit(8);
+            if (key == '9')     makeNewHit(9);
+            if (key == 'q')     makeNewHit(10);
+            if (key == 'w')     makeNewHit(11);
+            if (key == 'e')     makeNewHit(12);
+            if (key == 'r')     makeNewHit(13);
+            if (key == 't')     makeNewHit(14);
+        }else{
+            if (key == '1')     stepModePress(0);
+            if (key == '2')     stepModePress(1);
+            if (key == '3')     stepModePress(2);
+            if (key == '4')     stepModePress(3);
+            if (key == '5')     stepModePress(4);
+            if (key == '6')     stepModePress(5);
+            if (key == '7')     stepModePress(6);
+            if (key == '8')     stepModePress(7);
+            if (key == '9')     stepModePress(8);
+            if (key == '0')     stepModePress(9);
+            if (key == 'q')     stepModePress(10);
+            if (key == 'w')     stepModePress(11);
+            if (key == 'e')     stepModePress(12);
+            if (key == 'r')     stepModePress(13);
+            if (key == 't')     stepModePress(14);
+            if (key == 'y')     stepModePress(15);
+            
+            if (key == OF_KEY_LEFT){
+                curStepSound--;
+                if (curStepSound < 0)   curStepSound = NUM_SOUNDS-1;
+            }
+            if (key == OF_KEY_RIGHT){
+                curStepSound++;
+                if (curStepSound >= NUM_SOUNDS) curStepSound = 0;
+            }
+        }
         
         if (key == 13){  //Enter
             clearBeats();
@@ -479,6 +541,11 @@ void ofApp::makeNewHit(int idNum){
     
 }
 
+//--------------------------------------------------------------
+void ofApp::stepModePress(int placeID){
+    beatsOn[placeID][curStepSound] = !beatsOn[placeID][curStepSound];
+}
+
 
 
 //--------------------------------------------------------------
@@ -540,9 +607,9 @@ void ofApp::setVisualEffect(){
     if (visualEffectNum % 2 == 0){
         //keep doing until something is on
         while(!doDisplacement && !doColorFade && !doCamMovement){
-            doDisplacement = ofRandomuf() < 0.5;
-            doColorFade = ofRandomuf() < 0.5;
-            doCamMovement = ofRandomuf() < 0.5;
+            doDisplacement = ofRandomuf() < 0.6;
+            doColorFade = ofRandomuf() < 0.6;
+            doCamMovement = ofRandomuf() < 0.6;
         }
     }
     

@@ -7,6 +7,7 @@
 #include "FFT.hpp"
 
 #include "BeatMarker.hpp"
+#include "StepModeIcons.hpp"
 
 #include "Hit.hpp"
 #include "DemoHit.hpp"
@@ -40,6 +41,7 @@ public:
     
     void makeNewHit(bool bandsOn[NUM_BANDS]);
     void makeNewHit(int idNum);
+    void stepModePress(int placeID);
     
     void clearBeats();
     
@@ -94,6 +96,10 @@ public:
     float beatYDistFromBottom;
     BeatMarker beatMarkers[NUM_BEATS];
     
+    //step mode?
+    bool stepMode;
+    int curStepSound;
+    StepModeIcons stepModeIcons;
     
     //fucking around with visuals
     int visualEffectNum;

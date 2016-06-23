@@ -33,6 +33,7 @@
 		578C72F11CF6354F00FC88B3 /* SlashHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72EF1CF6354F00FC88B3 /* SlashHit.cpp */; };
 		578C72F41CF6413D00FC88B3 /* SquareHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72F21CF6413D00FC88B3 /* SquareHit.cpp */; };
 		578C72F71CF64D1F00FC88B3 /* TrapezoidHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578C72F51CF64D1F00FC88B3 /* TrapezoidHit.cpp */; };
+		57A6A6361D1C7E3700B67020 /* StepModeIcons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57A6A6341D1C7E3700B67020 /* StepModeIcons.cpp */; };
 		57A73DDE1D14448B0090785D /* BeatMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57A73DDC1D14448B0090785D /* BeatMarker.cpp */; };
 		57A73DE51D1450410090785D /* ofxBpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57A73DE31D1450410090785D /* ofxBpm.cpp */; };
 		57F95DCA1D075C9E00BC6CE0 /* DotPolygonHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F95DC81D075C9E00BC6CE0 /* DotPolygonHit.cpp */; };
@@ -151,6 +152,8 @@
 		578C72F31CF6413D00FC88B3 /* SquareHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SquareHit.hpp; sourceTree = "<group>"; };
 		578C72F51CF64D1F00FC88B3 /* TrapezoidHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrapezoidHit.cpp; sourceTree = "<group>"; };
 		578C72F61CF64D1F00FC88B3 /* TrapezoidHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TrapezoidHit.hpp; sourceTree = "<group>"; };
+		57A6A6341D1C7E3700B67020 /* StepModeIcons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StepModeIcons.cpp; sourceTree = "<group>"; };
+		57A6A6351D1C7E3700B67020 /* StepModeIcons.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StepModeIcons.hpp; sourceTree = "<group>"; };
 		57A73DDC1D14448B0090785D /* BeatMarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeatMarker.cpp; sourceTree = "<group>"; };
 		57A73DDD1D14448B0090785D /* BeatMarker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BeatMarker.hpp; sourceTree = "<group>"; };
 		57A73DE31D1450410090785D /* ofxBpm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBpm.cpp; sourceTree = "<group>"; };
@@ -332,7 +335,6 @@
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
-				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
 				E4B69B5B0A3A1756003C02F2 /* sequencerDebug.app */,
@@ -347,6 +349,8 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				57A73DDD1D14448B0090785D /* BeatMarker.hpp */,
 				57A73DDC1D14448B0090785D /* BeatMarker.cpp */,
+				57A6A6351D1C7E3700B67020 /* StepModeIcons.hpp */,
+				57A6A6341D1C7E3700B67020 /* StepModeIcons.cpp */,
 				578A309C1CF4CA7700B16A44 /* FFT.hpp */,
 				578A309B1CF4CA7700B16A44 /* FFT.cpp */,
 				578A30991CF4C2D600B16A44 /* Hit.hpp */,
@@ -391,6 +395,7 @@
 				5775EEC31D08C93A007B0E3A /* WaveColumnHit.cpp */,
 				57A73DE41D1450410090785D /* ofxBpm.h */,
 				57A73DE31D1450410090785D /* ofxBpm.cpp */,
+				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -402,6 +407,7 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		F9E6B680913D8757E21C58B5 /* src */ = {
@@ -569,6 +575,7 @@
 				578A30A41CF4D26B00B16A44 /* TunnelHit.cpp in Sources */,
 				5775EEBF1D08B4E4007B0E3A /* CrystalHit.cpp in Sources */,
 				5AB5747E5EF615D728FE9C67 /* guiTypeLabel.cpp in Sources */,
+				57A6A6361D1C7E3700B67020 /* StepModeIcons.cpp in Sources */,
 				578C72F71CF64D1F00FC88B3 /* TrapezoidHit.cpp in Sources */,
 				EDA6787F2E8DEF6246CF24D3 /* guiTypeLogger.cpp in Sources */,
 				CBE57D7C657C0B7FD0102864 /* guiTypeMultiToggle.cpp in Sources */,
