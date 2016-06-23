@@ -263,8 +263,10 @@ void ofApp::draw(){
         text += "return to clear\n";
         if (!useNumpadKeys){
             text += "space to start/stop recording\n";
+            text += "v to toggle visual effects\n";
         }else{
-             text += "0 to start/stop recording\n";
+            text += "0 to start/stop recording\n";
+            text += ". to toggle visual effects\n";
         }
         text += "\n";
         text += "up & down to change BPM (currently "+ofToString(bpmValue)+")\n";
