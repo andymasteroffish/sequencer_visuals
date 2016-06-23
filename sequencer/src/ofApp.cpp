@@ -170,9 +170,17 @@ void ofApp::draw(){
     if (showHelp){
         ofSetColor(0);
         string text = "";
-        text += "keys 1-0 & q-t for sounds\n";
+        if (!useNumpadKeys){
+            text += "keys 1-0 & q-t for sounds\n";
+        }else{
+            text += "most numpad keys for sound (including non-numbers)\n";
+        }
         text += "return to clear\n";
-        text += "space to start/stop recording\n";
+        if (!useNumpadKeys){
+            text += "space to start/stop recording\n";
+        }else{
+             text += "0 to start/stop recording\n";
+        }
         text += "\n";
         text += "Up & down to change BPM (currently "+ofToString(bpmValue)+")\n";
         text += "Left to reset BPM\n";
@@ -184,6 +192,8 @@ void ofApp::draw(){
         text += "p to toggle pre hit detection (currently "+preHitStatus+")\n";
         string autoStatus = (autoPlay ? "on" : "off");
         text += "a for auto play (currently "+autoStatus+")\n";
+        string numPadStatus = (useNumpadKeys ? "on" : "off");
+        text += "n to toggle numpad key mapping (currently "+numPadStatus+")\n";
         text += "h to hide this\n";
         
         ofDrawBitmapString(text, 10, 90);
@@ -210,6 +220,9 @@ void ofApp::keyPressed(int key){
     }
     if (key == 'p'){
         usePreHitDetection = !usePreHitDetection;
+    }
+    if (key == 'n'){
+        useNumpadKeys = !useNumpadKeys;
     }
     
     if (key == ' '){
