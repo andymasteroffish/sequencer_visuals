@@ -1,18 +1,18 @@
 //
-//  CrossBoxHit.hpp
+//  CrystalHit.hpp
 //  sequencer
 //
 //  Created by Andrew Wallace on 6/8/16.
 //
 //
 
-#ifndef CrossBoxHit_hpp
-#define CrossBoxHit_hpp
+#ifndef CrystalHit_hpp
+#define CrystalHit_hpp
 
 #include "Hit.hpp"
 #include "QuickLine.hpp"
 
-class CrossBoxHit : public Hit{
+class CrystalHit : public Hit{
 public:
     
     void setupCustom();
@@ -32,4 +32,4 @@ public:
     
 };
 
-#endif /* CrossBoxHit_hpp */
+#endif /* CrystalHit_hpp */

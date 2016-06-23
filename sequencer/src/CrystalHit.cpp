@@ -1,15 +1,15 @@
 //
-//  CrossBoxHit.cpp
+//  CrystalHit.cpp
 //  sequencer
 //
 //  Created by Andrew Wallace on 6/8/16.
 //
 //
 
-#include "CrossBoxHit.hpp"
+#include "CrystalHit.hpp"
 
 
-void CrossBoxHit::setupCustom(){
+void CrystalHit::setupCustom(){
     
     int boxSize = 60;
     int minDist = 20;
@@ -74,7 +74,7 @@ void CrossBoxHit::setupCustom(){
     
 }
 
-void CrossBoxHit::updateCustom(){
+void CrystalHit::updateCustom(){
     
     for (int i=0; i<6; i++){
         lines[i].update(deltaTime);
@@ -100,7 +100,7 @@ void CrossBoxHit::updateCustom(){
     
 }
 
-void CrossBoxHit::draw(){
+void CrystalHit::draw(){
     
     ofPushMatrix();
     

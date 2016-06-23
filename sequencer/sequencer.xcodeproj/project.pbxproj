@@ -15,7 +15,7 @@
 		495A92A35AC1D16E07CA45C7 /* guiTypeCustom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFED64139BF049D0E6E85B06 /* guiTypeCustom.cpp */; };
 		4A71E37D7F36F23AA123EB0B /* guiTypeSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CD68CA8FE136C3BE208703B /* guiTypeSlider.cpp */; };
 		4AD26D3FD81EE11D9A7E6EA5 /* ofxFFTFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6706A6E3206367429709EA3 /* ofxFFTFile.cpp */; };
-		5775EEBF1D08B4E4007B0E3A /* CrossBoxHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5775EEBD1D08B4E4007B0E3A /* CrossBoxHit.cpp */; };
+		5775EEBF1D08B4E4007B0E3A /* CrystalHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5775EEBD1D08B4E4007B0E3A /* CrystalHit.cpp */; };
 		5775EEC21D08C061007B0E3A /* ClapHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5775EEC01D08C061007B0E3A /* ClapHit.cpp */; };
 		5775EEC51D08C93A007B0E3A /* WaveColumnHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5775EEC31D08C93A007B0E3A /* WaveColumnHit.cpp */; };
 		578A309A1CF4C2D600B16A44 /* Hit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578A30981CF4C2D600B16A44 /* Hit.cpp */; };
@@ -115,8 +115,8 @@
 		4F64D7DD70C6B5B1FC395DED /* guiTypeTextDropDown.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = guiTypeTextDropDown.cpp; path = ../../../addons/ofxControlPanel/src/guiTypeTextDropDown.cpp; sourceTree = SOURCE_ROOT; };
 		5018C753652B4FAA0564DF8F /* ofxFFTFile.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFFTFile.h; path = ../../../addons/ofxFFT_julapy/src/ofxFFTFile.h; sourceTree = SOURCE_ROOT; };
 		50DF87D612C5AAE17AAFA6C0 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxXmlSettings.cpp; path = ../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp; sourceTree = SOURCE_ROOT; };
-		5775EEBD1D08B4E4007B0E3A /* CrossBoxHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CrossBoxHit.cpp; sourceTree = "<group>"; };
-		5775EEBE1D08B4E4007B0E3A /* CrossBoxHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CrossBoxHit.hpp; sourceTree = "<group>"; };
+		5775EEBD1D08B4E4007B0E3A /* CrystalHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CrystalHit.cpp; sourceTree = "<group>"; };
+		5775EEBE1D08B4E4007B0E3A /* CrystalHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CrystalHit.hpp; sourceTree = "<group>"; };
 		5775EEC01D08C061007B0E3A /* ClapHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClapHit.cpp; sourceTree = "<group>"; };
 		5775EEC11D08C061007B0E3A /* ClapHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ClapHit.hpp; sourceTree = "<group>"; };
 		5775EEC31D08C93A007B0E3A /* WaveColumnHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveColumnHit.cpp; sourceTree = "<group>"; };
@@ -383,8 +383,8 @@
 				57F95DCE1D0766BD00BC6CE0 /* SizzleHit.cpp */,
 				57F95DD21D07700600BC6CE0 /* DrunkTriangleHit.hpp */,
 				57F95DD11D07700600BC6CE0 /* DrunkTriangleHit.cpp */,
-				5775EEBE1D08B4E4007B0E3A /* CrossBoxHit.hpp */,
-				5775EEBD1D08B4E4007B0E3A /* CrossBoxHit.cpp */,
+				5775EEBE1D08B4E4007B0E3A /* CrystalHit.hpp */,
+				5775EEBD1D08B4E4007B0E3A /* CrystalHit.cpp */,
 				5775EEC11D08C061007B0E3A /* ClapHit.hpp */,
 				5775EEC01D08C061007B0E3A /* ClapHit.cpp */,
 				5775EEC41D08C93A007B0E3A /* WaveColumnHit.hpp */,
@@ -567,7 +567,7 @@
 				41D65A061E305AFD52E53551 /* guiTypeDrawable.cpp in Sources */,
 				DA78A8AE11597B5E43DFE903 /* guiTypeFileLister.cpp in Sources */,
 				578A30A41CF4D26B00B16A44 /* TunnelHit.cpp in Sources */,
-				5775EEBF1D08B4E4007B0E3A /* CrossBoxHit.cpp in Sources */,
+				5775EEBF1D08B4E4007B0E3A /* CrystalHit.cpp in Sources */,
 				5AB5747E5EF615D728FE9C67 /* guiTypeLabel.cpp in Sources */,
 				578C72F71CF64D1F00FC88B3 /* TrapazoidHit.cpp in Sources */,
 				EDA6787F2E8DEF6246CF24D3 /* guiTypeLogger.cpp in Sources */,

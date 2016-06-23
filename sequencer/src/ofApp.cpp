@@ -325,7 +325,7 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
     if (idNum == hitIDs[10])    thisHit = new SizzleHit();
     if (idNum == hitIDs[11])    thisHit = new DrunkTriangleHit();
     
-    if (idNum == hitIDs[12])    thisHit = new CrossBoxHit();
+    if (idNum == hitIDs[12])    thisHit = new CrystalHit();
     if (idNum == hitIDs[13])    thisHit = new ClapHit();
     if (idNum == hitIDs[14])    thisHit = new WaveColumnHit();
     
@@ -367,7 +367,7 @@ void ofApp::makeNewHit(int idNum){
         if (idNum == 9)     thisHit = new DotPolygonHit();
         if (idNum == 10)     thisHit = new SizzleHit();
         if (idNum == 11)     thisHit = new DrunkTriangleHit();
-        if (idNum == 12)     thisHit = new CrossBoxHit();
+        if (idNum == 12)     thisHit = new CrystalHit();
         if (idNum == 13)     thisHit = new ClapHit();
         if (idNum == 14)     thisHit = new WaveColumnHit();
         

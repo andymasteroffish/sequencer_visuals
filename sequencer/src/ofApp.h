@@ -22,7 +22,7 @@
 #include "DotPolygonHit.hpp"
 #include "SizzleHit.hpp"
 #include "DrunkTriangleHit.hpp"
-#include "CrossBoxHit.hpp"
+#include "CrystalHit.hpp"
 #include "ClapHit.hpp"
 #include "WaveColumnHit.hpp"
 
