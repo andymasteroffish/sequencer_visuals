@@ -43,6 +43,8 @@ public:
     
     void clearBeats();
     
+    void loadSounds(string filePath);
+    
     //states and such?
     bool publicRelease;
     bool autoPlay;

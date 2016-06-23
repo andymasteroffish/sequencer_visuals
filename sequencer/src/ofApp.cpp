@@ -56,27 +56,7 @@ void ofApp::setup(){
     }
     
     //set the sounds
-    string soundFolder = "/Users/awallace/Documents/projects/sequencer/sounds/good_ones_edits/";
-    
-    sounds[0].load(soundFolder+"low_depth_0_deep_kick.wav");
-    sounds[1].load(soundFolder+"clap.wav");
-    sounds[2].load(soundFolder+"mid_time_8_long_clang.wav");
-    sounds[3].load(soundFolder+"mid_time_9_foil.wav");
-    sounds[4].load(soundFolder+"lo_tom.wav");
-    sounds[5].load(soundFolder+"low_depth_2.wav");
-    sounds[6].load(soundFolder+"randoms_0.wav");
-    sounds[7].load(soundFolder+"low_depth_8_clang.wav");
-    sounds[8].load(soundFolder+"randoms_4_clink.wav");
-    sounds[9].load(soundFolder+"low_depth_6_clap.wav");
-    sounds[10].load(soundFolder+"randoms_3_bend_laser.wav");
-    sounds[11].load(soundFolder+"mid_time_3.wav");
-    sounds[12].load(soundFolder+"low_depth_1.wav");
-    sounds[13].load(soundFolder+"low_depth_5_sizzle.wav");
-    sounds[14].load(soundFolder+"mid_time_4.wav");
-    
-    for (int i=0; i<NUM_SOUNDS; i++){
-        sounds[i].setMultiPlay(true);
-    }
+    loadSounds("../sound_source.txt");
     
     clearBeats();
     
@@ -399,5 +379,38 @@ void ofApp::clearBeats(){
     }
     if (turnOnRecordingWhenClearing){
         recording = true;
+    }
+}
+
+
+//--------------------------------------------------------------
+void ofApp::loadSounds(string filePath){
+    
+    ofBuffer buffer = ofBufferFromFile(filePath);
+    vector<string> files;
+    
+    if (buffer.size() > 0){
+        
+        for (ofBuffer::Line it = buffer.getLines().begin(), end = buffer.getLines().end(); it != end; ++it){
+            
+            string line = *it;
+            
+            if (line.size() > 0){
+                if (line[0] != ';'){
+                    files.push_back(line);
+                }
+            }
+            
+        }
+        
+        cout<<"found "<<files.size()<<" sound files"<<endl;
+        
+        for (int i=0; i<NUM_SOUNDS; i++){
+            sounds[i].load(files[i%files.size()]);
+            sounds[i].setMultiPlay(true);
+        }
+        
+    }else{
+        cout<<"bad file"<<endl;
     }
 }
