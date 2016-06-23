@@ -1,18 +1,18 @@
 //
-//  TrapazoidHit.hpp
+//  TrapezoidHit.hpp
 //  sequencer
 //
 //  Created by Andrew Wallace on 5/25/16.
 //
 //
 
-#ifndef TrapazoidHit_hpp
-#define TrapazoidHit_hpp
+#ifndef TrapezoidHit_hpp
+#define TrapezoidHit_hpp
 
 #include "Hit.hpp"
 #include "QuickLine.hpp"
 
-class TrapazoidHit : public Hit{
+class TrapezoidHit : public Hit{
 public:
     
     void setupCustom();
@@ -38,4 +38,4 @@ public:
     
 };
 
-#endif /* TrapazoidHit_hpp */
+#endif /* TrapezoidHit_hpp */

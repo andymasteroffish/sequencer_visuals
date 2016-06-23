@@ -1,15 +1,15 @@
 //
-//  TrapazoidHit.cpp
+//  TrapezoidHit.cpp
 //  sequencer
 //
 //  Created by Andrew Wallace on 5/25/16.
 //
 //
 
-#include "TrapazoidHit.hpp"
+#include "TrapezoidHit.hpp"
 
 
-void TrapazoidHit::setupCustom(){
+void TrapezoidHit::setupCustom(){
     
     topW = 60;
     bottomW = 40;
@@ -59,7 +59,7 @@ void TrapazoidHit::setupCustom(){
     
 }
 
-void TrapazoidHit::updateCustom(){
+void TrapezoidHit::updateCustom(){
     
     if (timer > fallTime){
         timer = fallTime;
@@ -110,7 +110,7 @@ void TrapazoidHit::updateCustom(){
     
 }
 
-void TrapazoidHit::draw(){
+void TrapezoidHit::draw(){
     
     ofSetColor(0);
     ofSetLineWidth(2);

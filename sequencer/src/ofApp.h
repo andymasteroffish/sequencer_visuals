@@ -18,7 +18,7 @@
 #include "ChaserHit.hpp"
 #include "SlashHit.hpp"
 #include "SquareHit.hpp"
-#include "TrapazoidHit.hpp"
+#include "TrapezoidHit.hpp"
 #include "DotPolygonHit.hpp"
 #include "SizzleHit.hpp"
 #include "DrunkTriangleHit.hpp"
