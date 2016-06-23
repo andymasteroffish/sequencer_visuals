@@ -34,6 +34,9 @@ public:
     
     float timer;
     
+    //for messing with visuals
+    float zVal;
+    
     
 };
 

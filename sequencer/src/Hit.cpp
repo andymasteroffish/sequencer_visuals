@@ -19,6 +19,8 @@ void Hit::setup(int _gameW, int _gameH, int _whiteVal){
     
     timer = 0;
     
+    zVal = ofRandom(-400, 200);
+    
     setupCustom();
 }
 

@@ -45,6 +45,8 @@ public:
     
     void loadSounds(string filePath);
     
+    void setVisualEffect();
+    
     //states and such?
     bool publicRelease;
     bool autoPlay;
@@ -93,8 +95,15 @@ public:
     BeatMarker beatMarkers[NUM_BEATS];
     
     
+    //fucking around with visuals
+    int visualEffectNum;
+    ofShader shader;
     
+    bool doDisplacement;
+    bool doColorFade;
+    ofColor colorA, colorB;
     
+    bool doCamMovement;
     
     //    void keyReleased(int key);
     //    void mouseMoved(int x, int y );

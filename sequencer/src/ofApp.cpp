@@ -3,10 +3,22 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+#ifdef TARGET_OPENGLES
+    shader.load("shaders/shadersES2/shader");
+#else
+    if(ofIsGLProgrammableRenderer()){
+        shader.load("shaders/shadersGL3/shader");
+        
+    }else{
+        shader.load("shaders/shadersGL2/shader");
+        //this is the one my computer uses
+    }
+#endif
+    
     publicRelease = false;
     
     usingFFT = false;
-    useNumpadKeys = false;
+    useNumpadKeys = true;
     usePreHitDetection = true;
     
     autoPlay = false;
@@ -70,6 +82,10 @@ void ofApp::setup(){
     for (int i=0; i<NUM_BEATS; i++){
         beatMarkers[i].setup(beatXPadding+beatXSpacing*i, ofGetHeight()-beatYDistFromBottom);
     }
+    
+    //fucking aorund
+    visualEffectNum = 0;
+    setVisualEffect();
     
 }
 
@@ -144,10 +160,54 @@ void ofApp::draw(){
         ofDrawBitmapString(debugText, 10, 10);
     }
     
-
-    for (int i=0; i<hits.size(); i++){
-        hits[i]->draw();
+    //shader stuff
+    shader.begin();
+    
+    shader.setUniform1f("time", ofGetElapsedTimef());
+    
+    if (doDisplacement){
+        shader.setUniform1f("displacementHeight", sin(ofGetElapsedTimef()*0.3) * 70);
+    }else{
+        shader.setUniform1f("displacementHeight", 0);
     }
+    
+    shader.setUniform3f("colA", colorA.r/255.0f, colorA.g/255.0f, colorA.b/255.0f);
+    if (doColorFade){
+        shader.setUniform3f("colB", colorB.r/255.0f, colorB.g/255.0f, colorB.b/255.0f);
+    }else{
+        //use the same color for colB
+        shader.setUniform3f("colB", colorA.r/255.0f, colorA.g/255.0f, colorA.b/255.0f);
+    }
+    
+    if (doCamMovement){
+        ofPushMatrix();
+        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+        float rotationRange = 50;
+        float noiseSpeed = 0.075;
+        float xRot = (1- 2*ofNoise( ofGetElapsedTimef() * noiseSpeed, 0)) * rotationRange;
+        float yRot = (1- 2*ofNoise( ofGetElapsedTimef() * noiseSpeed, 100)) * rotationRange;
+        ofRotateX(xRot);
+        ofRotateY(yRot);
+        ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2);
+    }
+    
+    for (int i=0; i<hits.size(); i++){
+        if (doCamMovement){
+            ofPushMatrix();
+            ofTranslate(0,0, hits[i]->zVal);
+        }
+        
+        hits[i]->draw();
+        
+        if (doCamMovement){
+            ofPopMatrix();
+        }
+    }
+    
+    if (doCamMovement){
+        ofPopMatrix();
+    }
+   
     
     //draw the markers
     for (int i=0; i<NUM_BEATS; i++){
@@ -158,6 +218,8 @@ void ofApp::draw(){
         
         beatMarkers[i].draw(anyOn, recording);
     }
+    
+     shader.end();
     
     if (!publicRelease){
         ofSetColor(0);
@@ -224,6 +286,9 @@ void ofApp::keyPressed(int key){
     if (key == 'n'){
         useNumpadKeys = !useNumpadKeys;
     }
+    if (key == 'v'){
+        setVisualEffect();
+    }
     
     if (key == ' '){
         recording = !recording;
@@ -270,6 +335,10 @@ void ofApp::keyPressed(int key){
         
         if (key == 13){  //Enter
             clearBeats();
+        }
+        
+        if (key == '.'){  //del
+            setVisualEffect();
         }
     }
     
@@ -456,4 +525,38 @@ void ofApp::loadSounds(string filePath){
     }else{
         cout<<"bad file"<<endl;
     }
+}
+
+//--------------------------------------------------------------
+void ofApp::setVisualEffect(){
+    visualEffectNum++;
+    
+    //assume everything will be off
+    doDisplacement = false;
+    doColorFade = false;
+    doCamMovement = false;
+    
+    //only turn things on every other time, so that every other tap, everything is normal
+    if (visualEffectNum % 2 == 0){
+        //keep doing until something is on
+        while(!doDisplacement && !doColorFade && !doCamMovement){
+            doDisplacement = ofRandomuf() < 0.5;
+            doColorFade = ofRandomuf() < 0.5;
+            doCamMovement = ofRandomuf() < 0.5;
+        }
+    }
+    
+    if (doColorFade){
+        //make a dark background
+        ofBackground(10, 10, 10);
+        
+        //create some light colors
+        colorA.setHsb(ofRandom(255), 255, 255);
+        colorB.setHsb(ofRandom(255), 255, 255);
+    }else{
+        ofBackground(whiteVal);
+        colorA.set(0);
+        colorB.set(0);
+    }
+    
 }
