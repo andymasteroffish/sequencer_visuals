@@ -43,9 +43,15 @@ public:
     
     void clearBeats();
     
-    float deltaTime, prevFrameTime;
-    
+    //states and such?
+    bool publicRelease;
+    bool autoPlay;
+    bool recording;
+    bool turnOnRecordingWhenClearing;
     bool useNumpadKeys;
+    
+    //timing
+    float deltaTime, prevFrameTime;
     
     //ofxBPM tools by mirrorboy714
     //https://github.com/mirrorboy714/ofxBpm
@@ -57,11 +63,6 @@ public:
     FFT fft;
     bool showFFT;
     
-    //states and such?
-    bool autoPlay;
-    bool recording;
-    bool turnOnRecordingWhenClearing;
-   
     //drawing
     int whiteVal;
     

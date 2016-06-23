@@ -3,6 +3,8 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+    publicRelease = false;
+    
     usingFFT = false;
     useNumpadKeys = true;
     
@@ -172,10 +174,13 @@ void ofApp::draw(){
         beatMarkers[i].draw(anyOn, recording);
     }
     
-//    if (recording){
-//        ofSetColor(0);
-//        ofDrawBitmapString("recording", 10, 15);
-//    }
+    if (!publicRelease){
+        ofSetColor(0);
+        string text =   "Sequencer by Andy Wallace - andy@andymakes.com";
+        text +=         "\nWork in progress. Please do not distribute.";
+        text +=         "\nPress H for help.";
+        ofDrawBitmapString(text, 10, 15);
+    }
     
     
 }
@@ -344,7 +349,6 @@ void ofApp::makeNewHit(int idNum){
     if (recording){
         int beatPos = thisBeat;
         if (onPreHit){
-            cout<<"it early"<<endl;
             playSound = false;  //we'll catch it in a second
             beatPos = (thisBeat+1)%NUM_BEATS;
         }
