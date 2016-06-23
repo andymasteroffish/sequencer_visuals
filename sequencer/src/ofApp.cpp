@@ -6,7 +6,8 @@ void ofApp::setup(){
     publicRelease = false;
     
     usingFFT = false;
-    useNumpadKeys = true;
+    useNumpadKeys = false;
+    usePreHitDetection = true;
     
     autoPlay = false;
     recording = true;
@@ -16,6 +17,8 @@ void ofApp::setup(){
     
     whiteVal = 240;
     ofBackground(whiteVal);
+    
+    showHelp = false;
     
     bpm.reset();
     bpmStartValue = 160;
@@ -73,7 +76,9 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::preHitBeat(void){
     //cout<<"pre hit!!"<<endl;
-    onPreHit = true;
+    if (usePreHitDetection){
+        onPreHit = true;
+    }
 }
 //--------------------------------------------------------------
 void ofApp::hitBeat(void){
@@ -158,8 +163,30 @@ void ofApp::draw(){
         ofSetColor(0);
         string text =   "Sequencer by Andy Wallace - andy@andymakes.com";
         text +=         "\nWork in progress. Please do not distribute.";
-        text +=         "\nPress H for help.";
+        text +=         "\nPress h for help.";
         ofDrawBitmapString(text, 10, 15);
+    }
+    
+    if (showHelp){
+        ofSetColor(0);
+        string text = "";
+        text += "keys 1-0 & q-t for sounds\n";
+        text += "return to clear\n";
+        text += "space to start/stop recording\n";
+        text += "\n";
+        text += "Up & down to change BPM (currently "+ofToString(bpmValue)+")\n";
+        text += "Left to reset BPM\n";
+        text += "\n";
+        text += "f to toggle full screen\n";
+        string turnOnRecordStatus = (turnOnRecordingWhenClearing ? "on" : "off");
+        text += "c to toggle turning on record when clearing (currently "+turnOnRecordStatus+")\n";
+        string preHitStatus = (usePreHitDetection ? "on" : "off");
+        text += "p to toggle pre hit detection (currently "+preHitStatus+")\n";
+        string autoStatus = (autoPlay ? "on" : "off");
+        text += "a for auto play (currently "+autoStatus+")\n";
+        text += "h to hide this\n";
+        
+        ofDrawBitmapString(text, 10, 90);
     }
     
     
@@ -169,8 +196,8 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     //cout<<"key "<<key<<endl;
-    if (key == 'h'){
-        showFFT = !showFFT;
+    if (key == 'h' || key == 'H'){
+        showHelp = !showHelp;
     }
     if (key == 'a'){
         autoPlay = !autoPlay;
@@ -180,6 +207,9 @@ void ofApp::keyPressed(int key){
     }
     if (key == 'c'){
         turnOnRecordingWhenClearing = !turnOnRecordingWhenClearing;
+    }
+    if (key == 'p'){
+        usePreHitDetection = !usePreHitDetection;
     }
     
     if (key == ' '){
@@ -248,7 +278,7 @@ void ofApp::keyPressed(int key){
         if (key == 'r')     makeNewHit(13);
         if (key == 't')     makeNewHit(14);
         
-        if (key == 127){  //backspace
+        if (key == 13){  //Enter
             clearBeats();
         }
     }

@@ -51,6 +51,7 @@ public:
     bool recording;
     bool turnOnRecordingWhenClearing;
     bool useNumpadKeys;
+    bool usePreHitDetection;
     
     //timing
     float deltaTime, prevFrameTime;
@@ -67,6 +68,7 @@ public:
     
     //drawing
     int whiteVal;
+    bool showHelp;
     
     //tracking hits
     vector<Hit *> hits;
