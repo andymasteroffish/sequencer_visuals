@@ -48,6 +48,10 @@ public:
     bool isPlaying() const;
 
     ofEvent<void> beatEvent;
+    ofEvent<void> preBeatEvent; //Andy edit
+    
+    //andy edit
+    float prcForPreHit;
 
 private:
     void threadedFunction();
@@ -64,6 +68,8 @@ private:
     
     float _preTime;
     int _beatPerBar;
+    
+    
     
     inline int getCountOfTick() const;
 };

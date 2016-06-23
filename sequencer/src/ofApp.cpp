@@ -20,10 +20,13 @@ void ofApp::setup(){
     bpmValue = bpmStartValue;
     bpm.setBpm(bpmValue);
     bpm.setBeatPerBar(8);
+    bpm.prcForPreHit = 0.9;
     ofAddListener(bpm.beatEvent, this, &ofApp::hitBeat);
+    ofAddListener(bpm.preBeatEvent, this, &ofApp::preHitBeat);
     bpm.start();
     
     thisBeat = 0;
+    onPreHit = false;
     
     if (usingFFT){
         fft.setup(NUM_BANDS);
@@ -86,7 +89,13 @@ void ofApp::setup(){
 }
 
 //--------------------------------------------------------------
+void ofApp::preHitBeat(void){
+    //cout<<"pre hit!!"<<endl;
+    onPreHit = true;
+}
+//--------------------------------------------------------------
 void ofApp::hitBeat(void){
+    onPreHit = false;
     thisBeat++;
     if (thisBeat >= NUM_BEATS){
         thisBeat = 0;
@@ -327,40 +336,57 @@ void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
 
 //--------------------------------------------------------------
 void ofApp::makeNewHit(int idNum){
+    //assume we'll play the sound
+    bool playSound = true;
     
+    
+    //turning this beat on
+    if (recording){
+        int beatPos = thisBeat;
+        if (onPreHit){
+            cout<<"it early"<<endl;
+            playSound = false;  //we'll catch it in a second
+            beatPos = (thisBeat+1)%NUM_BEATS;
+        }
+        beatsOn[beatPos][idNum] = true;
+    }
+    
+    
+    
+    //KILL ME
     bool bandsOnMicro[NUM_BANDS/2];
     for (int i=0; i<NUM_BANDS/2; i++){
         bandsOnMicro[i] = ofRandomuf() > 0.5;
     }
     
-    Hit * thisHit;
+    //Making the hit
+    if (playSound){
+        Hit * thisHit;
+        
+        if (idNum == 0)     thisHit = new TunnelHit();
+        if (idNum == 1)     thisHit = new SweepHit();
+        if (idNum == 2)     thisHit = new TriangleHit();
+        if (idNum == 3)     thisHit = new GrapesHit();
+        if (idNum == 4)     thisHit = new BuckshotHit();
+        if (idNum == 5)     thisHit = new ChaserHit();
+        if (idNum == 6)     thisHit = new SlashHit();
+        if (idNum == 7)     thisHit = new SquareHit();
+        if (idNum == 8)     thisHit = new TrapazoidHit();
+        if (idNum == 9)     thisHit = new DotPolygonHit();
+        if (idNum == 10)     thisHit = new SizzleHit();
+        if (idNum == 11)     thisHit = new DrunkTriangleHit();
+        if (idNum == 12)     thisHit = new CrossBoxHit();
+        if (idNum == 13)     thisHit = new ClapHit();
+        if (idNum == 14)     thisHit = new WaveColumnHit();
+        
+        thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
+        
+        hits.push_back(thisHit);
+    }
     
-    if (idNum == 0)     thisHit = new TunnelHit();
-    if (idNum == 1)     thisHit = new SweepHit();
-    if (idNum == 2)     thisHit = new TriangleHit();
-    if (idNum == 3)     thisHit = new GrapesHit();
-    if (idNum == 4)     thisHit = new BuckshotHit();
-    if (idNum == 5)     thisHit = new ChaserHit();
-    if (idNum == 6)     thisHit = new SlashHit();
-    if (idNum == 7)     thisHit = new SquareHit();
-    if (idNum == 8)     thisHit = new TrapazoidHit();
-    if (idNum == 9)     thisHit = new DotPolygonHit();
-    if (idNum == 10)     thisHit = new SizzleHit();
-    if (idNum == 11)     thisHit = new DrunkTriangleHit();
-    if (idNum == 12)     thisHit = new CrossBoxHit();
-    if (idNum == 13)     thisHit = new ClapHit();
-    if (idNum == 14)     thisHit = new WaveColumnHit();
-    
-    thisHit->setup(bandsOnMicro, ofGetWidth(), ofGetHeight(), whiteVal);
-    
-    hits.push_back(thisHit);
-    
-    //turnign this beat on
-    if (idNum < NUM_SOUNDS){
+    //making the sound
+    if (playSound){
         sounds[idNum].play();
-        if (recording){
-            beatsOn[thisBeat][idNum] = true;
-        }
     }
     
 }

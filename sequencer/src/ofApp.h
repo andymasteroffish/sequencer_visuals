@@ -30,6 +30,7 @@ class ofApp : public ofBaseApp{
 
 public:
     void setup();
+    void preHitBeat(void);
     void hitBeat(void);
     void update();
     void draw();
@@ -79,6 +80,7 @@ public:
 #define NUM_BEATS 16
     int thisBeat;
     bool beatsOn[NUM_BEATS][NUM_SOUNDS];
+    bool onPreHit;
     
     //float beatXPadding,
     float beatXSpacing;

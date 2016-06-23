@@ -69,9 +69,16 @@ void ofxBpm::threadedFunction(){
                 if(_totalTime + _remainderOfTick >= _durationOfTick){
                     
                     
+                    //cout<<(_countOfTick % (OFX_BPM_TICK / _beatPerBar)) <<endl;
                     if((_countOfTick % (OFX_BPM_TICK / _beatPerBar)) == 0){
-
                         ofNotifyEvent(beatEvent);
+                    }
+                    
+                    //Andy edit to try and provide early notificaiton just before a beat
+                    //andy edit
+                    int ticksForPreBeat = (OFX_BPM_TICK / _beatPerBar) * prcForPreHit;
+                    if((_countOfTick % (OFX_BPM_TICK / _beatPerBar)) == ticksForPreBeat){
+                        ofNotifyEvent(preBeatEvent);
                     }
                     
                     _remainderOfTick = (_totalTime + _remainderOfTick) % _durationOfTick;
@@ -84,6 +91,7 @@ void ofxBpm::threadedFunction(){
                     
                     _countOfTick++;
                     _countOfTick %= OFX_BPM_TICK;
+                    
 
                     
                 }else{
