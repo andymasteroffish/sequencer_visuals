@@ -3,6 +3,8 @@
 #include "ofxiOS.h"
 #include "Sequencer.hpp"
 
+
+
 class ofApp : public ofxiOSApp{
 	
     public:

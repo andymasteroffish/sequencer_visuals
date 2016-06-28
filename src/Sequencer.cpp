@@ -60,7 +60,11 @@ void Sequencer::setup(){
     deltaTime = 0;
     
     //set the sounds
+#ifdef USING_IOS
+    loadSounds("sound_source.txt");
+#else
     loadSounds("../sound_source.txt");
+#endif
     
     clearBeats();
     
@@ -109,6 +113,7 @@ void Sequencer::hitBeat(void){
 
 //--------------------------------------------------------------
 void Sequencer::update(){
+    
     deltaTime = ofGetElapsedTimef() - prevFrameTime;
     prevFrameTime = ofGetElapsedTimef();
     

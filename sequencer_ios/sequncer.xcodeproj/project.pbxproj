@@ -124,6 +124,7 @@
 		575B12861D22C40D00B0CAF6 /* TunnelHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TunnelHit.hpp; path = ../../src/TunnelHit.hpp; sourceTree = "<group>"; };
 		575B12871D22C40D00B0CAF6 /* WaveColumnHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaveColumnHit.cpp; path = ../../src/WaveColumnHit.cpp; sourceTree = "<group>"; };
 		575B12881D22C40D00B0CAF6 /* WaveColumnHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = WaveColumnHit.hpp; path = ../../src/WaveColumnHit.hpp; sourceTree = "<group>"; };
+		575B12A41D22C82D00B0CAF6 /* SystemSpecificInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemSpecificInfo.h; sourceTree = "<group>"; };
 		678E130717951530005B6D19 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "bin/data/Icon@2x.png"; sourceTree = "<group>"; };
 		678E130917951536005B6D19 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = bin/data/Icon.png; sourceTree = "<group>"; };
 		678E130B1795153C005B6D19 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = bin/data/Default.png; sourceTree = "<group>"; };
@@ -347,6 +348,7 @@
 		E4D8936A11527B74007E1F53 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				575B12A41D22C82D00B0CAF6 /* SystemSpecificInfo.h */,
 				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936C11527B74007E1F53 /* ofApp.h */,
 				E4D8936D11527B74007E1F53 /* ofApp.mm */,
@@ -507,6 +509,7 @@
 				INFOPLIST_FILE = "ofxiOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = sequncer;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Debug;
@@ -520,6 +523,7 @@
 				INFOPLIST_FILE = "ofxiOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = sequncer;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Release;

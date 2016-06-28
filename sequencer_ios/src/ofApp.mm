@@ -1,8 +1,14 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){	
+void ofApp::setup(){
+    
+    ofSetOrientation(OF_ORIENTATION_90_RIGHT);
+    
+    
     sequencer.setup();
+    
+    cout<<"start orientation "<<ofGetOrientation()<<endl;
 }
 
 //--------------------------------------------------------------
@@ -25,6 +31,7 @@ void ofApp::exit(){
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
 
+    
 }
 
 //--------------------------------------------------------------
@@ -64,6 +71,10 @@ void ofApp::gotMemoryWarning(){
 
 //--------------------------------------------------------------
 void ofApp::deviceOrientationChanged(int newOrientation){
-
+    cout<<"new orientation: "<<newOrientation<<endl;
+    
+    if (newOrientation == OF_ORIENTATION_90_RIGHT || newOrientation == OF_ORIENTATION_90_LEFT){
+        ofSetOrientation( (ofOrientation)newOrientation);
+    }
 }
 

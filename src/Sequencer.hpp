@@ -10,6 +10,7 @@
 #define Sequencer_hpp
 
 #include "ofMain.h"
+#include "SystemSpecificInfo.h"
 
 #include "ofxBpm.h"
 
