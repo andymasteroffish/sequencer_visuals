@@ -609,9 +609,9 @@ void ofApp::setVisualEffect(){
     if (visualEffectNum % 2 == 0){
         //keep doing until something is on
         while(!doDisplacement && !doColorFade && !doCamMovement){
-            doDisplacement = ofRandomuf() < 0.6;
-            doColorFade = ofRandomuf() < 0.6;
-            doCamMovement = ofRandomuf() < 0.6;
+            doDisplacement = ofRandomuf() < 0.5;
+            doColorFade = ofRandomuf() < 0.5;
+            doCamMovement = ofRandomuf() < 0.5;
         }
     }
     
