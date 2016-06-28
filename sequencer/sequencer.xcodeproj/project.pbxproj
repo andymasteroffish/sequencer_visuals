@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5732E91A1D22BB2900013473 /* Sequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5732E9181D22BB2900013473 /* Sequencer.cpp */; };
 		5775EEBF1D08B4E4007B0E3A /* CrystalHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5775EEBD1D08B4E4007B0E3A /* CrystalHit.cpp */; };
 		5775EEC21D08C061007B0E3A /* ClapHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5775EEC01D08C061007B0E3A /* ClapHit.cpp */; };
 		5775EEC51D08C93A007B0E3A /* WaveColumnHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5775EEC31D08C93A007B0E3A /* WaveColumnHit.cpp */; };
@@ -64,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5732E9181D22BB2900013473 /* Sequencer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sequencer.cpp; sourceTree = "<group>"; };
+		5732E9191D22BB2900013473 /* Sequencer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sequencer.hpp; sourceTree = "<group>"; };
 		5775EEBD1D08B4E4007B0E3A /* CrystalHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CrystalHit.cpp; sourceTree = "<group>"; };
 		5775EEBE1D08B4E4007B0E3A /* CrystalHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CrystalHit.hpp; sourceTree = "<group>"; };
 		5775EEC01D08C061007B0E3A /* ClapHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClapHit.cpp; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
+				5732E9191D22BB2900013473 /* Sequencer.hpp */,
+				5732E9181D22BB2900013473 /* Sequencer.cpp */,
 				57A73DDD1D14448B0090785D /* BeatMarker.hpp */,
 				57A73DDC1D14448B0090785D /* BeatMarker.cpp */,
 				57A6A6351D1C7E3700B67020 /* StepModeIcons.hpp */,
@@ -328,6 +333,7 @@
 				5775EEC21D08C061007B0E3A /* ClapHit.cpp in Sources */,
 				578A30AD1CF4F0FA00B16A44 /* TriangleHit.cpp in Sources */,
 				578C72F41CF6413D00FC88B3 /* SquareHit.cpp in Sources */,
+				5732E91A1D22BB2900013473 /* Sequencer.cpp in Sources */,
 				578A30AA1CF4EEA200B16A44 /* QuickLine.cpp in Sources */,
 				578A30A71CF4D41300B16A44 /* SweepHit.cpp in Sources */,
 				57F95DD01D0766BD00BC6CE0 /* SizzleHit.cpp in Sources */,
