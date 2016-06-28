@@ -4,13 +4,10 @@
 
 #include "ofxBpm.h"
 
-#include "FFT.hpp"
-
 #include "BeatMarker.hpp"
 #include "StepModeIcons.hpp"
 
 #include "Hit.hpp"
-#include "DemoHit.hpp"
 #include "TunnelHit.hpp"
 #include "SweepHit.hpp"
 #include "TriangleHit.hpp"
@@ -39,7 +36,6 @@ public:
     void keyPressed(int key);
     void windowResized(int w, int h);
     
-    void makeNewHit(bool bandsOn[NUM_BANDS]);
     void makeNewHit(int idNum);
     void stepModePress(int placeID);
     
@@ -65,24 +61,14 @@ public:
     int bpmValue, bpmStartValue;
     ofxBpm bpm;
     
-    //fft stuff
-    bool usingFFT;
-    FFT fft;
-    bool showFFT;
-    
     //drawing
     int whiteVal;
     bool showHelp;
     
     //tracking hits
     vector<Hit *> hits;
-    float timeSinceLastHit; //control panel
-    float minTimeForNextHit;    //control panel
     
-    //randomzing what hits respond to what bands
-    int hitIDs[15];
-    
-    //testing playing audio
+    //audio files
 #define NUM_SOUNDS 15
     ofSoundPlayer sounds[NUM_SOUNDS];
     

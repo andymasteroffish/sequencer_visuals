@@ -17,7 +17,6 @@ void ofApp::setup(){
     
     publicRelease = false;
     
-    usingFFT = false;
     useNumpadKeys = false;
     usePreHitDetection = true;
     
@@ -49,30 +48,8 @@ void ofApp::setup(){
     thisBeat = 0;
     onPreHit = false;
     
-    if (usingFFT){
-        fft.setup(NUM_BANDS);
-        showFFT = false;
-    }
-    
-
     prevFrameTime = ofGetElapsedTimef();
     deltaTime = 0;
-    
-    timeSinceLastHit = 0;
-    minTimeForNextHit = 0.03;
-    
-    
-    //randomzie hit IDs on start (for FFT)
-    for (int i=0; i<15; i++){
-        hitIDs[i] = i+1;
-    }
-    for (int i=0; i<1000; i++){
-        int a = (int)ofRandom(15);
-        int b = (int)ofRandom(15);
-        int temp = hitIDs[a];
-        hitIDs[a] = hitIDs[b];
-        hitIDs[b] = temp;
-    }
     
     //set the sounds
     loadSounds("../sound_source.txt");
@@ -127,17 +104,6 @@ void ofApp::update(){
     deltaTime = ofGetElapsedTimef() - prevFrameTime;
     prevFrameTime = ofGetElapsedTimef();
     
-    timeSinceLastHit += deltaTime;
-    
-    if (usingFFT){
-        fft.update();
-        
-        //check if the FFT has a new hit for is
-        if (fft.haveNewHit){
-            makeNewHit(fft.bandsOn);
-        }
-    }
-    
     for (int i=hits.size()-1; i>=0; i--){
         hits[i]->update(deltaTime);
         if (hits[i]->killMe){
@@ -156,13 +122,6 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    if (showFFT){
-        fft.draw();
-        ofSetColor(0);
-        string debugText = "";
-        debugText += "active: "+ofToString(hits.size())+"\n";
-        ofDrawBitmapString(debugText, 10, 10);
-    }
     
     //shader stuff
     shader.begin();
@@ -442,64 +401,11 @@ void ofApp::windowResized(int w, int h){
     }
 }
 
-//--------------------------------------------------------------
-void ofApp::makeNewHit(bool bandsOn[NUM_BANDS]){
-    if (timeSinceLastHit < minTimeForNextHit){
-        return;
-    }
-    
-    timeSinceLastHit = 0;
-    
-    //set half bands
-    bool bandsOnMicro[NUM_BANDS/2];
-    for (int i=0; i<NUM_BANDS; i+=2){
-        bandsOnMicro[i/2] = bandsOn[i] || bandsOn[i+1];
-    }
-    
-    //get the total value
-    int idNum = 0;
-    for (int i=0; i<NUM_BANDS/2; i++){
-        if(bandsOnMicro[i]){
-            idNum += pow(2,i);
-        }
-    }
-    
-    //testing
-    //idNum = idNum % 9;
-    
-    Hit * thisHit;
-    
-    if (idNum == 0)     thisHit = new TunnelHit();  //THIS CAN NEVER BE 0, BECAUSE AT LEAST ONE BAND MUST BE ON
-    
-    if (idNum == hitIDs[0])     thisHit = new TunnelHit();
-    if (idNum == hitIDs[1])     thisHit = new SweepHit();
-    if (idNum == hitIDs[2])     thisHit = new TriangleHit();
-    if (idNum == hitIDs[3])     thisHit = new GrapesHit();
-    
-    if (idNum == hitIDs[4])     thisHit = new BuckshotHit();
-    if (idNum == hitIDs[5])     thisHit = new ChaserHit();
-    if (idNum == hitIDs[6])     thisHit = new SlashHit();
-    if (idNum == hitIDs[7])     thisHit = new SquareHit();
-    
-    if (idNum == hitIDs[8])     thisHit = new TrapezoidHit();
-    if (idNum == hitIDs[9])     thisHit = new DotPolygonHit();
-    if (idNum == hitIDs[10])    thisHit = new SizzleHit();
-    if (idNum == hitIDs[11])    thisHit = new DrunkTriangleHit();
-    
-    if (idNum == hitIDs[12])    thisHit = new CrystalHit();
-    if (idNum == hitIDs[13])    thisHit = new ClapHit();
-    if (idNum == hitIDs[14])    thisHit = new WaveColumnHit();
-    
-    thisHit->setup(ofGetWidth(), ofGetHeight(), whiteVal);
-    
-    hits.push_back(thisHit);
-}
 
 //--------------------------------------------------------------
 void ofApp::makeNewHit(int idNum){
     //assume we'll play the sound
-    bool playSound = true;
-    
+    bool playSound = true;    
     
     //turning this beat on
     if (recording){
