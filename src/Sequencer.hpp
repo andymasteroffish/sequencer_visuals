@@ -34,6 +34,9 @@
 #include "ClapHit.hpp"
 #include "WaveColumnHit.hpp"
 
+//ios
+#include "TouchGeneralButton.hpp"
+
 
 class Sequencer{
 public:
@@ -110,6 +113,12 @@ public:
     ofColor colorA, colorB;
     
     bool doCamMovement;
+    
+    //ios
+#define NUM_TOUCH_BUTTONS 16
+    TouchGeneralButton touchButtons[NUM_TOUCH_BUTTONS];
+#define NUM_TUOUCH_STEP_BUTTONS 18
+    TouchGeneralButton touchStepButtons[NUM_TUOUCH_STEP_BUTTONS];
 };
 
 #endif /* Sequencer_hpp */

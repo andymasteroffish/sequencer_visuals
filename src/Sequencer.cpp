@@ -80,6 +80,23 @@ void Sequencer::setup(){
     visualEffectNum = 0;
     setVisualEffect();
     
+    //setting up iOS
+#ifdef USING_IOS
+    int buttonW = ofGetWidth()/8;
+    int buttonH = ofGetHeight()/2;
+    for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
+        int xPos = (i%8) * buttonW;
+        int yPos = (i/8) * buttonH;
+        touchButtons[i].setup(xPos, yPos, buttonW, buttonH);
+    }
+    
+    //the tep mode buttons
+    int stepButtonW = ofGetWidth() / NUM_TUOUCH_STEP_BUTTONS;
+    for (int i=0; i<NUM_TUOUCH_STEP_BUTTONS; i++){
+        touchStepButtons[i].setup(i*stepButtonW, 0, stepButtonW, ofGetHeight());
+    }
+#endif
+    
 }
 
 //--------------------------------------------------------------
@@ -131,6 +148,16 @@ void Sequencer::update(){
         beatMarkers[i].update(deltaTime);
     }
     
+    //update ios buttons
+#ifdef USING_IOS
+    for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
+        touchButtons[i].update(deltaTime);
+    }
+    for (int i=0; i<NUM_TUOUCH_STEP_BUTTONS; i++){
+        touchStepButtons[i].update(deltaTime);
+    }
+#endif
+    
     //testing
 //    for (int i=0; i<NUM_IOS_BEATS_PER_SOUND; i++){
 //        cout<<i<<"  "<<sounds[i][14].getPosition()<<endl;
@@ -139,6 +166,21 @@ void Sequencer::update(){
 
 //--------------------------------------------------------------
 void Sequencer::draw(){
+    
+    //iOS buttons
+#ifdef USING_IOS
+    ofEnableAlphaBlending();
+    if (!stepMode){
+        for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
+            touchButtons[i].draw();
+        }
+    }else{
+        for (int i=0; i<NUM_TUOUCH_STEP_BUTTONS; i++){
+            touchStepButtons[i].draw();
+        }
+    }
+    ofDisableAlphaBlending();
+#endif
     
     
     //shader stuff
@@ -411,24 +453,40 @@ void Sequencer::keyPressed(int key){
 
 //--------------------------------------------------------------
 void Sequencer::touchDown(ofTouchEventArgs & touch){
-    //split the space into 2 rows with 8 columns each
-    int columnWidth = ofGetWidth()/8;
-    int rowHeight = ofGetHeight()/2;
+
     
-    int col = touch.x / columnWidth;
-    int row = touch.y /rowHeight;
-    
-    //get the resulting int value
-    int val = col + (row * 8);
-    
-    cout<<"val: "<<val<<endl;
-    
-    if (val < 15){
-        makeNewHit(val);
-    }
-    
-    if (val == 15){
-        clearBeats();
+    //check the buttons!
+    if (!stepMode){
+        for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
+            if(touchButtons[i].checkHit(touch.x, touch.y)){
+                if (i < 15){
+                    makeNewHit(i);
+                }
+                if (i == 15){
+                    clearBeats();
+                }
+            }
+        }
+    }else{
+        for (int i=0; i<NUM_TUOUCH_STEP_BUTTONS; i++){
+            if (touchButtons[i].checkHit(touch.x, touch.y)){
+                
+                cout<<"mother fuck "<<i<<endl;
+                
+                if (i==0){
+                    curStepSound--;
+                    if (curStepSound < 0)   curStepSound = NUM_BEATS-1;
+                }
+                else if (i==NUM_TUOUCH_STEP_BUTTONS-1){
+                    curStepSound++;
+                    if (curStepSound >= NUM_BEATS)   curStepSound = 0;
+                }
+                else{
+                    stepModePress(i-1);
+                }
+                
+            }
+        }
     }
 }
 
