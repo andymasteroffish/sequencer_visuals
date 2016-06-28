@@ -130,6 +130,11 @@ void Sequencer::update(){
     for (int i=0; i<NUM_BEATS; i++){
         beatMarkers[i].update(deltaTime);
     }
+    
+    //testing
+//    for (int i=0; i<NUM_IOS_BEATS_PER_SOUND; i++){
+//        cout<<i<<"  "<<sounds[i][14].getPosition()<<endl;
+//    }
 }
 
 //--------------------------------------------------------------
@@ -480,7 +485,11 @@ void Sequencer::makeNewHit(int idNum){
     
     //making the sound
     if (playSound){
-        sounds[idNum].play();
+#ifdef USING_IOS
+        sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].play();
+#else
+        sounds[0][idNum].play();
+#endif
     }
     
 }
@@ -529,8 +538,14 @@ void Sequencer::loadSounds(string filePath){
         cout<<"found "<<files.size()<<" sound files"<<endl;
         
         for (int i=0; i<NUM_SOUNDS; i++){
-            sounds[i].load(files[i%files.size()]);
-            sounds[i].setMultiPlay(true);
+#ifdef USING_IOS
+            for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
+                sounds[k][i].load(files[i%files.size()]);
+            }
+#else
+            sounds[0][i].load(files[i%files.size()]);
+            sounds[0][i].setMultiPlay(true);
+#endif
         }
         
     }else{

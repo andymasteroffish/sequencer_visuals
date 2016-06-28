@@ -81,10 +81,12 @@ public:
     vector<Hit *> hits;
     
     //audio files
-#define NUM_SOUNDS 15
-    ofSoundPlayer sounds[NUM_SOUNDS];
+    #define NUM_BEATS 16
+    #define NUM_SOUNDS 15
+    #define NUM_IOS_BEATS_PER_SOUND 8   //this must be a perfect multiple of NUM_BEATS
     
-#define NUM_BEATS 16
+    ofSoundPlayer sounds[NUM_IOS_BEATS_PER_SOUND][NUM_SOUNDS];    //on osx, only sounds[0][i] are used. There is no multiplay on iOS, so I am loading far more than needed. This may be a disaster
+    
     int thisBeat;
     bool beatsOn[NUM_BEATS][NUM_SOUNDS];
     bool onPreHit;
