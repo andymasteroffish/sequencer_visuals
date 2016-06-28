@@ -1,3 +1,0 @@
-ofxControlPanel
-ofxFFT_julapy
-ofxXmlSettings
