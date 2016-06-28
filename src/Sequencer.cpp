@@ -404,6 +404,29 @@ void Sequencer::keyPressed(int key){
     
 }
 
+//--------------------------------------------------------------
+void Sequencer::touchDown(ofTouchEventArgs & touch){
+    //split the space into 2 rows with 8 columns each
+    int columnWidth = ofGetWidth()/8;
+    int rowHeight = ofGetHeight()/2;
+    
+    int col = touch.x / columnWidth;
+    int row = touch.y /rowHeight;
+    
+    //get the resulting int value
+    int val = col + (row * 8);
+    
+    cout<<"val: "<<val<<endl;
+    
+    if (val < 15){
+        makeNewHit(val);
+    }
+    
+    if (val == 15){
+        clearBeats();
+    }
+}
+
 
 //--------------------------------------------------------------
 void Sequencer::windowResized(int w, int h){

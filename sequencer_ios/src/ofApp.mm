@@ -7,8 +7,6 @@ void ofApp::setup(){
     
     
     sequencer.setup();
-    
-    cout<<"start orientation "<<ofGetOrientation()<<endl;
 }
 
 //--------------------------------------------------------------
@@ -30,7 +28,7 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-
+    sequencer.touchDown(touch);
     
 }
 

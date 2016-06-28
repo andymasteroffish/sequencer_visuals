@@ -34,6 +34,7 @@
 #include "ClapHit.hpp"
 #include "WaveColumnHit.hpp"
 
+
 class Sequencer{
 public:
     
@@ -44,6 +45,7 @@ public:
     void draw();
     
     void keyPressed(int key);
+    void touchDown(ofTouchEventArgs & touch); 
     void windowResized(int w, int h);
     
     void makeNewHit(int idNum);
@@ -106,7 +108,6 @@ public:
     ofColor colorA, colorB;
     
     bool doCamMovement;
-    
 };
 
 #endif /* Sequencer_hpp */
