@@ -19,6 +19,14 @@ void TouchGeneralButton::setup(int _x, int _y, int _width, int _height){
     
     curFadeVal = 0;
     fadeSpeed = 700;
+    
+    text = "";
+    font = NULL;
+}
+
+void TouchGeneralButton::setText(string _text, ofTrueTypeFont * _font){
+    text = _text;
+    font = _font;
 }
 
 void TouchGeneralButton::update(float deltaTime){
@@ -37,6 +45,14 @@ void TouchGeneralButton::draw(){
     ofNoFill();
     ofSetColor(200,40);
     ofDrawRectangle(box);
+    
+    if (font != NULL){
+        ofSetColor(0, 200);
+        
+        ofRectangle bounds = font->getStringBoundingBox(text, 0, 0);
+        font->drawString(text, box.x+box.width/2-bounds.width/2, box.y+box.height/2+bounds.height/2);
+        
+    }
     
 //    ofSetColor(0);
 //    ofDrawBitmapString(ofToString(box.x), box.x+10, box.y + 100);

@@ -16,6 +16,7 @@ public:
     
     
     void setup(int _x, int _y, int _width, int _height);
+    void setText(string _text, ofTrueTypeFont * _font);
     void update(float deltaTime);
     void draw();
     bool checkHit(int x, int y);
@@ -30,6 +31,9 @@ public:
     
     ofColor fullColor;
     
+    //some buttons can have text
+    string text;
+    ofTrueTypeFont * font;
     
 };
 

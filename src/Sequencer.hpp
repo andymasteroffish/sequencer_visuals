@@ -57,6 +57,8 @@ public:
     void setStepMode(bool isOn);
     void stepModePress(int placeID);
     
+    void setRecording(bool isOn);
+    
     void clearBeats();
     
     void loadSounds(string filePath);
@@ -117,11 +119,15 @@ public:
     
     bool doCamMovement;
     
+    //fonts
+    ofTrueTypeFont buttonFont;
+    
     //ios
 #define NUM_TOUCH_BUTTONS 15
     TouchGeneralButton touchButtons[NUM_TOUCH_BUTTONS];
 #define NUM_TOUCH_MENU_BUTTONS 3
     TouchGeneralButton touchMenuButtons[NUM_TOUCH_MENU_BUTTONS];
+    float menuButtonH;
     
     //step mode for touch screens
     TouchGeneralButton touchStepButtons[NUM_BEATS];

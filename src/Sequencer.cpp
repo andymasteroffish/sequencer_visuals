@@ -68,6 +68,9 @@ void Sequencer::setup(){
     
     clearBeats();
     
+    //fonts
+    buttonFont.load("Futura.ttf", 25);
+    
     //set the markers
     beatXSpacing = 40;
     beatYDistFromBottom = 40;
@@ -102,24 +105,26 @@ void Sequencer::setup(){
     }
     
     //the three menu buttons fo in the top right
-    int menuButtonH = buttonH / 3;
+    menuButtonH = buttonH / 3;
+    string text[3] = {"Live", "Step", "Clear"};
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
         touchMenuButtons[i].setup(ofGetWidth() - buttonW, i * menuButtonH, buttonW, menuButtonH);
+        touchMenuButtons[i].setText(text[i], &buttonFont);
     }
     
     //sound buttons for step mode
     float soundSpacing = (ofGetWidth()-buttonW) / NUM_SOUNDS;
     for (int i=0; i<NUM_SOUNDS; i++){
-        soundButtons[i].setup(soundSpacing*i, 0, soundSpacing, soundSpacing, i);
+        soundButtons[i].setup(soundSpacing*i, 10, soundSpacing, soundSpacing, i);
         soundButtons[i].icons.whiteVal = whiteVal;
     }
     
     //the step mode buttons
     int stepButtonW = ofGetWidth() / NUM_BEATS;
     for (int i=0; i<NUM_BEATS; i++){
-        int yPos = soundSpacing + 40;   //give it a bit of extra spacing
+        int yPos = soundSpacing + 50;   //give it a bit of extra spacing
         if (i>=NUM_BEATS-2){
-            yPos = ofGetHeight()/2;
+            yPos = ofGetHeight()/2 - menuButtonH;
         }
         touchStepButtons[i].setup(i*stepButtonW, yPos, stepButtonW, ofGetHeight());
     }
@@ -186,6 +191,14 @@ void Sequencer::update(){
         touchButtons[i].update(deltaTime);
     }
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
+        //slide them to hide "Live/Record" during step mode
+        float targetY = menuButtonH * i;
+        if (stepMode)   targetY = menuButtonH * (i-1);
+        
+        float xeno = 0.85;
+        touchMenuButtons[i].box.y = xeno * touchMenuButtons[i].box.y + (1-xeno) * targetY;
+        
+        //actually update them
         touchMenuButtons[i].update(deltaTime);
     }
     for (int i=0; i<NUM_BEATS; i++){
@@ -397,7 +410,7 @@ void Sequencer::keyPressed(int key){
     }
     
     if (key == ' '){
-        recording = !recording;
+        setRecording(!recording);
     }
     
     if (key == OF_KEY_UP){
@@ -436,7 +449,7 @@ void Sequencer::keyPressed(int key){
         if (key == '3')     makeNewHit(14);
         
         if (key == '0') {
-            recording = !recording;
+            setRecording(!recording);
         }
         
         if (key == 13){  //Enter
@@ -537,7 +550,7 @@ void Sequencer::touchDown(ofTouchEventArgs & touch){
         if (touchMenuButtons[i].checkHit(touch.x, touch.y)){
             
             if (i == 0){
-                recording = !recording;
+                setRecording(!recording);
             }
             
             if ( i== 1){
@@ -620,10 +633,13 @@ void Sequencer::setStepMode(bool isOn){
     for (int i=0; i<NUM_SOUNDS; i++){
         if(stepMode){
             soundButtons[i].stepModeOn();
+            setRecording(true);
         }else{
             soundButtons[i].stepModeOff();
         }
     }
+    
+    touchMenuButtons[1].text = stepMode ? "Normal" : "Step";
 }
 
 //--------------------------------------------------------------
@@ -631,7 +647,11 @@ void Sequencer::stepModePress(int placeID){
     beatsOn[placeID][curStepSound] = !beatsOn[placeID][curStepSound];
 }
 
-
+//--------------------------------------------------------------
+void Sequencer::setRecording(bool isOn){
+    recording = isOn;
+    touchMenuButtons[0].text = recording ? "Live" : "Record";
+}
 
 //--------------------------------------------------------------
 void Sequencer::clearBeats(){
@@ -642,7 +662,7 @@ void Sequencer::clearBeats(){
         beatMarkers[i].triggerClear();
     }
     if (turnOnRecordingWhenClearing){
-        recording = true;
+        setRecording(true);
     }
 }
 
