@@ -88,50 +88,13 @@ void Sequencer::setup(){
     visualEffectNum = 0;
     setVisualEffect();
     
-    //setting up iOS
-#ifdef USING_IOS
-    int buttonW = ofGetWidth()/8;
-    int buttonH = ofGetHeight()/2;
-    for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
-        int col = i%8;
-        int row = i/8;
-        
-        //keep top right open
-        if (col == 7 && row == 0){
-            row = 1;
-        }
-        
-        touchButtons[i].setup(col * buttonW, row * buttonH, buttonW, buttonH);
-    }
+    //setting up iOS touch buttons
+    setTouchButtons();
     
-    //the three menu buttons fo in the top right
-    menuButtonH = buttonH / 3;
     string text[3] = {"Live", "Step", "Clear"};
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
-        touchMenuButtons[i].setup(ofGetWidth() - buttonW, i * menuButtonH, buttonW, menuButtonH);
         touchMenuButtons[i].setText(text[i], &buttonFont);
     }
-    
-    //sound buttons for step mode
-    float soundSpacing = (ofGetWidth()-buttonW) / NUM_SOUNDS;
-    for (int i=0; i<NUM_SOUNDS; i++){
-        soundButtons[i].setup(soundSpacing*i, 10, soundSpacing, soundSpacing, i);
-        soundButtons[i].icons.whiteVal = whiteVal;
-    }
-    
-    //the step mode buttons
-    int stepButtonW = ofGetWidth() / NUM_BEATS;
-    for (int i=0; i<NUM_BEATS; i++){
-        int yPos = soundSpacing + 50;   //give it a bit of extra spacing
-        if (i>=NUM_BEATS-2){
-            yPos = ofGetHeight()/2 - menuButtonH;
-        }
-        touchStepButtons[i].setup(i*stepButtonW, yPos, stepButtonW, ofGetHeight());
-    }
-    
-    
-#endif
-    
 }
 
 //--------------------------------------------------------------
@@ -186,7 +149,7 @@ void Sequencer::update(){
     }
     
     //update ios buttons
-#ifdef USING_IOS
+//#ifdef USING_IOS
     for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
         touchButtons[i].update(deltaTime);
     }
@@ -208,7 +171,7 @@ void Sequencer::update(){
     for (int i=0; i<NUM_SOUNDS; i++){
         soundButtons[i].update(deltaTime, curStepSound);
     }
-#endif
+//#endif
     
     //testing
 //    for (int i=0; i<NUM_IOS_BEATS_PER_SOUND; i++){
@@ -220,7 +183,7 @@ void Sequencer::update(){
 void Sequencer::draw(){
     
     //iOS buttons
-#ifdef USING_IOS
+//#ifdef USING_IOS
     ofEnableAlphaBlending();
     if (!stepMode){
         for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
@@ -240,7 +203,7 @@ void Sequencer::draw(){
         soundButtons[i].draw();
     }
     ofDisableAlphaBlending();
-#endif
+//#endif
     
     
     //shader stuff
@@ -516,13 +479,13 @@ void Sequencer::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void Sequencer::touchDown(ofTouchEventArgs & touch){
+void Sequencer::touchDown(int x, int y){
 
     
     //check the buttons!
     if (!stepMode){
         for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
-            if(touchButtons[i].checkHit(touch.x, touch.y)){
+            if(touchButtons[i].checkHit(x, y)){
                 if (i < 15){
                     makeNewHit(i);
                 }
@@ -533,13 +496,13 @@ void Sequencer::touchDown(ofTouchEventArgs & touch){
         }
     }else{
         for (int i=0; i<NUM_BEATS; i++){
-            if (touchStepButtons[i].checkHit(touch.x, touch.y)){
+            if (touchStepButtons[i].checkHit(x, y)){
                stepModePress(i);
             }
         }
         
         for (int i=0; i<NUM_SOUNDS; i++){
-            if (soundButtons[i].checkHit(touch.x, touch.y)){
+            if (soundButtons[i].checkHit(x, y)){
                 curStepSound = i;
             }
         }
@@ -547,7 +510,7 @@ void Sequencer::touchDown(ofTouchEventArgs & touch){
     
     //menu buttons
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
-        if (touchMenuButtons[i].checkHit(touch.x, touch.y)){
+        if (touchMenuButtons[i].checkHit(x, y)){
             
             if (i == 0){
                 setRecording(!recording);
@@ -570,11 +533,59 @@ void Sequencer::touchDown(ofTouchEventArgs & touch){
 void Sequencer::windowResized(int w, int h){
     //set the markers
     float beatXPadding = (ofGetWidth()-(beatXSpacing*NUM_BEATS))/2;
+    float stepModeBeatSpacing = ofGetWidth()/NUM_BEATS;
     for (int i=0; i<NUM_BEATS; i++){
-        beatMarkers[i].pos.set(beatXPadding+beatXSpacing*i, ofGetHeight()-beatYDistFromBottom);
+        beatMarkers[i].pos.y = ofGetHeight()-beatYDistFromBottom;
+        beatMarkers[i].normX = beatXPadding+beatXSpacing*i;
+        beatMarkers[i].stepModeX = stepModeBeatSpacing/2 + stepModeBeatSpacing*i;
     }
+    
+    setTouchButtons();
 }
 
+//--------------------------------------------------------------
+void Sequencer::setTouchButtons(){
+    
+    int buttonW = ofGetWidth()/8;
+    int buttonH = ofGetHeight()/2;
+    for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
+        int col = i%8;
+        int row = i/8;
+        
+        //keep top right open
+        if (col == 7 && row == 0){
+            row = 1;
+        }
+        
+        touchButtons[i].setup(col * buttonW, row * buttonH, buttonW, buttonH);
+    }
+    
+    //the three menu buttons fo in the top right
+    menuButtonH = buttonH / 3;
+    for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
+        string oldText = touchMenuButtons[i].text;
+        ofTrueTypeFont * oldFont = touchMenuButtons[i].font;
+        touchMenuButtons[i].setup(ofGetWidth() - buttonW, i * menuButtonH, buttonW, menuButtonH);
+        touchMenuButtons[i].setText(oldText, oldFont);
+    }
+    
+    //sound buttons for step mode
+    float soundSpacing = (ofGetWidth()-buttonW) / NUM_SOUNDS;
+    for (int i=0; i<NUM_SOUNDS; i++){
+        soundButtons[i].setup(soundSpacing*i, 10, soundSpacing, soundSpacing, i);
+        soundButtons[i].icons.whiteVal = whiteVal;
+    }
+    
+    //the step mode buttons
+    int stepButtonW = ofGetWidth() / NUM_BEATS;
+    for (int i=0; i<NUM_BEATS; i++){
+        int yPos = soundSpacing + 50;   //give it a bit of extra spacing
+        if (i>=NUM_BEATS-2){
+            yPos = ofGetHeight()/2 - menuButtonH;
+        }
+        touchStepButtons[i].setup(i*stepButtonW, yPos, stepButtonW, ofGetHeight());
+    }
+}
 
 //--------------------------------------------------------------
 void Sequencer::makeNewHit(int idNum){

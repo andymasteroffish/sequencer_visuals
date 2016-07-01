@@ -49,8 +49,9 @@ public:
     void draw();
     
     void keyPressed(int key);
-    void touchDown(ofTouchEventArgs & touch); 
+    void touchDown(int x, int y);
     void windowResized(int w, int h);
+    void setTouchButtons();
     
     void makeNewHit(int idNum);
     

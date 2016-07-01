@@ -8,6 +8,9 @@
 
 #include "StepModeIcons.hpp"
 
+void StepModeIcons::setup(){
+    timer = 0.5;
+}
 
 void StepModeIcons::draw(int idNum, int alpha){
     
@@ -15,6 +18,7 @@ void StepModeIcons::draw(int idNum, int alpha){
     ofNoFill();
     ofSetColor(0, alpha);
     ofSetLineWidth(1);
+    ofSetCircleResolution(20);
     
     w = 60;
     h = 60;

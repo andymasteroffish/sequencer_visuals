@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5706279D1D26FFFF00136FF1 /* SoundButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570627991D26FFFF00136FF1 /* SoundButton.cpp */; };
+		5706279E1D26FFFF00136FF1 /* TouchGeneralButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5706279B1D26FFFF00136FF1 /* TouchGeneralButton.cpp */; };
 		575B123F1D22BFDA00B0CAF6 /* BeatMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12111D22BFDA00B0CAF6 /* BeatMarker.cpp */; };
 		575B12401D22BFDA00B0CAF6 /* Buckshot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12131D22BFDA00B0CAF6 /* Buckshot.cpp */; };
 		575B12411D22BFDA00B0CAF6 /* BuckshotHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12151D22BFDA00B0CAF6 /* BuckshotHit.cpp */; };
@@ -65,6 +67,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		570627991D26FFFF00136FF1 /* SoundButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundButton.cpp; path = ../../src/SoundButton.cpp; sourceTree = "<group>"; };
+		5706279A1D26FFFF00136FF1 /* SoundButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SoundButton.hpp; path = ../../src/SoundButton.hpp; sourceTree = "<group>"; };
+		5706279B1D26FFFF00136FF1 /* TouchGeneralButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TouchGeneralButton.cpp; path = ../../src/TouchGeneralButton.cpp; sourceTree = "<group>"; };
+		5706279C1D26FFFF00136FF1 /* TouchGeneralButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TouchGeneralButton.hpp; path = ../../src/TouchGeneralButton.hpp; sourceTree = "<group>"; };
 		575B12111D22BFDA00B0CAF6 /* BeatMarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BeatMarker.cpp; path = ../../src/BeatMarker.cpp; sourceTree = "<group>"; };
 		575B12121D22BFDA00B0CAF6 /* BeatMarker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BeatMarker.hpp; path = ../../src/BeatMarker.hpp; sourceTree = "<group>"; };
 		575B12131D22BFDA00B0CAF6 /* Buckshot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Buckshot.cpp; path = ../../src/Buckshot.cpp; sourceTree = "<group>"; };
@@ -137,11 +143,11 @@
 		575B12561D22C01500B0CAF6 /* project */ = {
 			isa = PBXGroup;
 			children = (
+				575B122C1D22BFDA00B0CAF6 /* Sequencer.hpp */,
+				575B122B1D22BFDA00B0CAF6 /* Sequencer.cpp */,
 				575B12571D22C02800B0CAF6 /* Hits */,
 				575B12581D22C02F00B0CAF6 /* Tools */,
 				575B12591D22C09400B0CAF6 /* Markers */,
-				575B12121D22BFDA00B0CAF6 /* BeatMarker.hpp */,
-				575B12111D22BFDA00B0CAF6 /* BeatMarker.cpp */,
 				575B12281D22BFDA00B0CAF6 /* ofxBpm.h */,
 				575B12271D22BFDA00B0CAF6 /* ofxBpm.cpp */,
 			);
@@ -205,8 +211,12 @@
 			children = (
 				575B12341D22BFDA00B0CAF6 /* StepModeIcons.hpp */,
 				575B12331D22BFDA00B0CAF6 /* StepModeIcons.cpp */,
-				575B122C1D22BFDA00B0CAF6 /* Sequencer.hpp */,
-				575B122B1D22BFDA00B0CAF6 /* Sequencer.cpp */,
+				575B12121D22BFDA00B0CAF6 /* BeatMarker.hpp */,
+				575B12111D22BFDA00B0CAF6 /* BeatMarker.cpp */,
+				5706279C1D26FFFF00136FF1 /* TouchGeneralButton.hpp */,
+				5706279B1D26FFFF00136FF1 /* TouchGeneralButton.cpp */,
+				5706279A1D26FFFF00136FF1 /* SoundButton.hpp */,
+				570627991D26FFFF00136FF1 /* SoundButton.cpp */,
 			);
 			name = Markers;
 			sourceTree = "<group>";
@@ -366,6 +376,7 @@
 				575B12551D22BFDA00B0CAF6 /* WaveColumnHit.cpp in Sources */,
 				575B12491D22BFDA00B0CAF6 /* Hit.cpp in Sources */,
 				575B12541D22BFDA00B0CAF6 /* TunnelHit.cpp in Sources */,
+				5706279D1D26FFFF00136FF1 /* SoundButton.cpp in Sources */,
 				575B124F1D22BFDA00B0CAF6 /* SquareHit.cpp in Sources */,
 				575B12531D22BFDA00B0CAF6 /* TriangleHit.cpp in Sources */,
 				575B123F1D22BFDA00B0CAF6 /* BeatMarker.cpp in Sources */,
@@ -379,6 +390,7 @@
 				575B12441D22BFDA00B0CAF6 /* CrystalHit.cpp in Sources */,
 				575B124E1D22BFDA00B0CAF6 /* SlashHit.cpp in Sources */,
 				575B12421D22BFDA00B0CAF6 /* ChaserHit.cpp in Sources */,
+				5706279E1D26FFFF00136FF1 /* TouchGeneralButton.cpp in Sources */,
 				575B124D1D22BFDA00B0CAF6 /* SizzleHit.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,7 @@
 class StepModeIcons{
 public:
     
+    void setup();
     void update(float deltaTime);
     void draw(int idNum, int alpha);
     

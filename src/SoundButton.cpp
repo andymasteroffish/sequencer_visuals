@@ -28,6 +28,7 @@ void SoundButton::setup(float x, float y, float w, float h, int _idNum){
     
     curAlpha = 0;
     
+    icons.setup();
     
 }
 
