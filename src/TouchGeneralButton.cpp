@@ -28,6 +28,8 @@ void TouchGeneralButton::update(float deltaTime){
 
 void TouchGeneralButton::draw(){
     
+    ofSetLineWidth(1);
+    
     ofFill();
     ofSetColor(fullColor.r, fullColor.g, fullColor.b, curFadeVal);
     ofDrawRectangle(box);

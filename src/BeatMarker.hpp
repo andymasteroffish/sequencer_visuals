@@ -14,13 +14,17 @@
 class BeatMarker{
 public:
     
-    void setup(float x, float y);
-    void update(float deltaTime);
+    void setup(float x, float _stepModeX, float y);
+    void update(float deltaTime, bool stepModeOn);
     void triggerBeat();
     void triggerClear();
     void draw(bool hasSound, bool _isRecording);
     
     ofVec2f pos;
+    
+    float normX, stepModeX;
+    float xenoX;
+    
     float curSize;
     
     float normSize;

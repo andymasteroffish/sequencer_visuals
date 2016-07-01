@@ -36,6 +36,7 @@
 
 //ios
 #include "TouchGeneralButton.hpp"
+#include "SoundButton.hpp"
 
 
 class Sequencer{
@@ -52,6 +53,8 @@ public:
     void windowResized(int w, int h);
     
     void makeNewHit(int idNum);
+    
+    void setStepMode(bool isOn);
     void stepModePress(int placeID);
     
     void clearBeats();
@@ -115,10 +118,14 @@ public:
     bool doCamMovement;
     
     //ios
-#define NUM_TOUCH_BUTTONS 16
+#define NUM_TOUCH_BUTTONS 15
     TouchGeneralButton touchButtons[NUM_TOUCH_BUTTONS];
-#define NUM_TUOUCH_STEP_BUTTONS 18
-    TouchGeneralButton touchStepButtons[NUM_TUOUCH_STEP_BUTTONS];
+#define NUM_TOUCH_MENU_BUTTONS 3
+    TouchGeneralButton touchMenuButtons[NUM_TOUCH_MENU_BUTTONS];
+    
+    //step mode for touch screens
+    TouchGeneralButton touchStepButtons[NUM_BEATS];
+    SoundButton soundButtons[NUM_SOUNDS];
 };
 
 #endif /* Sequencer_hpp */

@@ -12,6 +12,7 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		5326AEA810A23A0500278DE6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5326AEA710A23A0500278DE6 /* CoreLocation.framework */; };
 		53F323EB10A20EDB00E0DAE4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */; };
+		575AFCE81D26E8D10071366D /* SoundButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575AFCE61D26E8D10071366D /* SoundButton.cpp */; };
 		575B12891D22C40D00B0CAF6 /* BeatMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B125B1D22C40D00B0CAF6 /* BeatMarker.cpp */; };
 		575B128A1D22C40D00B0CAF6 /* Buckshot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B125D1D22C40D00B0CAF6 /* Buckshot.cpp */; };
 		575B128B1D22C40D00B0CAF6 /* BuckshotHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B125F1D22C40D00B0CAF6 /* BuckshotHit.cpp */; };
@@ -79,6 +80,8 @@
 		32CA4F630368D1EE00C91783 /* ofxiOS_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxiOS_Prefix.pch; sourceTree = "<group>"; };
 		5326AEA710A23A0500278DE6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		575AFCE61D26E8D10071366D /* SoundButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundButton.cpp; path = ../../src/SoundButton.cpp; sourceTree = "<group>"; };
+		575AFCE71D26E8D10071366D /* SoundButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SoundButton.hpp; path = ../../src/SoundButton.hpp; sourceTree = "<group>"; };
 		575B125B1D22C40D00B0CAF6 /* BeatMarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BeatMarker.cpp; path = ../../src/BeatMarker.cpp; sourceTree = "<group>"; };
 		575B125C1D22C40D00B0CAF6 /* BeatMarker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BeatMarker.hpp; path = ../../src/BeatMarker.hpp; sourceTree = "<group>"; };
 		575B125D1D22C40D00B0CAF6 /* Buckshot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Buckshot.cpp; path = ../../src/Buckshot.cpp; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				575B125B1D22C40D00B0CAF6 /* BeatMarker.cpp */,
 				575B12A81D230A3600B0CAF6 /* TouchGeneralButton.hpp */,
 				575B12A71D230A3600B0CAF6 /* TouchGeneralButton.cpp */,
+				575AFCE71D26E8D10071366D /* SoundButton.hpp */,
+				575AFCE61D26E8D10071366D /* SoundButton.cpp */,
 			);
 			name = Markers;
 			sourceTree = "<group>";
@@ -465,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				575AFCE81D26E8D10071366D /* SoundButton.cpp in Sources */,
 				575B129B1D22C40D00B0CAF6 /* SweepHit.cpp in Sources */,
 				575B12901D22C40D00B0CAF6 /* DrunkTriangleHit.cpp in Sources */,
 				575B12A91D230A3600B0CAF6 /* TouchGeneralButton.cpp in Sources */,

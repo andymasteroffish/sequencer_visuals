@@ -9,7 +9,11 @@
 #include "BeatMarker.hpp"
 
 
-void BeatMarker::setup(float x, float y){
+void BeatMarker::setup(float x, float _stepModeX, float y){
+    
+    normX = x;
+    stepModeX = _stepModeX;
+    xenoX = 0.9;
     
     pos.set(x,y);
     
@@ -38,8 +42,11 @@ void BeatMarker::setup(float x, float y){
     notRecordingYOffset = 0;
 }
 
-void BeatMarker::update(float deltaTime){
+void BeatMarker::update(float deltaTime, bool stepModeOn){
     pulseTimer += deltaTime;
+    
+    float targetX = stepModeOn ? stepModeX : normX;
+    pos.x = xenoX * pos.x + (1-xenoX) * targetX;
     
     curSize = normSize;
     

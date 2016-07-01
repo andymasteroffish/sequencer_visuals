@@ -14,23 +14,26 @@
 class StepModeIcons{
 public:
     
-    void draw(int idNum);
+    void update(float deltaTime);
+    void draw(int idNum, int alpha);
     
-    void drawTunnel();
-    void drawSweep();
-    void drawTriangle();
-    void drawGrapes();
-    void drawBuckshot();
-    void drawChaser();
-    void drawSlash();
-    void drawSquare();
-    void drawTrapezoid();
-    void drawDotPolygon();
-    void drawSizzle();
-    void drawDrunkTrianlge();
-    void drawCrystal();
-    void drawClap();
-    void drawWaveColumn();
+    void drawTunnel(int alpha);
+    void drawSweep(int alpha);
+    void drawTriangle(int alpha);
+    void drawGrapes(int alpha);
+    void drawBuckshot(int alpha);
+    void drawChaser(int alpha);
+    void drawSlash(int alpha);
+    void drawSquare(int alpha);
+    void drawTrapezoid(int alpha);
+    void drawDotPolygon(int alpha);
+    void drawSizzle(int alpha);
+    void drawDrunkTrianlge(int alpha);
+    void drawCrystal(int alpha);
+    void drawClap(int alpha);
+    void drawWaveColumn(int alpha);
+    
+    float timer;
     
     float topX, topY;
     float w, h;
