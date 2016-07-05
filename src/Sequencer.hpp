@@ -12,7 +12,7 @@
 #include "ofMain.h"
 #include "SystemSpecificInfo.h"
 
-#include "ofxBpm.h"
+#include "Bpm.hpp"
 
 #include "BeatMarker.hpp"
 #include "StepModeIcons.hpp"
@@ -77,10 +77,8 @@ public:
     //timing
     float deltaTime, prevFrameTime;
     
-    //ofxBPM tools by mirrorboy714
-    //https://github.com/mirrorboy714/ofxBpm
-    int bpmValue, bpmStartValue;
-    ofxBpm bpm;
+    Bpm bpm;
+    float bpmValue, bpmStartValue;
     
     //drawing
     int whiteVal;

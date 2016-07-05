@@ -28,7 +28,7 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    sequencer.touchDown(touch);
+    sequencer.touchDown(touch.x, touch.y);
     
 }
 

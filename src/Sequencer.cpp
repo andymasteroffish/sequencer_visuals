@@ -42,15 +42,23 @@ void Sequencer::setup(){
     
     showHelp = false;
     
-    bpm.reset();
-    bpmStartValue = 160;
-    bpmValue = bpmStartValue;
-    bpm.setBpm(bpmValue);
-    bpm.setBeatPerBar(8);
-    bpm.prcForPreHit = 0.9;
+    bpmValue = 160;
+    bpmStartValue = bpmValue;
+    
     ofAddListener(bpm.beatEvent, this, &Sequencer::hitBeat);
     ofAddListener(bpm.preBeatEvent, this, &Sequencer::preHitBeat);
-    bpm.start();
+    bpm.start(bpmValue);
+    bpm.setPreHitPrcSpacing(0.5);
+    
+//    bpm.reset();
+//    bpmStartValue = 160;
+//    bpmValue = bpmStartValue;
+//    bpm.setBpm(bpmValue);
+//    bpm.setBeatPerBar(8);
+//    bpm.prcForPreHit = 0.9;
+//    ofAddListener(bpm.beatEvent, this, &Sequencer::hitBeat);
+//    ofAddListener(bpm.preBeatEvent, this, &Sequencer::preHitBeat);
+//    bpm.start();
     
     thisBeat = 0;
     onPreHit = false;
@@ -110,6 +118,8 @@ void Sequencer::hitBeat(void){
     if (thisBeat >= NUM_BEATS){
         thisBeat = 0;
     }
+    
+    //cout<<"hit beat "<<thisBeat<<endl;
     
     //play anything that's on
     for (int k=0; k<NUM_SOUNDS; k++){
