@@ -99,9 +99,9 @@ void SoundButton::draw(){
     
     ofPopMatrix();
     
-    ofNoFill();
-    ofSetColor(255,0,0);
-    ofDrawRectangle(hitBox);
+//    ofNoFill();
+//    ofSetColor(255,0,0);
+//    ofDrawRectangle(hitBox);
     
 //    ofSetLineWidth(1);
 //    ofNoFill();
@@ -125,12 +125,12 @@ bool SoundButton::checkHit(int x, int y){
 void SoundButton::stepModeOn(){
     isGrowing = true;
     isShrinking = false;
-    growTimer = -ofRandom(0.15);
+    growTimer = -abs( 7-idNum) * 0.04;//  -idNum * 0.03;// -ofRandom(0.15);
 }
 
 void SoundButton::stepModeOff(){
     isShrinking = true;
     isGrowing = false;
-    growTimer = shrinkTime + ofRandom(0.15);
+    growTimer = shrinkTime + abs( 7-idNum) * 0.04;//ofRandom(0.15);
     
 }
