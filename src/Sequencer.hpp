@@ -108,7 +108,6 @@ public:
     //step mode?
     bool stepMode;
     int curStepSound;
-    StepModeIcons stepModeIcons;
     
     //fucking around with visuals
     int visualEffectNum;

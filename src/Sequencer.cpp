@@ -39,7 +39,6 @@ void Sequencer::setup(){
     
     whiteVal = 240;
     ofBackground(whiteVal);
-    stepModeIcons.whiteVal = whiteVal;
     
     showHelp = false;
     
@@ -131,8 +130,6 @@ void Sequencer::update(){
     
     deltaTime = ofGetElapsedTimef() - prevFrameTime;
     prevFrameTime = ofGetElapsedTimef();
-    
-    stepModeIcons.update(deltaTime);
     
     for (int i=hits.size()-1; i>=0; i--){
         hits[i]->update(deltaTime);
@@ -271,16 +268,15 @@ void Sequencer::draw(){
     
     shader.end();
     
-    //are we in step mode?
-    if (stepMode){
-        //draw the current icon
-        ofSetColor(0);
-        ofPushMatrix();
-        ofTranslate(beatMarkers[0].pos.x - 80, beatMarkers[0].pos.y);
-        stepModeIcons.draw(curStepSound, 255);
-        ofPopMatrix();
-        //ofDrawBitmapString(ofToString(curStepSound), beatMarkers[0].pos.x - 70, beatMarkers[0].pos.y+10);
-    }
+//    //are we in step mode?
+//    if (stepMode){
+//        //draw the current icon
+//        ofSetColor(0);
+//        ofPushMatrix();
+//        ofTranslate(beatMarkers[0].pos.x - 80, beatMarkers[0].pos.y);
+//        ofPopMatrix();
+//        //ofDrawBitmapString(ofToString(curStepSound), beatMarkers[0].pos.x - 70, beatMarkers[0].pos.y+10);
+//    }
     
     bool showWIPText = !publicRelease;
 #ifdef USING_IOS
