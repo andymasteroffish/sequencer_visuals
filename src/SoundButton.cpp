@@ -37,7 +37,7 @@ void SoundButton::setPosition(float x, float y, float w, float h){
 
 void SoundButton::update(float deltaTime, int curSound){
     isActive = curSound == idNum;
-    float targetAlpha = 80;
+    float targetAlpha = 50;
     if (isActive){
         targetAlpha = 255;
         icons.update(deltaTime);
