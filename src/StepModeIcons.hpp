@@ -16,23 +16,23 @@ public:
     
     void setup();
     void update(float deltaTime);
-    void draw(int idNum, int alpha);
+    void draw(int idNum, float lineWidthPrc, int alpha);
     
-    void drawTunnel(int alpha);
-    void drawSweep(int alpha);
-    void drawTriangle(int alpha);
-    void drawGrapes(int alpha);
-    void drawBuckshot(int alpha);
-    void drawChaser(int alpha);
-    void drawSlash(int alpha);
-    void drawSquare(int alpha);
-    void drawTrapezoid(int alpha);
-    void drawDotPolygon(int alpha);
-    void drawSizzle(int alpha);
-    void drawDrunkTrianlge(int alpha);
-    void drawCrystal(int alpha);
-    void drawClap(int alpha);
-    void drawWaveColumn(int alpha);
+    void drawTunnel(float lineWidthPrc, int alpha);
+    void drawSweep(float lineWidthPrc, int alpha);
+    void drawTriangle(float lineWidthPrc, int alpha);
+    void drawGrapes(float lineWidthPrc, int alpha);
+    void drawBuckshot(float lineWidthPrc, int alpha);
+    void drawChaser(float lineWidthPrc, int alpha);
+    void drawSlash(float lineWidthPrc, int alpha);
+    void drawSquare(float lineWidthPrc, int alpha);
+    void drawTrapezoid(float lineWidthPrc, int alpha);
+    void drawDotPolygon(float lineWidthPrc, int alpha);
+    void drawSizzle(float lineWidthPrc, int alpha);
+    void drawDrunkTrianlge(float lineWidthPrc, int alpha);
+    void drawCrystal(float lineWidthPrc, int alpha);
+    void drawClap(float lineWidthPrc, int alpha);
+    void drawWaveColumn(float lineWidthPrc, int alpha);
     
     float timer;
     

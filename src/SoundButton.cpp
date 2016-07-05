@@ -8,9 +8,7 @@
 
 #include "SoundButton.hpp"
 
-void SoundButton::setup(float x, float y, float w, float h, int _idNum){
-    
-    hitBox.set(x, y, w, h);
+void SoundButton::setup(int _idNum, int whiteVal){
     idNum = _idNum;
     
     onScale = 1;
@@ -29,7 +27,12 @@ void SoundButton::setup(float x, float y, float w, float h, int _idNum){
     curAlpha = 0;
     
     icons.setup();
+    icons.whiteVal = whiteVal;
     
+}
+
+void SoundButton::setPosition(float x, float y, float w, float h){
+    hitBox.set(x, y, w, h);
 }
 
 void SoundButton::update(float deltaTime, int curSound){
@@ -91,10 +94,14 @@ void SoundButton::draw(){
     
     ofScale(curScale*bounceScale, curScale*bounceScale);
     
-    icons.draw(idNum, curAlpha);
+    float linePrc =  isActive ? 2 : 1;
+    icons.draw(idNum, linePrc, curAlpha);
     
     ofPopMatrix();
     
+    ofNoFill();
+    ofSetColor(255,0,0);
+    ofDrawRectangle(hitBox);
     
 //    ofSetLineWidth(1);
 //    ofNoFill();

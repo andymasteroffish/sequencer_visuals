@@ -12,12 +12,12 @@ void StepModeIcons::setup(){
     timer = 0.5;
 }
 
-void StepModeIcons::draw(int idNum, int alpha){
+void StepModeIcons::draw(int idNum, float lineWidthPrc, int alpha){
     
     //defaults
     ofNoFill();
     ofSetColor(0, alpha);
-    ofSetLineWidth(1);
+    ofSetLineWidth(1 * lineWidthPrc);
     ofSetCircleResolution(20);
     
     w = 60;
@@ -29,21 +29,21 @@ void StepModeIcons::draw(int idNum, int alpha){
     //idNum = 14;
     
     //draw the thing
-    if (idNum == 0)     drawTunnel(alpha);
-    if (idNum == 1)     drawSweep(alpha);
-    if (idNum == 2)     drawTriangle(alpha);
-    if (idNum == 3)     drawGrapes(alpha);
-    if (idNum == 4)     drawBuckshot(alpha);
-    if (idNum == 5)     drawChaser(alpha);
-    if (idNum == 6)     drawSlash(alpha);
-    if (idNum == 7)     drawSquare(alpha);
-    if (idNum == 8)     drawTrapezoid(alpha);
-    if (idNum == 9)     drawDotPolygon(alpha);
-    if (idNum == 10)    drawSizzle(alpha);
-    if (idNum == 11)    drawDrunkTrianlge(alpha);
-    if (idNum == 12)    drawCrystal(alpha);
-    if (idNum == 13)    drawClap(alpha);
-    if (idNum == 14)    drawWaveColumn(alpha);
+    if (idNum == 0)     drawTunnel(lineWidthPrc, alpha);
+    if (idNum == 1)     drawSweep(lineWidthPrc, alpha);
+    if (idNum == 2)     drawTriangle(lineWidthPrc, alpha);
+    if (idNum == 3)     drawGrapes(lineWidthPrc, alpha);
+    if (idNum == 4)     drawBuckshot(lineWidthPrc, alpha);
+    if (idNum == 5)     drawChaser(lineWidthPrc, alpha);
+    if (idNum == 6)     drawSlash(lineWidthPrc, alpha);
+    if (idNum == 7)     drawSquare(lineWidthPrc, alpha);
+    if (idNum == 8)     drawTrapezoid(lineWidthPrc, alpha);
+    if (idNum == 9)     drawDotPolygon(lineWidthPrc, alpha);
+    if (idNum == 10)    drawSizzle(lineWidthPrc, alpha);
+    if (idNum == 11)    drawDrunkTrianlge(lineWidthPrc, alpha);
+    if (idNum == 12)    drawCrystal(lineWidthPrc, alpha);
+    if (idNum == 13)    drawClap(lineWidthPrc, alpha);
+    if (idNum == 14)    drawWaveColumn(lineWidthPrc, alpha);
     
     //guide
 //    ofNoFill();
@@ -56,28 +56,28 @@ void StepModeIcons::update(float deltaTime){
     timer += deltaTime;
 }
 
-void StepModeIcons::drawTunnel(int alpha){
+void StepModeIcons::drawTunnel(float lineWidthPrc, int alpha){
     float time = fmod( timer , 0.8);
     ofDrawCircle(0,0, 5 + time*25);
 }
 
-void StepModeIcons::drawSweep(int alpha){
+void StepModeIcons::drawSweep(float lineWidthPrc, int alpha){
     float maxTime = 0.5;
     float time = fmod( timer , maxTime);
     float prc = time/maxTime;
     
     float x = topX + prc * w;
-    ofSetLineWidth(2);
+    ofSetLineWidth(2 * lineWidthPrc);
     ofDrawLine(x, topY, x, topY+h);
     
-    ofSetLineWidth(1);
+    ofSetLineWidth(1 * lineWidthPrc);
     int trailLength = 10;
     for (int i=0; i<trailLength; i++){
         int thisX = x + i * -1;
-        int numDots = ofMap(i, 0, trailLength, 20, 1);
+        int numDots = ofMap(i, 0, trailLength, 10, 1);
         
         for (int k=0; k<numDots; k++){
-            float thisHeight = ofMap( ofNoise(timer, i*10, k), 0, 1, 1, h*0.5);//  ofRandom(1, h*0.5);
+            float thisHeight = ofMap( ofNoise(timer, i*10, k), 0, 1, 1, h*0.3);//  ofRandom(1, h*0.5);
             float thisY = ofMap( ofNoise(timer*4,10, i, k), 0, 1, topY, topY+h-thisHeight);// ofRandom(topY,topY+h-thisHeight);
             
             ofDrawLine(thisX, thisY, thisX, thisY+thisHeight);
@@ -88,7 +88,7 @@ void StepModeIcons::drawSweep(int alpha){
     
 }
 
-void StepModeIcons::drawTriangle(int alpha){
+void StepModeIcons::drawTriangle(float lineWidthPrc, int alpha){
     float angle = timer;
     float angleStep = TWO_PI/3;
     float dist = w*0.4;
@@ -101,7 +101,7 @@ void StepModeIcons::drawTriangle(int alpha){
     ofEndShape(true);
 }
 
-void StepModeIcons::drawGrapes(int alpha){
+void StepModeIcons::drawGrapes(float lineWidthPrc, int alpha){
     float maxTime = 1;
     float time = fmod( timer , maxTime);
     
@@ -136,7 +136,7 @@ void StepModeIcons::drawGrapes(int alpha){
     
 }
 
-void StepModeIcons::drawBuckshot(int alpha){
+void StepModeIcons::drawBuckshot(float lineWidthPrc, int alpha){
     float maxTime = 1;
     float time = fmod( timer , maxTime);
     
@@ -174,7 +174,7 @@ void StepModeIcons::drawBuckshot(int alpha){
     
 }
 
-void StepModeIcons::drawChaser(int alpha){
+void StepModeIcons::drawChaser(float lineWidthPrc, int alpha){
     float maxTime = 0.7;
     float time = fmod( timer , maxTime);
     float prc = time/maxTime;
@@ -188,9 +188,9 @@ void StepModeIcons::drawChaser(int alpha){
     for (int i=0; i<numPoints; i++){
         
         if (curHighligh==i){
-            ofSetLineWidth(4);
+            ofSetLineWidth(4 * lineWidthPrc);
         }else{
-            ofSetLineWidth(1);
+            ofSetLineWidth(1 * lineWidthPrc);
         }
         
         float angle1 = i*angleStep;
@@ -207,14 +207,14 @@ void StepModeIcons::drawChaser(int alpha){
     
 }
 
-void StepModeIcons::drawSlash(int alpha){
+void StepModeIcons::drawSlash(float lineWidthPrc, int alpha){
     float maxTime = 0.7;
     float time = fmod( timer , maxTime);
     
     float angles[] = {PI/4, TWO_PI*0.8};
     ofVec2f center(0,0);
     
-    ofSetLineWidth(4);
+    ofSetLineWidth(4 * lineWidthPrc);
     
     //draw the center
     ofFill();
@@ -253,7 +253,7 @@ void StepModeIcons::drawSlash(int alpha){
     
 }
 
-void StepModeIcons::drawSquare(int alpha){
+void StepModeIcons::drawSquare(float lineWidthPrc, int alpha){
     float maxTime = 0.9;
     float time = fmod( timer , maxTime);
     float prc = CLAMP(time/(maxTime*0.5), 0, 1);
@@ -269,7 +269,7 @@ void StepModeIcons::drawSquare(int alpha){
     ofTranslate(-w*0.12, 0);
     ofRotate(thisAngle);
     
-    ofSetLineWidth(2);
+    ofSetLineWidth(2 * lineWidthPrc);
     ofDrawRectangle(0, -rectSize, rectSize, rectSize);
     
     ofPopMatrix();
@@ -278,7 +278,7 @@ void StepModeIcons::drawSquare(int alpha){
     
 }
 
-void StepModeIcons::drawTrapezoid(int alpha){
+void StepModeIcons::drawTrapezoid(float lineWidthPrc, int alpha){
     
     float maxTime = 0.6;
     float time = fmod( timer , maxTime);
@@ -303,7 +303,7 @@ void StepModeIcons::drawTrapezoid(int alpha){
     
 }
 
-void StepModeIcons::drawDotPolygon(int alpha){
+void StepModeIcons::drawDotPolygon(float lineWidthPrc, int alpha){
     
     int numDots = 5;
     ofVec2f pnts[5];
@@ -317,7 +317,7 @@ void StepModeIcons::drawDotPolygon(int alpha){
     }
     
     ofSetColor(0, alpha);
-    ofSetLineWidth(1);
+    ofSetLineWidth(1 * lineWidthPrc);
     for (int i=1; i<numDots; i++){
         ofDrawLine(pnts[i-1].x, pnts[i-1].y, pnts[i].x, pnts[i].y);
     }
@@ -331,14 +331,14 @@ void StepModeIcons::drawDotPolygon(int alpha){
         ofDrawCircle(pnts[i].x, pnts[i].y, circleSize);
         
         ofSetColor(0, alpha);
-        ofSetLineWidth(1);
+        ofSetLineWidth(1 * lineWidthPrc);
         ofNoFill();
         ofDrawCircle(pnts[i].x, pnts[i].y, circleSize);
     }
     
 }
 
-void StepModeIcons::drawSizzle(int alpha){
+void StepModeIcons::drawSizzle(float lineWidthPrc, int alpha){
     
     int numDots = 15;
     ofVec2f pnts[15];
@@ -362,7 +362,7 @@ void StepModeIcons::drawSizzle(int alpha){
     
 }
 
-void StepModeIcons::drawDrunkTrianlge(int alpha){
+void StepModeIcons::drawDrunkTrianlge(float lineWidthPrc, int alpha){
     
     float maxTime = 1.2;
     float time = fmod( timer , maxTime);
@@ -413,7 +413,7 @@ void StepModeIcons::drawDrunkTrianlge(int alpha){
     
 }
 
-void StepModeIcons::drawCrystal(int alpha){
+void StepModeIcons::drawCrystal(float lineWidthPrc, int alpha){
     
     float angle = timer;
     float angleStep = TWO_PI/3;
@@ -433,7 +433,7 @@ void StepModeIcons::drawCrystal(int alpha){
     }
 }
 
-void StepModeIcons::drawClap(int alpha){
+void StepModeIcons::drawClap(float lineWidthPrc, int alpha){
     float maxTime = 0.6;
     float time = fmod( timer , maxTime);
     float prc = time/maxTime;
@@ -455,13 +455,13 @@ void StepModeIcons::drawClap(int alpha){
     pntB.y = bottom.y + sin(-angle - PI/2) * pntDist;
     
 
-    ofSetLineWidth(2);
+    ofSetLineWidth(2 * lineWidthPrc);
     ofDrawLine(bottom, pntA);
     ofDrawLine(bottom, pntB);
     
 }
 
-void StepModeIcons::drawWaveColumn(int alpha){
+void StepModeIcons::drawWaveColumn(float lineWidthPrc, int alpha){
     
     int numPnts = 50;
     ofVec2f pnts[50];
@@ -472,7 +472,7 @@ void StepModeIcons::drawWaveColumn(int alpha){
     float pntSpacing = boxH/(numPnts/2);
     
     float waveZoom = 0.6;
-    float waveSpeed = 1;
+    float waveSpeed = 4;
     float waveAmount = w*0.1;
     
     //set the base points

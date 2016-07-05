@@ -91,6 +91,10 @@ void Sequencer::setup(){
         beatMarkers[i].setup(normX, stepX, ofGetHeight()-beatYDistFromBottom);
     }
     
+    for (int i=0; i<NUM_SOUNDS; i++){
+        soundButtons[i].setup(i, whiteVal);
+    }
+    
     //fucking aorund
     visualEffectNum = 0;
     setVisualEffect();
@@ -578,8 +582,7 @@ void Sequencer::setTouchButtons(){
     //sound buttons for step mode
     float soundSpacing = (ofGetWidth()-buttonW) / NUM_SOUNDS;
     for (int i=0; i<NUM_SOUNDS; i++){
-        soundButtons[i].setup(soundSpacing*i, 10, soundSpacing, soundSpacing, i);
-        soundButtons[i].icons.whiteVal = whiteVal;
+        soundButtons[i].setPosition(soundSpacing*i, 10, soundSpacing, soundSpacing);
     }
     
     //the step mode buttons

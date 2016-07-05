@@ -17,7 +17,8 @@ class SoundButton{
     
 public:
   
-    void setup(float x, float y, float w, float h, int _idNum);
+    void setup(int _idNum, int whiteVal);
+    void setPosition(float x, float y, float w, float h);
     void update(float deltaTime, int curSound);
     void draw();
     bool checkHit(int x, int y);
