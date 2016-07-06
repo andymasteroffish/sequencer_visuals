@@ -85,12 +85,6 @@ void Sequencer::setup(){
     
     float stepModeBeatSpacing = ofGetWidth()/(NUM_BEATS);
     
-    for (int i=0; i<NUM_BEATS; i++){
-        float normX = beatXPadding+beatXSpacing*i;
-        float stepX = stepModeBeatSpacing/2 + stepModeBeatSpacing*i;
-        beatMarkers[i].setup(normX, stepX, ofGetHeight()-beatYDistFromBottom);
-    }
-    
     for (int i=0; i<NUM_SOUNDS; i++){
         soundButtons[i].setup(i, whiteVal);
     }
@@ -99,8 +93,8 @@ void Sequencer::setup(){
     visualEffectNum = 0;
     setVisualEffect();
     
-    //setting up iOS touch buttons
-    setTouchButtons();
+    //setting the locaitonof buttons based on screen size
+    setButtonPositions();
     
     string text[3] = {"Live", "Step", "Clear"};
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
@@ -541,20 +535,19 @@ void Sequencer::touchDown(int x, int y){
 
 //--------------------------------------------------------------
 void Sequencer::windowResized(int w, int h){
-    //set the markers
-    float beatXPadding = (ofGetWidth()-(beatXSpacing*NUM_BEATS))/2;
-    float stepModeBeatSpacing = ofGetWidth()/NUM_BEATS;
-    for (int i=0; i<NUM_BEATS; i++){
-        beatMarkers[i].pos.y = ofGetHeight()-beatYDistFromBottom;
-        beatMarkers[i].normX = beatXPadding+beatXSpacing*i;
-        beatMarkers[i].stepModeX = stepModeBeatSpacing/2 + stepModeBeatSpacing*i;
-    }
-    
-    setTouchButtons();
+    setButtonPositions();
 }
 
 //--------------------------------------------------------------
-void Sequencer::setTouchButtons(){
+void Sequencer::setButtonPositions(){
+    
+    float beatXPadding = beatXSpacing/2 + (ofGetWidth()-(beatXSpacing*NUM_BEATS))/2;
+    float stepModeBeatSpacing = ofGetWidth()/NUM_BEATS;
+    for (int i=0; i<NUM_BEATS; i++){
+        float normX = beatXPadding+beatXSpacing*i;
+        float stepX = stepModeBeatSpacing/2 + stepModeBeatSpacing*i;
+        beatMarkers[i].setup(normX, stepX, ofGetHeight()-beatYDistFromBottom);
+    }
     
     int buttonW = ofGetWidth()/8;
     int buttonH = ofGetHeight()/2;

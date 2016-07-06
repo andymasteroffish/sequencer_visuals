@@ -51,7 +51,7 @@ public:
     void keyPressed(int key);
     void touchDown(int x, int y);
     void windowResized(int w, int h);
-    void setTouchButtons();
+    void setButtonPositions();
     
     void makeNewHit(int idNum);
     
