@@ -32,6 +32,7 @@ void Sequencer::setup(){
     gameH = ofGetHeight();
     
     if (usingIPad){
+        cout<<"it ipad"<<endl;
         gameW = ofGetWidth()/2;
         gameH = ofGetHeight()/2;
     }

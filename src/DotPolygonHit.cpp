@@ -123,11 +123,12 @@ void DotPolygonHit::draw(){
     }
     
     ofFill();
+    
     for (int i=0; i<numPoints; i++){
         ofSetColor(0);
         ofDrawCircle(points[i].x, points[i].y, pointSize[i]);
         ofSetColor(whiteVal);
-        ofDrawCircle(points[i].x, points[i].y, pointSize[i]*0.6);
+        ofDrawCircle(points[i].x, points[i].y, pointSize[i]*0.75);
     }
 }
 
