@@ -96,7 +96,7 @@ void Sequencer::setup(){
     //setting the locaitonof buttons based on screen size
     setButtonPositions();
     
-    string text[3] = {"Live", "Step", "Clear"};
+    string text[NUM_TOUCH_MENU_BUTTONS] = {"Live", "Step", "Clear", "-", "+"};
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
         touchMenuButtons[i].setText(text[i], &buttonFont);
     }
@@ -163,6 +163,10 @@ void Sequencer::update(){
         float targetY = menuButtonH * i;
         if (stepMode)   targetY = menuButtonH * (i-1);
         
+        if (i==NUM_TOUCH_MENU_BUTTONS-1){    //both tempo buttons should be on the same Y plane
+            targetY -= menuButtonH;
+        }
+        
         float xeno = 0.85;
         touchMenuButtons[i].box.y = xeno * touchMenuButtons[i].box.y + (1-xeno) * targetY;
         
@@ -187,8 +191,7 @@ void Sequencer::update(){
 //--------------------------------------------------------------
 void Sequencer::draw(){
     
-    //iOS buttons
-//#ifdef USING_IOS
+    //touch buttons
     ofEnableAlphaBlending();
     if (!stepMode){
         for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
@@ -382,7 +385,7 @@ void Sequencer::keyPressed(int key){
     
     if (key == OF_KEY_UP){
         bpmValue += 10;
-        bpmValue = MIN(bpmValue, 400);
+        bpmValue = MIN(bpmValue, 500);
         bpm.setBpm(bpmValue);
     }
     if (key == OF_KEY_DOWN){
@@ -520,13 +523,25 @@ void Sequencer::touchDown(int x, int y){
                 setRecording(!recording);
             }
             
-            if ( i== 1){
+            if (i == 1){
                 setStepMode(!stepMode);
             }
             
-            if ( i==2 ){
+            if (i == 2){
                 clearBeats();
             }
+            
+            if (i == 3){
+                bpmValue -= 10;
+                bpmValue = MAX(bpmValue, 50);
+                bpm.setBpm(bpmValue);
+            }
+            if (i == 4){
+                bpmValue += 10;
+                bpmValue = MIN(bpmValue, 500);
+                bpm.setBpm(bpmValue);
+            }
+            cout<<"bpm: "<<bpmValue<<endl;
             
         }
     }
@@ -564,13 +579,19 @@ void Sequencer::setButtonPositions(){
     }
     
     //the three menu buttons fo in the top right
-    menuButtonH = buttonH / 3;
+    menuButtonH = buttonH / 4;
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
         string oldText = touchMenuButtons[i].text;
         ofTrueTypeFont * oldFont = touchMenuButtons[i].font;
-        touchMenuButtons[i].setup(ofGetWidth() - buttonW, i * menuButtonH, buttonW, menuButtonH);
+        if (i < 3){
+            touchMenuButtons[i].setup(ofGetWidth() - buttonW, i * menuButtonH, buttonW, menuButtonH);
+        }else{
+            float tempoX = i==3 ? ofGetWidth() - buttonW : ofGetWidth() - buttonW/2;
+            touchMenuButtons[i].setup(tempoX, 3 * menuButtonH, buttonW/2, menuButtonH);
+        }
         touchMenuButtons[i].setText(oldText, oldFont);
     }
+    
     
     //sound buttons for step mode
     float soundSpacing = (ofGetWidth()-buttonW) / NUM_SOUNDS;

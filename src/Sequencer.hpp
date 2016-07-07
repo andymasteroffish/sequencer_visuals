@@ -123,7 +123,7 @@ public:
     //ios
 #define NUM_TOUCH_BUTTONS 15
     TouchGeneralButton touchButtons[NUM_TOUCH_BUTTONS];
-#define NUM_TOUCH_MENU_BUTTONS 3
+#define NUM_TOUCH_MENU_BUTTONS 5
     TouchGeneralButton touchMenuButtons[NUM_TOUCH_MENU_BUTTONS];
     float menuButtonH;
     
