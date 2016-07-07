@@ -206,6 +206,15 @@ void Sequencer::draw(){
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
         touchMenuButtons[i].draw();
     }
+    //write the bpm
+    ofSetColor(0);
+    string bpmText = ofToString( (int)bpmValue);
+    float textW = buttonFont.stringWidth(bpmText);
+    ofPushMatrix();
+    ofTranslate(touchMenuButtons[3].box.x+touchMenuButtons[3].box.width, touchButtons[3].box.y+touchButtons[3].box.height-10);
+    ofScale(0.5,0.5);
+    buttonFont.drawString(bpmText, -textW/2, 0);
+    ofPopMatrix();
     
     for (int i=0; i<NUM_SOUNDS; i++){
         soundButtons[i].draw();
@@ -541,7 +550,6 @@ void Sequencer::touchDown(int x, int y){
                 bpmValue = MIN(bpmValue, 500);
                 bpm.setBpm(bpmValue);
             }
-            cout<<"bpm: "<<bpmValue<<endl;
             
         }
     }

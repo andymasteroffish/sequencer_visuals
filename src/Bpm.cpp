@@ -26,7 +26,7 @@ void Bpm::setPreHitPrcSpacing(float prc){
 
 void Bpm::setBpm(float newBpm){
     millisBetweenBeats = 60000 / newBpm;
-    nextBeatTime = ofGetElapsedTimeMillis() - (ofGetElapsedTimeMillis()%millisBetweenBeats);
+    nextBeatTime = ofGetElapsedTimeMillis() - (ofGetElapsedTimeMillis()%millisBetweenBeats) + millisBetweenBeats;
     preHitMilliRange = millisBetweenBeats * preHitPrc;
 }
 
