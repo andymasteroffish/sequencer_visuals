@@ -47,7 +47,7 @@ void SweepHit::updateCustom(){
 void SweepHit::draw(){
     
     ofSetColor(0);
-    ofSetLineWidth(1);
+    ofSetLineWidth(1 * lineWidthPrc);
     
     ofDrawLine(xPos, 0, xPos, gameH);
     

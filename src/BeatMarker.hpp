@@ -14,7 +14,7 @@
 class BeatMarker{
 public:
     
-    void setup(float x, float _stepModeX, float y);
+    void setup(float x, float _stepModeX, float y, bool usingIpad);
     void update(float deltaTime, bool stepModeOn);
     void triggerBeat();
     void triggerClear();

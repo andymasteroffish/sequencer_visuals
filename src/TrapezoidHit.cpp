@@ -113,7 +113,7 @@ void TrapezoidHit::updateCustom(){
 void TrapezoidHit::draw(){
     
     ofSetColor(0);
-    ofSetLineWidth(2);
+    ofSetLineWidth(2 * lineWidthPrc);
     
     ofPushMatrix();
     
@@ -129,7 +129,7 @@ void TrapezoidHit::draw(){
     ofDrawLine(botRight, botLeft);
     ofDrawLine(botLeft, topLeft);
     
-    ofSetLineWidth(1);
+    ofSetLineWidth(1 * lineWidthPrc);
     for (int i=0; i<lines.size(); i++){
         lines[i].draw();
     }

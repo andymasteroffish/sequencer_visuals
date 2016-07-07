@@ -49,7 +49,7 @@ void TunnelHit::updateCustom(){
 void TunnelHit::draw(){
     ofSetCircleResolution(40);
     ofSetColor(0);
-    ofSetLineWidth(2);
+    ofSetLineWidth(2 * lineWidthPrc);
     ofNoFill();
     
     ofDrawCircle(pos.x, pos.y, size);

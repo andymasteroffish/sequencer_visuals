@@ -72,7 +72,7 @@ void SizzleHit::draw(){
     ofTranslate(pos);
     
     ofSetColor(0);
-    ofSetLineWidth(1);
+    ofSetLineWidth(1 * lineWidthPrc);
     
     if (timer <= pauseTime){
         for (int i=0; i<numPoints-1; i++){

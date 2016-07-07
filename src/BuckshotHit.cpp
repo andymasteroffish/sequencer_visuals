@@ -25,7 +25,7 @@ void BuckshotHit::setupCustom(){
         float dist = ofRandom(range);
         float thisX = centerX + cos(angle) * dist;
         float thisY = centerY + sin(angle) * dist;
-        shots[i].setup(thisX, thisY, ofRandom(0,0.1));
+        shots[i].setup(thisX, thisY, ofRandom(0,0.1), lineWidthPrc);
     }
     
     

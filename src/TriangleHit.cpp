@@ -75,7 +75,7 @@ void TriangleHit::updateCustom(){
 }
 void TriangleHit::draw(){
     ofSetColor(0);
-    ofSetLineWidth(2);
+    ofSetLineWidth(2 * lineWidthPrc);
     
     ofPushMatrix();
     

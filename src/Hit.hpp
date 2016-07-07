@@ -16,7 +16,7 @@
 class Hit{
 public:
     
-    void setup(int _gameW, int _gameH, int _whiteVal);
+    void setup(int _gameW, int _gameH, int _whiteVal, bool usingiPad);
     virtual void setupCustom(){}
     void update(float _deltaTime);
     virtual void updateCustom(){}
@@ -36,6 +36,8 @@ public:
     
     //for messing with visuals
     float zVal;
+    
+    float lineWidthPrc;
     
     
 };

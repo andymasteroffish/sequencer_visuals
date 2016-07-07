@@ -34,7 +34,7 @@ void GrapesHit::setupCustom(){
         pos.y += sin(curAngle) * dist;
         
         
-        grapes[i].setup(pos, timeSpacing*i);
+        grapes[i].setup(pos, timeSpacing*i, lineWidthPrc);
     }
     
 }

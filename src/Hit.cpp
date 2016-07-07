@@ -9,11 +9,13 @@
 #include "Hit.hpp"
 
 
-void Hit::setup(int _gameW, int _gameH, int _whiteVal){
+void Hit::setup(int _gameW, int _gameH, int _whiteVal, bool usingiPad){
     gameW = _gameW;
     gameH = _gameH;
     
     whiteVal = _whiteVal;
+    
+    lineWidthPrc = usingiPad ? 2 : 1;
     
     killMe = false;
     

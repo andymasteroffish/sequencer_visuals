@@ -116,7 +116,7 @@ void DotPolygonHit::draw(){
     
     
     ofSetColor(0);
-    ofSetLineWidth(1);
+    ofSetLineWidth(1 * lineWidthPrc);
     ofSetCircleResolution(20);
     for (int i=0; i<numPoints; i++){
         lines[i].draw();

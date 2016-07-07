@@ -108,7 +108,7 @@ void CrystalHit::draw(){
     ofRotate(angle);
     
     ofSetColor(0);
-    ofSetLineWidth(2);
+    ofSetLineWidth(2 * lineWidthPrc);
     
     for (int i=0; i<6; i++){
         lines[i].draw();

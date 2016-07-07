@@ -69,9 +69,9 @@ void ChaserHit::draw(){
         int pointsToFill = numPoints * prc;
         for (int i=0; i<pointsToFill && i <points.size(); i++){
             if (i == pointsToFill-1){
-                ofSetLineWidth(4);
+                ofSetLineWidth(4 * lineWidthPrc);
             }else{
-                ofSetLineWidth(1);
+                ofSetLineWidth(1 * lineWidthPrc);
             }
             
             if (i < points.size()-1){
@@ -87,9 +87,9 @@ void ChaserHit::draw(){
         int highlightSection = numPoints * prc;
         for (int i=0; i<points.size(); i++){
             if (i == highlightSection){
-                ofSetLineWidth(4);
+                ofSetLineWidth(4 * lineWidthPrc);
             }else{
-                ofSetLineWidth(1);
+                ofSetLineWidth(1 * lineWidthPrc);
             }
             
             if (i < points.size()-1){
@@ -106,9 +106,9 @@ void ChaserHit::draw(){
         int highlightSection = numPoints * prc;
         for (int i=highlightSection; i<points.size(); i++){
             if (i == highlightSection){
-                ofSetLineWidth(4);
+                ofSetLineWidth(4 * lineWidthPrc);
             }else{
-                ofSetLineWidth(1);
+                ofSetLineWidth(1 * lineWidthPrc);
             }
             
             if (i < points.size()-1){

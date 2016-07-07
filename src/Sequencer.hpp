@@ -66,6 +66,10 @@ public:
     
     void setVisualEffect();
     
+    //some generla stuff
+    bool usingIPad;
+    int gameW, gameH;
+    
     //states and such?
     bool publicRelease;
     bool autoPlay;

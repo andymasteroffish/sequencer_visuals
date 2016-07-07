@@ -23,6 +23,20 @@ void Sequencer::setup(){
     }
 #endif
     
+    cout<<ofGetWidth()<<" x "<<ofGetHeight()<<endl;
+    
+    //the iPad screen is bug enough that we really need to scale everything up
+    usingIPad = ofGetWidth() > 2000;
+    
+    gameW = ofGetWidth();
+    gameH = ofGetHeight();
+    
+    if (usingIPad){
+        gameW = ofGetWidth()/2;
+        gameH = ofGetHeight()/2;
+    }
+    
+    
     publicRelease = false;
     
     useNumpadKeys = false;
@@ -81,9 +95,10 @@ void Sequencer::setup(){
     //set the markers
     beatXSpacing = 40;
     beatYDistFromBottom = 40;
-    float beatXPadding = (ofGetWidth()-(beatXSpacing*NUM_BEATS))/2;
-    
-    float stepModeBeatSpacing = ofGetWidth()/(NUM_BEATS);
+    if (usingIPad){
+        beatXSpacing *= 2;
+        beatYDistFromBottom *= 2;
+    }
     
     for (int i=0; i<NUM_SOUNDS; i++){
         soundButtons[i].setup(i, whiteVal);
@@ -212,7 +227,8 @@ void Sequencer::draw(){
     float textW = buttonFont.stringWidth(bpmText);
     ofPushMatrix();
     ofTranslate(touchMenuButtons[3].box.x+touchMenuButtons[3].box.width, touchButtons[3].box.y+touchButtons[3].box.height-10);
-    ofScale(0.5,0.5);
+    float bpmTextScale = usingIPad ? 1 : 0.5;
+    ofScale(bpmTextScale,bpmTextScale);
     buttonFont.drawString(bpmText, -textW/2, 0);
     ofPopMatrix();
     
@@ -254,6 +270,12 @@ void Sequencer::draw(){
         ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2);
     }
     
+    //dealing with blowing things up on iPad
+    if (usingIPad){
+        ofPushMatrix();
+        ofScale(2, 2);
+    }
+    
     for (int i=0; i<hits.size(); i++){
         if (doCamMovement){
             ofPushMatrix();
@@ -265,6 +287,10 @@ void Sequencer::draw(){
         if (doCamMovement){
             ofPopMatrix();
         }
+    }
+    
+    if (usingIPad){
+        ofPopMatrix();
     }
     
     if (doCamMovement){
@@ -558,6 +584,9 @@ void Sequencer::touchDown(int x, int y){
 
 //--------------------------------------------------------------
 void Sequencer::windowResized(int w, int h){
+    gameW = ofGetWidth();
+    gameH = ofGetHeight();
+    
     setButtonPositions();
 }
 
@@ -569,7 +598,7 @@ void Sequencer::setButtonPositions(){
     for (int i=0; i<NUM_BEATS; i++){
         float normX = beatXPadding+beatXSpacing*i;
         float stepX = stepModeBeatSpacing/2 + stepModeBeatSpacing*i;
-        beatMarkers[i].setup(normX, stepX, ofGetHeight()-beatYDistFromBottom);
+        beatMarkers[i].setup(normX, stepX, ofGetHeight()-beatYDistFromBottom, usingIPad);
     }
     
     int buttonW = ofGetWidth()/8;
@@ -653,7 +682,7 @@ void Sequencer::makeNewHit(int idNum){
         if (idNum == 13)     thisHit = new ClapHit();
         if (idNum == 14)     thisHit = new WaveColumnHit();
         
-        thisHit->setup(ofGetWidth(), ofGetHeight(), whiteVal);
+        thisHit->setup(gameW, gameH, whiteVal, usingIPad);
         
         hits.push_back(thisHit);
     }

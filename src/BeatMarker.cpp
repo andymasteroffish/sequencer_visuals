@@ -9,7 +9,7 @@
 #include "BeatMarker.hpp"
 
 
-void BeatMarker::setup(float x, float _stepModeX, float y){
+void BeatMarker::setup(float x, float _stepModeX, float y, bool usingIpad){
     
     normX = x;
     stepModeX = _stepModeX;
@@ -18,6 +18,8 @@ void BeatMarker::setup(float x, float _stepModeX, float y){
     pos.set(x,y);
     
     normSize = 10;
+    if (usingIpad)  normSize *= 2;
+    
     pulseSize = normSize * 2;
     
     pulseTime = 0.15;

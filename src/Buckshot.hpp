@@ -14,7 +14,7 @@
 class Buckshot{
 public:
     
-    void setup(float x, float y, float delayTime);
+    void setup(float x, float y, float delayTime, float _lineWidthPrc);
     void update(float deltaTime);
     void draw();
     
@@ -28,6 +28,8 @@ public:
     float startSize, normSize, popSize;
     
     bool isDone;
+    
+    float lineWidthPrc;
     
 };
 
