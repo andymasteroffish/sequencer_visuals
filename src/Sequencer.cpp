@@ -56,6 +56,7 @@ void Sequencer::setup(){
     ofBackground(whiteVal);
     
     showHelp = false;
+    showTouchButtons = true;
     
     bpmValue = 160;
     bpmStartValue = bpmValue;
@@ -208,36 +209,37 @@ void Sequencer::update(){
 void Sequencer::draw(){
     
     //touch buttons
-    ofEnableAlphaBlending();
-    if (!stepMode){
-        for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
-            touchButtons[i].draw();
+    if (showTouchButtons){
+        ofEnableAlphaBlending();
+        if (!stepMode){
+            for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
+                touchButtons[i].draw();
+            }
+        }else{
+            for (int i=0; i<NUM_BEATS; i++){
+                touchStepButtons[i].draw();
+            }
         }
-    }else{
-        for (int i=0; i<NUM_BEATS; i++){
-            touchStepButtons[i].draw();
+        
+        for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
+            touchMenuButtons[i].draw();
         }
+        //write the bpm
+        ofSetColor(0);
+        string bpmText = ofToString( (int)bpmValue);
+        float textW = buttonFont.stringWidth(bpmText);
+        ofPushMatrix();
+        ofTranslate(touchMenuButtons[3].box.x+touchMenuButtons[3].box.width, touchButtons[3].box.y+touchButtons[3].box.height-10);
+        float bpmTextScale = usingIPad ? 1 : 0.5;
+        ofScale(bpmTextScale,bpmTextScale);
+        buttonFont.drawString(bpmText, -textW/2, 0);
+        ofPopMatrix();
+        
+        for (int i=0; i<NUM_SOUNDS; i++){
+            soundButtons[i].draw();
+        }
+        ofDisableAlphaBlending();
     }
-    
-    for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
-        touchMenuButtons[i].draw();
-    }
-    //write the bpm
-    ofSetColor(0);
-    string bpmText = ofToString( (int)bpmValue);
-    float textW = buttonFont.stringWidth(bpmText);
-    ofPushMatrix();
-    ofTranslate(touchMenuButtons[3].box.x+touchMenuButtons[3].box.width, touchButtons[3].box.y+touchButtons[3].box.height-10);
-    float bpmTextScale = usingIPad ? 1 : 0.5;
-    ofScale(bpmTextScale,bpmTextScale);
-    buttonFont.drawString(bpmText, -textW/2, 0);
-    ofPopMatrix();
-    
-    for (int i=0; i<NUM_SOUNDS; i++){
-        soundButtons[i].draw();
-    }
-    ofDisableAlphaBlending();
-//#endif
     
     
     //shader stuff
@@ -392,6 +394,9 @@ void Sequencer::keyPressed(int key){
     //cout<<"key "<<key<<endl;
     if (key == 'h' || key == 'H'){
         showHelp = !showHelp;
+    }
+    if (key == 'j' || key == 'J'){
+        showTouchButtons = !showTouchButtons;
     }
     if (key == 's'){
         setStepMode(!stepMode);

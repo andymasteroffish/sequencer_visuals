@@ -87,6 +87,7 @@ public:
     //drawing
     int whiteVal;
     bool showHelp;
+    bool showTouchButtons;
     
     //tracking hits
     vector<Hit *> hits;
