@@ -17,6 +17,8 @@
 #include "BeatMarker.hpp"
 #include "StepModeIcons.hpp"
 
+#include "AboutScreen.hpp"
+
 #include "Hit.hpp"
 #include "TunnelHit.hpp"
 #include "SweepHit.hpp"
@@ -124,6 +126,9 @@ public:
     
     //fonts
     ofTrueTypeFont buttonFont;
+    
+    //about screen
+    AboutScreen aboutScreen;
     
     //touch buttons
 #define NUM_TOUCH_BUTTONS 15

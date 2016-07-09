@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5706279D1D26FFFF00136FF1 /* SoundButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570627991D26FFFF00136FF1 /* SoundButton.cpp */; };
 		5706279E1D26FFFF00136FF1 /* TouchGeneralButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5706279B1D26FFFF00136FF1 /* TouchGeneralButton.cpp */; };
+		570A78801D316A1100180598 /* BounceWord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570A787E1D316A1100180598 /* BounceWord.cpp */; };
+		570A78831D316C1700180598 /* AboutScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570A78811D316C1700180598 /* AboutScreen.cpp */; };
+		570A78861D31759800180598 /* FillCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570A78841D31759800180598 /* FillCircle.cpp */; };
 		575B123F1D22BFDA00B0CAF6 /* BeatMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12111D22BFDA00B0CAF6 /* BeatMarker.cpp */; };
 		575B12401D22BFDA00B0CAF6 /* Buckshot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12131D22BFDA00B0CAF6 /* Buckshot.cpp */; };
 		575B12411D22BFDA00B0CAF6 /* BuckshotHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12151D22BFDA00B0CAF6 /* BuckshotHit.cpp */; };
@@ -71,6 +74,12 @@
 		5706279A1D26FFFF00136FF1 /* SoundButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SoundButton.hpp; path = ../../src/SoundButton.hpp; sourceTree = "<group>"; };
 		5706279B1D26FFFF00136FF1 /* TouchGeneralButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TouchGeneralButton.cpp; path = ../../src/TouchGeneralButton.cpp; sourceTree = "<group>"; };
 		5706279C1D26FFFF00136FF1 /* TouchGeneralButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TouchGeneralButton.hpp; path = ../../src/TouchGeneralButton.hpp; sourceTree = "<group>"; };
+		570A787E1D316A1100180598 /* BounceWord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BounceWord.cpp; path = ../../src/BounceWord.cpp; sourceTree = "<group>"; };
+		570A787F1D316A1100180598 /* BounceWord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BounceWord.hpp; path = ../../src/BounceWord.hpp; sourceTree = "<group>"; };
+		570A78811D316C1700180598 /* AboutScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AboutScreen.cpp; path = ../../src/AboutScreen.cpp; sourceTree = "<group>"; };
+		570A78821D316C1700180598 /* AboutScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AboutScreen.hpp; path = ../../src/AboutScreen.hpp; sourceTree = "<group>"; };
+		570A78841D31759800180598 /* FillCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FillCircle.cpp; path = ../../src/FillCircle.cpp; sourceTree = "<group>"; };
+		570A78851D31759800180598 /* FillCircle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FillCircle.hpp; path = ../../src/FillCircle.hpp; sourceTree = "<group>"; };
 		575B12111D22BFDA00B0CAF6 /* BeatMarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BeatMarker.cpp; path = ../../src/BeatMarker.cpp; sourceTree = "<group>"; };
 		575B12121D22BFDA00B0CAF6 /* BeatMarker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BeatMarker.hpp; path = ../../src/BeatMarker.hpp; sourceTree = "<group>"; };
 		575B12131D22BFDA00B0CAF6 /* Buckshot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Buckshot.cpp; path = ../../src/Buckshot.cpp; sourceTree = "<group>"; };
@@ -140,6 +149,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		570A787D1D3169F800180598 /* about */ = {
+			isa = PBXGroup;
+			children = (
+				570A78821D316C1700180598 /* AboutScreen.hpp */,
+				570A78811D316C1700180598 /* AboutScreen.cpp */,
+				570A787F1D316A1100180598 /* BounceWord.hpp */,
+				570A787E1D316A1100180598 /* BounceWord.cpp */,
+				570A78851D31759800180598 /* FillCircle.hpp */,
+				570A78841D31759800180598 /* FillCircle.cpp */,
+			);
+			name = about;
+			sourceTree = "<group>";
+		};
 		575B12561D22C01500B0CAF6 /* project */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +170,7 @@
 				575B12571D22C02800B0CAF6 /* Hits */,
 				575B12581D22C02F00B0CAF6 /* Tools */,
 				575B12591D22C09400B0CAF6 /* Markers */,
+				570A787D1D3169F800180598 /* about */,
 				57C9BA631D2C46DE006E20B3 /* Bpm.hpp */,
 				57C9BA621D2C46DE006E20B3 /* Bpm.cpp */,
 			);
@@ -372,11 +395,13 @@
 				575B12501D22BFDA00B0CAF6 /* StepModeIcons.cpp in Sources */,
 				575B12401D22BFDA00B0CAF6 /* Buckshot.cpp in Sources */,
 				575B12451D22BFDA00B0CAF6 /* DotPolygonHit.cpp in Sources */,
+				570A78801D316A1100180598 /* BounceWord.cpp in Sources */,
 				575B12471D22BFDA00B0CAF6 /* Grape.cpp in Sources */,
 				575B12551D22BFDA00B0CAF6 /* WaveColumnHit.cpp in Sources */,
 				575B12491D22BFDA00B0CAF6 /* Hit.cpp in Sources */,
 				575B12541D22BFDA00B0CAF6 /* TunnelHit.cpp in Sources */,
 				5706279D1D26FFFF00136FF1 /* SoundButton.cpp in Sources */,
+				570A78831D316C1700180598 /* AboutScreen.cpp in Sources */,
 				575B124F1D22BFDA00B0CAF6 /* SquareHit.cpp in Sources */,
 				575B12531D22BFDA00B0CAF6 /* TriangleHit.cpp in Sources */,
 				575B123F1D22BFDA00B0CAF6 /* BeatMarker.cpp in Sources */,
@@ -385,6 +410,7 @@
 				575B12521D22BFDA00B0CAF6 /* TrapezoidHit.cpp in Sources */,
 				57C9BA641D2C46DE006E20B3 /* Bpm.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				570A78861D31759800180598 /* FillCircle.cpp in Sources */,
 				575B12431D22BFDA00B0CAF6 /* ClapHit.cpp in Sources */,
 				575B12411D22BFDA00B0CAF6 /* BuckshotHit.cpp in Sources */,
 				575B12441D22BFDA00B0CAF6 /* CrystalHit.cpp in Sources */,

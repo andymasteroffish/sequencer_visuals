@@ -94,6 +94,8 @@ void Sequencer::setup(){
     //fonts
     buttonFont.load("Futura.ttf", 25);
     
+    aboutScreen.setup(whiteVal, usingIPad);
+    
     //set the markers
     beatXSpacing = 40;
     beatYDistFromBottom = 40;
@@ -164,6 +166,8 @@ void Sequencer::update(){
             hits.erase(hits.begin()+i);
         }
     }
+    
+    aboutScreen.update(deltaTime);
     
     //update the markers
     for (int i=0; i<NUM_BEATS; i++){
@@ -325,15 +329,7 @@ void Sequencer::draw(){
     
     shader.end();
     
-//    //are we in step mode?
-//    if (stepMode){
-//        //draw the current icon
-//        ofSetColor(0);
-//        ofPushMatrix();
-//        ofTranslate(beatMarkers[0].pos.x - 80, beatMarkers[0].pos.y);
-//        ofPopMatrix();
-//        //ofDrawBitmapString(ofToString(curStepSound), beatMarkers[0].pos.x - 70, beatMarkers[0].pos.y+10);
-//    }
+    aboutScreen.draw();
     
     bool showWIPText = !publicRelease;
 #ifdef USING_IOS
@@ -531,6 +527,10 @@ void Sequencer::keyPressed(int key){
         }
     }
     
+    
+    //testing
+    if (aboutScreen.isActive)   aboutScreen.turnOff();
+    else                        aboutScreen.turnOn();
     
 }
 
