@@ -395,9 +395,18 @@ void Sequencer::draw(){
 
 //--------------------------------------------------------------
 void Sequencer::keyPressed(int key){
+    
+    if (aboutScreen.isActive){
+        aboutScreen.turnOff();
+        return;
+    }
+    
     //cout<<"key "<<key<<endl;
     if (key == 'h' || key == 'H'){
         showHelp = !showHelp;
+    }
+    if (key == 'z' || key == 'Z'){
+        aboutScreen.turnOn();
     }
     if (key == 'j' || key == 'J'){
         showTouchButtons = !showTouchButtons;
@@ -528,18 +537,22 @@ void Sequencer::keyPressed(int key){
     }
     
     
-    //testing
-    if (aboutScreen.isActive)   aboutScreen.turnOff();
-    else                        aboutScreen.turnOn();
+    
     
 }
 
 //--------------------------------------------------------------
 void Sequencer::touchDown(int x, int y){
     
+    //if the about screen is on, any touch should dismiss it
+    if (aboutScreen.isActive){
+        aboutScreen.turnOff();
+        return;
+    }
+    
     //help button overrides anything else
-    if (helpButton.checkHit(x, y)){
-        cout<<"halp"<<endl;
+    if (helpButton.checkHit(x, y) && !aboutScreen.isActive){
+        aboutScreen.turnOn();
         return;
     }
     

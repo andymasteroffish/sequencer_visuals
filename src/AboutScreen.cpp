@@ -18,21 +18,52 @@ void AboutScreen::setup(int _whiteVal, bool usingiPad){
     box.x = ofGetWidth()/2 - box.width/2;
     box.y = ofGetHeight()/2 - box.height/2;
     
+    titleFont.load("Futura.ttf", 40);
     textFont.load("Futura.ttf", 20);
     
     isActive = false;
     isAnimating = false;
     
-    float textX = box.x + 25;
-    float textY = 300;
-    float textYSpacing = 40;
+    
     
     bgFade = 0;
     
+    float titleY = box.y+60;
+    float titleX = box.x+box.width/2 - titleFont.stringWidth("Sequencer")/2;
+    createWordsFromLine("Sequencer", titleX,titleY, &titleFont);
+    
+    float byLine1X = box.x+box.width/2 - textFont.stringWidth("by Andy Wallace")/2;
+    createWordsFromLine("by Andy Wallace", byLine1X, titleY + 40, &textFont);
+    
+    float byLine2X = box.x+box.width/2 - textFont.stringWidth("Sounds by ???????")/2;
+    createWordsFromLine("Sounds by ???????", byLine2X, titleY + 80, &textFont);
+
+    float textX = box.x + 25;
+    float textY = box.y + 155;
+    float textYSpacing = 40;
+    float textYBreak = 25;
     
     createWordsFromLine("Tap anywhere to add a sound to the beat.", textX, textY+=textYSpacing, &textFont);
     createWordsFromLine("Step mode allows you to place specific sounds.", textX, textY+=textYSpacing, &textFont);
     createWordsFromLine("Tapping Live will allow you to play sounds without recording them.", textX, textY+=textYSpacing, &textFont);
+    
+    textY+=textYBreak;
+    
+    createWordsFromLine("PC/Mac version available. at itch.io/andymakes.", textX, textY+=textYSpacing, &textFont);
+    
+    textY+=textYBreak;
+    
+    createWordsFromLine("More of Andy's work at itch.io/andymakes.", textX, textY+=textYSpacing, &textFont);
+    createWordsFromLine("More of ??????s work at [website].", textX, textY+=textYSpacing, &textFont);
+    
+    textY+=textYBreak;
+    
+    createWordsFromLine("Created in NYC using openFrameworks.", textX, textY+=textYSpacing, &textFont);
+    
+    //createWordsFromLine("Tap anywhere to dismiss this", box.x+242, box.y+box.height-20, &textFont);
+    string dismissMessage = "Tap anywhere to dismiss this";
+    float dismissX = box.x+box.width/2 - textFont.stringWidth(dismissMessage)/2;
+    createWordsFromLine(dismissMessage, dismissX, box.y+box.height-20, &textFont);
     
     bgCircles.resize(10);
 }
@@ -110,11 +141,18 @@ void AboutScreen::draw(){
     for (int i=0; i<words.size(); i++){
         words[i].draw();
     }
+    
+    //tetsing
+//    ofSetColor(255, 0, 0);
+//    textFont.drawString("Tap anywhere to dismiss this", box.x+242, box.y+box.height-20);
+//    
+//    titleFont.drawString("Sequencer", box.x+box.width/2 - titleFont.stringWidth("Sequencer")/2, box.y+60);
+    
 }
 
 void AboutScreen::createWordsFromLine(string line, float x, float y, ofTrueTypeFont * font){
     
-    float spaceW = font->stringWidth("_") * 0.8;
+    float spaceW = font->stringWidth("_") * 0.75;
     //cout<<"space "<<spaceW<<endl;
     
     //break the line up on space
