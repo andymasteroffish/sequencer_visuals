@@ -190,6 +190,7 @@ void Sequencer::update(){
         //actually update them
         touchMenuButtons[i].update(deltaTime);
     }
+    helpButton.update(deltaTime);
     for (int i=0; i<NUM_BEATS; i++){
         touchStepButtons[i].update(deltaTime);
     }
@@ -224,6 +225,13 @@ void Sequencer::draw(){
         for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
             touchMenuButtons[i].draw();
         }
+        
+        //help button
+        ofFill();
+        ofSetColor(whiteVal);
+        ofDrawRectangle(helpButton.box);
+        helpButton.draw();
+        
         //write the bpm
         ofSetColor(0);
         string bpmText = ofToString( (int)bpmValue);
@@ -528,7 +536,12 @@ void Sequencer::keyPressed(int key){
 
 //--------------------------------------------------------------
 void Sequencer::touchDown(int x, int y){
-
+    
+    //help button overrides anything else
+    if (helpButton.checkHit(x, y)){
+        cout<<"halp"<<endl;
+        return;
+    }
     
     //check the buttons!
     if (!stepMode){
@@ -582,9 +595,9 @@ void Sequencer::touchDown(int x, int y){
                 bpmValue = MIN(bpmValue, 500);
                 bpm.setBpm(bpmValue);
             }
-            
         }
     }
+    
 }
 
 
@@ -634,6 +647,11 @@ void Sequencer::setButtonPositions(){
         }
         touchMenuButtons[i].setText(oldText, oldFont);
     }
+    
+    int helpButtnoW = touchMenuButtons[4].box.width/2;
+    int helpButtonH = touchMenuButtons[4].box.height/2;
+    helpButton.setup(0, ofGetHeight()/2-helpButtonH/2, helpButtnoW, helpButtonH);
+    helpButton.setText("?", &buttonFont);
     
     
     //sound buttons for step mode

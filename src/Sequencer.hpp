@@ -125,12 +125,14 @@ public:
     //fonts
     ofTrueTypeFont buttonFont;
     
-    //ios
+    //touch buttons
 #define NUM_TOUCH_BUTTONS 15
     TouchGeneralButton touchButtons[NUM_TOUCH_BUTTONS];
 #define NUM_TOUCH_MENU_BUTTONS 5
     TouchGeneralButton touchMenuButtons[NUM_TOUCH_MENU_BUTTONS];
     float menuButtonH;
+    
+    TouchGeneralButton helpButton;
     
     //step mode for touch screens
     TouchGeneralButton touchStepButtons[NUM_BEATS];
