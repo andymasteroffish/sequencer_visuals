@@ -12,6 +12,9 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		5326AEA810A23A0500278DE6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5326AEA710A23A0500278DE6 /* CoreLocation.framework */; };
 		53F323EB10A20EDB00E0DAE4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */; };
+		5733E94D1D319A47002EC812 /* AboutScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5733E9471D319A47002EC812 /* AboutScreen.cpp */; };
+		5733E94E1D319A47002EC812 /* BounceWord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5733E9491D319A47002EC812 /* BounceWord.cpp */; };
+		5733E94F1D319A47002EC812 /* FillCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5733E94B1D319A47002EC812 /* FillCircle.cpp */; };
 		57408B991D2F073300D545EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57408B981D2F073300D545EC /* Images.xcassets */; };
 		575AFCE81D26E8D10071366D /* SoundButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575AFCE61D26E8D10071366D /* SoundButton.cpp */; };
 		575B12891D22C40D00B0CAF6 /* BeatMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B125B1D22C40D00B0CAF6 /* BeatMarker.cpp */; };
@@ -79,6 +82,12 @@
 		32CA4F630368D1EE00C91783 /* ofxiOS_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxiOS_Prefix.pch; sourceTree = "<group>"; };
 		5326AEA710A23A0500278DE6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		5733E9471D319A47002EC812 /* AboutScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AboutScreen.cpp; path = ../../src/AboutScreen.cpp; sourceTree = "<group>"; };
+		5733E9481D319A47002EC812 /* AboutScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AboutScreen.hpp; path = ../../src/AboutScreen.hpp; sourceTree = "<group>"; };
+		5733E9491D319A47002EC812 /* BounceWord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BounceWord.cpp; path = ../../src/BounceWord.cpp; sourceTree = "<group>"; };
+		5733E94A1D319A47002EC812 /* BounceWord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BounceWord.hpp; path = ../../src/BounceWord.hpp; sourceTree = "<group>"; };
+		5733E94B1D319A47002EC812 /* FillCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FillCircle.cpp; path = ../../src/FillCircle.cpp; sourceTree = "<group>"; };
+		5733E94C1D319A47002EC812 /* FillCircle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FillCircle.hpp; path = ../../src/FillCircle.hpp; sourceTree = "<group>"; };
 		57408B981D2F073300D545EC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = sequncer/Images.xcassets; sourceTree = "<group>"; };
 		575AFCE61D26E8D10071366D /* SoundButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundButton.cpp; path = ../../src/SoundButton.cpp; sourceTree = "<group>"; };
 		575AFCE71D26E8D10071366D /* SoundButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SoundButton.hpp; path = ../../src/SoundButton.hpp; sourceTree = "<group>"; };
@@ -222,6 +231,19 @@
 			name = "core frameworks";
 			sourceTree = "<group>";
 		};
+		5733E9461D319A16002EC812 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				5733E9481D319A47002EC812 /* AboutScreen.hpp */,
+				5733E9471D319A47002EC812 /* AboutScreen.cpp */,
+				5733E94A1D319A47002EC812 /* BounceWord.hpp */,
+				5733E9491D319A47002EC812 /* BounceWord.cpp */,
+				5733E94C1D319A47002EC812 /* FillCircle.hpp */,
+				5733E94B1D319A47002EC812 /* FillCircle.cpp */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
 		575B12A01D22C41300B0CAF6 /* project */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +252,7 @@
 				575B12A11D22C41900B0CAF6 /* Hits */,
 				575B12A21D22C41E00B0CAF6 /* Tools */,
 				575B12A31D22C42300B0CAF6 /* Markers */,
+				5733E9461D319A16002EC812 /* About */,
 			);
 			name = project;
 			sourceTree = "<group>";
@@ -473,7 +496,9 @@
 				575B12951D22C40D00B0CAF6 /* QuickLine.cpp in Sources */,
 				575B12921D22C40D00B0CAF6 /* GrapesHit.cpp in Sources */,
 				575B129A1D22C40D00B0CAF6 /* StepModeIcons.cpp in Sources */,
+				5733E94D1D319A47002EC812 /* AboutScreen.cpp in Sources */,
 				575B128A1D22C40D00B0CAF6 /* Buckshot.cpp in Sources */,
+				5733E94E1D319A47002EC812 /* BounceWord.cpp in Sources */,
 				575B128F1D22C40D00B0CAF6 /* DotPolygonHit.cpp in Sources */,
 				575B12911D22C40D00B0CAF6 /* Grape.cpp in Sources */,
 				575B129F1D22C40D00B0CAF6 /* WaveColumnHit.cpp in Sources */,
@@ -486,6 +511,7 @@
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
 				57C9BA5F1D2C3A61006E20B3 /* Bpm.cpp in Sources */,
 				575B129C1D22C40D00B0CAF6 /* TrapezoidHit.cpp in Sources */,
+				5733E94F1D319A47002EC812 /* FillCircle.cpp in Sources */,
 				E4D8936F11527B74007E1F53 /* ofApp.mm in Sources */,
 				575B128D1D22C40D00B0CAF6 /* ClapHit.cpp in Sources */,
 				575B128B1D22C40D00B0CAF6 /* BuckshotHit.cpp in Sources */,

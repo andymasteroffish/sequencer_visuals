@@ -194,7 +194,7 @@ void Sequencer::update(){
         //actually update them
         touchMenuButtons[i].update(deltaTime);
     }
-    helpButton.update(deltaTime);
+    aboutButton.update(deltaTime);
     for (int i=0; i<NUM_BEATS; i++){
         touchStepButtons[i].update(deltaTime);
     }
@@ -233,8 +233,8 @@ void Sequencer::draw(){
         //help button
         ofFill();
         ofSetColor(whiteVal);
-        ofDrawRectangle(helpButton.box);
-        helpButton.draw();
+        ofDrawRectangle(aboutButton.box);
+        aboutButton.draw();
         
         //write the bpm
         ofSetColor(0);
@@ -551,7 +551,7 @@ void Sequencer::touchDown(int x, int y){
     }
     
     //help button overrides anything else
-    if (helpButton.checkHit(x, y) && !aboutScreen.isActive){
+    if (aboutButton.checkHit(x, y) && !aboutScreen.isActive){
         aboutScreen.turnOn();
         return;
     }
@@ -661,10 +661,16 @@ void Sequencer::setButtonPositions(){
         touchMenuButtons[i].setText(oldText, oldFont);
     }
     
-    int helpButtnoW = touchMenuButtons[4].box.width/2;
-    int helpButtonH = touchMenuButtons[4].box.height/2;
-    helpButton.setup(0, ofGetHeight()/2-helpButtonH/2, helpButtnoW, helpButtonH);
-    helpButton.setText("?", &buttonFont);
+    int aboutButtonW = touchMenuButtons[4].box.width/2;
+    int aboutButtonH = touchMenuButtons[4].box.height/2;
+    
+#ifdef USING_IOS
+    aboutButtonW = touchMenuButtons[4].box.width;
+    aboutButtonH = touchMenuButtons[4].box.height;
+#endif
+    
+    aboutButton.setup(0, ofGetHeight()/2-aboutButtonH/2, aboutButtonW, aboutButtonH);
+    aboutButton.setText("?", &buttonFont);
     
     
     //sound buttons for step mode

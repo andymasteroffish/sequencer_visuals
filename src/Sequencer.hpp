@@ -137,7 +137,7 @@ public:
     TouchGeneralButton touchMenuButtons[NUM_TOUCH_MENU_BUTTONS];
     float menuButtonH;
     
-    TouchGeneralButton helpButton;
+    TouchGeneralButton aboutButton;
     
     //step mode for touch screens
     TouchGeneralButton touchStepButtons[NUM_BEATS];

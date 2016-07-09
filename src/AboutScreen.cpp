@@ -11,15 +11,17 @@
 
 void AboutScreen::setup(int _whiteVal, bool usingiPad){
     
+    float ipadAdjust = usingiPad ? 1.5 : 1;
+    
     whiteVal = _whiteVal;
     
-    box.width = 800;
-    box.height = 600;
+    box.width = 800 * ipadAdjust;
+    box.height = 600 * ipadAdjust;
     box.x = ofGetWidth()/2 - box.width/2;
     box.y = ofGetHeight()/2 - box.height/2;
     
-    titleFont.load("Futura.ttf", 40);
-    textFont.load("Futura.ttf", 20);
+    titleFont.load("Futura.ttf", 40 * ipadAdjust);
+    textFont.load("Futura.ttf", 20 * ipadAdjust);
     
     isActive = false;
     isAnimating = false;
@@ -28,20 +30,20 @@ void AboutScreen::setup(int _whiteVal, bool usingiPad){
     
     bgFade = 0;
     
-    float titleY = box.y+60;
+    float titleY = box.y+60*ipadAdjust;
     float titleX = box.x+box.width/2 - titleFont.stringWidth("Sequencer")/2;
     createWordsFromLine("Sequencer", titleX,titleY, &titleFont);
     
     float byLine1X = box.x+box.width/2 - textFont.stringWidth("by Andy Wallace")/2;
-    createWordsFromLine("by Andy Wallace", byLine1X, titleY + 40, &textFont);
+    createWordsFromLine("by Andy Wallace", byLine1X, titleY + 40*ipadAdjust, &textFont);
     
     float byLine2X = box.x+box.width/2 - textFont.stringWidth("Sounds by ???????")/2;
-    createWordsFromLine("Sounds by ???????", byLine2X, titleY + 80, &textFont);
+    createWordsFromLine("Sounds by ???????", byLine2X, titleY + 80*ipadAdjust, &textFont);
 
-    float textX = box.x + 25;
-    float textY = box.y + 155;
-    float textYSpacing = 40;
-    float textYBreak = 25;
+    float textX = box.x + 25*ipadAdjust;
+    float textY = box.y + 155*ipadAdjust;
+    float textYSpacing = 40*ipadAdjust;
+    float textYBreak = 25*ipadAdjust;
     
     createWordsFromLine("Tap anywhere to add a sound to the beat.", textX, textY+=textYSpacing, &textFont);
     createWordsFromLine("Step mode allows you to place specific sounds.", textX, textY+=textYSpacing, &textFont);
@@ -63,7 +65,7 @@ void AboutScreen::setup(int _whiteVal, bool usingiPad){
     //createWordsFromLine("Tap anywhere to dismiss this", box.x+242, box.y+box.height-20, &textFont);
     string dismissMessage = "Tap anywhere to dismiss this";
     float dismissX = box.x+box.width/2 - textFont.stringWidth(dismissMessage)/2;
-    createWordsFromLine(dismissMessage, dismissX, box.y+box.height-20, &textFont);
+    createWordsFromLine(dismissMessage, dismissX, box.y+box.height-20*ipadAdjust, &textFont);
     
     bgCircles.resize(10);
 }
