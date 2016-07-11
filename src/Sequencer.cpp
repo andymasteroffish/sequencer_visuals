@@ -38,7 +38,7 @@ void Sequencer::setup(){
     }
     
     
-    publicRelease = false;
+    publicRelease = true;
     
     useNumpadKeys = false;
     usePreHitDetection = true;
@@ -54,6 +54,10 @@ void Sequencer::setup(){
     
     whiteVal = 240;
     ofBackground(whiteVal);
+    
+    if (publicRelease){
+        ofToggleFullscreen();
+    }
     
     showHelp = false;
     showTouchButtons = true;
@@ -403,14 +407,13 @@ void Sequencer::keyPressed(int key){
     
     //cout<<"key "<<key<<endl;
     if (key == 'h' || key == 'H'){
-        showHelp = !showHelp;
+        showTouchButtons = !showTouchButtons;
+        //showHelp = !showHelp;
     }
     if (key == 'z' || key == 'Z'){
         aboutScreen.turnOn();
     }
-    if (key == 'j' || key == 'J'){
-        showTouchButtons = !showTouchButtons;
-    }
+    
     if (key == 's'){
         setStepMode(!stepMode);
     }
@@ -426,7 +429,7 @@ void Sequencer::keyPressed(int key){
     if (key == 'p'){
         usePreHitDetection = !usePreHitDetection;
     }
-    if (key == 'n'){
+    if (key == '/'){
         useNumpadKeys = !useNumpadKeys;
     }
     if (key == 'v'){
