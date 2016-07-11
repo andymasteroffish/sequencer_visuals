@@ -51,7 +51,7 @@ void AboutScreen::setup(int _whiteVal, bool usingiPad){
     
     textY+=textYBreak;
     
-    createWordsFromLine("PC/Mac version available. at itch.io/andymakes.", textX, textY+=textYSpacing, &textFont);
+    createWordsFromLine("PC/Mac version available at itch.io/andymakes.", textX, textY+=textYSpacing, &textFont);
     
     textY+=textYBreak;
     
