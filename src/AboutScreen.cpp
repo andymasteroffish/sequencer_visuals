@@ -47,7 +47,7 @@ void AboutScreen::setup(int _whiteVal, bool usingiPad){
     
     string verb = "Clicking";
 #ifdef USING_IOS
-    verb = "PC/Mac version available at itch.io/andymakes.";
+    verb = "Tapping";
 #endif
     
     createWordsFromLine(verb+" anywhere will add a sound to the beat.", textX, textY+=textYSpacing, &textFont);
