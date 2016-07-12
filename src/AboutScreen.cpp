@@ -38,20 +38,29 @@ void AboutScreen::setup(int _whiteVal, bool usingiPad){
     createWordsFromLine("by Andy Wallace", byLine1X, titleY + 40*ipadAdjust, &textFont);
     
     float byLine2X = box.x+box.width/2 - textFont.stringWidth("Sounds by ???????")/2;
-    createWordsFromLine("Sounds by ???????", byLine2X, titleY + 80*ipadAdjust, &textFont);
+    createWordsFromLine("Sounds by ???????", byLine2X, titleY + 75*ipadAdjust, &textFont);
 
     float textX = box.x + 25*ipadAdjust;
     float textY = box.y + 155*ipadAdjust;
     float textYSpacing = 40*ipadAdjust;
     float textYBreak = 25*ipadAdjust;
     
-    createWordsFromLine("Tap anywhere to add a sound to the beat.", textX, textY+=textYSpacing, &textFont);
+    string verb = "Clicking";
+#ifdef USING_IOS
+    verb = "PC/Mac version available at itch.io/andymakes.";
+#endif
+    
+    createWordsFromLine(verb+" anywhere will add a sound to the beat.", textX, textY+=textYSpacing, &textFont);
     createWordsFromLine("Step mode allows you to place specific sounds.", textX, textY+=textYSpacing, &textFont);
-    createWordsFromLine("Tapping Live will allow you to play sounds without recording them.", textX, textY+=textYSpacing, &textFont);
+    createWordsFromLine(verb+" Live will allow you to play sounds without recording them.", textX, textY+=textYSpacing, &textFont);
     
     textY+=textYBreak;
     
-    createWordsFromLine("PC/Mac version available at itch.io/andymakes.", textX, textY+=textYSpacing, &textFont);
+    string otherVersion = "See PDF for keyboard controls. iOS version available.";
+#ifdef USING_IOS
+    otherVersion = "PC/Mac version available at itch.io/andymakes.";
+#endif
+    createWordsFromLine(otherVersion, textX, textY+=textYSpacing, &textFont);
     
     textY+=textYBreak;
     
@@ -63,7 +72,7 @@ void AboutScreen::setup(int _whiteVal, bool usingiPad){
     createWordsFromLine("Created in NYC using openFrameworks.", textX, textY+=textYSpacing, &textFont);
     
     //createWordsFromLine("Tap anywhere to dismiss this", box.x+242, box.y+box.height-20, &textFont);
-    string dismissMessage = "Tap anywhere to dismiss this";
+    string dismissMessage = verb+" anywhere will dismiss this";
     float dismissX = box.x+box.width/2 - textFont.stringWidth(dismissMessage)/2;
     createWordsFromLine(dismissMessage, dismissX, box.y+box.height-20*ipadAdjust, &textFont);
     

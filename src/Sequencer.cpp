@@ -151,7 +151,7 @@ void Sequencer::hitBeat(void){
     
     beatMarkers[thisBeat].triggerBeat();
     
-    if (autoPlay && ofRandomuf() < 0.2){
+    if (autoPlay && ofRandomuf() <  0.2){
         makeNewHit(ofRandom(15));
     }
 }

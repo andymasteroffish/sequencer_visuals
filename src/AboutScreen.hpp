@@ -12,6 +12,7 @@
 #include "ofMain.h"
 #include "BounceWord.hpp"
 #include "FillCircle.hpp"
+#include "SystemSpecificInfo.h"
 
 class AboutScreen{
 public:
