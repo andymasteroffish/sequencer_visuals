@@ -11,6 +11,8 @@
 
 void AboutScreen::setup(int _whiteVal, bool usingiPad){
     
+    words.clear();
+    
     float ipadAdjust = usingiPad ? 1.5 : 1;
     
     whiteVal = _whiteVal;
@@ -76,7 +78,9 @@ void AboutScreen::setup(int _whiteVal, bool usingiPad){
     float dismissX = box.x+box.width/2 - textFont.stringWidth(dismissMessage)/2;
     createWordsFromLine(dismissMessage, dismissX, box.y+box.height-20*ipadAdjust, &textFont);
     
-    bgCircles.resize(10);
+    if (bgCircles.size() == 0){
+        bgCircles.resize(10);
+    }
 }
 
 void AboutScreen::turnOn(){

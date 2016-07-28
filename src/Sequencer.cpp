@@ -70,16 +70,6 @@ void Sequencer::setup(){
     bpm.start(bpmValue);
     bpm.setPreHitPrcSpacing(0.5);
     
-//    bpm.reset();
-//    bpmStartValue = 160;
-//    bpmValue = bpmStartValue;
-//    bpm.setBpm(bpmValue);
-//    bpm.setBeatPerBar(8);
-//    bpm.prcForPreHit = 0.9;
-//    ofAddListener(bpm.beatEvent, this, &Sequencer::hitBeat);
-//    ofAddListener(bpm.preBeatEvent, this, &Sequencer::preHitBeat);
-//    bpm.start();
-    
     thisBeat = 0;
     onPreHit = false;
     
@@ -88,11 +78,6 @@ void Sequencer::setup(){
     
     //set the sounds
     loadSounds("sound_source.txt");
-//#ifdef USING_IOS
-//    loadSounds("sound_source.txt");
-//#else
-//    loadSounds("sound_source.txt");
-//#endif
     
     clearBeats();
     
@@ -622,6 +607,8 @@ void Sequencer::touchDown(int x, int y){
 void Sequencer::windowResized(int w, int h){
     gameW = ofGetWidth();
     gameH = ofGetHeight();
+    
+    aboutScreen.setup(whiteVal, usingIPad);
     
     setButtonPositions();
 }
