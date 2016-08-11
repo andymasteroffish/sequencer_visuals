@@ -415,7 +415,7 @@ void Sequencer::keyPressed(int key){
     if (key == 'p'){
         usePreHitDetection = !usePreHitDetection;
     }
-    if (key == '/'){
+    if (key == '\\'){
         useNumpadKeys = !useNumpadKeys;
     }
     if (key == 'v'){
@@ -744,7 +744,7 @@ void Sequencer::setStepMode(bool isOn){
         }
     }
     
-    touchMenuButtons[1].text = stepMode ? "Normal" : "Step";
+    touchMenuButtons[1].text = stepMode ? "switch to/nNormal" : "switch to/nStep";
 }
 
 //--------------------------------------------------------------
