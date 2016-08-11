@@ -82,7 +82,9 @@ void Sequencer::setup(){
     clearBeats();
     
     //fonts
-    buttonFont.load("Futura.ttf", 25);
+    float ipadAdjust = usingIPad ? 1.5 : 1;
+    buttonFont.load("Futura.ttf", 25 * ipadAdjust);
+    buttonFontSmall.load("Futura.ttf", 15 * ipadAdjust);
     
     aboutScreen.setup(whiteVal, usingIPad);
     
@@ -105,9 +107,9 @@ void Sequencer::setup(){
     //setting the locaitonof buttons based on screen size
     setButtonPositions();
     
-    string text[NUM_TOUCH_MENU_BUTTONS] = {"Live", "Step", "Clear", "-", "+"};
+    string text[NUM_TOUCH_MENU_BUTTONS] = {"", "", "Clear", "-", "+"};
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
-        touchMenuButtons[i].setText(text[i], &buttonFont);
+        touchMenuButtons[i].setText(text[i],  i != 1 ? &buttonFont : &buttonFontSmall);
     }
 }
 
@@ -218,6 +220,49 @@ void Sequencer::draw(){
         
         for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
             touchMenuButtons[i].draw();
+            
+            
+            int textFadeAlpa = 90;
+            
+            //draw the text for Live/Record
+            if (i==0){
+                ofSetColor(0);
+                
+                float textCenterX = touchMenuButtons[i].box.x + touchMenuButtons[i].box.width*0.6;
+                float textY = touchMenuButtons[i].box.y + touchMenuButtons[i].box.height/2 + buttonFontSmall.getLineHeight()/2;
+                float textSpacing = touchMenuButtons[i].box.width * 0.07;
+                
+                float slashX = textCenterX - buttonFontSmall.stringWidth("/")/2;
+                buttonFontSmall.drawString("/", slashX, textY);
+                
+                ofSetColor(0, recording ? 255 : textFadeAlpa);
+                float normalX = textCenterX - buttonFontSmall.stringWidth("Record") - textSpacing;
+                buttonFontSmall.drawString("Record", normalX, textY);
+                
+                ofSetColor(0, recording ?  textFadeAlpa : 255);
+                float stepX = textCenterX + textSpacing*0.75;
+                buttonFontSmall.drawString("Live", stepX, textY);
+            }
+            
+            //draw the text for step/normal
+            if (i==1){
+                ofSetColor(0);
+                
+                float textCenterX = touchMenuButtons[i].box.x + touchMenuButtons[i].box.width*0.6;
+                float textY = touchMenuButtons[i].box.y + touchMenuButtons[i].box.height/2 + buttonFontSmall.getLineHeight()/2;
+                float textSpacing = touchMenuButtons[i].box.width * 0.07;
+                
+                float slashX = textCenterX - buttonFontSmall.stringWidth("/")/2;
+                buttonFontSmall.drawString("/", slashX, textY);
+                
+                ofSetColor(0, stepMode ? textFadeAlpa : 255);
+                float normalX = textCenterX - buttonFontSmall.stringWidth("Normal") - textSpacing;
+                buttonFontSmall.drawString("Normal", normalX, textY);
+                
+                ofSetColor(0, stepMode ? 255 : textFadeAlpa);
+                float stepX = textCenterX + textSpacing*0.6;
+                buttonFontSmall.drawString("Step", stepX, textY);
+            }
         }
         
         //help button
@@ -229,13 +274,18 @@ void Sequencer::draw(){
         //write the bpm
         ofSetColor(0);
         string bpmText = ofToString( (int)bpmValue);
-        float textW = buttonFont.stringWidth(bpmText);
-        ofPushMatrix();
-        ofTranslate(touchMenuButtons[3].box.x+touchMenuButtons[3].box.width, touchButtons[3].box.y+touchButtons[3].box.height-10);
-        float bpmTextScale = usingIPad ? 1 : 0.5;
-        ofScale(bpmTextScale,bpmTextScale);
-        buttonFont.drawString(bpmText, -textW/2, 0);
-        ofPopMatrix();
+        
+        float bpmTextX = touchMenuButtons[3].box.x+touchMenuButtons[3].box.width - buttonFontSmall.stringWidth(bpmText)/2;
+        float bpmTextY = touchButtons[3].box.y+touchButtons[3].box.height-10;
+        buttonFontSmall.drawString(bpmText, bpmTextX, bpmTextY);
+        
+//        float textW = buttonFont.stringWidth(bpmText);
+//        ofPushMatrix();
+//        ofTranslate(touchMenuButtons[3].box.x+touchMenuButtons[3].box.width, touchButtons[3].box.y+touchButtons[3].box.height-10);
+//        float bpmTextScale = usingIPad ? 1 : 0.5;
+//        ofScale(bpmTextScale,bpmTextScale);
+//        buttonFont.drawString(bpmText, -textW/2, 0);
+//        ofPopMatrix();
         
         for (int i=0; i<NUM_SOUNDS; i++){
             soundButtons[i].draw();
@@ -744,7 +794,7 @@ void Sequencer::setStepMode(bool isOn){
         }
     }
     
-    touchMenuButtons[1].text = stepMode ? "switch to/nNormal" : "switch to/nStep";
+    //touchMenuButtons[1].text = stepMode ? "Normal" : "Step";
 }
 
 //--------------------------------------------------------------
@@ -755,7 +805,7 @@ void Sequencer::stepModePress(int placeID){
 //--------------------------------------------------------------
 void Sequencer::setRecording(bool isOn){
     recording = isOn;
-    touchMenuButtons[0].text = recording ? "Live" : "Record";
+    //touchMenuButtons[0].text = recording ? "Live" : "Record";
 }
 
 //--------------------------------------------------------------

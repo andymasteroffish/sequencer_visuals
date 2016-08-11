@@ -125,7 +125,7 @@ public:
     bool doCamMovement;
     
     //fonts
-    ofTrueTypeFont buttonFont;
+    ofTrueTypeFont buttonFont, buttonFontSmall;
     
     //about screen
     AboutScreen aboutScreen;
