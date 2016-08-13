@@ -13,46 +13,46 @@
 ;You’ll need to restart if you make changes
 
 ;Tunnel
-sounds/low_depth_0_deep_kick.wav
+sounds/dan/Bend.wav
 
 ;Sweep
-sounds/clap.wav
+sounds/dan/Boop.wav
 
 ;Triangle
-sounds/mid_time_8_long_clang.wav
+sounds/dan/Buzz.wav
 
 ;Grapes
-sounds/mid_time_9_foil.wav
+sounds/dan/Chug160.wav
 
 ;Buckshot
-sounds/lo_tom.wav
+sounds/dan/Glass.wav
 
 ;Chaser
-sounds/low_depth_2.wav
+sounds/dan/Lead6.wav
 
 ;Slash
-sounds/randoms_0.wav
+sounds/dan/Lead8.wav
 
 ;Square
-sounds/low_depth_8_clang.wav
+sounds/dan/Lead11.wav
 
 ;Trapezoid 
-sounds/randoms_4_clink.wav
+sounds/dan/LowNoise.wav
 
 ;Dot Polygon
-sounds/low_depth_6_clap.wav
+sounds/dan/NoiseKick.wav
 
 ;Sizzle
-sounds/randoms_3_bend_laser.wav
+sounds/dan/Snare.wav
 
 ;Drunk Triangle
-sounds/mid_time_3.wav
+sounds/dan/Sub.wav
 
 ;Crystal
-sounds/low_depth_1.wav
+sounds/dan/ToyKick.wav
 
 ;Clap
-sounds/low_depth_5_sizzle.wav
+sounds/dan/ToySnare.wav
 
 ;Wave Column
-sounds/mid_time_4.wav
+sounds/dan/Whistle2.wav

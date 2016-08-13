@@ -279,14 +279,6 @@ void Sequencer::draw(){
         float bpmTextY = touchMenuButtons[3].box.y+touchMenuButtons[3].box.height-10;
         buttonFontSmall.drawString(bpmText, bpmTextX, bpmTextY);
         
-//        float textW = buttonFont.stringWidth(bpmText);
-//        ofPushMatrix();
-//        ofTranslate(touchMenuButtons[3].box.x+touchMenuButtons[3].box.width, touchButtons[3].box.y+touchButtons[3].box.height-10);
-//        float bpmTextScale = usingIPad ? 1 : 0.5;
-//        ofScale(bpmTextScale,bpmTextScale);
-//        buttonFont.drawString(bpmText, -textW/2, 0);
-//        ofPopMatrix();
-        
         for (int i=0; i<NUM_SOUNDS; i++){
             soundButtons[i].draw();
         }
@@ -601,6 +593,8 @@ void Sequencer::touchDown(int x, int y){
             if(touchButtons[i].checkHit(x, y)){
                 if (i < 15){
                     makeNewHit(i);
+                    //if they switch to step mode, have this be the current sound
+                    curStepSound = i;
                 }
                 if (i == 15){
                     clearBeats();
