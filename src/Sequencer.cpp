@@ -276,7 +276,7 @@ void Sequencer::draw(){
         string bpmText = ofToString( (int)bpmValue);
         
         float bpmTextX = touchMenuButtons[3].box.x+touchMenuButtons[3].box.width - buttonFontSmall.stringWidth(bpmText)/2;
-        float bpmTextY = touchButtons[3].box.y+touchButtons[3].box.height-10;
+        float bpmTextY = touchMenuButtons[3].box.y+touchMenuButtons[3].box.height-10;
         buttonFontSmall.drawString(bpmText, bpmTextX, bpmTextY);
         
 //        float textW = buttonFont.stringWidth(bpmText);
