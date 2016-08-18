@@ -13,46 +13,46 @@
 ;You’ll need to restart if you make changes
 
 ;Tunnel
-sounds/dan/Bend.wav
+sounds/dan/Lead6.wav
 
 ;Sweep
-sounds/dan/Boop.wav
+sounds/dan/Chug160Short.wav
 
 ;Triangle
-sounds/dan/Buzz.wav
+sounds/dan/ToyKick2.wav
 
 ;Grapes
-sounds/dan/Chug160.wav
-
-;Buckshot
-sounds/dan/Glass.wav
-
-;Chaser
-sounds/korg/low_depth_0_deep_kick.wav
-
-;Slash
-sounds/korg/mid_time_3.wav
-
-;Square
-sounds/korg/clap.wav
-
-;Trapezoid 
-sounds/dan/LowNoise.wav
-
-;Dot Polygon
-sounds/dan/NoiseKick.wav
-
-;Sizzle
-sounds/dan/Snare.wav
-
-;Drunk Triangle
-sounds/dan/Sub.wav
-
-;Crystal
-sounds/dan/ToyKick.wav
-
-;Clap
 sounds/dan/ToySnare.wav
 
+;Buckshot
+sounds/dan/NoiseKick.wav
+
+;Chaser
+sounds/dan/Snare.wav
+
+;Slash
+sounds/dan/LowNoise.wav
+
+;Square
+sounds/dan/Boop.wav
+
+;Trapezoid 
+sounds/dan/Bend.wav
+
+;Dot Polygon
+sounds/dan/Lead8.wav
+
+;Sizzle
+sounds/dan/Glass.wav
+
+;Drunk Triangle
+sounds/dan/Whistle3.wav
+
+;Crystal
+sounds/dan/Buzz3.wav
+
+;Clap
+sounds/dan/Blorp.wav
+
 ;Wave Column
-sounds/dan/Whistle2.wav
+sounds/dan/Blorp2.1.wav

@@ -39,8 +39,8 @@ void AboutScreen::setup(int _whiteVal, bool usingiPad){
     float byLine1X = box.x+box.width/2 - textFont.stringWidth("by Andy Wallace")/2;
     createWordsFromLine("by Andy Wallace", byLine1X, titleY + 40*ipadAdjust, &textFont);
     
-    float byLine2X = box.x+box.width/2 - textFont.stringWidth("Sounds by ???????")/2;
-    createWordsFromLine("Sounds by ???????", byLine2X, titleY + 75*ipadAdjust, &textFont);
+    float byLine2X = box.x+box.width/2 - textFont.stringWidth("Sounds by Dan Friel")/2;
+    createWordsFromLine("Sounds by Dan Friel", byLine2X, titleY + 75*ipadAdjust, &textFont);
 
     float textX = box.x + 25*ipadAdjust;
     float textY = box.y + 155*ipadAdjust;
@@ -67,7 +67,7 @@ void AboutScreen::setup(int _whiteVal, bool usingiPad){
     textY+=textYBreak;
     
     createWordsFromLine("More of Andy's work at itch.io/andymakes.", textX, textY+=textYSpacing, &textFont);
-    createWordsFromLine("More of ??????s work at [website].", textX, textY+=textYSpacing, &textFont);
+    createWordsFromLine("More of Dan Friel's work at danfriel.com.", textX, textY+=textYSpacing, &textFont);
     
     textY+=textYBreak;
     

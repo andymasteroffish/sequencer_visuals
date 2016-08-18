@@ -13,46 +13,46 @@
 ;You’ll need to restart if you make changes
 
 ;Tunnel
-sounds/dan/Lead6.wav
+Sequencer Files/Lead6.wav
 
 ;Sweep
-sounds/dan/Chug160Short.wav
+Sequencer Files/Chug160Short.wav
 
 ;Triangle
-sounds/dan/ToyKick2.wav
+Sequencer Files/ToyKick2.wav
 
 ;Grapes
-sounds/dan/ToySnare.wav
+Sequencer Files/ToySnare.wav
 
 ;Buckshot
-sounds/dan/NoiseKick.wav
+Sequencer Files/NoiseKick.wav
 
 ;Chaser
-sounds/dan/Snare.wav
+Sequencer Files/Snare.wav
 
 ;Slash
-sounds/dan/LowNoise.wav
+Sequencer Files/LowNoise.wav
 
 ;Square
-sounds/dan/Boop.wav
+Sequencer Files/Boop.wav
 
 ;Trapezoid 
-sounds/dan/Bend.wav
+Sequencer Files/Bend.wav
 
 ;Dot Polygon
-sounds/dan/Lead8.wav
+Sequencer Files/Lead8.wav
 
 ;Sizzle
-sounds/dan/Glass.wav
+Sequencer Files/Glass.wav
 
 ;Drunk Triangle
-sounds/dan/Whistle3.wav
+Sequencer Files/Whistle3.wav
 
 ;Crystal
-sounds/dan/Buzz3.wav
+Sequencer Files/Buzz3.wav
 
 ;Clap
-sounds/dan/Blorp.wav
+Sequencer Files/Blorp.wav
 
 ;Wave Column
-sounds/dan/Blorp2.1.wav
+Sequencer Files/Blorp2.1.wav
