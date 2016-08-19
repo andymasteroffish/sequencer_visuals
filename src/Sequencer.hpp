@@ -68,6 +68,8 @@ public:
     
     void setVisualEffect();
     
+    bool checkIsFirstRun();
+    
     //some generla stuff
     bool usingIPad;
     int gameW, gameH;
@@ -129,6 +131,10 @@ public:
     
     //about screen
     AboutScreen aboutScreen;
+    
+    //doing special stuff the first time the app ever runs
+    bool isFirstRun;
+    float firstRunTimer;
     
     //touch buttons
 #define NUM_TOUCH_BUTTONS 15

@@ -11,6 +11,9 @@
 //--------------------------------------------------------------
 void Sequencer::setup(){
     
+    
+    publicRelease = false;
+    
 #ifdef TARGET_OPENGLES
     shader.load("shaders/shadersES2/shader");
 #else
@@ -32,13 +35,19 @@ void Sequencer::setup(){
     gameH = ofGetHeight();
     
     if (usingIPad){
-        cout<<"it ipad"<<endl;
+        cout<<"it an ipad"<<endl;
         gameW = ofGetWidth()/2;
         gameH = ofGetHeight()/2;
     }
     
+    isFirstRun = checkIsFirstRun();
+    //testing
+    if (!publicRelease){
+        isFirstRun = true;
+    }
+    firstRunTimer =  isFirstRun ? 30 : -1;
     
-    publicRelease = true;
+    
     
     useNumpadKeys = false;
     usePreHitDetection = true;
@@ -111,6 +120,7 @@ void Sequencer::setup(){
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
         touchMenuButtons[i].setText(text[i],  i != 1 ? &buttonFont : &buttonFontSmall);
     }
+    
 }
 
 //--------------------------------------------------------------
@@ -150,6 +160,10 @@ void Sequencer::update(){
     deltaTime = ofGetElapsedTimef() - prevFrameTime;
     prevFrameTime = ofGetElapsedTimef();
     
+    if (!aboutScreen.isActive){
+        firstRunTimer -= deltaTime;
+    }
+    
     for (int i=hits.size()-1; i>=0; i--){
         hits[i]->update(deltaTime);
         if (hits[i]->killMe){
@@ -166,8 +180,7 @@ void Sequencer::update(){
         beatMarkers[i].update(deltaTime, stepMode);
     }
     
-    //update ios buttons
-//#ifdef USING_IOS
+    //update touch buttons
     for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
         touchButtons[i].update(deltaTime);
     }
@@ -194,7 +207,38 @@ void Sequencer::update(){
     for (int i=0; i<NUM_SOUNDS; i++){
         soundButtons[i].update(deltaTime, curStepSound);
     }
-//#endif
+    
+    //if this is the first timer we're running, we want to hide the menu buttons at first
+    if (firstRunTimer > 0){
+        float slideInTime = 0.7;
+        float prc = 1;
+        prc = powf(prc, 2);
+        if (firstRunTimer < slideInTime){
+            prc = firstRunTimer/slideInTime;
+        }
+        
+        float startMenuX = ofGetWidth() + 10;
+        
+        for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
+            float       targetMenuX = ofGetWidth() - touchMenuButtons[0].box.width;
+            if (i==4)   targetMenuX =   ofGetWidth() - touchMenuButtons[0].box.width/2;
+            
+            touchMenuButtons[i].box.x = prc * startMenuX + (1.0f-prc) * targetMenuX;
+        }
+        
+        aboutButton.box.x = prc * -aboutButton.box.width;
+    }
+    //otherwise just have them in the right place
+    else{
+        for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
+            float       menuX = ofGetWidth() - touchMenuButtons[0].box.width;
+            if (i==4)   menuX = ofGetWidth() - touchMenuButtons[0].box.width/2;
+            
+            touchMenuButtons[i].box.x = menuX;
+        }
+        aboutButton.box.x = 0;
+    }
+    
     
     //testing
 //    for (int i=0; i<NUM_IOS_BEATS_PER_SOUND; i++){
@@ -265,12 +309,6 @@ void Sequencer::draw(){
             }
         }
         
-        //help button
-        ofFill();
-        ofSetColor(whiteVal);
-        ofDrawRectangle(aboutButton.box);
-        aboutButton.draw();
-        
         //write the bpm
         ofSetColor(0);
         string bpmText = ofToString( (int)bpmValue);
@@ -278,6 +316,14 @@ void Sequencer::draw(){
         float bpmTextX = touchMenuButtons[3].box.x+touchMenuButtons[3].box.width - buttonFontSmall.stringWidth(bpmText)/2;
         float bpmTextY = touchMenuButtons[3].box.y+touchMenuButtons[3].box.height-10;
         buttonFontSmall.drawString(bpmText, bpmTextX, bpmTextY);
+        
+        //help button
+        ofFill();
+        ofSetColor(whiteVal);
+        ofDrawRectangle(aboutButton.box);
+        aboutButton.draw();
+        
+        
         
         for (int i=0; i<NUM_SOUNDS; i++){
             soundButtons[i].draw();
@@ -616,30 +662,32 @@ void Sequencer::touchDown(int x, int y){
     }
     
     //menu buttons
-    for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
-        if (touchMenuButtons[i].checkHit(x, y)){
-            
-            if (i == 0){
-                setRecording(!recording);
-            }
-            
-            if (i == 1){
-                setStepMode(!stepMode);
-            }
-            
-            if (i == 2){
-                clearBeats();
-            }
-            
-            if (i == 3){
-                bpmValue -= 10;
-                bpmValue = MAX(bpmValue, 50);
-                bpm.setBpm(bpmValue);
-            }
-            if (i == 4){
-                bpmValue += 10;
-                bpmValue = MIN(bpmValue, 500);
-                bpm.setBpm(bpmValue);
+    if (firstRunTimer <= 0){
+        for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
+            if (touchMenuButtons[i].checkHit(x, y)){
+                
+                if (i == 0){
+                    setRecording(!recording);
+                }
+                
+                if (i == 1){
+                    setStepMode(!stepMode);
+                }
+                
+                if (i == 2){
+                    clearBeats();
+                }
+                
+                if (i == 3){
+                    bpmValue -= 10;
+                    bpmValue = MAX(bpmValue, 50);
+                    bpm.setBpm(bpmValue);
+                }
+                if (i == 4){
+                    bpmValue += 10;
+                    bpmValue = MIN(bpmValue, 500);
+                    bpm.setBpm(bpmValue);
+                }
             }
         }
     }
@@ -886,4 +934,40 @@ void Sequencer::setVisualEffect(){
         colorB.set(0);
     }
     
+}
+
+
+//--------------------------------------------------------------
+bool Sequencer::checkIsFirstRun(){
+    
+    
+    string fileName = "hasrun.txt";
+    
+    //getting the path on mac
+    string appPath = ofFilePath::getCurrentExeDir();//ofFilePath::getAbsolutePath(ofFilePath::getCurrentExePath());
+    appPath+="../Resources/";
+    
+    //cout<<appPath<<endl;
+    
+    //we're going to check if a specific file exists
+    ofFile checkFile(appPath+fileName);
+    if (checkFile.exists()){
+        return false;
+    }
+    
+    else{
+        cout<<"First run!"<<endl;
+        //go ahead and make the file
+        ofstream newFile;
+        newFile.open(fileName);
+        if (newFile.is_open()){
+            newFile<<"you ran it";
+        }else{
+            cout<<"something bad hapenned"<<endl;
+        }
+        newFile.close();
+        
+        return  true;
+    }
+
 }
