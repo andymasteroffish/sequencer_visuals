@@ -15,7 +15,7 @@ void TouchGeneralButton::setup(int _x, int _y, int _width, int _height){
     
     box.set(_x, _y, _width, _height);
     
-    fullColor.set(100);
+    fullColor.set(30);
     
     curFadeVal = 0;
     fadeSpeed = 700;

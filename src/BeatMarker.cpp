@@ -44,7 +44,7 @@ void BeatMarker::setup(float x, float _stepModeX, float y, bool usingIpad){
     notRecordingYOffset = 0;
 }
 
-void BeatMarker::update(float deltaTime, bool stepModeOn){
+void BeatMarker::update(float deltaTime, bool stepModeOn, float firstRunTimer){
     pulseTimer += deltaTime;
     
     float targetX = stepModeOn ? stepModeX : normX;
@@ -104,6 +104,23 @@ void BeatMarker::update(float deltaTime, bool stepModeOn){
         notRecordingYOffset = notRecordingYOffset * notRecordingXeno + notRecordingYMaxDist * (1-notRecordingXeno);
     }
     
+    //when the app is run for the first time, we hide the dots
+    float startEnterTime = 15;
+    float endEnterTime = startEnterTime-2;
+    firstRunYAdjust = 0;
+    if (firstRunTimer > endEnterTime){
+        
+        if (firstRunTimer < startEnterTime){
+            float prc = (firstRunTimer-endEnterTime) / (startEnterTime-endEnterTime);
+            firstRunYAdjust = 100 * prc;
+        }else{
+            firstRunYAdjust = 100;
+        }
+        
+        cout<<"timer "<<firstRunTimer<<"  y adjust "<<firstRunYAdjust<<endl;
+    }
+    
+    
 }
 
 void BeatMarker::triggerBeat(){
@@ -126,12 +143,14 @@ void BeatMarker::draw(bool hasSound, bool _isRecording){
     if (hasSound && isRecording)    ofFill();
     else                            ofNoFill();
     
-    ofDrawCircle(pos.x, pos.y+fallY+notRecordingYOffset, curSize * curScale);
+    float yPos = pos.y+fallY+notRecordingYOffset+firstRunYAdjust;
+    
+    ofDrawCircle(pos.x, yPos, curSize * curScale);
     
     //if it has a sound but we're not recording, draw a smaller circle inside
     if (hasSound && !isRecording){
         ofFill();
-        ofDrawCircle(pos.x, pos.y+fallY+notRecordingYOffset, curSize * curScale * 0.5);
+        ofDrawCircle(pos.x, yPos, curSize * curScale * 0.5);
     }
     
     

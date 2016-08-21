@@ -42,9 +42,9 @@ void Sequencer::setup(){
     
     isFirstRun = checkIsFirstRun();
     //testing
-    if (!publicRelease){
-        isFirstRun = true;
-    }
+//    if (!publicRelease){
+//        isFirstRun = true;
+//    }
     firstRunTimer =  isFirstRun ? 30 : -1;
     
     
@@ -177,7 +177,7 @@ void Sequencer::update(){
     
     //update the markers
     for (int i=0; i<NUM_BEATS; i++){
-        beatMarkers[i].update(deltaTime, stepMode);
+        beatMarkers[i].update(deltaTime, stepMode, firstRunTimer);
     }
     
     //update touch buttons
@@ -409,17 +409,17 @@ void Sequencer::draw(){
     
     aboutScreen.draw();
     
-    bool showWIPText = !publicRelease;
-#ifdef USING_IOS
-    showWIPText = false;
-#endif
-    if (showWIPText){
-        ofSetColor(0);
-        string text =   "Sequencer by Andy Wallace - andy@andymakes.com";
-        text +=         "\nWork in progress. Please do not distribute.";
-        text +=         "\nPress h for help.";
-        ofDrawBitmapString(text, 10, 15);
-    }
+//    bool showWIPText = !publicRelease;
+//#ifdef USING_IOS
+//    showWIPText = false;
+//#endif
+//    if (showWIPText){
+//        ofSetColor(0);
+//        string text =   "Sequencer by Andy Wallace - andy@andymakes.com";
+//        text +=         "\nWork in progress. Please do not distribute.";
+//        text +=         "\nPress h for help.";
+//        ofDrawBitmapString(text, 10, 15);
+//    }
     
     if (showHelp){
         ofSetColor(0);

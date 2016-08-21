@@ -15,7 +15,7 @@ class BeatMarker{
 public:
     
     void setup(float x, float _stepModeX, float y, bool usingIpad);
-    void update(float deltaTime, bool stepModeOn);
+    void update(float deltaTime, bool stepModeOn, float firstRunTimer);
     void triggerBeat();
     void triggerClear();
     void draw(bool hasSound, bool _isRecording);
@@ -37,6 +37,8 @@ public:
     bool beingCleared;
     float clearTimer;
     float fallY, fallDist;
+    
+    float firstRunYAdjust;
     
     float notRecordingYMaxDist;
     float notRecordingYOffset;
