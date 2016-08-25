@@ -9,7 +9,9 @@
 #include "BeatMarker.hpp"
 
 
-void BeatMarker::setup(float x, float _stepModeX, float y, bool usingIpad){
+void BeatMarker::setup(float x, float _stepModeX, float y, int _whiteVal, bool usingIpad){
+    
+    whiteVal = _whiteVal;
     
     normX = x;
     stepModeX = _stepModeX;
@@ -132,7 +134,7 @@ void BeatMarker::triggerClear(){
     clearTimer = -ofRandom(clearPauseRange);
 }
 
-void BeatMarker::draw(bool hasSound, bool _isRecording){
+void BeatMarker::draw(bool hasSound, bool hasOtherStepModeSound, bool _isRecording){
     
     isRecording = _isRecording;
     
@@ -148,8 +150,11 @@ void BeatMarker::draw(bool hasSound, bool _isRecording){
     ofDrawCircle(pos.x, yPos, curSize * curScale);
     
     //if it has a sound but we're not recording, draw a smaller circle inside
-    if (hasSound && !isRecording){
+    if ( (hasSound && !isRecording) || hasOtherStepModeSound){
         ofFill();
+        if (hasOtherStepModeSound && hasSound){
+            ofSetColor(whiteVal);
+        }
         ofDrawCircle(pos.x, yPos, curSize * curScale * 0.5);
     }
     

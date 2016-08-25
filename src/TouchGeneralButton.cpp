@@ -54,9 +54,6 @@ void TouchGeneralButton::draw(){
         
     }
     
-//    ofSetColor(0);
-//    ofDrawBitmapString(ofToString(box.x), box.x+10, box.y + 100);
-    
 }
 
 bool TouchGeneralButton::checkHit(int x, int y){

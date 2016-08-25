@@ -14,11 +14,11 @@
 class BeatMarker{
 public:
     
-    void setup(float x, float _stepModeX, float y, bool usingIpad);
+    void setup(float x, float _stepModeX, float y, int _whiteVal, bool usingIpad);
     void update(float deltaTime, bool stepModeOn, float firstRunTimer);
     void triggerBeat();
     void triggerClear();
-    void draw(bool hasSound, bool _isRecording);
+    void draw(bool hasSound, bool hasOtherStepModeSound, bool _isRecording);
     
     ofVec2f pos;
     
@@ -50,6 +50,8 @@ public:
     float growHighScale;
     
     float curScale;     //for growing fresh
+    
+    int whiteVal;
     
     bool isRecording;
     

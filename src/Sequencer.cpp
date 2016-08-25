@@ -47,14 +47,12 @@ void Sequencer::setup(){
 //    }
     firstRunTimer =  isFirstRun ? 30 : -1;
     
-    
-    
     useNumpadKeys = false;
     usePreHitDetection = true;
     
     autoPlay = false;
     recording = true;
-    turnOnRecordingWhenClearing = true;
+    turnOnRecordingWhenClearing = false;//true;
     
     stepMode = false;
     curStepSound = 0;
@@ -63,6 +61,7 @@ void Sequencer::setup(){
     
     whiteVal = 240;
     ofBackground(whiteVal);
+    
     
     if (publicRelease){
         ofToggleFullscreen();
@@ -94,6 +93,8 @@ void Sequencer::setup(){
     float ipadAdjust = usingIPad ? 1.5 : 1;
     buttonFont.load("Futura.ttf", 25 * ipadAdjust);
     buttonFontSmall.load("Futura.ttf", 15 * ipadAdjust);
+    
+    aboutButtonIcon.load("questionmark.png");
     
     aboutScreen.setup(whiteVal, usingIPad);
     
@@ -205,7 +206,15 @@ void Sequencer::update(){
     }
     
     for (int i=0; i<NUM_SOUNDS; i++){
-        soundButtons[i].update(deltaTime, curStepSound);
+        //check if this sound is used at all
+        bool anyUse = false;
+        for (int b=0; b< NUM_BEATS; b++){
+            if (beatsOn[b][i]){
+                anyUse = true;
+                break;
+            }
+        }
+        soundButtons[i].update(deltaTime, curStepSound, anyUse);
     }
     
     //if this is the first timer we're running, we want to hide the menu buttons at first
@@ -248,6 +257,88 @@ void Sequencer::update(){
 
 //--------------------------------------------------------------
 void Sequencer::draw(){
+    
+    
+    //shader stuff
+    shader.begin();
+    
+    shader.setUniform1f("time", ofGetElapsedTimef());
+    
+    if (doDisplacement){
+        shader.setUniform1f("displacementHeight", sin(ofGetElapsedTimef()*0.3) * 70);
+    }else{
+        shader.setUniform1f("displacementHeight", 0);
+    }
+    
+    shader.setUniform3f("colA", colorA.r/255.0f, colorA.g/255.0f, colorA.b/255.0f);
+    if (doColorFade){
+        shader.setUniform3f("colB", colorB.r/255.0f, colorB.g/255.0f, colorB.b/255.0f);
+    }else{
+        //use the same color for colB
+        shader.setUniform3f("colB", colorA.r/255.0f, colorA.g/255.0f, colorA.b/255.0f);
+    }
+    
+    if (doCamMovement){
+        ofPushMatrix();
+        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+        float rotationRange = 50;
+        float noiseSpeed = 0.075;
+        float xRot = (1- 2*ofNoise( ofGetElapsedTimef() * noiseSpeed, 0)) * rotationRange;
+        float yRot = (1- 2*ofNoise( ofGetElapsedTimef() * noiseSpeed, 100)) * rotationRange;
+        ofRotateX(xRot);
+        ofRotateY(yRot);
+        ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2);
+    }
+    
+    //dealing with blowing things up on iPad
+    if (usingIPad){
+        ofPushMatrix();
+        ofScale(2, 2);
+    }
+    
+    for (int i=0; i<hits.size(); i++){
+        if (doCamMovement){
+            ofPushMatrix();
+            ofTranslate(0,0, hits[i]->zVal);
+        }
+        
+        hits[i]->draw();
+        
+        if (doCamMovement){
+            ofPopMatrix();
+        }
+    }
+    
+    if (usingIPad){
+        ofPopMatrix();
+    }
+    
+    if (doCamMovement){
+        ofPopMatrix();
+    }
+    
+    
+    //draw the markers
+    for (int i=0; i<NUM_BEATS; i++){
+        bool isOn = false;
+        bool altStepSoundIsOn = false;
+        if (!stepMode){
+            for (int k=0; k<NUM_SOUNDS; k++){
+                if (beatsOn[i][k])  isOn = true;
+            }
+        }else{
+            isOn = beatsOn[i][curStepSound];
+            for (int k=0; k<NUM_SOUNDS; k++){
+                if (beatsOn[i][k] && k != curStepSound){
+                    altStepSoundIsOn = true;
+                }
+            }
+        }
+        
+        beatMarkers[i].draw(isOn, altStepSoundIsOn, recording);
+    }
+    
+    shader.end();
     
     //touch buttons
     if (showTouchButtons){
@@ -322,6 +413,8 @@ void Sequencer::draw(){
         ofSetColor(whiteVal);
         ofDrawRectangle(aboutButton.box);
         aboutButton.draw();
+        ofSetColor(0);
+        aboutButtonIcon.draw(aboutButton.box.x, aboutButton.box.y+aboutButton.box.getHeight()/2-aboutButton.box.getWidth()/2, aboutButton.box.getWidth(), aboutButton.box.getWidth());
         
         
         
@@ -331,82 +424,7 @@ void Sequencer::draw(){
         ofDisableAlphaBlending();
     }
     
-    
-    //shader stuff
-    shader.begin();
-    
-    shader.setUniform1f("time", ofGetElapsedTimef());
-    
-    if (doDisplacement){
-        shader.setUniform1f("displacementHeight", sin(ofGetElapsedTimef()*0.3) * 70);
-    }else{
-        shader.setUniform1f("displacementHeight", 0);
-    }
-    
-    shader.setUniform3f("colA", colorA.r/255.0f, colorA.g/255.0f, colorA.b/255.0f);
-    if (doColorFade){
-        shader.setUniform3f("colB", colorB.r/255.0f, colorB.g/255.0f, colorB.b/255.0f);
-    }else{
-        //use the same color for colB
-        shader.setUniform3f("colB", colorA.r/255.0f, colorA.g/255.0f, colorA.b/255.0f);
-    }
-    
-    if (doCamMovement){
-        ofPushMatrix();
-        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-        float rotationRange = 50;
-        float noiseSpeed = 0.075;
-        float xRot = (1- 2*ofNoise( ofGetElapsedTimef() * noiseSpeed, 0)) * rotationRange;
-        float yRot = (1- 2*ofNoise( ofGetElapsedTimef() * noiseSpeed, 100)) * rotationRange;
-        ofRotateX(xRot);
-        ofRotateY(yRot);
-        ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2);
-    }
-    
-    //dealing with blowing things up on iPad
-    if (usingIPad){
-        ofPushMatrix();
-        ofScale(2, 2);
-    }
-    
-    for (int i=0; i<hits.size(); i++){
-        if (doCamMovement){
-            ofPushMatrix();
-            ofTranslate(0,0, hits[i]->zVal);
-        }
-        
-        hits[i]->draw();
-        
-        if (doCamMovement){
-            ofPopMatrix();
-        }
-    }
-    
-    if (usingIPad){
-        ofPopMatrix();
-    }
-    
-    if (doCamMovement){
-        ofPopMatrix();
-    }
-    
-    
-    //draw the markers
-    for (int i=0; i<NUM_BEATS; i++){
-        bool anyOn = false;
-        if (!stepMode){
-            for (int k=0; k<NUM_SOUNDS; k++){
-                if (beatsOn[i][k])  anyOn = true;
-            }
-        }else{
-            anyOn = beatsOn[i][curStepSound];
-        }
-        
-        beatMarkers[i].draw(anyOn, recording);
-    }
-    
-    shader.end();
-    
+    //about screen info
     aboutScreen.draw();
     
 //    bool showWIPText = !publicRelease;
@@ -491,9 +509,9 @@ void Sequencer::keyPressed(int key){
     if (key == 's'){
         setStepMode(!stepMode);
     }
-    if (key == 'a'){
-        autoPlay = !autoPlay;
-    }
+//    if (key == 'a'){
+//        autoPlay = !autoPlay;
+//    }
     if (key == 'f'){
         ofToggleFullscreen();
     }
@@ -511,7 +529,9 @@ void Sequencer::keyPressed(int key){
     }
     
     if (key == ' '){
-        setRecording(!recording);
+        if (!stepMode){
+            setRecording(!recording);
+        }
     }
     
     if (key == OF_KEY_UP){
@@ -713,17 +733,19 @@ void Sequencer::setButtonPositions(){
     for (int i=0; i<NUM_BEATS; i++){
         float normX = beatXPadding+beatXSpacing*i;
         float stepX = stepModeBeatSpacing/2 + stepModeBeatSpacing*i;
-        beatMarkers[i].setup(normX, stepX, ofGetHeight()-beatYDistFromBottom, usingIPad);
+        beatMarkers[i].setup(normX, stepX, ofGetHeight()-beatYDistFromBottom, whiteVal, usingIPad);
     }
     
     int buttonW = ofGetWidth()/8;
     int buttonH = ofGetHeight()/2;
     for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
-        int col = i%8;
-        int row = i/8;
-        
-        //keep top right open
-        if (col == 7 && row == 0){
+        //doing one less horizontal slot than we have to make room for the menu buttons
+        int col = i%7;
+        int row = i/7;
+
+        //the last button that would get pushed off screen instead takes slot 7 on the bottom
+        if (row == 2){
+            col = 7;
             row = 1;
         }
         
@@ -753,19 +775,22 @@ void Sequencer::setButtonPositions(){
 #endif
     
     aboutButton.setup(0, ofGetHeight()/2-aboutButtonH/2, aboutButtonW, aboutButtonH);
-    aboutButton.setText("?", &buttonFont);
+    aboutButton.setText("", &buttonFont);
     
     
     //sound buttons for step mode
-    float soundSpacing = (ofGetWidth()-buttonW) / NUM_SOUNDS;
+    float soundSpacing = ((ofGetWidth()-buttonW) / 8) - 2;
     for (int i=0; i<NUM_SOUNDS; i++){
-        soundButtons[i].setPosition(soundSpacing*i, 10, soundSpacing, soundSpacing);
+        float soundX = soundSpacing*(i%8);
+        if (i >= 8)  soundX += soundSpacing/2;
+        float soundY = i < 8 ? 10 : 10+soundSpacing;
+        soundButtons[i].setPosition(soundX, soundY, soundSpacing, soundSpacing);
     }
     
     //the step mode buttons
     int stepButtonW = ofGetWidth() / NUM_BEATS;
     for (int i=0; i<NUM_BEATS; i++){
-        int yPos = soundSpacing + 50;   //give it a bit of extra spacing
+        int yPos = soundSpacing * 2 + 30;   //give it a bit of extra spacing
         if (i>=NUM_BEATS-2){
             yPos = ofGetHeight()/2 - menuButtonH;
         }
@@ -792,21 +817,21 @@ void Sequencer::makeNewHit(int idNum){
     if (playSound){
         Hit * thisHit;
         
-        if (idNum == 0)     thisHit = new TunnelHit();
+        if (idNum == 0)     thisHit = new DotPolygonHit();
         if (idNum == 1)     thisHit = new SweepHit();
-        if (idNum == 2)     thisHit = new TriangleHit();
-        if (idNum == 3)     thisHit = new GrapesHit();
-        if (idNum == 4)     thisHit = new BuckshotHit();
-        if (idNum == 5)     thisHit = new ChaserHit();
-        if (idNum == 6)     thisHit = new SlashHit();
-        if (idNum == 7)     thisHit = new SquareHit();
-        if (idNum == 8)     thisHit = new TrapezoidHit();
-        if (idNum == 9)     thisHit = new DotPolygonHit();
-        if (idNum == 10)     thisHit = new SizzleHit();
-        if (idNum == 11)     thisHit = new DrunkTriangleHit();
-        if (idNum == 12)     thisHit = new CrystalHit();
-        if (idNum == 13)     thisHit = new ClapHit();
-        if (idNum == 14)     thisHit = new WaveColumnHit();
+        if (idNum == 2)     thisHit = new BuckshotHit();
+        if (idNum == 3)     thisHit = new ClapHit();
+        if (idNum == 4)     thisHit = new CrystalHit();
+        if (idNum == 5)     thisHit = new TriangleHit();
+        if (idNum == 6)     thisHit = new DrunkTriangleHit();
+        if (idNum == 7)     thisHit = new TunnelHit();
+        if (idNum == 8)     thisHit = new SizzleHit();
+        if (idNum == 9)     thisHit = new ChaserHit();
+        if (idNum == 10)     thisHit = new SquareHit();
+        if (idNum == 11)     thisHit = new WaveColumnHit();
+        if (idNum == 12)     thisHit = new GrapesHit();
+        if (idNum == 13)     thisHit = new SlashHit();
+        if (idNum == 14)     thisHit = new TrapezoidHit();
         
         thisHit->setup(gameW, gameH, whiteVal, usingIPad);
         
@@ -889,10 +914,10 @@ void Sequencer::loadSounds(string filePath){
         for (int i=0; i<NUM_SOUNDS; i++){
 #ifdef USING_IOS
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
-                sounds[k][i].load(files[i%files.size()]);
+                sounds[k][i].load(files[i]);
             }
 #else
-            sounds[0][i].load(files[i%files.size()]);
+            sounds[0][i].load(files[i]);    //TESTING
             sounds[0][i].setMultiPlay(true);
 #endif
         }

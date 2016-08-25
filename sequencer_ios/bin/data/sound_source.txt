@@ -25,7 +25,7 @@ sounds/dan/ToyKick2.wav
 sounds/dan/ToySnare.wav
 
 ;Buckshot
-sounds/dan/NoiseKick.wav
+sounds/dan/NoiseKick2.wav
 
 ;Chaser
 sounds/dan/Snare.wav
@@ -49,7 +49,7 @@ sounds/dan/Glass.wav
 sounds/dan/Whistle3.wav
 
 ;Crystal
-sounds/dan/Buzz3.wav
+sounds/dan/Feedback.wav
 
 ;Clap
 sounds/dan/Blorp.wav

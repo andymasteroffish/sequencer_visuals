@@ -144,6 +144,7 @@ public:
     float menuButtonH;
     
     TouchGeneralButton aboutButton;
+    ofImage aboutButtonIcon;
     
     //step mode for touch screens
     TouchGeneralButton touchStepButtons[NUM_BEATS];

@@ -35,11 +35,13 @@ void SoundButton::setPosition(float x, float y, float w, float h){
     hitBox.set(x, y, w, h);
 }
 
-void SoundButton::update(float deltaTime, int curSound){
+void SoundButton::update(float deltaTime, int curSound, bool beatIsUsed){
     isActive = curSound == idNum;
-    float targetAlpha = 50;
+    float targetAlpha = 100;
     if (isActive){
         targetAlpha = 255;
+    }
+    if (isActive || beatIsUsed){
         icons.update(deltaTime);
     }
     
@@ -87,6 +89,19 @@ void SoundButton::update(float deltaTime, int curSound){
 }
 
 void SoundButton::draw(){
+    
+    if (curScale > 0){
+        ofFill();
+        float fillAlpha =  170 * curScale;
+        ofSetColor(icons.whiteVal, fillAlpha);
+        ofDrawRectangle(hitBox);
+        
+        ofSetLineWidth(1);
+        ofNoFill();
+        ofSetColor(0, curAlpha * curScale);
+        ofDrawRectangle(hitBox);
+    }
+    
     ofSetLineWidth(1);
     
     ofPushMatrix();
@@ -94,7 +109,7 @@ void SoundButton::draw(){
     
     ofScale(curScale*bounceScale, curScale*bounceScale);
     
-    float linePrc =  isActive ? 2 : 1;
+    float linePrc =  isActive ? 4 : 1;
     icons.draw(idNum, linePrc, curAlpha);
     
     ofPopMatrix();
@@ -103,10 +118,7 @@ void SoundButton::draw(){
 //    ofSetColor(255,0,0);
 //    ofDrawRectangle(hitBox);
     
-//    ofSetLineWidth(1);
-//    ofNoFill();
-//    ofSetColor(0);
-//    ofDrawRectangle(hitBox);
+   
     
     
     

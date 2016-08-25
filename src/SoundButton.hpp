@@ -19,7 +19,7 @@ public:
   
     void setup(int _idNum, int whiteVal);
     void setPosition(float x, float y, float w, float h);
-    void update(float deltaTime, int curSound);
+    void update(float deltaTime, int curSound, bool beatIsUsed);
     void draw();
     bool checkHit(int x, int y);
     void stepModeOn();
@@ -49,8 +49,6 @@ public:
     float bounceShrinkTime;
     float bounceScale;
 
-    
-    
     
     
 };

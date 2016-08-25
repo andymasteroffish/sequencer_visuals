@@ -9,7 +9,7 @@
 #include "StepModeIcons.hpp"
 
 void StepModeIcons::setup(){
-    timer = 0.5;
+    timer = ofRandom(1,100);
 }
 
 void StepModeIcons::draw(int idNum, float lineWidthPrc, int alpha){
@@ -20,8 +20,8 @@ void StepModeIcons::draw(int idNum, float lineWidthPrc, int alpha){
     ofSetLineWidth(1 * lineWidthPrc);
     ofSetCircleResolution(20);
     
-    w = 60;
-    h = 60;
+    w = 100;//60;
+    h = 100;//60;
     topX = -w/2;
     topY = -h/2;
     
@@ -29,27 +29,30 @@ void StepModeIcons::draw(int idNum, float lineWidthPrc, int alpha){
     //idNum = 14;
     
     //draw the thing
-    if (idNum == 0)     drawTunnel(lineWidthPrc, alpha);
+    if (idNum == 0)     drawDotPolygon(lineWidthPrc, alpha);
     if (idNum == 1)     drawSweep(lineWidthPrc, alpha);
-    if (idNum == 2)     drawTriangle(lineWidthPrc, alpha);
-    if (idNum == 3)     drawGrapes(lineWidthPrc, alpha);
-    if (idNum == 4)     drawBuckshot(lineWidthPrc, alpha);
-    if (idNum == 5)     drawChaser(lineWidthPrc, alpha);
-    if (idNum == 6)     drawSlash(lineWidthPrc, alpha);
-    if (idNum == 7)     drawSquare(lineWidthPrc, alpha);
-    if (idNum == 8)     drawTrapezoid(lineWidthPrc, alpha);
-    if (idNum == 9)     drawDotPolygon(lineWidthPrc, alpha);
-    if (idNum == 10)    drawSizzle(lineWidthPrc, alpha);
-    if (idNum == 11)    drawDrunkTrianlge(lineWidthPrc, alpha);
-    if (idNum == 12)    drawCrystal(lineWidthPrc, alpha);
-    if (idNum == 13)    drawClap(lineWidthPrc, alpha);
-    if (idNum == 14)    drawWaveColumn(lineWidthPrc, alpha);
+    if (idNum == 2)     drawBuckshot(lineWidthPrc, alpha);
+    if (idNum == 3)    drawClap(lineWidthPrc, alpha);
+    if (idNum == 4)    drawCrystal(lineWidthPrc, alpha);
+    if (idNum == 5)     drawTriangle(lineWidthPrc, alpha);
+    if (idNum == 6)    drawDrunkTrianlge(lineWidthPrc, alpha);
+    if (idNum == 7)     drawTunnel(lineWidthPrc, alpha);
+    if (idNum == 8)    drawSizzle(lineWidthPrc, alpha);
+    if (idNum == 9)     drawChaser(lineWidthPrc, alpha);
+    if (idNum == 10)     drawSquare(lineWidthPrc, alpha);
+    if (idNum == 11)    drawWaveColumn(lineWidthPrc, alpha);
+    if (idNum == 12)     drawGrapes(lineWidthPrc, alpha);
+    if (idNum == 13)     drawSlash(lineWidthPrc, alpha);
+    if (idNum == 14)     drawTrapezoid(lineWidthPrc, alpha);
+    
+    
     
     //guide
 //    ofNoFill();
 //    ofSetColor(0);
 //    ofSetLineWidth(1);
 //    ofDrawRectangle(topX, topY, w, h);
+
 }
 
 void StepModeIcons::update(float deltaTime){
