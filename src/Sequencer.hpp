@@ -9,8 +9,10 @@
 #ifndef Sequencer_hpp
 #define Sequencer_hpp
 
-#include "ofMain.h"
+
 #include "SystemSpecificInfo.h"
+
+#include "ofMain.h"
 
 #include "Bpm.hpp"
 
@@ -39,6 +41,7 @@
 //ios
 #include "TouchGeneralButton.hpp"
 #include "SoundButton.hpp"
+
 
 
 class Sequencer{
@@ -135,6 +138,7 @@ public:
     //doing special stuff the first time the app ever runs
     bool isFirstRun;
     float firstRunTimer;
+    string iosDataPath;
     
     //touch buttons
 #define NUM_TOUCH_BUTTONS 15

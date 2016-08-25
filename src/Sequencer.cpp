@@ -90,11 +90,15 @@ void Sequencer::setup(){
     clearBeats();
     
     //fonts
-    float ipadAdjust = usingIPad ? 1.5 : 1;
+    float ipadAdjust = usingIPad ? 2 : 1;
     buttonFont.load("Futura.ttf", 25 * ipadAdjust);
     buttonFontSmall.load("Futura.ttf", 15 * ipadAdjust);
     
+#ifdef USING_IOS
+    aboutButtonIcon.load("questionmark_ios.png");
+#else
     aboutButtonIcon.load("questionmark.png");
+#endif
     
     aboutScreen.setup(whiteVal, usingIPad);
     
@@ -972,6 +976,11 @@ bool Sequencer::checkIsFirstRun(){
     string appPath = ofFilePath::getCurrentExeDir();//ofFilePath::getAbsolutePath(ofFilePath::getCurrentExePath());
     appPath+="../Resources/";
     
+#ifdef USING_IOS
+    appPath = iosDataPath;
+    cout<<appPath<<endl;
+#endif
+    
     //cout<<appPath<<endl;
     
     //we're going to check if a specific file exists
@@ -984,7 +993,12 @@ bool Sequencer::checkIsFirstRun(){
         cout<<"First run!"<<endl;
         //go ahead and make the file
         ofstream newFile;
+        #ifdef USING_IOS
+        newFile.open(appPath+fileName);
+        #else
         newFile.open(fileName);
+        #endif
+        
         if (newFile.is_open()){
             newFile<<"you ran it";
         }else{

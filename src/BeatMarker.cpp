@@ -119,7 +119,7 @@ void BeatMarker::update(float deltaTime, bool stepModeOn, float firstRunTimer){
             firstRunYAdjust = 100;
         }
         
-        cout<<"timer "<<firstRunTimer<<"  y adjust "<<firstRunYAdjust<<endl;
+        //cout<<"timer "<<firstRunTimer<<"  y adjust "<<firstRunYAdjust<<endl;
     }
     
     
