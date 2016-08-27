@@ -12,7 +12,7 @@
 void Sequencer::setup(){
     
     
-    publicRelease = false;
+    publicRelease = true;
     
 #ifdef TARGET_OPENGLES
     shader.load("shaders/shadersES2/shader");
