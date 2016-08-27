@@ -79,6 +79,9 @@ void TriangleHit::draw(){
     
     ofPushMatrix();
     
+    float shakeRange =4;
+    ofTranslate(ofRandom(-shakeRange,shakeRange), ofRandom(-shakeRange,shakeRange));
+    
     ofTranslate(centerPos.x, centerPos.y);
     ofRotate(angle);
     ofScale(scale, scale);

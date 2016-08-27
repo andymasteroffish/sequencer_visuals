@@ -12,7 +12,9 @@
 void Sequencer::setup(){
     
     
-    publicRelease = true;
+    publicRelease = false;
+    
+    useClickTrack = true;
     
 #ifdef TARGET_OPENGLES
     shader.load("shaders/shadersES2/shader");
@@ -86,6 +88,8 @@ void Sequencer::setup(){
     
     //set the sounds
     loadSounds("sound_source.txt");
+    clickTrackSound.load("sounds/dan/Hat.wav");
+    clickTrackSound.setVolume(0.02);
     
     clearBeats();
     
@@ -146,9 +150,11 @@ void Sequencer::hitBeat(void){
     //cout<<"hit beat "<<thisBeat<<endl;
     
     //play anything that's on
+    bool playedSound = false;
     for (int k=0; k<NUM_SOUNDS; k++){
         if (beatsOn[thisBeat][k]){
             makeNewHit(k);
+            playedSound = true;
         }
     }
     
@@ -156,6 +162,10 @@ void Sequencer::hitBeat(void){
     
     if (autoPlay && ofRandomuf() <  0.2){
         makeNewHit(ofRandom(15));
+    }
+    
+    if (useClickTrack && !playedSound){
+        clickTrackSound.play();
     }
 }
 

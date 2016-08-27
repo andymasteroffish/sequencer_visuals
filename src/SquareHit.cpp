@@ -11,14 +11,17 @@
 
 void SquareHit::setupCustom(){
     
-    float size = 60;
+    float size = 70;
     
     pos.x = ofRandom(size, gameW-size);
     pos.y = ofRandom(size, gameH-size);
     
     float growTime = 0.1;
-    float pauseTime = 0.7;
+    float pauseTime = 0.35;
     float shrinkTime = 0.6;
+    
+    startFallTime = growTime;
+    fallTime = 0.4;
     
     float curveIn = 0.6;
     float curveOut = 2;
@@ -42,8 +45,7 @@ void SquareHit::setupCustom(){
     }
     
     
-    startFallTime = growTime*2;
-    fallTime = 0.5;
+
     angle = 0;
     angleEnd = 130;
     angleOvershoot = angleEnd + 15;

@@ -105,6 +105,8 @@ public:
     #define NUM_IOS_BEATS_PER_SOUND 8   //this must be a perfect multiple of NUM_BEATS
     
     ofSoundPlayer sounds[NUM_IOS_BEATS_PER_SOUND][NUM_SOUNDS];    //on osx, only sounds[0][i] are used. There is no multiplay on iOS, so I am loading far more than needed. This may be a disaster
+    ofSoundPlayer clickTrackSound;
+    bool useClickTrack;
     
     int thisBeat;
     bool beatsOn[NUM_BEATS][NUM_SOUNDS];

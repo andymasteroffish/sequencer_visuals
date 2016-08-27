@@ -19,7 +19,7 @@ void Grape::setup(ofVec2f _pos, float delayTime, float _lineWidthPrc){
     popTime = pauseTime+0.1;
     
     startSize = 5;
-    normSize = 30;
+    normSize = 25;//30;
     popSize = normSize + 20;
     
     setCurve(0.6, 1, 2);
@@ -59,6 +59,10 @@ void Grape::setCurve(float grow, float pop, float line){
 }
 void Grape::update(float deltaTime){
     timer += deltaTime;
+    
+    float shakeRange = 2;
+    pos.x += ofRandom(-shakeRange,shakeRange);
+    pos.y += ofRandom(-shakeRange,shakeRange);
     
     if (timer < 0){
         return;

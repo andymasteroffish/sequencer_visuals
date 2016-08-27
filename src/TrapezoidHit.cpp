@@ -30,7 +30,7 @@ void TrapezoidHit::setupCustom(){
         height *= -1;
     }
     
-    fallTime = 0.39;
+    fallTime = 0.23;//0.39;
     
     phase = 0;
     

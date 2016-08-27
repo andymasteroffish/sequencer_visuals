@@ -14,7 +14,7 @@ void SlashHit::setupCustom(){
     float range = 100;
     
     float connectTime = 0.1;//2;
-    float pauseTime = 0.5;
+    float pauseTime = 0.3;
     float disconenctTime = 0.3;
     
     float padding = range * 2;

@@ -14,7 +14,7 @@ void ClapHit::setupCustom(){
     angle = ofRandom(360);
     
     startScale = 3;
-    impactTime = 0.16;
+    impactTime = 0.05;//0.16;
     
     pntStartDist = 70;
     pntDist = pntStartDist;
@@ -90,11 +90,11 @@ void ClapHit::updateCustom(){
         prc = powf(prc, 0.9);
         rightPopCircleSize = (1-prc) * popCircleSize;
     }
-    if (timer > secondClapTime && timer < secondClapTime+popCircleTime){
-        float prc = (timer-secondClapTime) / popCircleTime;
-        prc = powf(prc, 0.9);
-        leftPopCircleSize = (1-prc) * popCircleSize * 0.7;  //just making it a bit smaller
-    }
+//    if (timer > secondClapTime && timer < secondClapTime+popCircleTime){
+//        float prc = (timer-secondClapTime) / popCircleTime;
+//        prc = powf(prc, 0.9);
+//        leftPopCircleSize = (1-prc) * popCircleSize * 0.7;  //just making it a bit smaller
+//    }
     
     
     

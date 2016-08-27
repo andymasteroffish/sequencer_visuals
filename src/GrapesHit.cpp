@@ -16,19 +16,19 @@ void GrapesHit::setupCustom(){
     pos.x = ofRandom(padding, gameW-padding);
     pos.y = ofRandom(padding, gameH-padding);
     
-    int numGrapes = ofRandom(4,7);
+    int numGrapes = 6;//ofRandom(4,7);
     
     
     float curAngle = ofRandom(TWO_PI);
-    float maxAngleChange = TWO_PI*0.25;
+    float maxAngleChange = TWO_PI*0.2;
     
-    float timeSpacing = 0.08;
+    float timeSpacing = 0.13;
     grapes.resize(numGrapes);
     
     for (int i=0; i<grapes.size(); i++){
         
         curAngle += ofRandom(-maxAngleChange, maxAngleChange);
-        float dist = ofRandom(30,60);
+        float dist = ofRandom(25,40);//ofRandom(30,60);
         
         pos.x += cos(curAngle) * dist;
         pos.y += sin(curAngle) * dist;
@@ -44,7 +44,8 @@ void GrapesHit::updateCustom(){
         grapes[i].update(deltaTime);
     }
     
-    if (grapes[0].popLines[0].timer > grapes[0].popLines[0].timeToDisconnect){
+    int last = grapes.size()-1;
+    if (grapes[last].popLines[last].timer > grapes[last].popLines[last].timeToDisconnect){
         killMe = true;
     }
 }
