@@ -10,11 +10,11 @@
 
 
 void TunnelHit::setupCustom(){
-    float rangeX = gameW * 0.2;
-    float rangeY = gameH * 0.2;
+    float rangeX = gameW * 0.37;
+    float rangeY = gameH * 0.3;
     
     pos.x = gameW/2 + ofRandom(-rangeX, rangeX);
-    pos.y = gameW/2 + ofRandom(-rangeX, rangeX);
+    pos.y = gameH/2 + ofRandom(-rangeY, rangeY);
     
     startSize = 70;
     smallSize = 10;

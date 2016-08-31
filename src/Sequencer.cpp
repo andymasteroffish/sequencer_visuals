@@ -89,7 +89,7 @@ void Sequencer::setup(){
     //set the sounds
     loadSounds("sound_source.txt");
     clickTrackSound.load("sounds/dan/Hat.wav");
-    clickTrackSound.setVolume(0.02);
+    clickTrackSound.setVolume(0.15);
     
     clearBeats();
     
