@@ -49,7 +49,7 @@ void Sequencer::setup(){
 //    }
     firstRunTimer =  isFirstRun ? 30 : -1;
     
-    useNumpadKeys = false;
+    useNumpadKeys = true;//false;
     usePreHitDetection = true;
     
     autoPlay = false;
@@ -89,7 +89,7 @@ void Sequencer::setup(){
     //set the sounds
     loadSounds("sound_source.txt");
     clickTrackSound.load("sounds/dan/Hat.wav");
-    clickTrackSound.setVolume(0.15);
+    clickTrackSound.setVolume(0.45);
     
     clearBeats();
     
@@ -505,7 +505,6 @@ void Sequencer::draw(){
 
 //--------------------------------------------------------------
 void Sequencer::keyPressed(int key){
-    
     if (aboutScreen.isActive){
         aboutScreen.turnOff();
         return;
