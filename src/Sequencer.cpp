@@ -110,8 +110,8 @@ void Sequencer::setup(){
     aboutScreen.setup(whiteVal, usingIPad);
     
     //set the markers
-    beatXSpacing = 40;
-    beatYDistFromBottom = 40;
+    beatXSpacing = 50;
+    beatYDistFromBottom = 50;
     if (usingIPad){
         beatXSpacing *= 2;
         beatYDistFromBottom *= 2;

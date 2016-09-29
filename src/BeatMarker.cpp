@@ -19,7 +19,7 @@ void BeatMarker::setup(float x, float _stepModeX, float y, int _whiteVal, bool u
     
     pos.set(x,y);
     
-    normSize = 10;
+    normSize = 15;
     if (usingIpad)  normSize *= 2;
     
     pulseSize = normSize * 2;
