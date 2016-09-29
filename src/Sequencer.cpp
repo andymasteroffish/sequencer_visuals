@@ -49,7 +49,7 @@ void Sequencer::setup(){
 //    }
     firstRunTimer =  isFirstRun ? 30 : -1;
     
-    useNumpadKeys = true;//false;
+    useNumpadKeys = false;
     usePreHitDetection = true;
     
     autoPlay = false;
@@ -88,8 +88,11 @@ void Sequencer::setup(){
     
     //set the sounds
     loadSounds("sound_source.txt");
-    clickTrackSound.load("sounds/dan/Hat.wav");
-    clickTrackSound.setVolume(0.45);
+    
+    //adjust the click track volume
+    float clickVol = 0.45;
+    clickTrackSound.setVolume(clickVol);
+    clickTrackSound2.setVolume(clickVol);
     
     clearBeats();
     
@@ -165,7 +168,11 @@ void Sequencer::hitBeat(void){
     }
     
     if (useClickTrack && !playedSound){
-        clickTrackSound.play();
+        if (thisBeat % 4 == 0){
+            clickTrackSound2.play();
+        }else{
+            clickTrackSound.play();
+        }
     }
 }
 
@@ -922,15 +929,19 @@ void Sequencer::loadSounds(string filePath){
             
         }
         
+        //first two files are click track
+        clickTrackSound.load(files[0]);
+        clickTrackSound2.load(files[1]);
+        
         cout<<"found "<<files.size()<<" sound files"<<endl;
         
         for (int i=0; i<NUM_SOUNDS; i++){
 #ifdef USING_IOS
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
-                sounds[k][i].load(files[i]);
+                sounds[k][i].load(files[i+2]);
             }
 #else
-            sounds[0][i].load(files[i]);    //TESTING
+            sounds[0][i].load(files[i+2]);    //TESTING
             sounds[0][i].setMultiPlay(true);
 #endif
         }

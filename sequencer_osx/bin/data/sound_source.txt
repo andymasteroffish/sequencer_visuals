@@ -12,6 +12,10 @@
 ;This text file is loaded when the app starts
 ;You’ll need to restart if you make changes
 
+;Click Tracks
+sounds/dan/click/Hat.wav
+sounds/dan/click/Hat2.wav
+
 ;Tunnel
 sounds/dan/Lead6.wav
 
