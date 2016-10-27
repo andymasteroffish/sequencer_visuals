@@ -73,6 +73,8 @@ public:
     
     bool checkIsFirstRun();
     
+    void skipIntro();
+    
     //some generla stuff
     bool usingIPad;
     int gameW, gameH;

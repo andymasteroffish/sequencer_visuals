@@ -44,7 +44,11 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
 
 //--------------------------------------------------------------
 void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
-
+    //cout<<"touch "<<touch.x<<" "<<touch.y<<endl;
+    if (touch.x < 100 && touch.y < 100){
+        sequencer.skipIntro();
+        sequencer.clearBeats();
+    }
 }
 
 //--------------------------------------------------------------

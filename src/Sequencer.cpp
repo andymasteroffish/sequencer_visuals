@@ -12,7 +12,7 @@
 void Sequencer::setup(){
     
     
-    publicRelease = true;
+    publicRelease = false;
     
     useClickTrack = true;
     
@@ -44,9 +44,9 @@ void Sequencer::setup(){
     
     isFirstRun = checkIsFirstRun();
     //testing
-//    if (!publicRelease){
-//        isFirstRun = true;
-//    }
+    if (!publicRelease){
+        isFirstRun = true;
+    }
     firstRunTimer =  isFirstRun ? 30 : -1;
     
     useNumpadKeys = false;
@@ -90,7 +90,7 @@ void Sequencer::setup(){
     loadSounds("sound_source.txt");
     
     //adjust the click track volume
-    float clickVol = 0.45;
+    float clickVol = 0.25;//0.45;
     clickTrackSound.setVolume(clickVol);
     clickTrackSound2.setVolume(clickVol);
     
@@ -1029,4 +1029,10 @@ bool Sequencer::checkIsFirstRun(){
         return  true;
     }
 
+}
+
+//--------------------------------------------------------------
+void Sequencer::skipIntro(){
+    cout<<"kill it"<<endl;
+    firstRunTimer = 0;
 }
