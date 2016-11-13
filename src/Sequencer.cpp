@@ -45,11 +45,12 @@ void Sequencer::setup(){
     isFirstRun = checkIsFirstRun();
     //testing
     if (!publicRelease){
-        isFirstRun = true;
+        //isFirstRun = true;
     }
     firstRunTimer =  isFirstRun ? 30 : -1;
+    hasAddedANote = false;
     
-    useNumpadKeys = false;
+    useNumpadKeys = true;//false;
     usePreHitDetection = true;
     
     autoPlay = false;
@@ -167,7 +168,7 @@ void Sequencer::hitBeat(void){
         makeNewHit(ofRandom(15));
     }
     
-    if (useClickTrack && !playedSound){
+    if (useClickTrack){// && !playedSound){
         if (thisBeat % 4 == 0){
             clickTrackSound2.play();
         }else{
@@ -182,7 +183,7 @@ void Sequencer::update(){
     deltaTime = ofGetElapsedTimef() - prevFrameTime;
     prevFrameTime = ofGetElapsedTimef();
     
-    if (!aboutScreen.isActive){
+    if (!aboutScreen.isActive && hasAddedANote){
         firstRunTimer -= deltaTime;
     }
     
@@ -554,6 +555,11 @@ void Sequencer::keyPressed(int key){
         }
     }
     
+    
+    if (key == ']'){
+        skipIntro();
+    }
+    
     if (key == OF_KEY_UP){
         bpmValue += 10;
         bpmValue = MIN(bpmValue, 500);
@@ -652,8 +658,6 @@ void Sequencer::keyPressed(int key){
             clearBeats();
         }
     }
-    
-    
     
     
 }
@@ -867,6 +871,8 @@ void Sequencer::makeNewHit(int idNum){
 #endif
     }
     
+    hasAddedANote = true;
+    
 }
 
 //--------------------------------------------------------------
@@ -1035,4 +1041,5 @@ bool Sequencer::checkIsFirstRun(){
 void Sequencer::skipIntro(){
     cout<<"kill it"<<endl;
     firstRunTimer = 0;
+    hasAddedANote = true;
 }

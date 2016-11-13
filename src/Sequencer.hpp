@@ -142,6 +142,7 @@ public:
     //doing special stuff the first time the app ever runs
     bool isFirstRun;
     float firstRunTimer;
+    bool hasAddedANote;
     string iosDataPath;
     
     //touch buttons
