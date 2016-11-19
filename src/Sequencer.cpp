@@ -42,11 +42,14 @@ void Sequencer::setup(){
         gameH = ofGetHeight()/2;
     }
     
+    hasRunStepMode = checkHasRunStepMode();
+    
     isFirstRun = checkIsFirstRun();
     //testing
-    if (!publicRelease){
-        //isFirstRun = true;
-    }
+//    if (!publicRelease){
+//        isFirstRun = true;
+//        hasRunStepMode = false;
+//    }
     firstRunTimer =  isFirstRun ? 30 : -1;
     hasAddedANote = false;
     
@@ -73,7 +76,7 @@ void Sequencer::setup(){
     showHelp = false;
     showTouchButtons = true;
     
-    bpmValue = 160;
+    bpmValue = 150;
     bpmStartValue = bpmValue;
     
     ofAddListener(bpm.beatEvent, this, &Sequencer::hitBeat);
@@ -108,7 +111,11 @@ void Sequencer::setup(){
     aboutButtonIcon.load("questionmark.png");
 #endif
     
-    aboutScreen.setup(whiteVal, usingIPad);
+    aboutScreen.setup(whiteVal, usingIPad, false);
+    
+    if (!hasRunStepMode){
+        stepModeInstructions.setup(whiteVal, usingIPad, true);
+    }
     
     //set the markers
     beatXSpacing = 50;
@@ -197,6 +204,7 @@ void Sequencer::update(){
     }
     
     aboutScreen.update(deltaTime);
+    stepModeInstructions.update(deltaTime);
     
     //update the markers
     for (int i=0; i<NUM_BEATS; i++){
@@ -448,6 +456,7 @@ void Sequencer::draw(){
     
     //about screen info
     aboutScreen.draw();
+    stepModeInstructions.draw();
     
 //    bool showWIPText = !publicRelease;
 //#ifdef USING_IOS
@@ -513,10 +522,15 @@ void Sequencer::draw(){
 
 //--------------------------------------------------------------
 void Sequencer::keyPressed(int key){
+    if (stepModeInstructions.isActive){
+        stepModeInstructions.turnOff();
+        return;
+    }
     if (aboutScreen.isActive){
         aboutScreen.turnOff();
         return;
     }
+    
     
     //cout<<"key "<<key<<endl;
     if (key == 'h' || key == 'H'){
@@ -666,6 +680,10 @@ void Sequencer::keyPressed(int key){
 void Sequencer::touchDown(int x, int y){
     
     //if the about screen is on, any touch should dismiss it
+    if (stepModeInstructions.isActive){
+        stepModeInstructions.turnOff();
+        return;
+    }
     if (aboutScreen.isActive){
         aboutScreen.turnOff();
         return;
@@ -744,7 +762,10 @@ void Sequencer::windowResized(int w, int h){
     gameW = ofGetWidth();
     gameH = ofGetHeight();
     
-    aboutScreen.setup(whiteVal, usingIPad);
+    aboutScreen.setup(whiteVal, usingIPad, false);
+    if (!hasRunStepMode){
+        stepModeInstructions.setup(whiteVal, usingIPad, true);
+    }
     
     setButtonPositions();
 }
@@ -882,6 +903,12 @@ void Sequencer::setStepMode(bool isOn){
         if(stepMode){
             soundButtons[i].stepModeOn();
             setRecording(true);
+            //is this the first time running step mode?
+            if (!hasRunStepMode){
+                cout<<"open the step mode instructions"<<endl;
+                stepModeInstructions.turnOn();
+                saveHasRunStepMode();
+            }
         }else{
             soundButtons[i].stepModeOff();
         }
@@ -994,17 +1021,14 @@ void Sequencer::setVisualEffect(){
 
 //--------------------------------------------------------------
 bool Sequencer::checkIsFirstRun(){
-    
-    
     string fileName = "hasrun.txt";
     
     //getting the path on mac
-    string appPath = ofFilePath::getCurrentExeDir();//ofFilePath::getAbsolutePath(ofFilePath::getCurrentExePath());
+    string appPath = ofFilePath::getCurrentExeDir();
     appPath+="../Resources/";
     
 #ifdef USING_IOS
     appPath = iosDataPath;
-    cout<<appPath<<endl;
 #endif
     
     //cout<<appPath<<endl;
@@ -1035,6 +1059,57 @@ bool Sequencer::checkIsFirstRun(){
         return  true;
     }
 
+}
+
+//--------------------------------------------------------------
+bool Sequencer::checkHasRunStepMode(){
+    string fileName = "hasdonestep.txt";
+    //getting the path on mac
+    string appPath = ofFilePath::getCurrentExeDir();
+    appPath+="../Resources/";
+    
+#ifdef USING_IOS
+    appPath = iosDataPath;
+#endif
+    
+    //we're going to check if a specific file exists
+    ofFile checkFile(appPath+fileName);
+    if (checkFile.exists()){
+        return true;
+    }
+    
+    return false;
+}
+
+//--------------------------------------------------------------
+void Sequencer::saveHasRunStepMode(){
+    cout<<"save step mode"<<endl;
+    
+    hasRunStepMode = true;
+    
+    string fileName = "hasdonestep.txt";
+    //getting the path on mac
+    string appPath = ofFilePath::getCurrentExeDir();
+    appPath+="../Resources/";
+    
+#ifdef USING_IOS
+    appPath = iosDataPath;
+#endif
+    
+    //go ahead and make the file
+    ofstream newFile;
+#ifdef USING_IOS
+    newFile.open(appPath+fileName);
+#else
+    newFile.open(fileName);
+#endif
+    
+    if (newFile.is_open()){
+        newFile<<"you ran it";
+    }else{
+        cout<<"something bad hapenned"<<endl;
+    }
+    newFile.close();
 }
 
 //--------------------------------------------------------------

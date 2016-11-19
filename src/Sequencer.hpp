@@ -73,6 +73,9 @@ public:
     
     bool checkIsFirstRun();
     
+    bool checkHasRunStepMode();
+    void saveHasRunStepMode();
+    
     void skipIntro();
     
     //some generla stuff
@@ -138,12 +141,15 @@ public:
     
     //about screen
     AboutScreen aboutScreen;
+    AboutScreen stepModeInstructions;
     
     //doing special stuff the first time the app ever runs
     bool isFirstRun;
     float firstRunTimer;
     bool hasAddedANote;
     string iosDataPath;
+    
+    bool hasRunStepMode;
     
     //touch buttons
 #define NUM_TOUCH_BUTTONS 15

@@ -17,7 +17,10 @@
 class AboutScreen{
 public:
     
-    void setup(int _whiteVal, bool usingiPad);
+    void setup(int _whiteVal, bool usingiPad, bool isStepModeInfo);
+    void setupAbout();
+    void setupStepMode();
+    
     void turnOn();
     void turnOff();
     void update(float deltaTime);
@@ -25,19 +28,25 @@ public:
     
     void createWordsFromLine(string line, float x, float y, ofTrueTypeFont * font);
     
+    bool canTurnOff();
+    
     bool isActive;
     bool isAnimating;
     
     ofRectangle box;
+    float ipadAdjust;
     
     int whiteVal;
     
     float bgFade;
     
+    float timer;
+    float minTimeOn;
     
     
     ofTrueTypeFont titleFont, textFont;
     vector<BounceWord> words;
+    string verb;
     
     vector<FillCircle> bgCircles;
     
