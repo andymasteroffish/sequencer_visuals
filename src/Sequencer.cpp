@@ -805,9 +805,9 @@ void Sequencer::setButtonPositions(){
     //sound buttons for step mode
     float soundSpacing = ((ofGetWidth()-buttonW) / 8) - 2;
     for (int i=0; i<NUM_SOUNDS; i++){
-        float soundX = soundSpacing*(i%8);
+        float soundX = 5+soundSpacing*(i%8);
         if (i >= 8)  soundX += soundSpacing/2;
-        float soundY = i < 8 ? 10 : 10+soundSpacing;
+        float soundY = i < 8 ? 15 : 15+soundSpacing;
         soundButtons[i].setPosition(soundX, soundY, soundSpacing, soundSpacing);
     }
     
