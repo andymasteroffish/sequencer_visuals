@@ -13,8 +13,8 @@
 ;You’ll need to restart if you make changes
 
 ;Click Tracks
-sounds/dan/click/BoopHat1.wav
-sounds/dan/click/BoopHat2.wav
+sounds/dan/click/BoopHatShort1.wav
+sounds/dan/click/BoopHatShort2.wav
 
 ;Tunnel
 sounds/dan/Lead6.wav
