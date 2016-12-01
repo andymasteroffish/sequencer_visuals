@@ -154,7 +154,7 @@ public:
     //touch buttons
 #define NUM_TOUCH_BUTTONS 15
     TouchGeneralButton touchButtons[NUM_TOUCH_BUTTONS];
-#define NUM_TOUCH_MENU_BUTTONS 5
+#define NUM_TOUCH_MENU_BUTTONS 6
     TouchGeneralButton touchMenuButtons[NUM_TOUCH_MENU_BUTTONS];
     float menuButtonH;
     
