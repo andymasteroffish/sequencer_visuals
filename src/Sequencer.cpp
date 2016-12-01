@@ -84,7 +84,7 @@ void Sequencer::setup(){
     bpm.start(bpmValue);
     bpm.setPreHitPrcSpacing(0.5);
     
-    thisBeat = 0;
+    thisBeat = -1;
     onPreHit = false;
     
     prevFrameTime = ofGetElapsedTimef();
