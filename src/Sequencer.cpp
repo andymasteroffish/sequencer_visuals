@@ -435,9 +435,9 @@ void Sequencer::draw(){
             if (i==5){
                 ofSetColor(0);
                 
-                float textCenterX = touchMenuButtons[i].box.x + touchMenuButtons[i].box.width*0.7;
+                float textCenterX = touchMenuButtons[i].box.x + touchMenuButtons[i].box.width*0.67;
                 float textY = touchMenuButtons[i].box.y + touchMenuButtons[i].box.height/2 + buttonFontSmall.getLineHeight()/2;
-                float textSpacing = touchMenuButtons[i].box.width * 0.07;
+                float textSpacing = touchMenuButtons[i].box.width * 0.05;
                 
                 float clickTextXPos = textCenterX -  buttonFontSmall.stringWidth("Click:On/");
                 buttonFontSmall.drawString("Click:", clickTextXPos, textY);
