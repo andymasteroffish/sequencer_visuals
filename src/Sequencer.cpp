@@ -15,7 +15,6 @@ void Sequencer::setup(){
     publicRelease = false;
     
     useClickTrack = true;
-    debugAlwaysUseClick = false;
     
 #ifdef TARGET_OPENGLES
     shader.load("shaders/shadersES2/shader");
@@ -176,7 +175,7 @@ void Sequencer::hitBeat(void){
         makeNewHit(ofRandom(15));
     }
     
-    if (useClickTrack && (!playedSound || debugAlwaysUseClick)){
+    if (useClickTrack && !playedSound){
         if (thisBeat % 4 == 0){
             clickTrackSound2.play();
         }else{
@@ -573,9 +572,6 @@ void Sequencer::keyPressed(int key){
     
     if (key == ']'){
         skipIntro();
-    }
-    if (key == '['){
-        debugAlwaysUseClick = !debugAlwaysUseClick;
     }
     
     if (key == OF_KEY_UP){

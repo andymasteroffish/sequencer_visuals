@@ -111,7 +111,7 @@ public:
     
     ofSoundPlayer sounds[NUM_IOS_BEATS_PER_SOUND][NUM_SOUNDS];    //on osx, only sounds[0][i] are used. There is no multiplay on iOS, so I am loading far more than needed. This may be a disaster
     ofSoundPlayer clickTrackSound, clickTrackSound2;
-    bool useClickTrack, debugAlwaysUseClick;
+    bool useClickTrack;
     
     int thisBeat;
     bool beatsOn[NUM_BEATS][NUM_SOUNDS];
