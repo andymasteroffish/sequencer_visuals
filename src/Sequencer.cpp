@@ -53,7 +53,7 @@ void Sequencer::setup(){
     firstRunTimer =  isFirstRun ? 30 : -1;
     hasAddedANote = false;
     
-    useNumpadKeys = true;//false;
+    useNumpadKeys = false;
     usePreHitDetection = true;
     
     autoPlay = false;
@@ -744,6 +744,7 @@ void Sequencer::touchDown(int x, int y){
         for (int i=0; i<NUM_SOUNDS; i++){
             if (soundButtons[i].checkHit(x, y)){
                 curStepSound = i;
+                playSound(i);
             }
         }
     }
@@ -877,20 +878,20 @@ void Sequencer::setButtonPositions(){
 //--------------------------------------------------------------
 void Sequencer::makeNewHit(int idNum){
     //assume we'll play the sound
-    bool playSound = true;
+    bool bPlaySound = true;
     
     //turning this beat on
     if (recording){
         int beatPos = thisBeat;
         if (onPreHit){
-            playSound = false;  //we'll catch it in a second
+            bPlaySound = false;  //we'll catch it in a second
             beatPos = (thisBeat+1)%NUM_BEATS;
         }
         beatsOn[beatPos][idNum] = true;
     }
     
     //Making the hit
-    if (playSound){
+    if (bPlaySound){
         Hit * thisHit;
         
         if (idNum == 0)     thisHit = new DotPolygonHit();
@@ -915,16 +916,21 @@ void Sequencer::makeNewHit(int idNum){
     }
     
     //making the sound
-    if (playSound){
-#ifdef USING_IOS
-        sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].play();
-#else
-        sounds[0][idNum].play();
-#endif
+    if (bPlaySound){
+        playSound(idNum);
     }
     
     hasAddedANote = true;
     
+}
+
+//--------------------------------------------------------------
+void Sequencer::playSound(int idNum){
+#ifdef USING_IOS
+    sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].play();
+#else
+    sounds[0][idNum].play();
+#endif
 }
 
 //--------------------------------------------------------------

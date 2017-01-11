@@ -459,13 +459,13 @@
 					../../../addons/ofxXmlSettings/libs,
 					../../../addons/ofxXmlSettings/src,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
 				);
-				SDKROOT = macosx;
+				SDKROOT = macosx10.11;
 			};
 			name = Debug;
 		};
@@ -497,12 +497,12 @@
 					../../../addons/ofxXmlSettings/libs,
 					../../../addons/ofxXmlSettings/src,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
 				);
-				SDKROOT = macosx;
+				SDKROOT = macosx10.11;
 			};
 			name = Release;
 		};

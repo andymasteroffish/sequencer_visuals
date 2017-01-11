@@ -59,6 +59,7 @@ public:
     void setButtonPositions();
     
     void makeNewHit(int idNum);
+    void playSound(int idNum);
     
     void setStepMode(bool isOn);
     void stepModePress(int placeID);
