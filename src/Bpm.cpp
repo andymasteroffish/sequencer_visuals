@@ -30,6 +30,10 @@ void Bpm::setBpm(float newBpm){
     preHitMilliRange = millisBetweenBeats * preHitPrc;
 }
 
+void Bpm::justGotFocus(){
+    nextBeatTime = ofGetElapsedTimeMillis() + millisBetweenBeats;
+}
+
 void Bpm::threadedFunction(){
     
     while( isThreadRunning() ){

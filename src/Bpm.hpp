@@ -24,6 +24,7 @@ public:
     void stop();
     void setPreHitPrcSpacing(float prc);
     void setBpm(float newBpm);
+    void justGotFocus();
     
     
     void threadedFunction();

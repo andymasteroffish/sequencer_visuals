@@ -1,5 +1,13 @@
 #include "ofApp.h"
 
+
+#import <AVFoundation/AVBase.h>
+#import <Foundation/NSObject.h>
+#import <Foundation/NSArray.h>
+#import <Foundation/NSDate.h>	/* for NSTimeInterval */
+#import <AvailabilityMacros.h>
+#import <CoreAudio/CoreAudioTypes.h>
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     
@@ -7,6 +15,12 @@ void ofApp::setup(){
     
     sequencer.iosDataPath = ofxiOSGetDocumentsDirectory();
     sequencer.setup();
+    
+    //TO MAKE THE AUDIO WORK, I CHANGED AVSoundPlayer.m
+    //[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
+    //became
+    //[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategorySoloAmbient error: nil];
+    //When it was set to AVAudioSessionCategoryPlayback audio would play even when the phone was muted
 }
 
 //--------------------------------------------------------------
@@ -58,12 +72,11 @@ void ofApp::touchCancelled(ofTouchEventArgs & touch){
 
 //--------------------------------------------------------------
 void ofApp::lostFocus(){
-
 }
 
 //--------------------------------------------------------------
 void ofApp::gotFocus(){
-
+    sequencer.bpm.justGotFocus();
 }
 
 //--------------------------------------------------------------
@@ -73,7 +86,7 @@ void ofApp::gotMemoryWarning(){
 
 //--------------------------------------------------------------
 void ofApp::deviceOrientationChanged(int newOrientation){
-    cout<<"new orientation: "<<newOrientation<<endl;
+    //cout<<"new orientation: "<<newOrientation<<endl;
     
     if (newOrientation == OF_ORIENTATION_90_RIGHT || newOrientation == OF_ORIENTATION_90_LEFT){
         ofSetOrientation( (ofOrientation)newOrientation);
