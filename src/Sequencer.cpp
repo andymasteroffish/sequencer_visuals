@@ -12,7 +12,7 @@
 void Sequencer::setup(){
     
     
-    publicRelease = false;
+    publicRelease = true;
     
     useClickTrack = true;
     
@@ -68,7 +68,7 @@ void Sequencer::setup(){
     whiteVal = 240;
     ofBackground(whiteVal);
     
-    
+    //this feels suspicious for iOS. SHoud this only happen on computer?
     if (publicRelease){
         ofToggleFullscreen();
     }

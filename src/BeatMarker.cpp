@@ -111,7 +111,7 @@ void BeatMarker::update(float deltaTime, bool stepModeOn, float firstRunTimer){
     float endEnterTime = startEnterTime-2;
     firstRunYAdjust = 0;
     if (firstRunTimer > endEnterTime){
-        float firstRunDist = 150;
+        float firstRunDist = 175;
         if (firstRunTimer < startEnterTime){
             float prc = (firstRunTimer-endEnterTime) / (startEnterTime-endEnterTime);
             firstRunYAdjust = firstRunDist * prc;
