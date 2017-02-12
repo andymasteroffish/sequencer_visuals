@@ -146,7 +146,7 @@ public:
     
     //doing special stuff the first time the app ever runs
     bool isFirstRun;
-    float firstRunTimer;
+    float firstRunTimer, firstRunTime;
     bool hasAddedANote;
     string iosDataPath;
     

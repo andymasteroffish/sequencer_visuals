@@ -12,7 +12,7 @@
 void Sequencer::setup(){
     
     
-    publicRelease = true;
+    publicRelease = false;
     
     useClickTrack = true;
     
@@ -46,11 +46,12 @@ void Sequencer::setup(){
     
     isFirstRun = checkIsFirstRun();
     //testing
-//    if (!publicRelease){
-//        isFirstRun = true;
-//        hasRunStepMode = false;
-//    }
-    firstRunTimer =  isFirstRun ? 30 : -1;
+    if (!publicRelease){
+        //isFirstRun = true;
+        //hasRunStepMode = false;
+    }
+    firstRunTime = 30;
+    firstRunTimer =  isFirstRun ? firstRunTime : -1;
     hasAddedANote = false;
     
     useNumpadKeys = false;
@@ -484,6 +485,32 @@ void Sequencer::draw(){
             soundButtons[i].draw();
         }
         ofDisableAlphaBlending();
+    }
+    
+    //headphone reminder to help orient iOS devices
+    float headphoneDisplayTime = 6;
+    float headphoneShrinkTime = headphoneDisplayTime + 0.25;
+    if (ofGetElapsedTimef() < headphoneShrinkTime){
+        float curHeadphoneScale = 1.2 + sin(ofGetElapsedTimef()) * 0.1;
+        
+        if (ofGetElapsedTimef() > headphoneDisplayTime){
+            float prc = ofMap(ofGetElapsedTimef(), headphoneDisplayTime, headphoneShrinkTime, 1, 0);
+            prc = powf(prc, 2);
+            curHeadphoneScale *= prc;
+        }
+        
+        ofPushMatrix();
+        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+        ofScale(curHeadphoneScale, curHeadphoneScale);
+        
+        string headphoneMessage = "Headphones recommended";
+        ofRectangle headphoneRect = buttonFont.getStringBoundingBox(headphoneMessage, 0, 0);
+        float headphoneTextW = headphoneRect.width;
+        float headphoneTextH = headphoneRect.height;
+        ofSetColor(0, 100);
+        buttonFont.drawString("Headphones recomended", -headphoneTextW/2, headphoneTextH/4);
+        
+        ofPopMatrix();
     }
     
     //about screen info
