@@ -136,7 +136,13 @@ void Sequencer::setup(){
     //setting the locaitonof buttons based on screen size
     setButtonPositions();
     
-    string text[NUM_TOUCH_MENU_BUTTONS] = {"", "", "Clear", "-", "+", ""};
+    string text[NUM_TOUCH_MENU_BUTTONS];
+    text[MENU_BUTTON_LIVE] = "";        //filled in later
+    text[MENU_BUTTON_STEP] = "";        //filled in later
+    text[MENU_BUTTON_CLEAR] = "Clear";
+    text[MENU_BUTTON_CLICK] = "";       //filled in later
+    text[MENU_BUTTON_TEMPO_DOWN] = "-";
+    text[MENU_BUTTON_TEMPO_UP] = "+";
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
         bool useSmallFont = i==1 || i==5;
         touchMenuButtons[i].setText(text[i],  useSmallFont ? &buttonFontSmall : &buttonFont );
@@ -217,17 +223,18 @@ void Sequencer::update(){
         touchButtons[i].update(deltaTime);
     }
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
-        //slide them to hide "Live/Record" during step mode
-        float targetY = menuButtonH * i;
-        if (stepMode)   targetY = menuButtonH * (i-1);
-        
-        if (i > 3){    //both tempo buttons should be on the same Y plane and click track needs to move up too
-            targetY -= menuButtonH;
-        }
-        
-        
-        float xeno = 0.85;
-        touchMenuButtons[i].box.y = xeno * touchMenuButtons[i].box.y + (1-xeno) * targetY;
+        //TRYING OUT JUST ALWAYS HIDING THE LIVE/RECORD OPTION
+//        //slide them to hide "Live/Record" during step mode
+//        float targetY = menuButtonH * i;
+//        if (stepMode)   targetY = menuButtonH * (i-1);
+//        
+//        if (i > 3){    //both tempo buttons should be on the same Y plane and click track needs to move up too
+//            targetY -= menuButtonH;
+//        }
+//        
+//        
+//        float xeno = 0.85;
+//        touchMenuButtons[i].box.y = xeno * touchMenuButtons[i].box.y + (1-xeno) * targetY;
         
         //actually update them
         touchMenuButtons[i].update(deltaTime);
@@ -392,7 +399,7 @@ void Sequencer::draw(){
             int textFadeAlpa = 90;
             
             //draw the text for Live/Record
-            if (i==0){
+            if (i == MENU_BUTTON_LIVE){
                 ofSetColor(0);
                 
                 float textCenterX = touchMenuButtons[i].box.x + touchMenuButtons[i].box.width*0.6;
@@ -412,7 +419,7 @@ void Sequencer::draw(){
             }
             
             //draw the text for step/normal
-            if (i==1){
+            if (i == MENU_BUTTON_STEP){
                 ofSetColor(0);
                 
                 float textCenterX = touchMenuButtons[i].box.x + touchMenuButtons[i].box.width*0.6;
@@ -432,7 +439,7 @@ void Sequencer::draw(){
             }
             
             //draw the text for click track
-            if (i==5){
+            if (i == MENU_BUTTON_CLICK){
                 ofSetColor(0);
                 
                 float textCenterX = touchMenuButtons[i].box.x + touchMenuButtons[i].box.width*0.67;
@@ -459,8 +466,8 @@ void Sequencer::draw(){
         ofSetColor(0);
         string bpmText = ofToString( (int)bpmValue);
         
-        float bpmTextX = touchMenuButtons[3].box.x+touchMenuButtons[3].box.width - buttonFontSmall.stringWidth(bpmText)/2;
-        float bpmTextY = touchMenuButtons[3].box.y+touchMenuButtons[3].box.height-10;
+        float bpmTextX = touchMenuButtons[MENU_BUTTON_TEMPO_UP].box.x+touchMenuButtons[MENU_BUTTON_TEMPO_UP].box.width - buttonFontSmall.stringWidth(bpmText)/2;
+        float bpmTextY = touchMenuButtons[MENU_BUTTON_TEMPO_UP].box.y+touchMenuButtons[MENU_BUTTON_TEMPO_UP].box.height-10;
         buttonFontSmall.drawString(bpmText, bpmTextX, bpmTextY);
         
         //help button
@@ -754,30 +761,30 @@ void Sequencer::touchDown(int x, int y){
         for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
             if (touchMenuButtons[i].checkHit(x, y)){
                 
-                if (i == 0){
+                if (i == MENU_BUTTON_LIVE){
                     setRecording(!recording);
                 }
                 
-                if (i == 1){
+                if (i == MENU_BUTTON_STEP){
                     setStepMode(!stepMode);
                 }
                 
-                if (i == 2){
+                if (i == MENU_BUTTON_CLEAR){
                     clearBeats();
                 }
                 
-                if (i == 3){
+                if (i == MENU_BUTTON_TEMPO_DOWN){
                     bpmValue -= 10;
                     bpmValue = MAX(bpmValue, 50);
                     bpm.setBpm(bpmValue);
                 }
-                if (i == 4){
+                if (i == MENU_BUTTON_TEMPO_UP){
                     bpmValue += 10;
                     bpmValue = MIN(bpmValue, 500);
                     bpm.setBpm(bpmValue);
                 }
                 
-                if (i == 5){
+                if (i == MENU_BUTTON_CLICK){
                     useClickTrack = !useClickTrack;
                 }
             }
@@ -827,18 +834,18 @@ void Sequencer::setButtonPositions(){
         touchButtons[i].setup(col * buttonW, row * buttonH, buttonW, buttonH);
     }
     
-    //the three menu buttons go in the top right
+    //the menu buttons go in the top right
     menuButtonH = buttonH / 5;
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
+        float startY = -menuButtonH;    //if you ever full on remove live/record, you can rmeove this too. This is just being used to hide that button
         string oldText = touchMenuButtons[i].text;
         ofTrueTypeFont * oldFont = touchMenuButtons[i].font;
-        if (i < 3 || i > 4){
-            float thisY =  i * menuButtonH;
-            if (i == 5) thisY =  (i-1) * menuButtonH;   //click track button needs to be moved up
+        if (i != MENU_BUTTON_TEMPO_DOWN && i != MENU_BUTTON_TEMPO_UP){
+            float thisY =  startY + i * menuButtonH;
             touchMenuButtons[i].setup(ofGetWidth() - buttonW, thisY, buttonW, menuButtonH);
         }else{
-            float tempoX = i==3 ? ofGetWidth() - buttonW : ofGetWidth() - buttonW/2;
-            touchMenuButtons[i].setup(tempoX, 3 * menuButtonH, buttonW/2, menuButtonH);
+            float tempoX = i==MENU_BUTTON_TEMPO_DOWN ? ofGetWidth() - buttonW : ofGetWidth() - buttonW/2;
+            touchMenuButtons[i].setup(tempoX, startY + MENU_BUTTON_TEMPO_DOWN * menuButtonH, buttonW/2, menuButtonH);
         }
         touchMenuButtons[i].setText(oldText, oldFont);
     }
