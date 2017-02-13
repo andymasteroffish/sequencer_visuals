@@ -16,6 +16,7 @@ public:
     
     void setup(float x, float _stepModeX, float y, int _whiteVal, bool usingIpad);
     void update(float deltaTime, bool stepModeOn, float firstRunTimer);
+    bool checkHit(int x, int y);
     void triggerBeat();
     void triggerClear();
     void draw(bool hasSound, bool hasOtherStepModeSound, bool _isRecording);
@@ -35,6 +36,7 @@ public:
     
     //growing after being cleared
     bool beingCleared;
+    bool hadSoundOnClear, hadOtherStepModeSoundOnClear;
     float clearTimer;
     float fallY, fallDist;
     
@@ -54,6 +56,9 @@ public:
     int whiteVal;
     
     bool isRecording;
+    
+    //tapping
+    float maxTapDist;
     
 };
 

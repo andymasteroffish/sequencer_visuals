@@ -22,6 +22,8 @@ void BeatMarker::setup(float x, float _stepModeX, float y, int _whiteVal, bool u
     normSize = 15;
     if (usingIpad)  normSize *= 2;
     
+    maxTapDist = normSize * 1.5;
+    
     pulseSize = normSize * 2;
     
     pulseTime = 0.15;
@@ -77,6 +79,8 @@ void BeatMarker::update(float deltaTime, bool stepModeOn, float firstRunTimer){
         
         else if (clearTimer > fallTime && clearTimer <= pauseTime){
             curScale = 0;
+            hadSoundOnClear = false;
+            hadOtherStepModeSoundOnClear = false;
         }
         
         else if (clearTimer > pauseTime && clearTimer <= growTime){
@@ -122,7 +126,13 @@ void BeatMarker::update(float deltaTime, bool stepModeOn, float firstRunTimer){
         //cout<<"timer "<<firstRunTimer<<"  y adjust "<<firstRunYAdjust<<endl;
     }
     
-    
+}
+
+bool BeatMarker::checkHit(int x, int y){
+    if (ofDistSquared(x, y, pos.x, pos.y) < maxTapDist*maxTapDist){
+        return true;
+    }
+    return false;
 }
 
 void BeatMarker::triggerBeat(){
@@ -142,6 +152,14 @@ void BeatMarker::draw(bool hasSound, bool hasOtherStepModeSound, bool _isRecordi
     ofSetLineWidth(1);
     ofSetCircleResolution(20);
     
+    if (beingCleared){
+        hasSound = hadSoundOnClear;
+        hasOtherStepModeSound = hadOtherStepModeSoundOnClear;
+    }else{
+        hadSoundOnClear = hasSound;
+        hadOtherStepModeSoundOnClear = hasOtherStepModeSound;
+    }
+    
     if (hasSound && isRecording)    ofFill();
     else                            ofNoFill();
     
@@ -158,5 +176,10 @@ void BeatMarker::draw(bool hasSound, bool hasOtherStepModeSound, bool _isRecordi
         ofDrawCircle(pos.x, yPos, curSize * curScale * 0.5);
     }
     
+    
+    //testing
+//    ofSetColor(255,0,0);
+//    ofNoFill();
+//    ofDrawCircle(pos.x, pos.y, maxTapDist);
     
 }

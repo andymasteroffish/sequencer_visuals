@@ -756,6 +756,17 @@ void Sequencer::touchDown(int x, int y){
     
     //check the buttons!
     if (!stepMode){
+        //beat markers
+        for (int i=0; i<NUM_BEATS; i++){
+            if(beatMarkers[i].checkHit(x, y)){
+                for (int k=0; k<NUM_SOUNDS; k++){
+                    beatsOn[i][k] = false;
+                }
+                beatMarkers[i].triggerClear();
+                return;
+            }
+        }
+        //sound buttons
         for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
             if(touchButtons[i].checkHit(x, y)){
                 if (i < 15){
