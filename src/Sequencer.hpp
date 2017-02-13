@@ -55,6 +55,7 @@ public:
     
     void keyPressed(int key);
     void touchDown(int x, int y);
+    void mouseMoved(int x, int y);
     void windowResized(int w, int h);
     void setButtonPositions();
     
@@ -127,6 +128,8 @@ public:
     bool stepMode;
     int curStepSound;
     
+    //int curMouseOverSound; //for showing specific button info on PC/Mac
+    
     //fucking around with visuals
     int visualEffectNum;
     ofShader shader;
@@ -158,9 +161,9 @@ public:
     
 #define NUM_TOUCH_MENU_BUTTONS 6
 #define MENU_BUTTON_LIVE 0
-#define MENU_BUTTON_STEP 1
-#define MENU_BUTTON_CLEAR 2
-#define MENU_BUTTON_CLICK 3
+#define MENU_BUTTON_CLICK 1
+#define MENU_BUTTON_STEP 2
+#define MENU_BUTTON_CLEAR 3
 #define MENU_BUTTON_TEMPO_DOWN 4
 #define MENU_BUTTON_TEMPO_UP 5
     TouchGeneralButton touchMenuButtons[NUM_TOUCH_MENU_BUTTONS];

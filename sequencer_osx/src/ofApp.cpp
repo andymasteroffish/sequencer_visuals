@@ -33,6 +33,12 @@ void ofApp::keyPressed(int key){
     
 }
 
+//--------------------------------------------------------------
+void ofApp::mouseMoved(int x, int y ){
+    sequencer.mouseMoved(x, y);
+}
+
+
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){

@@ -14,7 +14,7 @@ void Sequencer::setup(){
     
     publicRelease = false;
     
-    useClickTrack = true;
+    useClickTrack = false;
     
 #ifdef TARGET_OPENGLES
     shader.load("shaders/shadersES2/shader");
@@ -63,6 +63,8 @@ void Sequencer::setup(){
     
     stepMode = false;
     curStepSound = 0;
+    
+    //curMouseOverSound = -1;
     
     ofSetFrameRate(60);
     
@@ -769,14 +771,9 @@ void Sequencer::touchDown(int x, int y){
         //sound buttons
         for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
             if(touchButtons[i].checkHit(x, y)){
-                if (i < 15){
-                    makeNewHit(i);
-                    //if they switch to step mode, have this be the current sound
-                    curStepSound = i;
-                }
-                if (i == 15){
-                    clearBeats();
-                }
+                makeNewHit(i);
+                //if they switch to step mode, have this be the current sound
+                curStepSound = i;
             }
         }
     }else{
@@ -829,6 +826,17 @@ void Sequencer::touchDown(int x, int y){
         }
     }
     
+}
+
+//--------------------------------------------------------------
+//This is only used for PC/Mac and is not required for functionality
+void Sequencer::mouseMoved(int x, int y){
+//    curMouseOverSound = -1;
+//    for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
+//        if(touchButtons[i].checkHit(x, y, false)){
+//            curMouseOverSound = i;
+//        }
+//    }
 }
 
 

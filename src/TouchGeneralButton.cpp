@@ -56,10 +56,12 @@ void TouchGeneralButton::draw(){
     
 }
 
-bool TouchGeneralButton::checkHit(int x, int y){
+bool TouchGeneralButton::checkHit(int x, int y, bool highlightOnHit){
     
     if (box.inside(x, y)){
-        curFadeVal = 255;
+        if (highlightOnHit){
+            curFadeVal = 255;
+        }
         return  true;
     }
     

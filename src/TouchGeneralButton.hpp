@@ -19,7 +19,7 @@ public:
     void setText(string _text, ofTrueTypeFont * _font);
     void update(float deltaTime);
     void draw();
-    bool checkHit(int x, int y);
+    bool checkHit(int x, int y, bool highlightOnHit = true);
     
     ofRectangle box;
 //    ofVec2f pos;
