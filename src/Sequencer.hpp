@@ -20,6 +20,7 @@
 #include "StepModeIcons.hpp"
 
 #include "AboutScreen.hpp"
+#include "Logo.hpp"
 
 #include "Hit.hpp"
 #include "TunnelHit.hpp"
@@ -142,6 +143,9 @@ public:
     
     //fonts
     ofTrueTypeFont buttonFont, buttonFontSmall;
+    
+    //logo
+    Logo logo;
     
     //about screen
     AboutScreen aboutScreen;

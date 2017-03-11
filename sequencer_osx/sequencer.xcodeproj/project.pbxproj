@@ -34,6 +34,7 @@
 		575B12531D22BFDA00B0CAF6 /* TriangleHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12391D22BFDA00B0CAF6 /* TriangleHit.cpp */; };
 		575B12541D22BFDA00B0CAF6 /* TunnelHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B123B1D22BFDA00B0CAF6 /* TunnelHit.cpp */; };
 		575B12551D22BFDA00B0CAF6 /* WaveColumnHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B123D1D22BFDA00B0CAF6 /* WaveColumnHit.cpp */; };
+		579BAB951E74A4ED00A983B0 /* Logo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BAB931E74A4ED00A983B0 /* Logo.cpp */; };
 		57C9BA641D2C46DE006E20B3 /* Bpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57C9BA621D2C46DE006E20B3 /* Bpm.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -124,6 +125,8 @@
 		575B123C1D22BFDA00B0CAF6 /* TunnelHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TunnelHit.hpp; path = ../../src/TunnelHit.hpp; sourceTree = "<group>"; };
 		575B123D1D22BFDA00B0CAF6 /* WaveColumnHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaveColumnHit.cpp; path = ../../src/WaveColumnHit.cpp; sourceTree = "<group>"; };
 		575B123E1D22BFDA00B0CAF6 /* WaveColumnHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = WaveColumnHit.hpp; path = ../../src/WaveColumnHit.hpp; sourceTree = "<group>"; };
+		579BAB931E74A4ED00A983B0 /* Logo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logo.cpp; path = ../../src/Logo.cpp; sourceTree = "<group>"; };
+		579BAB941E74A4ED00A983B0 /* Logo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Logo.hpp; path = ../../src/Logo.hpp; sourceTree = "<group>"; };
 		57C9BA621D2C46DE006E20B3 /* Bpm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bpm.cpp; path = ../../src/Bpm.cpp; sourceTree = "<group>"; };
 		57C9BA631D2C46DE006E20B3 /* Bpm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Bpm.hpp; path = ../../src/Bpm.hpp; sourceTree = "<group>"; };
 		57EA200C1D2326EE008C0E46 /* SystemSpecificInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemSpecificInfo.h; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				570A787D1D3169F800180598 /* about */,
 				57C9BA631D2C46DE006E20B3 /* Bpm.hpp */,
 				57C9BA621D2C46DE006E20B3 /* Bpm.cpp */,
+				579BAB941E74A4ED00A983B0 /* Logo.hpp */,
+				579BAB931E74A4ED00A983B0 /* Logo.cpp */,
 			);
 			name = project;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				575B12431D22BFDA00B0CAF6 /* ClapHit.cpp in Sources */,
 				575B12411D22BFDA00B0CAF6 /* BuckshotHit.cpp in Sources */,
 				575B12441D22BFDA00B0CAF6 /* CrystalHit.cpp in Sources */,
+				579BAB951E74A4ED00A983B0 /* Logo.cpp in Sources */,
 				575B124E1D22BFDA00B0CAF6 /* SlashHit.cpp in Sources */,
 				575B12421D22BFDA00B0CAF6 /* ChaserHit.cpp in Sources */,
 				5706279E1D26FFFF00136FF1 /* TouchGeneralButton.cpp in Sources */,

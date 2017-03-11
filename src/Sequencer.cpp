@@ -71,6 +71,8 @@ void Sequencer::setup(){
     whiteVal = 240;
     ofBackground(whiteVal);
     
+    logo.setup(whiteVal, usingIPad, &buttonFont);
+    
     //this feels suspicious for iOS. SHoud this only happen on computer?
     if (publicRelease){
         ofToggleFullscreen();
@@ -215,6 +217,8 @@ void Sequencer::update(){
     
     aboutScreen.update(deltaTime);
     stepModeInstructions.update(deltaTime);
+    
+    logo.update(deltaTime);
     
     //update the markers
     for (int i=0; i<NUM_BEATS; i++){
@@ -489,35 +493,14 @@ void Sequencer::draw(){
         ofDisableAlphaBlending();
     }
     
-    //headphone reminder to help orient iOS devices
-    float headphoneDisplayTime = 6;
-    float headphoneShrinkTime = headphoneDisplayTime + 0.25;
-    if (ofGetElapsedTimef() < headphoneShrinkTime){
-        float curHeadphoneScale = 1.2 + sin(ofGetElapsedTimef()) * 0.1;
-        
-        if (ofGetElapsedTimef() > headphoneDisplayTime){
-            float prc = ofMap(ofGetElapsedTimef(), headphoneDisplayTime, headphoneShrinkTime, 1, 0);
-            prc = powf(prc, 2);
-            curHeadphoneScale *= prc;
-        }
-        
-        ofPushMatrix();
-        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-        ofScale(curHeadphoneScale, curHeadphoneScale);
-        
-        string headphoneMessage = "Headphones recommended";
-        ofRectangle headphoneRect = buttonFont.getStringBoundingBox(headphoneMessage, 0, 0);
-        float headphoneTextW = headphoneRect.width;
-        float headphoneTextH = headphoneRect.height;
-        ofSetColor(0, 100);
-        buttonFont.drawString("Headphones recomended", -headphoneTextW/2, headphoneTextH/4);
-        
-        ofPopMatrix();
-    }
+    
     
     //about screen info
     aboutScreen.draw();
     stepModeInstructions.draw();
+    
+    //the logo
+    logo.draw();
     
 //    bool showWIPText = !publicRelease;
 //#ifdef USING_IOS
