@@ -19,20 +19,26 @@ void Logo::setup(int _whiteVal, bool usingiPad, ofTrueTypeFont * _font){
     font = _font;
     
     masterScale = 1;
-    if (usingiPad)  masterScale = 1.5;
+    if (usingiPad)  masterScale *= 1.5;
     
     timer = 0;
     
-    logoPic.load("logo_quick_crop.png");
+    for (int i=0; i<LOGO_SIZE; i++){
+        logoPics[i].load("logo/"+ofToString(i)+".png");
+    }
     
-    logoPos.set(ofGetWidth()*0.5, ofGetHeight()*0.5);
+    //logoPic.load("logo_quick_crop.png");
+    
+    logoPos.set(ofGetWidth()*0.5, ofGetHeight()*0.55);
 }
 
 void Logo::update(float deltaTime){
     timer += deltaTime;
     
     if (timer < growTime){
-        prcComplete = timer/growTime;
+        //prcComplete = timer/growTime;
+        //trying out having the animaitons start fileld in so they can be on the load screen
+        prcComplete = 1;
     }else if (timer < growTime + pauseTime){
         prcComplete = 1;
     }
@@ -57,7 +63,7 @@ void Logo::draw(){
     
     ofScale(masterScale, masterScale);
     
-    drawTestImage();
+    drawLogoImages();
     
     drawHeadphoneMessage();
     
@@ -66,14 +72,33 @@ void Logo::draw(){
     ofDisableAlphaBlending();
 }
 
-void Logo::drawTestImage(){
+void Logo::drawLogoImages(){
+    ofEnableSmoothing();
     ofSetColor(whiteVal, 255 * prcComplete);
     
-    ofPushMatrix();
-    ofTranslate(0, -ofGetHeight()*0.2);
-    ofScale(0.5, 0.5);
-    logoPic.draw(-logoPic.getWidth()/2, -logoPic.getHeight()/2);
-    ofPopMatrix();
+    float generalYOffset =  -ofGetHeight()*0.2;
+    
+    float noiseSpeed = 0.3;
+    float noiseRange = 10;
+    
+    for (int i=0; i<LOGO_SIZE; i++){
+        ofVec2f pos;
+        
+        pos.x = ofNoise(ofGetElapsedTimef()*noiseSpeed, i, 20) * noiseRange;
+        pos.y = ofNoise(ofGetElapsedTimef()*noiseSpeed, i, 100) * noiseRange;
+        float noiseScale = MIN(1,timer/growTime);
+        
+        ofPushMatrix();
+        ofTranslate(0,generalYOffset);
+        ofTranslate(pos.x*noiseScale, pos.y*noiseScale);
+        ofScale(0.75, 0.75);
+        
+        logoPics[i].draw(-logoPics[i].getWidth()/2, -logoPics[i].getHeight()/2);
+    
+        ofPopMatrix();
+    }
+    
+    ofDisableSmoothing();
 }
 
 void Logo::drawHeadphoneMessage(){
@@ -89,7 +114,7 @@ void Logo::drawHeadphoneMessage(){
     }
     
     ofPushMatrix();
-    ofTranslate(0, ofGetHeight()*0.1);
+    ofTranslate(0, ofGetHeight()*0.2);
     ofScale(curHeadphoneScale, curHeadphoneScale);
     
     string headphoneMessage = "Headphones recommended";

@@ -47,8 +47,8 @@ void Sequencer::setup(){
     isFirstRun = checkIsFirstRun();
     //testing
     if (!publicRelease){
-        //isFirstRun = true;
-        //hasRunStepMode = false;
+        isFirstRun = true;
+        hasRunStepMode = false;
     }
     firstRunTime = 30;
     firstRunTimer =  isFirstRun ? firstRunTime : -1;

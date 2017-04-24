@@ -19,7 +19,7 @@ public:
     
     void draw();
     
-    void drawTestImage();
+    void drawLogoImages();
     void drawHeadphoneMessage();
     
     float masterScale;
@@ -37,6 +37,10 @@ public:
     
     //testing
     ofImage logoPic;
+    
+    #define LOGO_SIZE 9
+    ofImage logoPics[LOGO_SIZE];
+    float picW, picH;
 };
 
 #endif /* Logo_hpp */
