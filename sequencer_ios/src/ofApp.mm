@@ -11,7 +11,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    ofSetOrientation(OF_ORIENTATION_90_LEFT);
+    ofSetOrientation(OF_ORIENTATION_90_RIGHT);//LEFT);
     
     sequencer.iosDataPath = ofxiOSGetDocumentsDirectory();
     sequencer.setup();

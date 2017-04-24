@@ -8,10 +8,12 @@
 
 #include "Logo.hpp"
 
-void Logo::setup(int _whiteVal, bool usingiPad, ofTrueTypeFont * _font, ofTrueTypeFont * _fontSmall){
+void Logo::setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueTypeFont * _fontSmall){
+    
+    usingiPad = _usingiPad;
     
     growTime = 1.5;
-    pauseTime = 6;
+    pauseTime = 7;
     fadeTime = 0.4;
     
     whiteVal = _whiteVal;
@@ -77,7 +79,7 @@ void Logo::drawLogoImages(){
     ofEnableSmoothing();
     ofSetColor(whiteVal, 255 * prcComplete);
     
-    float generalYOffset =  -ofGetHeight()*0.2;
+    float generalYOffset =  -150;//ofGetHeight()*0.2;
     
     float noiseSpeed = 0.3;
     float noiseRange = 10;
@@ -108,6 +110,14 @@ void Logo::drawHeadphoneMessage(){
     
     float prcToShrink = 0.75;
     
+    float headphoneY = 150;
+    float creditsY = 225;
+    
+    if (usingiPad){
+        headphoneY = 175;
+        creditsY = 275;
+    }
+    
     float curHeadphoneScale = 1.2 + sin(ofGetElapsedTimef()) * 0.1;
     //curHeadphoneScale = 1.2 + sin(0) * 0.1;   //KILL ME
         
@@ -118,7 +128,7 @@ void Logo::drawHeadphoneMessage(){
     }
     
     ofPushMatrix();
-    ofTranslate(0, ofGetHeight()*0.2);
+    ofTranslate(0, headphoneY);//ofGetHeight()*0.2);
     ofScale(curHeadphoneScale, curHeadphoneScale);
     
     string headphoneMessage = "Headphones recommended";
@@ -132,10 +142,10 @@ void Logo::drawHeadphoneMessage(){
     
     
     ofSetColor(0, 100*prcComplete);
-    string creditsMessage = "Andy Wallace & Dan Friel";
+    string creditsMessage = "by Andy Wallace & Dan Friel";
     ofRectangle creditsRect = fontSmall->getStringBoundingBox(headphoneMessage, 0, 0);
     float creditTextW = creditsRect.width;
-    fontSmall->drawString(creditsMessage, -creditTextW/2, ofGetHeight()*0.3);
+    fontSmall->drawString(creditsMessage, -creditTextW/2, creditsY);//ofGetHeight()*0.3);
 }
 
 //void Logo::drawCredits(){

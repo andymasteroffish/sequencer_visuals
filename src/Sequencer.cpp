@@ -582,6 +582,9 @@ void Sequencer::keyPressed(int key){
         //showHelp = !showHelp;
     }
     if (key == 'z' || key == 'Z'){
+        if (logo.timer < logo.growTime+ logo.pauseTime){
+            logo.timer = logo.growTime+ logo.pauseTime;
+        }
         aboutScreen.turnOn();
     }
     
@@ -735,6 +738,9 @@ void Sequencer::touchDown(int x, int y){
     
     //help button overrides anything else
     if (aboutButton.checkHit(x, y) && !aboutScreen.isActive){
+        if (logo.timer < logo.growTime+ logo.pauseTime){
+            logo.timer = logo.growTime+ logo.pauseTime;
+        }
         aboutScreen.turnOn();
         return;
     }
@@ -979,6 +985,9 @@ void Sequencer::setStepMode(bool isOn){
             //is this the first time running step mode?
             if (!hasRunStepMode){
                 cout<<"open the step mode instructions"<<endl;
+                if (logo.timer < logo.growTime+ logo.pauseTime){
+                    logo.timer = logo.growTime+ logo.pauseTime;
+                }
                 stepModeInstructions.turnOn();
                 saveHasRunStepMode();
             }

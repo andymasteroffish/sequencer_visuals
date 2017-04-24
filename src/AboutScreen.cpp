@@ -60,8 +60,8 @@ void AboutScreen::setupAbout(){
     box.y = ofGetHeight()/2 - box.height/2;
     
     float titleY = box.y+60*ipadAdjust;
-    float titleX = box.x+box.width/2 - titleFont.stringWidth("Sequencer")/2;
-    createWordsFromLine("Sequencer", titleX,titleY, &titleFont);
+    float titleX = box.x+box.width/2 - titleFont.stringWidth("Bleep Space")/2;
+    createWordsFromLine("Bleep Space", titleX,titleY, &titleFont);
     
     float byLine1X = box.x+box.width/2 - textFont.stringWidth("by Andy Wallace")/2;
     createWordsFromLine("by Andy Wallace", byLine1X, titleY + 40*ipadAdjust, &textFont);
