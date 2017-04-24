@@ -17,7 +17,7 @@
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
                BuildableName = "sequncer.app"
                BlueprintName = "sequncer"
-               ReferencedContainer = "container:sequncer.xcodeproj">
+               ReferencedContainer = "container:bleepspace.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
             BuildableName = "sequncer.app"
             BlueprintName = "sequncer"
-            ReferencedContainer = "container:sequncer.xcodeproj">
+            ReferencedContainer = "container:bleepspace.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
             BuildableName = "sequncer.app"
             BlueprintName = "sequncer"
-            ReferencedContainer = "container:sequncer.xcodeproj">
+            ReferencedContainer = "container:bleepspace.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
             BuildableName = "sequncer.app"
             BlueprintName = "sequncer"
-            ReferencedContainer = "container:sequncer.xcodeproj">
+            ReferencedContainer = "container:bleepspace.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
