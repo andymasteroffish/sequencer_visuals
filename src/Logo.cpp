@@ -8,7 +8,7 @@
 
 #include "Logo.hpp"
 
-void Logo::setup(int _whiteVal, bool usingiPad, ofTrueTypeFont * _font){
+void Logo::setup(int _whiteVal, bool usingiPad, ofTrueTypeFont * _font, ofTrueTypeFont * _fontSmall){
     
     growTime = 1.5;
     pauseTime = 6;
@@ -17,6 +17,7 @@ void Logo::setup(int _whiteVal, bool usingiPad, ofTrueTypeFont * _font){
     whiteVal = _whiteVal;
     
     font = _font;
+    fontSmall = _fontSmall;
     
     masterScale = 1;
     if (usingiPad)  masterScale *= 1.5;
@@ -88,6 +89,8 @@ void Logo::drawLogoImages(){
         pos.y = ofNoise(ofGetElapsedTimef()*noiseSpeed, i, 100) * noiseRange;
         float noiseScale = MIN(1,timer/growTime);
         
+        //noiseScale = 0; //KILL ME
+        
         ofPushMatrix();
         ofTranslate(0,generalYOffset);
         ofTranslate(pos.x*noiseScale, pos.y*noiseScale);
@@ -106,6 +109,7 @@ void Logo::drawHeadphoneMessage(){
     float prcToShrink = 0.75;
     
     float curHeadphoneScale = 1.2 + sin(ofGetElapsedTimef()) * 0.1;
+    //curHeadphoneScale = 1.2 + sin(0) * 0.1;   //KILL ME
         
     if (prcComplete < prcToShrink){
         float prc = ofMap(prcComplete, 0, prcToShrink, 0, 1);
@@ -125,4 +129,16 @@ void Logo::drawHeadphoneMessage(){
     font->drawString("Headphones recomended", -headphoneTextW/2, headphoneTextH/4);
     
     ofPopMatrix();
+    
+    
+    ofSetColor(0, 100*prcComplete);
+    string creditsMessage = "Andy Wallace & Dan Friel";
+    ofRectangle creditsRect = fontSmall->getStringBoundingBox(headphoneMessage, 0, 0);
+    float creditTextW = creditsRect.width;
+    fontSmall->drawString(creditsMessage, -creditTextW/2, ofGetHeight()*0.3);
 }
+
+//void Logo::drawCredits(){
+//    
+//    
+//}

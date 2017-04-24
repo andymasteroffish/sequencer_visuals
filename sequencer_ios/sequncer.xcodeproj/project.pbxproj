@@ -12,6 +12,7 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		5326AEA810A23A0500278DE6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5326AEA710A23A0500278DE6 /* CoreLocation.framework */; };
 		53F323EB10A20EDB00E0DAE4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */; };
+		571D05E31EAE69B900D4D143 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 571D05E21EAE69B900D4D143 /* Launch Screen.storyboard */; };
 		5733E94D1D319A47002EC812 /* AboutScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5733E9471D319A47002EC812 /* AboutScreen.cpp */; };
 		5733E94E1D319A47002EC812 /* BounceWord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5733E9491D319A47002EC812 /* BounceWord.cpp */; };
 		5733E94F1D319A47002EC812 /* FillCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5733E94B1D319A47002EC812 /* FillCircle.cpp */; };
@@ -83,6 +84,7 @@
 		32CA4F630368D1EE00C91783 /* ofxiOS_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxiOS_Prefix.pch; sourceTree = "<group>"; };
 		5326AEA710A23A0500278DE6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		571D05E21EAE69B900D4D143 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		5733E9471D319A47002EC812 /* AboutScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AboutScreen.cpp; path = ../../src/AboutScreen.cpp; sourceTree = "<group>"; };
 		5733E9481D319A47002EC812 /* AboutScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AboutScreen.hpp; path = ../../src/AboutScreen.hpp; sourceTree = "<group>"; };
 		5733E9491D319A47002EC812 /* BounceWord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BounceWord.cpp; path = ../../src/BounceWord.cpp; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				571D05E21EAE69B900D4D143 /* Launch Screen.storyboard */,
 				57408B981D2F073300D545EC /* Images.xcassets */,
 				678E130B1795153C005B6D19 /* Default.png */,
 				678E130D17951540005B6D19 /* Default@2x.png */,
@@ -388,8 +391,8 @@
 				575B12A01D22C41300B0CAF6 /* project */,
 				57C9BA5E1D2C3A61006E20B3 /* Bpm.hpp */,
 				57C9BA5D1D2C3A61006E20B3 /* Bpm.cpp */,
-				577FD6F71E74ACAC007E7E51 /* Logo.cpp */,
 				577FD6F81E74ACAC007E7E51 /* Logo.hpp */,
+				577FD6F71E74ACAC007E7E51 /* Logo.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -426,6 +429,7 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 73854WS9JU;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -477,6 +481,7 @@
 				678E130C1795153C005B6D19 /* Default.png in Resources */,
 				57408B991D2F073300D545EC /* Images.xcassets in Resources */,
 				678E130E17951540005B6D19 /* Default@2x.png in Resources */,
+				571D05E31EAE69B900D4D143 /* Launch Screen.storyboard in Resources */,
 				678E131017951549005B6D19 /* Default-568h@2x~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,7 +559,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 73854WS9JU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ofxiOS_Prefix.pch;
@@ -572,7 +578,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 73854WS9JU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ofxiOS_Prefix.pch;

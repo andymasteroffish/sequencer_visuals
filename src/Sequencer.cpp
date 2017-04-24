@@ -47,8 +47,8 @@ void Sequencer::setup(){
     isFirstRun = checkIsFirstRun();
     //testing
     if (!publicRelease){
-        isFirstRun = true;
-        hasRunStepMode = false;
+//        isFirstRun = true;
+//        hasRunStepMode = false;
     }
     firstRunTime = 30;
     firstRunTimer =  isFirstRun ? firstRunTime : -1;
@@ -71,7 +71,7 @@ void Sequencer::setup(){
     whiteVal = 240;
     ofBackground(whiteVal);
     
-    logo.setup(whiteVal, usingIPad, &buttonFont);
+    logo.setup(whiteVal, usingIPad, &buttonFont, &buttonFontSmall);
     
     //this feels suspicious for iOS. SHoud this only happen on computer?
     if (publicRelease){

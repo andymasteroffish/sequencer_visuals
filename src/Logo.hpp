@@ -14,13 +14,14 @@
 class Logo{
 public:
     
-    void setup(int _whiteVal, bool usingiPad, ofTrueTypeFont * _font);
+    void setup(int _whiteVal, bool usingiPad, ofTrueTypeFont * _font, ofTrueTypeFont * _fontSmall);
     void update(float deltaTime);
     
     void draw();
     
     void drawLogoImages();
     void drawHeadphoneMessage();
+    //void drawCredits();
     
     float masterScale;
     int whiteVal;
@@ -34,6 +35,7 @@ public:
     ofVec2f logoPos;
     
     ofTrueTypeFont * font;
+    ofTrueTypeFont * fontSmall;
     
     //testing
     ofImage logoPic;
