@@ -179,6 +179,9 @@ public:
     //step mode for touch screens
     TouchGeneralButton touchStepButtons[NUM_BEATS];
     SoundButton soundButtons[NUM_SOUNDS];
+    
+    //takign a screenshot for desktop mode
+    bool takeScreenshot;
 };
 
 #endif /* Sequencer_hpp */

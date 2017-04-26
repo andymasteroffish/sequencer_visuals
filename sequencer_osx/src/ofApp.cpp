@@ -19,6 +19,12 @@ void ofApp::draw(){
     
     sequencer.draw();
     
+    if (sequencer.takeScreenshot){
+        sequencer.takeScreenshot = false;
+        ofImage pic;
+        pic.grabScreen(0, 0 , ofGetWidth(), ofGetHeight());
+        pic.save("screenshots/img"+ofToString(ofGetSystemTime())+".png");
+    }
     
 }
 

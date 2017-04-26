@@ -32,7 +32,11 @@ void Logo::setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueT
     
     //logoPic.load("logo_quick_crop.png");
     
-    logoPos.set(ofGetWidth()*0.5, ofGetHeight()*0.55);
+    setPos();
+}
+
+void Logo::setPos(){
+     logoPos.set(ofGetWidth()*0.5, ofGetHeight()*0.55);
 }
 
 void Logo::update(float deltaTime){

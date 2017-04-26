@@ -71,12 +71,13 @@ void Sequencer::setup(){
     whiteVal = 240;
     ofBackground(whiteVal);
     
-    logo.setup(whiteVal, usingIPad, &buttonFont, &buttonFontSmall);
-    
-    //this feels suspicious for iOS. SHoud this only happen on computer?
+    //this feels suspicious for iOS. Shoud this only happen on computer?
     if (publicRelease){
         ofToggleFullscreen();
     }
+    
+    logo.setup(whiteVal, usingIPad, &buttonFont, &buttonFontSmall);
+    
     
     showHelp = false;
     showTouchButtons = true;
@@ -153,6 +154,7 @@ void Sequencer::setup(){
         touchMenuButtons[i].setText(text[i],  useSmallFont ? &buttonFontSmall : &buttonFont );
     }
     
+    takeScreenshot = false;
 }
 
 //--------------------------------------------------------------
@@ -616,6 +618,10 @@ void Sequencer::keyPressed(int key){
         }
     }
     
+    if (key == 'o'){
+        takeScreenshot = true;
+    }
+    
     
     if (key == ']'){
         skipIntro();
@@ -840,6 +846,7 @@ void Sequencer::windowResized(int w, int h){
     }
     
     setButtonPositions();
+    logo.setPos();
 }
 
 //--------------------------------------------------------------

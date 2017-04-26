@@ -15,6 +15,7 @@ class Logo{
 public:
     
     void setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueTypeFont * _fontSmall);
+    void setPos();
     void update(float deltaTime);
     
     void draw();
