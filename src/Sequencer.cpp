@@ -602,9 +602,9 @@ void Sequencer::keyPressed(int key){
     if (key == 'c'){
         turnOnRecordingWhenClearing = !turnOnRecordingWhenClearing;
     }
-    if (key == 'p'){
-        usePreHitDetection = !usePreHitDetection;
-    }
+//    if (key == 'p'){
+//        usePreHitDetection = !usePreHitDetection;
+//    }
     if (key == '\\'){
         useNumpadKeys = !useNumpadKeys;
     }
@@ -618,7 +618,7 @@ void Sequencer::keyPressed(int key){
         }
     }
     
-    if (key == 'o'){
+    if (key == 'p'){
         takeScreenshot = true;
     }
     
