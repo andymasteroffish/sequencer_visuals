@@ -12,7 +12,7 @@
 void Sequencer::setup(){
     
     
-    publicRelease = true;
+    publicRelease = false;
     
     useClickTrack = false;
     

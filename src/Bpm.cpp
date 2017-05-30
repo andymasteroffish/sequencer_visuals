@@ -40,15 +40,18 @@ void Bpm::threadedFunction(){
         
         if ( lock() ){
             
+            //cout<<"thread "<<ofGetElapsedTimeMillis()<<endl;
+            
             if (!hasDonePreHit && ofGetElapsedTimeMillis() >= nextBeatTime-preHitMilliRange){
-                //cout<<"whoop"<<endl;
+                cout<<"pre hit "<<ofGetElapsedTimeMillis()<<endl;
                 ofNotifyEvent(preBeatEvent);
                 hasDonePreHit = true;
             }
-            
-            if (ofGetElapsedTimeMillis() >= nextBeatTime){
-                //cout<<"beat on "<<nextBeatTime<<endl;
-                //cout<<"exact time "<<ofGetElapsedTimeMillis()<<endl;
+            else if (ofGetElapsedTimeMillis() >= nextBeatTime){
+                //if (ofGetElapsedTimeMillis() != nextBeatTime){
+                    cout<<"beat on "<<nextBeatTime<<endl;
+                    cout<<"exact time "<<ofGetElapsedTimeMillis()<<endl;
+                //}
                 nextBeatTime += millisBetweenBeats;
                 ofNotifyEvent(beatEvent);
                 hasDonePreHit = false;
@@ -56,6 +59,7 @@ void Bpm::threadedFunction(){
             
             //we're done so we can unlock it
             unlock();
+            //sleep(millisBetweenBeats);
             yield();
         }
         
