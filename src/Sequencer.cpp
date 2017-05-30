@@ -82,7 +82,7 @@ void Sequencer::setup(){
     showHelp = false;
     showTouchButtons = true;
     
-    bpmValue = 150;
+    bpmValue = 160;
     bpmStartValue = bpmValue;
     
     ofAddListener(bpm.beatEvent, this, &Sequencer::hitBeat);
