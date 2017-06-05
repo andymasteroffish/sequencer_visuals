@@ -85,10 +85,14 @@ void Sequencer::setup(){
     bpmValue = 160;
     bpmStartValue = bpmValue;
     
-    ofAddListener(bpm.beatEvent, this, &Sequencer::hitBeat);
-    ofAddListener(bpm.preBeatEvent, this, &Sequencer::preHitBeat);
-    bpm.start(bpmValue);
-    bpm.setPreHitPrcSpacing(0.5);
+    //ofAddListener(bpm.beatEvent, this, &Sequencer::hitBeat);
+    //ofAddListener(bpm.preBeatEvent, this, &Sequencer::preHitBeat);
+    //bpm.start(bpmValue);
+    //bpm.setPreHitPrcSpacing(0.5);
+    
+    ofAddListener(bpm2.beatEvent, this, &Sequencer::hitBeat);
+    ofAddListener(bpm2.preBeatEvent, this, &Sequencer::preHitBeat);
+    bpm2.start(bpmValue);
     
     thisBeat = -1;
     onPreHit = false;
@@ -630,16 +634,16 @@ void Sequencer::keyPressed(int key){
     if (key == OF_KEY_UP){
         bpmValue += 10;
         bpmValue = MIN(bpmValue, 500);
-        bpm.setBpm(bpmValue);
+        //bpm.setBpm(bpmValue);
     }
     if (key == OF_KEY_DOWN){
         bpmValue -= 10;
         bpmValue = MAX(bpmValue, 50);
-        bpm.setBpm(bpmValue);
+        //bpm.setBpm(bpmValue);
     }
     if (key == 'b'){
         bpmValue = bpmStartValue;
-        bpm.setBpm(bpmValue);
+        //bpm.setBpm(bpmValue);
     }
     
     if (useNumpadKeys){
@@ -806,12 +810,12 @@ void Sequencer::touchDown(int x, int y){
                 if (i == MENU_BUTTON_TEMPO_DOWN){
                     bpmValue -= 10;
                     bpmValue = MAX(bpmValue, 50);
-                    bpm.setBpm(bpmValue);
+                    //bpm.setBpm(bpmValue);
                 }
                 if (i == MENU_BUTTON_TEMPO_UP){
                     bpmValue += 10;
                     bpmValue = MIN(bpmValue, 500);
-                    bpm.setBpm(bpmValue);
+                    //bpm.setBpm(bpmValue);
                 }
                 
                 if (i == MENU_BUTTON_CLICK){

@@ -15,6 +15,7 @@
 #include "ofMain.h"
 
 #include "Bpm.hpp"
+#include "Bpm2.hpp"
 
 #include "BeatMarker.hpp"
 #include "StepModeIcons.hpp"
@@ -96,8 +97,10 @@ public:
     //timing
     float deltaTime, prevFrameTime;
     
-    Bpm bpm;
+    //Bpm bpm;
     float bpmValue, bpmStartValue;
+    
+    Bpm2 bpm2;
     
     //drawing
     int whiteVal;

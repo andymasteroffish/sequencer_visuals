@@ -43,14 +43,14 @@ void Bpm::threadedFunction(){
             //cout<<"thread "<<ofGetElapsedTimeMillis()<<endl;
             
             if (!hasDonePreHit && ofGetElapsedTimeMillis() >= nextBeatTime-preHitMilliRange){
-                cout<<"pre hit "<<ofGetElapsedTimeMillis()<<endl;
+                //cout<<"pre hit "<<ofGetElapsedTimeMillis()<<endl;
                 ofNotifyEvent(preBeatEvent);
                 hasDonePreHit = true;
             }
             else if (ofGetElapsedTimeMillis() >= nextBeatTime){
                 //if (ofGetElapsedTimeMillis() != nextBeatTime){
-                    cout<<"beat on "<<nextBeatTime<<endl;
-                    cout<<"exact time "<<ofGetElapsedTimeMillis()<<endl;
+                //    cout<<"beat on "<<nextBeatTime<<endl;
+                //    cout<<"exact time "<<ofGetElapsedTimeMillis()<<endl;
                 //}
                 nextBeatTime += millisBetweenBeats;
                 ofNotifyEvent(beatEvent);

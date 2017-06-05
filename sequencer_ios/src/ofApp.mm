@@ -76,7 +76,7 @@ void ofApp::lostFocus(){
 
 //--------------------------------------------------------------
 void ofApp::gotFocus(){
-    sequencer.bpm.justGotFocus();
+    //sequencer.bpm.justGotFocus();
 }
 
 //--------------------------------------------------------------
