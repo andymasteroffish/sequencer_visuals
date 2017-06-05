@@ -30,6 +30,19 @@ void Sequencer::setup(){
     
     cout<<ofGetWidth()<<" x "<<ofGetHeight()<<endl;
     
+    //maxim
+    sampleRate 	= 44100; /* Sampling Rate */
+    bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
+    
+    ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
+    
+    cout<<"load now"<<endl;
+    kick.load(ofToDataPath("sounds/705kbps/Chug160Short.wav"));//load in your samples. Provide the full path to a wav file.
+    snare.load(ofToDataPath("sounds/705kbps/Glass.wav"));//load in your samples. Provide the full path to a wav file.
+    
+    
+    
+    
     //the iPad screen is bug enough that we really need to scale everything up
     usingIPad = ofGetWidth() > 2000;
     
@@ -90,9 +103,9 @@ void Sequencer::setup(){
     //bpm.start(bpmValue);
     //bpm.setPreHitPrcSpacing(0.5);
     
-    ofAddListener(bpm2.beatEvent, this, &Sequencer::hitBeat);
-    ofAddListener(bpm2.preBeatEvent, this, &Sequencer::preHitBeat);
-    bpm2.start(bpmValue);
+    //ofAddListener(bpm2.beatEvent, this, &Sequencer::hitBeat);
+    //ofAddListener(bpm2.preBeatEvent, this, &Sequencer::preHitBeat);
+    //bpm2.start(bpmValue);
     
     thisBeat = -1;
     onPreHit = false;
@@ -104,9 +117,9 @@ void Sequencer::setup(){
     loadSounds("sound_source.txt");
     
     //adjust the click track volume
-    float clickVol = 0.25;//0.45;
-    clickTrackSound.setVolume(clickVol);
-    clickTrackSound2.setVolume(clickVol);
+    //float clickVol = 0.25;//0.45;
+    //clickTrackSound.setVolume(clickVol);
+    //clickTrackSound2.setVolume(clickVol);
     
     clearBeats();
     
@@ -159,6 +172,7 @@ void Sequencer::setup(){
     }
     
     takeScreenshot = false;
+    
 }
 
 //--------------------------------------------------------------
@@ -176,7 +190,7 @@ void Sequencer::hitBeat(void){
         thisBeat = 0;
     }
     
-    //cout<<"hit beat "<<thisBeat<<endl;
+    cout<<"hit beat "<<thisBeat<<endl;
     
     //play anything that's on
     bool playedSound = false;
@@ -195,9 +209,9 @@ void Sequencer::hitBeat(void){
     
     if (useClickTrack && !playedSound){
         if (thisBeat % 4 == 0){
-            clickTrackSound2.play();
+            clickTrackSound2.trigger();
         }else{
-            clickTrackSound.play();
+            clickTrackSound.trigger();
         }
     }
 }
@@ -980,10 +994,16 @@ void Sequencer::makeNewHit(int idNum){
 //--------------------------------------------------------------
 void Sequencer::playSound(int idNum){
 #ifdef USING_IOS
-    sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].play();
+    sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].trigger();
+    //sounds[ 0 ][idNum].trigger();
 #else
-    sounds[0][idNum].play();
+    //sounds[0][idNum].trigger();
 #endif
+//#ifdef USING_IOS
+//    sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].play();
+//#else
+//    sounds[0][idNum].play();
+//#endif
 }
 
 //--------------------------------------------------------------
@@ -1054,19 +1074,19 @@ void Sequencer::loadSounds(string filePath){
         }
         
         //first two files are click track
-        clickTrackSound.load(files[0]);
-        clickTrackSound2.load(files[1]);
+        clickTrackSound.load(ofToDataPath(files[0]));
+        clickTrackSound2.load(ofToDataPath(files[1]));
         
         cout<<"found "<<files.size()<<" sound files"<<endl;
         
         for (int i=0; i<NUM_SOUNDS; i++){
 #ifdef USING_IOS
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
-                sounds[k][i].load(files[i+2]);
+                sounds[k][i].load(ofToDataPath(files[i+2]));
             }
 #else
-            sounds[0][i].load(files[i+2]);    //TESTING
-            sounds[0][i].setMultiPlay(true);
+            sounds[0][i].load(ofToDataPath(files[i+2]));    //TESTING
+            //sounds[0][i].setMultiPlay(true);
 #endif
         }
         
@@ -1209,3 +1229,68 @@ void Sequencer::skipIntro(){
     firstRunTimer = 0;
     hasAddedANote = true;
 }
+
+
+
+//--------------------------------------------------------------
+void Sequencer::setMaximAudio(bool advanceAudioThisCycle){
+    /* Stick your maximilian 'play()' code in here ! Declare your objects in testApp.h.
+     
+     For information on how maximilian works, take a look at the example code at
+     
+     http://www.maximilian.strangeloop.co.uk
+     
+     under 'Tutorials'.
+     
+     */
+    
+    currentCount=(int)timer.phasor(bpmValue/60.0f); //8);//this sets up a metronome
+    
+    
+    if (lastCount!=currentCount) {//if we have a new timer int this sample, play the sound
+        
+        int kicktrigger=hit[playHead%16];//get the value out of the array for the kick
+        int snaretrigger=snarehit[playHead%16];//same for the snare
+        playHead++;//iterate the playhead
+        lastCount=0;//reset the metrotest
+        
+        if (kicktrigger==1) {//if the sequence has a 1 in it
+            kick.trigger();//reset the playback position of the sample to 0 (the beginning)
+        }
+        
+        if (snaretrigger==1) {
+            snare.trigger();//likewise for the snare
+            //sounds[0][1].trigger();
+        }
+        
+        //cout<<"count "<<playHead<<" at "<<ofGetElapsedTimef()<<endl;
+        hitBeat();
+    }
+    
+    if (advanceAudioThisCycle){
+        sampleOut = 0;
+     //   sampleOut=kick.playOnce()+snare.playOnce();//just play the file. No looping.
+        
+    //    sampleOut+=kick.playOnce();
+    //    sampleOut+=snare.playOnce();
+        
+    //    sampleOut+=clickTrackSound.playOnce();
+    //    sampleOut+=clickTrackSound2.playOnce();
+    //    
+    //    sampleOut += sounds[0][1].playOnce();
+        
+        for (int i=0; i<NUM_SOUNDS; i++){
+            //sampleOut += sounds[0][i].playOnce();
+            for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
+                sampleOut += sounds[k][i].playOnce();
+            }
+        }
+    }
+    
+}
+
+
+
+
+
+

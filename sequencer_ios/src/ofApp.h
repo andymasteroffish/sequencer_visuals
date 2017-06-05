@@ -2,7 +2,7 @@
 
 #include "ofxiOS.h"
 #include "Sequencer.hpp"
-
+#include "ofxMaxim.h"
 
 
 class ofApp : public ofxiOSApp{
@@ -23,6 +23,8 @@ class ofApp : public ofxiOSApp{
         void gotFocus();
         void gotMemoryWarning();
         void deviceOrientationChanged(int newOrientation);
+    
+    void audioOut(float * output, int bufferSize, int nChannels);
 
     Sequencer sequencer;
 };

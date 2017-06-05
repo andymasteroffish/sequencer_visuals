@@ -14,6 +14,8 @@
 
 #include "ofMain.h"
 
+#include "ofxMaxim.h"
+
 #include "Bpm.hpp"
 #include "Bpm2.hpp"
 
@@ -82,6 +84,8 @@ public:
     
     void skipIntro();
     
+    void setMaximAudio(bool advanceAudioThisCycle);
+    
     //some generla stuff
     bool usingIPad;
     int gameW, gameH;
@@ -100,7 +104,7 @@ public:
     //Bpm bpm;
     float bpmValue, bpmStartValue;
     
-    Bpm2 bpm2;
+    //Bpm2 bpm2;
     
     //drawing
     int whiteVal;
@@ -115,8 +119,20 @@ public:
     #define NUM_SOUNDS 15
     #define NUM_IOS_BEATS_PER_SOUND 8   //this must be a perfect multiple of NUM_BEATS
     
-    ofSoundPlayer sounds[NUM_IOS_BEATS_PER_SOUND][NUM_SOUNDS];    //on osx, only sounds[0][i] are used. There is no multiplay on iOS, so I am loading far more than needed. This may be a disaster
-    ofSoundPlayer clickTrackSound, clickTrackSound2;
+    //ofSoundPlayer sounds[NUM_IOS_BEATS_PER_SOUND][NUM_SOUNDS];    //on osx, only sounds[0][i] are used. There is no multiplay on iOS, so I am loading far more than needed. This may be a disaster
+    //ofSoundPlayer clickTrackSound, clickTrackSound2;
+    
+    
+    //maxim stuff
+    int		bufferSize; /* buffer size */
+    int		sampleRate;
+    
+    double sampleOut;
+    
+    maxiSample sounds[NUM_IOS_BEATS_PER_SOUND][NUM_SOUNDS];    //on osx, only sounds[0][i] are used. There is no multiplay on iOS, so I am loading far more than needed. This may be a disaster
+    maxiSample clickTrackSound, clickTrackSound2;
+    
+    //tracking info
     bool useClickTrack;
     
     int thisBeat;
@@ -183,8 +199,20 @@ public:
     TouchGeneralButton touchStepButtons[NUM_BEATS];
     SoundButton soundButtons[NUM_SOUNDS];
     
-    //takign a screenshot for desktop mode
+    //taking a screenshot for desktop mode
     bool takeScreenshot;
+    
+    
+    //dmeo maxim stuff (KILL ME)
+    maxiSample kick,snare; //we've got two sampleplayers
+    maxiOsc timer; //and a timer
+    
+    int currentCount,lastCount,playHead,hit[16]={1,0,0,1 ,0,0,0,0 ,1,0,0,1 ,0,0,0,0}; //This is the sequence for the kick
+    int snarehit[16]={0,1,0,0, 0,1,0,0, 0,1,0,0, 0,1,0,0};//This is the sequence for the snare
+    
+    //int kicktrigger,snaretrigger;
+    
+
 };
 
 #endif /* Sequencer_hpp */

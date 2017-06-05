@@ -4,59 +4,59 @@
 ;Any audio files past the first 15 are ignored
 ;
 ;The source is relative to the location of the data folder
-; something like “sounds/clap.mp3”
+; something like “sounds/clap.wav”
 ;
 ;You can also put a full path to somewhere else on your computer
-; something like “/Users/you/Documents/cool_sounds/clap.mp3”
+; something like “/Users/you/Documents/cool_sounds/clap.wav”
 ;
 ;This text file is loaded when the app starts
 ;You’ll need to restart if you make changes
 
 ;Click Tracks
-sounds/dan/click/BoopHatShort1.wav
-sounds/dan/click/BoopHatShort2.wav
+sounds/705kbps/click/BoopHatShort1.wav
+sounds/705kbps/click/BoopHatShort2.wav
 
 ;Tunnel
-sounds/mp3/Lead6.mp3
+sounds/705kbps/Lead6.wav
 
 ;Sweep
-sounds/mp3/Chug160Short.mp3
+sounds/705kbps/Chug160Short.wav
 
 ;Triangle
-sounds/mp3/ToyKick2.mp3
+sounds/705kbps/ToyKick2.wav
 
 ;Grapes
-sounds/mp3/ToySnare.mp3
+sounds/705kbps/ToySnare.wav
 
 ;Buckshot
-sounds/mp3/NoiseKick2.mp3
+sounds/705kbps/NoiseKick2.wav
 
 ;Chaser
-sounds/mp3/Snare.mp3
+sounds/705kbps/Snare.wav
 
 ;Slash
-sounds/mp3/LowNoise.mp3
+sounds/705kbps/LowNoise.wav
 
 ;Square
-sounds/mp3/Boop.mp3
+sounds/705kbps/Boop.wav
 
 ;Trapezoid 
-sounds/mp3/Bend.mp3
+sounds/705kbps/Bend.wav
 
 ;Dot Polygon
-sounds/mp3/Lead8.mp3
+sounds/705kbps/Lead8.wav
 
 ;Sizzle
-sounds/mp3/Glass.mp3
+sounds/705kbps/Glass.wav
 
 ;Drunk Triangle
-sounds/mp3/Whistle3.mp3
+sounds/705kbps/Whistle3.wav
 
 ;Crystal
-sounds/mp3/Feedback.mp3
+sounds/705kbps/Feedback.wav
 
 ;Clap
-sounds/mp3/Blorp.mp3
+sounds/705kbps/Blorp.wav
 
 ;Wave Column
-sounds/mp3/Blorp2.1.mp3
+sounds/705kbps/Blorp2.1.wav
