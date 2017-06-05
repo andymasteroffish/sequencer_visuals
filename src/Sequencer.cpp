@@ -36,11 +36,9 @@ void Sequencer::setup(){
     
     ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
     
-    cout<<"load now"<<endl;
-    kick.load(ofToDataPath("sounds/705kbps/Chug160Short.wav"));//load in your samples. Provide the full path to a wav file.
-    snare.load(ofToDataPath("sounds/705kbps/Glass.wav"));//load in your samples. Provide the full path to a wav file.
-    
-    
+//    cout<<"load now"<<endl;
+//    kick.load(ofToDataPath("sounds/705kbps/Chug160Short.wav"));//load in your samples. Provide the full path to a wav file.
+//    snare.load(ofToDataPath("sounds/705kbps/Glass.wav"));//load in your samples. Provide the full path to a wav file.
     
     
     //the iPad screen is bug enough that we really need to scale everything up
@@ -98,14 +96,7 @@ void Sequencer::setup(){
     bpmValue = 160;
     bpmStartValue = bpmValue;
     
-    //ofAddListener(bpm.beatEvent, this, &Sequencer::hitBeat);
-    //ofAddListener(bpm.preBeatEvent, this, &Sequencer::preHitBeat);
-    //bpm.start(bpmValue);
-    //bpm.setPreHitPrcSpacing(0.5);
-    
-    //ofAddListener(bpm2.beatEvent, this, &Sequencer::hitBeat);
-    //ofAddListener(bpm2.preBeatEvent, this, &Sequencer::preHitBeat);
-    //bpm2.start(bpmValue);
+    preHitPrc = 0.85f;   //how far through do we have to be for it tocount as a prehit for the next beat
     
     thisBeat = -1;
     onPreHit = false;
@@ -175,13 +166,7 @@ void Sequencer::setup(){
     
 }
 
-//--------------------------------------------------------------
-void Sequencer::preHitBeat(void){
-    //cout<<"pre hit!!"<<endl;
-    if (usePreHitDetection){
-        onPreHit = true;
-    }
-}
+
 //--------------------------------------------------------------
 void Sequencer::hitBeat(void){
     onPreHit = false;
@@ -190,7 +175,7 @@ void Sequencer::hitBeat(void){
         thisBeat = 0;
     }
     
-    cout<<"hit beat "<<thisBeat<<endl;
+    //cout<<"hit beat "<<thisBeat<<" at "<<ofGetElapsedTimef()<<endl;
     
     //play anything that's on
     bool playedSound = false;
@@ -1235,52 +1220,33 @@ void Sequencer::skipIntro(){
 //--------------------------------------------------------------
 void Sequencer::setMaximAudio(bool advanceAudioThisCycle){
     /* Stick your maximilian 'play()' code in here ! Declare your objects in testApp.h.
-     
      For information on how maximilian works, take a look at the example code at
-     
      http://www.maximilian.strangeloop.co.uk
-     
      under 'Tutorials'.
-     
      */
     
-    currentCount=(int)timer.phasor(bpmValue/60.0f); //8);//this sets up a metronome
+    double counterVal = timer.phasor(bpmValue/60.0f);   //this sets up a metronome
+    int currentCount=(int)counterVal;                   //currentCount will become 1 at the last tick of eahc cycle
     
+    //checking for pre-hits
+    if (counterVal > preHitPrc && !onPreHit && usePreHitDetection){
+        //cout<<"pre hit at "<<ofGetElapsedTimef()<<endl;
+        onPreHit = true;
+    }
     
-    if (lastCount!=currentCount) {//if we have a new timer int this sample, play the sound
-        
-        int kicktrigger=hit[playHead%16];//get the value out of the array for the kick
-        int snaretrigger=snarehit[playHead%16];//same for the snare
-        playHead++;//iterate the playhead
-        lastCount=0;//reset the metrotest
-        
-        if (kicktrigger==1) {//if the sequence has a 1 in it
-            kick.trigger();//reset the playback position of the sample to 0 (the beginning)
-        }
-        
-        if (snaretrigger==1) {
-            snare.trigger();//likewise for the snare
-            //sounds[0][1].trigger();
-        }
-        
-        //cout<<"count "<<playHead<<" at "<<ofGetElapsedTimef()<<endl;
+    //checking for full on beats!
+    if (currentCount != 0) {
         hitBeat();
     }
     
+    //really do not know why, but I need to advance the audio every other cycle otherwise it plays back at double speed
     if (advanceAudioThisCycle){
         sampleOut = 0;
-     //   sampleOut=kick.playOnce()+snare.playOnce();//just play the file. No looping.
         
-    //    sampleOut+=kick.playOnce();
-    //    sampleOut+=snare.playOnce();
-        
-    //    sampleOut+=clickTrackSound.playOnce();
-    //    sampleOut+=clickTrackSound2.playOnce();
-    //    
-    //    sampleOut += sounds[0][1].playOnce();
+        sampleOut+=clickTrackSound.playOnce();
+        sampleOut+=clickTrackSound2.playOnce();
         
         for (int i=0; i<NUM_SOUNDS; i++){
-            //sampleOut += sounds[0][i].playOnce();
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
                 sampleOut += sounds[k][i].playOnce();
             }

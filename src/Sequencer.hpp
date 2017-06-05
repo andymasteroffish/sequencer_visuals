@@ -16,8 +16,6 @@
 
 #include "ofxMaxim.h"
 
-#include "Bpm.hpp"
-#include "Bpm2.hpp"
 
 #include "BeatMarker.hpp"
 #include "StepModeIcons.hpp"
@@ -52,7 +50,7 @@ class Sequencer{
 public:
     
     void setup();
-    void preHitBeat(void);
+    //void preHitBeat(void);
     void hitBeat(void);
     void update();
     void draw();
@@ -100,11 +98,7 @@ public:
     
     //timing
     float deltaTime, prevFrameTime;
-    
-    //Bpm bpm;
     float bpmValue, bpmStartValue;
-    
-    //Bpm2 bpm2;
     
     //drawing
     int whiteVal;
@@ -119,18 +113,15 @@ public:
     #define NUM_SOUNDS 15
     #define NUM_IOS_BEATS_PER_SOUND 8   //this must be a perfect multiple of NUM_BEATS
     
-    //ofSoundPlayer sounds[NUM_IOS_BEATS_PER_SOUND][NUM_SOUNDS];    //on osx, only sounds[0][i] are used. There is no multiplay on iOS, so I am loading far more than needed. This may be a disaster
-    //ofSoundPlayer clickTrackSound, clickTrackSound2;
-    
-    
     //maxim stuff
-    int		bufferSize; /* buffer size */
+    int		bufferSize;
     int		sampleRate;
     
     double sampleOut;
     
-    maxiSample sounds[NUM_IOS_BEATS_PER_SOUND][NUM_SOUNDS];    //on osx, only sounds[0][i] are used. There is no multiplay on iOS, so I am loading far more than needed. This may be a disaster
+    maxiSample sounds[NUM_IOS_BEATS_PER_SOUND][NUM_SOUNDS];    //on osx, only sounds[0][i] are used. There is no multiplay on iOS, so I am loading far more than needed. This may be a disaster.    PROBABLY DOING THE IOS STYLE ACROSS THE BOARD NOW!
     maxiSample clickTrackSound, clickTrackSound2;
+    maxiOsc timer;
     
     //tracking info
     bool useClickTrack;
@@ -138,6 +129,7 @@ public:
     int thisBeat;
     bool beatsOn[NUM_BEATS][NUM_SOUNDS];
     bool onPreHit;
+    float preHitPrc;
     
     //float beatXPadding,
     float beatXSpacing;
@@ -147,8 +139,6 @@ public:
     //step mode?
     bool stepMode;
     int curStepSound;
-    
-    //int curMouseOverSound; //for showing specific button info on PC/Mac
     
     //fucking around with visuals
     int visualEffectNum;
@@ -201,17 +191,6 @@ public:
     
     //taking a screenshot for desktop mode
     bool takeScreenshot;
-    
-    
-    //dmeo maxim stuff (KILL ME)
-    maxiSample kick,snare; //we've got two sampleplayers
-    maxiOsc timer; //and a timer
-    
-    int currentCount,lastCount,playHead,hit[16]={1,0,0,1 ,0,0,0,0 ,1,0,0,1 ,0,0,0,0}; //This is the sequence for the kick
-    int snarehit[16]={0,1,0,0, 0,1,0,0, 0,1,0,0, 0,1,0,0};//This is the sequence for the snare
-    
-    //int kicktrigger,snaretrigger;
-    
 
 };
 
