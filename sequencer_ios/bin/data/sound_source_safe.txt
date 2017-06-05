@@ -4,10 +4,10 @@
 ;Any audio files past the first 15 are ignored
 ;
 ;The source is relative to the location of the data folder
-; something like “sounds/clap.mp3”
+; something like “sounds/clap.wav”
 ;
 ;You can also put a full path to somewhere else on your computer
-; something like “/Users/you/Documents/cool_sounds/clap.mp3”
+; something like “/Users/you/Documents/cool_sounds/clap.wav”
 ;
 ;This text file is loaded when the app starts
 ;You’ll need to restart if you make changes
@@ -17,46 +17,46 @@ sounds/dan/click/BoopHatShort1.wav
 sounds/dan/click/BoopHatShort2.wav
 
 ;Tunnel
-sounds/mp3/Lead6.mp3
+sounds/dan/Lead6.wav
 
 ;Sweep
-sounds/mp3/Chug160Short.mp3
+sounds/dan/Chug160Short.wav
 
 ;Triangle
-sounds/mp3/ToyKick2.mp3
+sounds/dan/ToyKick2.wav
 
 ;Grapes
-sounds/mp3/ToySnare.mp3
+sounds/dan/ToySnare.wav
 
 ;Buckshot
-sounds/mp3/NoiseKick2.mp3
+sounds/dan/NoiseKick2.wav
 
 ;Chaser
-sounds/mp3/Snare.mp3
+sounds/dan/Snare.wav
 
 ;Slash
-sounds/mp3/LowNoise.mp3
+sounds/dan/LowNoise.wav
 
 ;Square
-sounds/mp3/Boop.mp3
+sounds/dan/Boop.wav
 
 ;Trapezoid 
-sounds/mp3/Bend.mp3
+sounds/dan/Bend.wav
 
 ;Dot Polygon
-sounds/mp3/Lead8.mp3
+sounds/dan/Lead8.wav
 
 ;Sizzle
-sounds/mp3/Glass.mp3
+sounds/dan/Glass.wav
 
 ;Drunk Triangle
-sounds/mp3/Whistle3.mp3
+sounds/dan/Whistle3.wav
 
 ;Crystal
-sounds/mp3/Feedback.mp3
+sounds/dan/Feedback.wav
 
 ;Clap
-sounds/mp3/Blorp.mp3
+sounds/dan/Blorp.wav
 
 ;Wave Column
-sounds/mp3/Blorp2.1.mp3
+sounds/dan/Blorp2.1.wav
