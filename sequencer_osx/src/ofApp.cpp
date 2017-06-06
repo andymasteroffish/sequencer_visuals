@@ -4,6 +4,9 @@
 void ofApp::setup(){
     sequencer.setup();
     
+    //for maxim
+    ofSoundStreamSetup(2,0,this, sequencer.sampleRate, sequencer.bufferSize, 4);
+
 }
 
 
@@ -52,5 +55,14 @@ void ofApp::windowResized(int w, int h){
     
     sequencer.windowResized(w, h);
     
+}
+
+//--------------------------------------------------------------
+void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
+    for (int i = 0; i < bufferSize; i++){
+        sequencer.setMaximAudio(i%2==0);
+        output[i*nChannels    ] = sequencer.sampleOut;
+        output[i*nChannels + 1] = sequencer.sampleOut;
+    }
 }
 

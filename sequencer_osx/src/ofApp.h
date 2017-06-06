@@ -18,6 +18,8 @@ public:
     void keyPressed(int key);
     void windowResized(int w, int h);
     
+    void audioOut(float * output, int bufferSize, int nChannels);
+    
     Sequencer sequencer;
     
     

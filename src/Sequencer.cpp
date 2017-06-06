@@ -30,16 +30,11 @@ void Sequencer::setup(){
     
     cout<<ofGetWidth()<<" x "<<ofGetHeight()<<endl;
     
-    //maxim
-    sampleRate 	= 44100; /* Sampling Rate */
+    //maxim - https://github.com/micknoise/Maximilian
+    sampleRate 	= 44100;
     bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
     
     ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
-    
-//    cout<<"load now"<<endl;
-//    kick.load(ofToDataPath("sounds/705kbps/Chug160Short.wav"));//load in your samples. Provide the full path to a wav file.
-//    snare.load(ofToDataPath("sounds/705kbps/Glass.wav"));//load in your samples. Provide the full path to a wav file.
-    
     
     //the iPad screen is bug enough that we really need to scale everything up
     usingIPad = ofGetWidth() > 2000;
@@ -978,12 +973,13 @@ void Sequencer::makeNewHit(int idNum){
 
 //--------------------------------------------------------------
 void Sequencer::playSound(int idNum){
-#ifdef USING_IOS
     sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].trigger();
-    //sounds[ 0 ][idNum].trigger();
-#else
-    //sounds[0][idNum].trigger();
-#endif
+//#ifdef USING_IOS
+//    sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].trigger();
+//    //sounds[ 0 ][idNum].trigger();
+//#else
+//    //sounds[0][idNum].trigger();
+//#endif
 //#ifdef USING_IOS
 //    sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].play();
 //#else
@@ -1067,15 +1063,15 @@ void Sequencer::loadSounds(string filePath){
         cout<<"found "<<files.size()<<" sound files"<<endl;
         
         for (int i=0; i<NUM_SOUNDS; i++){
-#ifdef USING_IOS
+//#ifdef USING_IOS
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
                 sounds[k][i].load(ofToDataPath(files[i+2]));
                 sounds[k][i].setPosition(1);    //put it at the end
             }
-#else
-            sounds[0][i].load(ofToDataPath(files[i+2]));    //TESTING
+//#else
+            //sounds[0][i].load(ofToDataPath(files[i+2]));    //TESTING
             //sounds[0][i].setMultiPlay(true);
-#endif
+//#endif
         }
         
     }else{

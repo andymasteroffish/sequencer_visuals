@@ -12,6 +12,14 @@
 		570A78801D316A1100180598 /* BounceWord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570A787E1D316A1100180598 /* BounceWord.cpp */; };
 		570A78831D316C1700180598 /* AboutScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570A78811D316C1700180598 /* AboutScreen.cpp */; };
 		570A78861D31759800180598 /* FillCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570A78841D31759800180598 /* FillCircle.cpp */; };
+		573F77CF1EE75F6A00C0ECC4 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573F77BC1EE75F6A00C0ECC4 /* fft.cpp */; };
+		573F77D01EE75F6A00C0ECC4 /* maxiAtoms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573F77BE1EE75F6A00C0ECC4 /* maxiAtoms.cpp */; };
+		573F77D11EE75F6A00C0ECC4 /* maxiBark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573F77C01EE75F6A00C0ECC4 /* maxiBark.cpp */; };
+		573F77D21EE75F6A00C0ECC4 /* maxiFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573F77C21EE75F6A00C0ECC4 /* maxiFFT.cpp */; };
+		573F77D31EE75F6A00C0ECC4 /* maxiGrains.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573F77C41EE75F6A00C0ECC4 /* maxiGrains.cpp */; };
+		573F77D41EE75F6A00C0ECC4 /* maxiMFCC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573F77C61EE75F6A00C0ECC4 /* maxiMFCC.cpp */; };
+		573F77D51EE75F6A00C0ECC4 /* maximilian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573F77C81EE75F6A00C0ECC4 /* maximilian.cpp */; };
+		573F77D61EE75F6A00C0ECC4 /* stb_vorbis.c in Sources */ = {isa = PBXBuildFile; fileRef = 573F77CB1EE75F6A00C0ECC4 /* stb_vorbis.c */; };
 		575B123F1D22BFDA00B0CAF6 /* BeatMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12111D22BFDA00B0CAF6 /* BeatMarker.cpp */; };
 		575B12401D22BFDA00B0CAF6 /* Buckshot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12131D22BFDA00B0CAF6 /* Buckshot.cpp */; };
 		575B12411D22BFDA00B0CAF6 /* BuckshotHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12151D22BFDA00B0CAF6 /* BuckshotHit.cpp */; };
@@ -81,6 +89,25 @@
 		570A78821D316C1700180598 /* AboutScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AboutScreen.hpp; path = ../../src/AboutScreen.hpp; sourceTree = "<group>"; };
 		570A78841D31759800180598 /* FillCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FillCircle.cpp; path = ../../src/FillCircle.cpp; sourceTree = "<group>"; };
 		570A78851D31759800180598 /* FillCircle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FillCircle.hpp; path = ../../src/FillCircle.hpp; sourceTree = "<group>"; };
+		573F77BA1EE75F6A00C0ECC4 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
+		573F77BC1EE75F6A00C0ECC4 /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
+		573F77BD1EE75F6A00C0ECC4 /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
+		573F77BE1EE75F6A00C0ECC4 /* maxiAtoms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = maxiAtoms.cpp; sourceTree = "<group>"; };
+		573F77BF1EE75F6A00C0ECC4 /* maxiAtoms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxiAtoms.h; sourceTree = "<group>"; };
+		573F77C01EE75F6A00C0ECC4 /* maxiBark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = maxiBark.cpp; sourceTree = "<group>"; };
+		573F77C11EE75F6A00C0ECC4 /* maxiBark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxiBark.h; sourceTree = "<group>"; };
+		573F77C21EE75F6A00C0ECC4 /* maxiFFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = maxiFFT.cpp; sourceTree = "<group>"; };
+		573F77C31EE75F6A00C0ECC4 /* maxiFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxiFFT.h; sourceTree = "<group>"; };
+		573F77C41EE75F6A00C0ECC4 /* maxiGrains.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = maxiGrains.cpp; sourceTree = "<group>"; };
+		573F77C51EE75F6A00C0ECC4 /* maxiGrains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxiGrains.h; sourceTree = "<group>"; };
+		573F77C61EE75F6A00C0ECC4 /* maxiMFCC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = maxiMFCC.cpp; sourceTree = "<group>"; };
+		573F77C71EE75F6A00C0ECC4 /* maxiMFCC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxiMFCC.h; sourceTree = "<group>"; };
+		573F77C81EE75F6A00C0ECC4 /* maximilian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = maximilian.cpp; sourceTree = "<group>"; };
+		573F77C91EE75F6A00C0ECC4 /* maximilian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maximilian.h; sourceTree = "<group>"; };
+		573F77CA1EE75F6A00C0ECC4 /* sineTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sineTable.h; sourceTree = "<group>"; };
+		573F77CB1EE75F6A00C0ECC4 /* stb_vorbis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stb_vorbis.c; sourceTree = "<group>"; };
+		573F77CC1EE75F6A00C0ECC4 /* stb_vorbis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_vorbis.h; sourceTree = "<group>"; };
+		573F77CE1EE75F6A00C0ECC4 /* ofxMaxim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMaxim.h; sourceTree = "<group>"; };
 		575B12111D22BFDA00B0CAF6 /* BeatMarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BeatMarker.cpp; path = ../../src/BeatMarker.cpp; sourceTree = "<group>"; };
 		575B12121D22BFDA00B0CAF6 /* BeatMarker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BeatMarker.hpp; path = ../../src/BeatMarker.hpp; sourceTree = "<group>"; };
 		575B12131D22BFDA00B0CAF6 /* Buckshot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Buckshot.cpp; path = ../../src/Buckshot.cpp; sourceTree = "<group>"; };
@@ -163,6 +190,49 @@
 				570A78841D31759800180598 /* FillCircle.cpp */,
 			);
 			name = about;
+			sourceTree = "<group>";
+		};
+		573F77B91EE75F6A00C0ECC4 /* ofxMaxim */ = {
+			isa = PBXGroup;
+			children = (
+				573F77BA1EE75F6A00C0ECC4 /* install.xml */,
+				573F77BB1EE75F6A00C0ECC4 /* libs */,
+				573F77CD1EE75F6A00C0ECC4 /* src */,
+			);
+			name = ofxMaxim;
+			path = ../ofxMaxim;
+			sourceTree = "<group>";
+		};
+		573F77BB1EE75F6A00C0ECC4 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				573F77BC1EE75F6A00C0ECC4 /* fft.cpp */,
+				573F77BD1EE75F6A00C0ECC4 /* fft.h */,
+				573F77BE1EE75F6A00C0ECC4 /* maxiAtoms.cpp */,
+				573F77BF1EE75F6A00C0ECC4 /* maxiAtoms.h */,
+				573F77C01EE75F6A00C0ECC4 /* maxiBark.cpp */,
+				573F77C11EE75F6A00C0ECC4 /* maxiBark.h */,
+				573F77C21EE75F6A00C0ECC4 /* maxiFFT.cpp */,
+				573F77C31EE75F6A00C0ECC4 /* maxiFFT.h */,
+				573F77C41EE75F6A00C0ECC4 /* maxiGrains.cpp */,
+				573F77C51EE75F6A00C0ECC4 /* maxiGrains.h */,
+				573F77C61EE75F6A00C0ECC4 /* maxiMFCC.cpp */,
+				573F77C71EE75F6A00C0ECC4 /* maxiMFCC.h */,
+				573F77C81EE75F6A00C0ECC4 /* maximilian.cpp */,
+				573F77C91EE75F6A00C0ECC4 /* maximilian.h */,
+				573F77CA1EE75F6A00C0ECC4 /* sineTable.h */,
+				573F77CB1EE75F6A00C0ECC4 /* stb_vorbis.c */,
+				573F77CC1EE75F6A00C0ECC4 /* stb_vorbis.h */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		573F77CD1EE75F6A00C0ECC4 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				573F77CE1EE75F6A00C0ECC4 /* ofxMaxim.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		575B12561D22C01500B0CAF6 /* project */ = {
@@ -259,6 +329,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				573F77B91EE75F6A00C0ECC4 /* ofxMaxim */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -397,31 +468,39 @@
 				575B12461D22BFDA00B0CAF6 /* DrunkTriangleHit.cpp in Sources */,
 				575B124B1D22BFDA00B0CAF6 /* QuickLine.cpp in Sources */,
 				575B12481D22BFDA00B0CAF6 /* GrapesHit.cpp in Sources */,
+				573F77D01EE75F6A00C0ECC4 /* maxiAtoms.cpp in Sources */,
 				575B12501D22BFDA00B0CAF6 /* StepModeIcons.cpp in Sources */,
 				575B12401D22BFDA00B0CAF6 /* Buckshot.cpp in Sources */,
 				575B12451D22BFDA00B0CAF6 /* DotPolygonHit.cpp in Sources */,
 				570A78801D316A1100180598 /* BounceWord.cpp in Sources */,
 				575B12471D22BFDA00B0CAF6 /* Grape.cpp in Sources */,
+				573F77D31EE75F6A00C0ECC4 /* maxiGrains.cpp in Sources */,
 				575B12551D22BFDA00B0CAF6 /* WaveColumnHit.cpp in Sources */,
 				575B12491D22BFDA00B0CAF6 /* Hit.cpp in Sources */,
 				575B12541D22BFDA00B0CAF6 /* TunnelHit.cpp in Sources */,
+				573F77D41EE75F6A00C0ECC4 /* maxiMFCC.cpp in Sources */,
 				5706279D1D26FFFF00136FF1 /* SoundButton.cpp in Sources */,
 				570A78831D316C1700180598 /* AboutScreen.cpp in Sources */,
 				575B124F1D22BFDA00B0CAF6 /* SquareHit.cpp in Sources */,
 				575B12531D22BFDA00B0CAF6 /* TriangleHit.cpp in Sources */,
 				575B123F1D22BFDA00B0CAF6 /* BeatMarker.cpp in Sources */,
+				573F77D11EE75F6A00C0ECC4 /* maxiBark.cpp in Sources */,
 				575B124C1D22BFDA00B0CAF6 /* Sequencer.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				575B12521D22BFDA00B0CAF6 /* TrapezoidHit.cpp in Sources */,
 				57C9BA641D2C46DE006E20B3 /* Bpm.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				573F77D51EE75F6A00C0ECC4 /* maximilian.cpp in Sources */,
 				570A78861D31759800180598 /* FillCircle.cpp in Sources */,
 				575B12431D22BFDA00B0CAF6 /* ClapHit.cpp in Sources */,
+				573F77CF1EE75F6A00C0ECC4 /* fft.cpp in Sources */,
 				575B12411D22BFDA00B0CAF6 /* BuckshotHit.cpp in Sources */,
+				573F77D21EE75F6A00C0ECC4 /* maxiFFT.cpp in Sources */,
 				575B12441D22BFDA00B0CAF6 /* CrystalHit.cpp in Sources */,
 				579BAB951E74A4ED00A983B0 /* Logo.cpp in Sources */,
 				575B124E1D22BFDA00B0CAF6 /* SlashHit.cpp in Sources */,
 				575B12421D22BFDA00B0CAF6 /* ChaserHit.cpp in Sources */,
+				573F77D61EE75F6A00C0ECC4 /* stb_vorbis.c in Sources */,
 				5706279E1D26FFFF00136FF1 /* TouchGeneralButton.cpp in Sources */,
 				575B124D1D22BFDA00B0CAF6 /* SizzleHit.cpp in Sources */,
 			);
