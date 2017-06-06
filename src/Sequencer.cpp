@@ -1060,7 +1060,9 @@ void Sequencer::loadSounds(string filePath){
         
         //first two files are click track
         clickTrackSound.load(ofToDataPath(files[0]));
+        clickTrackSound.setPosition(1);
         clickTrackSound2.load(ofToDataPath(files[1]));
+        clickTrackSound2.setPosition(1);
         
         cout<<"found "<<files.size()<<" sound files"<<endl;
         
@@ -1068,6 +1070,7 @@ void Sequencer::loadSounds(string filePath){
 #ifdef USING_IOS
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
                 sounds[k][i].load(ofToDataPath(files[i+2]));
+                sounds[k][i].setPosition(1);    //put it at the end
             }
 #else
             sounds[0][i].load(ofToDataPath(files[i+2]));    //TESTING
