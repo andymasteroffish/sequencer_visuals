@@ -626,7 +626,7 @@ bool maxiSample::read()
 		length=myDataSize*(0.5/myChannels);
 		inFile.close(); // close the input file
 		
-        cout << "Ch: " << myChannels << ", len: " << length << endl;
+        //cout << "Ch: " << myChannels << ", len: " << length << endl;
 		if (myChannels>1) {
 			int position=0;
 			int channel=readChannel*2;

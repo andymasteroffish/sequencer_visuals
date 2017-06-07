@@ -28,7 +28,7 @@ void Sequencer::setup(){
     }
 #endif
     
-    cout<<ofGetWidth()<<" x "<<ofGetHeight()<<endl;
+    cout<<"running at "<<ofGetWidth()<<" x "<<ofGetHeight()<<endl;
     
     //maxim - https://github.com/micknoise/Maximilian
     sampleRate 	= 44100;
@@ -974,17 +974,6 @@ void Sequencer::makeNewHit(int idNum){
 //--------------------------------------------------------------
 void Sequencer::playSound(int idNum){
     sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].trigger();
-//#ifdef USING_IOS
-//    sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].trigger();
-//    //sounds[ 0 ][idNum].trigger();
-//#else
-//    //sounds[0][idNum].trigger();
-//#endif
-//#ifdef USING_IOS
-//    sounds[ thisBeat%NUM_IOS_BEATS_PER_SOUND ][idNum].play();
-//#else
-//    sounds[0][idNum].play();
-//#endif
 }
 
 //--------------------------------------------------------------
@@ -996,7 +985,6 @@ void Sequencer::setStepMode(bool isOn){
             setRecording(true);
             //is this the first time running step mode?
             if (!hasRunStepMode){
-                cout<<"open the step mode instructions"<<endl;
                 if (logo.timer < logo.growTime+ logo.pauseTime){
                     logo.timer = logo.growTime+ logo.pauseTime;
                 }

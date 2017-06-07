@@ -78,7 +78,7 @@ void AboutScreen::setupAbout(){
     
     createWordsFromLine(verb+" anywhere will add a sound to the beat.", textX, textY+=textYSpacing, &textFont);
     createWordsFromLine("Step mode allows you to place specific sounds.", textX, textY+=textYSpacing, &textFont);
-    createWordsFromLine(verb+" Live will allow you to play sounds without recording them.", textX, textY+=textYSpacing, &textFont);
+    //createWordsFromLine(verb+" Live will allow you to play sounds without recording them.", textX, textY+=textYSpacing, &textFont);
     
     textY+=textYBreak;
     
@@ -95,6 +95,7 @@ void AboutScreen::setupAbout(){
     
     textY+=textYBreak;
     
+    createWordsFromLine("Logo by Chris Hernandez. Maximilian library by micknoise", textX, textY+=textYSpacing, &textFont);
     createWordsFromLine("Created in NYC using openFrameworks.", textX, textY+=textYSpacing, &textFont);
 }
 
