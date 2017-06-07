@@ -23,6 +23,8 @@ void ofApp::setup(){
     //[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategorySoloAmbient error: nil];
     //When it was set to AVAudioSessionCategoryPlayback audio would play even when the phone was muted
     
+    //you'll also want to edit ofxiOSSoundStream now the you use maxim
+    
     
     //for maxim
     ofSoundStreamSetup(2,0,this, sequencer.sampleRate, sequencer.bufferSize, 4);
