@@ -13,8 +13,8 @@
 ;You’ll need to restart if you make changes
 
 ;Click Tracks
-sounds/705kbps/click/BoopHatShort1.wav
-sounds/705kbps/click/BoopHatShort2.wav
+sounds/705kbps/click/BoopHatShort1_soft.wav
+sounds/705kbps/click/BoopHatShort2_soft.wav
 
 ;Tunnel
 sounds/705kbps/Lead6.wav
