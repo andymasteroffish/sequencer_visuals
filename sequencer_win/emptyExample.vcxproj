@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>emptyExample</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>C:\Users\Andy\Documents\of_v0.9.3_vs_release\apps\sequencer_visuals\ofxMaxim\libs;C:\Users\Andy\Documents\of_v0.9.3_vs_release\apps\sequencer_visuals\ofxMaxim\src;C:\Users\Andy\Documents\of_v0.9.3_vs_release\apps\sequencer_visuals\ofxMaxim;C:\Users\Andy\Documents\of_v0.9.3_vs_release\apps\sequencer_visuals\src;%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ofxMaxim\libs\fft.cpp" />
+    <ClCompile Include="..\ofxMaxim\libs\maxiAtoms.cpp" />
+    <ClCompile Include="..\ofxMaxim\libs\maxiBark.cpp" />
+    <ClCompile Include="..\ofxMaxim\libs\maxiFFT.cpp" />
+    <ClCompile Include="..\ofxMaxim\libs\maxiGrains.cpp" />
+    <ClCompile Include="..\ofxMaxim\libs\maxiMFCC.cpp" />
+    <ClCompile Include="..\ofxMaxim\libs\maximilian.cpp" />
+    <ClCompile Include="..\ofxMaxim\libs\stb_vorbis.c" />
+    <ClCompile Include="..\src\AboutScreen.cpp" />
+    <ClCompile Include="..\src\BeatMarker.cpp" />
+    <ClCompile Include="..\src\BounceWord.cpp" />
+    <ClCompile Include="..\src\Bpm.cpp" />
+    <ClCompile Include="..\src\Bpm2.cpp" />
+    <ClCompile Include="..\src\Buckshot.cpp" />
+    <ClCompile Include="..\src\BuckshotHit.cpp" />
+    <ClCompile Include="..\src\ChaserHit.cpp" />
+    <ClCompile Include="..\src\ClapHit.cpp" />
+    <ClCompile Include="..\src\CrystalHit.cpp" />
+    <ClCompile Include="..\src\DotPolygonHit.cpp" />
+    <ClCompile Include="..\src\DrunkTriangleHit.cpp" />
+    <ClCompile Include="..\src\FillCircle.cpp" />
+    <ClCompile Include="..\src\Grape.cpp" />
+    <ClCompile Include="..\src\GrapesHit.cpp" />
+    <ClCompile Include="..\src\Hit.cpp" />
+    <ClCompile Include="..\src\Logo.cpp" />
+    <ClCompile Include="..\src\QuickLine.cpp" />
+    <ClCompile Include="..\src\Sequencer.cpp" />
+    <ClCompile Include="..\src\SizzleHit.cpp" />
+    <ClCompile Include="..\src\SlashHit.cpp" />
+    <ClCompile Include="..\src\SoundButton.cpp" />
+    <ClCompile Include="..\src\SquareHit.cpp" />
+    <ClCompile Include="..\src\StepModeIcons.cpp" />
+    <ClCompile Include="..\src\SweepHit.cpp" />
+    <ClCompile Include="..\src\TouchGeneralButton.cpp" />
+    <ClCompile Include="..\src\TrapezoidHit.cpp" />
+    <ClCompile Include="..\src\TriangleHit.cpp" />
+    <ClCompile Include="..\src\TunnelHit.cpp" />
+    <ClCompile Include="..\src\WaveColumnHit.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ofApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ofxMaxim\libs\fft.h" />
+    <ClInclude Include="..\ofxMaxim\libs\maxiAtoms.h" />
+    <ClInclude Include="..\ofxMaxim\libs\maxiBark.h" />
+    <ClInclude Include="..\ofxMaxim\libs\maxiFFT.h" />
+    <ClInclude Include="..\ofxMaxim\libs\maxiGrains.h" />
+    <ClInclude Include="..\ofxMaxim\libs\maxiMFCC.h" />
+    <ClInclude Include="..\ofxMaxim\libs\maximilian.h" />
+    <ClInclude Include="..\ofxMaxim\libs\sineTable.h" />
+    <ClInclude Include="..\ofxMaxim\libs\stb_vorbis.h" />
+    <ClInclude Include="..\ofxMaxim\src\ofxMaxim.h" />
+    <ClInclude Include="..\src\AboutScreen.hpp" />
+    <ClInclude Include="..\src\BeatMarker.hpp" />
+    <ClInclude Include="..\src\BounceWord.hpp" />
+    <ClInclude Include="..\src\Bpm.hpp" />
+    <ClInclude Include="..\src\Bpm2.hpp" />
+    <ClInclude Include="..\src\Buckshot.hpp" />
+    <ClInclude Include="..\src\BuckshotHit.hpp" />
+    <ClInclude Include="..\src\ChaserHit.hpp" />
+    <ClInclude Include="..\src\ClapHit.hpp" />
+    <ClInclude Include="..\src\CrystalHit.hpp" />
+    <ClInclude Include="..\src\DotPolygonHit.hpp" />
+    <ClInclude Include="..\src\DrunkTriangleHit.hpp" />
+    <ClInclude Include="..\src\FillCircle.hpp" />
+    <ClInclude Include="..\src\Grape.hpp" />
+    <ClInclude Include="..\src\GrapesHit.hpp" />
+    <ClInclude Include="..\src\Hit.hpp" />
+    <ClInclude Include="..\src\Logo.hpp" />
+    <ClInclude Include="..\src\QuickLine.hpp" />
+    <ClInclude Include="..\src\Sequencer.hpp" />
+    <ClInclude Include="..\src\SizzleHit.hpp" />
+    <ClInclude Include="..\src\SlashHit.hpp" />
+    <ClInclude Include="..\src\SoundButton.hpp" />
+    <ClInclude Include="..\src\SquareHit.hpp" />
+    <ClInclude Include="..\src\StepModeIcons.hpp" />
+    <ClInclude Include="..\src\SweepHit.hpp" />
+    <ClInclude Include="..\src\TouchGeneralButton.hpp" />
+    <ClInclude Include="..\src\TrapezoidHit.hpp" />
+    <ClInclude Include="..\src\TriangleHit.hpp" />
+    <ClInclude Include="..\src\TunnelHit.hpp" />
+    <ClInclude Include="..\src\WaveColumnHit.hpp" />
+    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\SystemSpecificInfo.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="icon.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
