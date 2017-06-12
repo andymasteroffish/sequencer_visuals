@@ -21,7 +21,6 @@ void Sequencer::setup(){
 #else
     if(ofIsGLProgrammableRenderer()){
         shader.load("shaders/shadersGL3/shader");
-        
     }else{
         shader.load("shaders/shadersGL2/shader");
         //this is the one my computer uses
@@ -36,7 +35,7 @@ void Sequencer::setup(){
     
     ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
     
-    //the iPad screen is bug enough that we really need to scale everything up
+    //the iPad screen is big enough that we really need to scale everything up
     usingIPad = ofGetWidth() > 2000;
     
     gameW = ofGetWidth();
@@ -65,7 +64,7 @@ void Sequencer::setup(){
     
     autoPlay = false;
     recording = true;
-    turnOnRecordingWhenClearing = false;//true;
+    //turnOnRecordingWhenClearing = false;//true;
     
     stepMode = false;
     curStepSound = 0;
@@ -84,8 +83,6 @@ void Sequencer::setup(){
     
     logo.setup(whiteVal, usingIPad, &buttonFont, &buttonFontSmall);
     
-    
-    showHelp = false;
     showTouchButtons = true;
     
     bpmValue = 160;
@@ -230,20 +227,6 @@ void Sequencer::update(){
         touchButtons[i].update(deltaTime);
     }
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
-        //TRYING OUT JUST ALWAYS HIDING THE LIVE/RECORD OPTION
-//        //slide them to hide "Live/Record" during step mode
-//        float targetY = menuButtonH * i;
-//        if (stepMode)   targetY = menuButtonH * (i-1);
-//        
-//        if (i > 3){    //both tempo buttons should be on the same Y plane and click track needs to move up too
-//            targetY -= menuButtonH;
-//        }
-//        
-//        
-//        float xeno = 0.85;
-//        touchMenuButtons[i].box.y = xeno * touchMenuButtons[i].box.y + (1-xeno) * targetY;
-        
-        //actually update them
         touchMenuButtons[i].update(deltaTime);
     }
     aboutButton.update(deltaTime);
@@ -294,11 +277,6 @@ void Sequencer::update(){
         aboutButton.box.x = 0;
     }
     
-    
-    //testing
-//    for (int i=0; i<NUM_IOS_BEATS_PER_SOUND; i++){
-//        cout<<i<<"  "<<sounds[i][14].getPosition()<<endl;
-//    }
 }
 
 //--------------------------------------------------------------
@@ -501,66 +479,6 @@ void Sequencer::draw(){
     
     //the logo
     logo.draw();
-    
-//    bool showWIPText = !publicRelease;
-//#ifdef USING_IOS
-//    showWIPText = false;
-//#endif
-//    if (showWIPText){
-//        ofSetColor(0);
-//        string text =   "Sequencer by Andy Wallace - andy@andymakes.com";
-//        text +=         "\nWork in progress. Please do not distribute.";
-//        text +=         "\nPress h for help.";
-//        ofDrawBitmapString(text, 10, 15);
-//    }
-    
-    if (showHelp){
-        ofSetColor(0);
-        string text = "";
-        if (!useNumpadKeys){
-            if (!stepMode){
-                text += "keys 1-0 & q-t for sounds\n";
-            }else{
-                text += "keys 1-0 & q-y to toggle current step mode sound\n";
-            }
-        }else{
-            text += "most numpad keys for sound (including non-numbers)\n";
-        }
-        text += "return to clear\n";
-        if (!useNumpadKeys){
-            text += "space to start/stop recording\n";
-            text += "v to toggle visual effects\n";
-        }else{
-            text += "0 to start/stop recording\n";
-            text += ". to toggle visual effects\n";
-        }
-        text += "\n";
-        text += "up & down to change BPM (currently "+ofToString(bpmValue)+")\n";
-        text += "b to reset BPM\n";
-        text += "\n";
-        text += "f to toggle full screen\n";
-        text += "\n";
-        string stepModeStatus = (stepMode ? "on" : "off");
-        text += "s to toggle step mode (currently "+stepModeStatus+")\n";
-        text += "left and right to change sound when in step mode\n";
-        text += "currently step mode is keyboard mode only (no numpad)\n";
-        text += "\n";
-        string turnOnRecordStatus = (turnOnRecordingWhenClearing ? "on" : "off");
-        text += "c to toggle turning on record when clearing (currently "+turnOnRecordStatus+")\n";
-        string preHitStatus = (usePreHitDetection ? "on" : "off");
-        text += "p to toggle pre hit detection (currently "+preHitStatus+")\n";
-        string autoStatus = (autoPlay ? "on" : "off");
-        text += "a for auto play (currently "+autoStatus+")\n";
-        text += "\n";
-        string numPadStatus = (useNumpadKeys ? "on" : "off");
-        text += "n to toggle numpad key mapping (currently "+numPadStatus+")\n";
-        text += "\n";
-        text += "h to hide this\n";
-        
-        ofDrawBitmapString(text, 10, 90);
-    }
-    
-    
 }
 
 
@@ -579,7 +497,6 @@ void Sequencer::keyPressed(int key){
     //cout<<"key "<<key<<endl;
     if (key == 'h' || key == 'H'){
         showTouchButtons = !showTouchButtons;
-        //showHelp = !showHelp;
     }
     if (key == 'z' || key == 'Z'){
         if (logo.timer < logo.growTime+ logo.pauseTime){
@@ -591,17 +508,11 @@ void Sequencer::keyPressed(int key){
     if (key == 's'){
         setStepMode(!stepMode);
     }
-//    if (key == 'a'){
-//        autoPlay = !autoPlay;
-//    }
     if (key == 'f'){
         ofToggleFullscreen();
     }
-    if (key == 'c'){
-        turnOnRecordingWhenClearing = !turnOnRecordingWhenClearing;
-    }
-//    if (key == 'p'){
-//        usePreHitDetection = !usePreHitDetection;
+//    if (key == 'c'){
+//        turnOnRecordingWhenClearing = !turnOnRecordingWhenClearing;
 //    }
     if (key == '\\'){
         useNumpadKeys = !useNumpadKeys;
@@ -633,11 +544,9 @@ void Sequencer::keyPressed(int key){
     if (key == OF_KEY_DOWN){
         bpmValue -= 10;
         bpmValue = MAX(bpmValue, 50);
-        //bpm.setBpm(bpmValue);
     }
     if (key == 'b'){
         bpmValue = bpmStartValue;
-        //bpm.setBpm(bpmValue);
     }
     
     if (useNumpadKeys){
@@ -661,7 +570,7 @@ void Sequencer::keyPressed(int key){
         if (key == '3')     makeNewHit(14);
         
         if (key == '0') {
-            setRecording(!recording);
+            showTouchButtons = !showTouchButtons;
         }
         
         if (key == 13){  //Enter
@@ -1016,9 +925,9 @@ void Sequencer::clearBeats(){
         }
         beatMarkers[i].triggerClear();
     }
-    if (turnOnRecordingWhenClearing){
-        setRecording(true);
-    }
+//    if (turnOnRecordingWhenClearing){
+//        setRecording(true);
+//    }
 }
 
 

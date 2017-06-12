@@ -92,7 +92,7 @@ public:
     bool publicRelease;
     bool autoPlay;
     bool recording;
-    bool turnOnRecordingWhenClearing;
+    //bool turnOnRecordingWhenClearing;
     bool useNumpadKeys;
     bool usePreHitDetection;
     
@@ -102,7 +102,6 @@ public:
     
     //drawing
     int whiteVal;
-    bool showHelp;
     bool showTouchButtons;
     
     //tracking hits
