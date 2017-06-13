@@ -8,9 +8,10 @@
 
 #include "Logo.hpp"
 
-void Logo::setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueTypeFont * _fontSmall){
+void Logo::setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueTypeFont * _fontSmall, bool _arcadeMode){
     
     usingiPad = _usingiPad;
+    arcadeMode = _arcadeMode;
     
     growTime = 1.5;
     pauseTime = 7;
@@ -136,18 +137,19 @@ void Logo::drawHeadphoneMessage(){
     ofScale(curHeadphoneScale, curHeadphoneScale);
     
     string headphoneMessage = "Headphones recommended";
+    if (arcadeMode) headphoneMessage = "available for free at bleepspace.com";
     ofRectangle headphoneRect = font->getStringBoundingBox(headphoneMessage, 0, 0);
     float headphoneTextW = headphoneRect.width;
     float headphoneTextH = headphoneRect.height;
     ofSetColor(0, 100);
-    font->drawString("Headphones recomended", -headphoneTextW/2, headphoneTextH/4);
+    font->drawString(headphoneMessage, -headphoneTextW/2, headphoneTextH/4);
     
     ofPopMatrix();
     
     
     ofSetColor(0, 100*prcComplete);
     string creditsMessage = "by Andy Wallace & Dan Friel";
-    ofRectangle creditsRect = fontSmall->getStringBoundingBox(headphoneMessage, 0, 0);
+    ofRectangle creditsRect = fontSmall->getStringBoundingBox(creditsMessage, 0, 0);
     float creditTextW = creditsRect.width;
     fontSmall->drawString(creditsMessage, -creditTextW/2, creditsY);//ofGetHeight()*0.3);
 }

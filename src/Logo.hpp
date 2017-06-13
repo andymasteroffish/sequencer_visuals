@@ -14,7 +14,7 @@
 class Logo{
 public:
     
-    void setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueTypeFont * _fontSmall);
+    void setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueTypeFont * _fontSmall, bool _arcadeMode);
     void setPos();
     void update(float deltaTime);
     
@@ -23,6 +23,8 @@ public:
     void drawLogoImages();
     void drawHeadphoneMessage();
     //void drawCredits();
+    
+    bool arcadeMode;
     
     bool usingiPad;
     float masterScale;
