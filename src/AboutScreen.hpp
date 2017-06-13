@@ -17,7 +17,7 @@
 class AboutScreen{
 public:
     
-    void setup(int _whiteVal, bool usingiPad, bool isStepModeInfo);
+    void setup(int _whiteVal, bool usingiPad, bool isStepModeInfo, string _versionText);
     void setupAbout();
     void setupStepMode();
     
@@ -50,6 +50,7 @@ public:
     
     vector<FillCircle> bgCircles;
     
+    string versionText;
 };
 
 #endif /* AboutScreen_hpp */

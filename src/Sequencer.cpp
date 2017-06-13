@@ -8,11 +8,13 @@
 
 #include "Sequencer.hpp"
 
+string versionText = "v1.2";
+
 //--------------------------------------------------------------
 void Sequencer::setup(){
     
     
-    publicRelease = true;
+    publicRelease = false;
     
     useClickTrack = false;
     
@@ -117,10 +119,10 @@ void Sequencer::setup(){
     aboutButtonIcon.load("questionmark.png");
 #endif
     
-    aboutScreen.setup(whiteVal, usingIPad, false);
+    aboutScreen.setup(whiteVal, usingIPad, false, versionText);
     
     if (!hasRunStepMode){
-        stepModeInstructions.setup(whiteVal, usingIPad, true);
+        stepModeInstructions.setup(whiteVal, usingIPad, true, versionText);
     }
     
     //set the markers
@@ -747,9 +749,9 @@ void Sequencer::windowResized(int w, int h){
     gameW = ofGetWidth();
     gameH = ofGetHeight();
     
-    aboutScreen.setup(whiteVal, usingIPad, false);
+    aboutScreen.setup(whiteVal, usingIPad, false, versionText);
     if (!hasRunStepMode){
-        stepModeInstructions.setup(whiteVal, usingIPad, true);
+        stepModeInstructions.setup(whiteVal, usingIPad, true, versionText);
     }
     
     setButtonPositions();
