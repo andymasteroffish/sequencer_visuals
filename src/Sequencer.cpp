@@ -8,7 +8,7 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v1.2";
+string versionText = "v0.2";
 
 //--------------------------------------------------------------
 void Sequencer::setup(){
