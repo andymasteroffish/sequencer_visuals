@@ -13,7 +13,7 @@ string versionText = "v0.2";
 //--------------------------------------------------------------
 void Sequencer::setup(){
     
-    arcadeMode = false;
+    arcadeMode = true;
     arcadeOffset.set(0,0);
     arcadeScale = 1;
     
@@ -892,7 +892,7 @@ void Sequencer::makeNewHit(int idNum){
         if (idNum == 13)     thisHit = new SlashHit();
         if (idNum == 14)     thisHit = new TrapezoidHit();
         
-        thisHit->setup(gameW, gameH, whiteVal, usingIPad);
+        thisHit->setup(gameW, gameH, whiteVal, usingIPad, arcadeMode);
         
         hits.push_back(thisHit);
     }

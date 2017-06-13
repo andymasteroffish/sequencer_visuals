@@ -24,6 +24,9 @@ void SweepHit::setupCustom(){
         endX = gameW + trailLength * 2;
     }
     
+    if (arcadeMode){
+        startX = CLAMP(startX, ofGetWidth()/2-ofGetHeight()/2, ofGetWidth()/2 + ofGetHeight()/2);
+    }
     
     xPos = startX;
     

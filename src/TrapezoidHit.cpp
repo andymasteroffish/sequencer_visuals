@@ -22,12 +22,19 @@ void TrapezoidHit::setupCustom(){
     
     height = 50;
     
+    drawAngle = 0;
+    
     pos.x = ofRandom(bottomW, gameW-bottomW);
     pos.y = ofRandom(0, gameH-height*2);
     
     if (ofRandomuf() > 0.5){
         pos.y = ofRandom(height*2, gameH);
         height *= -1;
+    }
+    
+    if (arcadeMode){
+        pos = getArcadePoint(arcadeModeDist);
+        drawAngle = ofRandom(360);
     }
     
     fallTime = 0.23;//0.39;
@@ -118,6 +125,7 @@ void TrapezoidHit::draw(){
     ofPushMatrix();
     
     ofTranslate(pos.x, pos.y);
+    ofRotate(drawAngle);
     
     ofVec2f topLeft(-topW, topY);
     ofVec2f topRight(topW, topY);

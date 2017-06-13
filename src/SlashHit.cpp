@@ -20,6 +20,10 @@ void SlashHit::setupCustom(){
     float padding = range * 2;
     pos.set(ofRandom(padding, gameW-padding), ofRandom(padding, gameH-padding));
     
+    if (arcadeMode){
+        pos = getArcadePoint(arcadeModeDist);;
+    }
+    
     //get two points based on that point
     float angleA = ofRandom(TWO_PI);
     float angleB = angleA + ofRandom(TWO_PI * 0.2, TWO_PI * 0.4);

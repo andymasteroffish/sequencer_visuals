@@ -16,6 +16,10 @@ void GrapesHit::setupCustom(){
     pos.x = ofRandom(padding, gameW-padding);
     pos.y = ofRandom(padding, gameH-padding);
     
+    if (arcadeMode){
+        pos = getArcadePoint(arcadeModeDist);;
+    }
+    
     int numGrapes = 6;//ofRandom(4,7);
     
     

@@ -39,6 +39,12 @@ void SizzleHit::setupCustom(){
     }
     
     pos.set( ofRandom(100,gameW-100), ofRandom(150, gameH-10));
+    angle = 0;
+    
+    if (arcadeMode){
+        pos = getArcadePoint(arcadeModeDist);
+        angle = ofRandom(360);
+    }
 }
 
 void SizzleHit::updateCustom(){
@@ -70,6 +76,7 @@ void SizzleHit::draw(){
     
     ofPushMatrix();
     ofTranslate(pos);
+    ofRotate(angle);
     
     ofSetColor(0);
     ofSetLineWidth(1 * lineWidthPrc);

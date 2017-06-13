@@ -34,6 +34,10 @@ void ClapHit::setupCustom(){
     rightPopCircleSize = 0;
     
     pos.set( ofRandom(pntStartDist, gameW-pntStartDist), ofRandom(pntStartDist, gameH-pntStartDist));
+    
+    if (arcadeMode){
+        pos = getArcadePoint(arcadeModeDist);
+    }
 }
 
 void ClapHit::updateCustom(){

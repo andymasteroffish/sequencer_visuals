@@ -21,6 +21,7 @@ class SizzleHit : public Hit{
     int numPoints;
     
     ofVec2f pos;
+    float angle;
     
     vector<ofVec2f> points;
     vector<ofVec2f> targetPoints;
