@@ -46,6 +46,18 @@ void BeatMarker::setup(float x, float _stepModeX, float y, int _whiteVal, bool u
     curSize = normSize;
     
     notRecordingYOffset = 0;
+    
+    arcadeMode = false;
+}
+
+void BeatMarker::arcadeSetPos(float prc){
+    arcadeAngle = TWO_PI*prc;
+    float dist = ofGetHeight() * 0.45;
+    normX = ofGetWidth()/2 + cos(arcadeAngle) * dist;
+    pos.x = normX;
+    pos.y = ofGetHeight()/2 + sin(arcadeAngle) * dist;
+    
+    arcadeMode = true;
 }
 
 void BeatMarker::update(float deltaTime, bool stepModeOn, float firstRunTimer){
@@ -163,9 +175,16 @@ void BeatMarker::draw(bool hasSound, bool hasOtherStepModeSound, bool _isRecordi
     if (hasSound && isRecording)    ofFill();
     else                            ofNoFill();
     
-    float yPos = pos.y+fallY+notRecordingYOffset+firstRunYAdjust;
+    float xPos = pos.x;
+    float yOffsets = fallY+notRecordingYOffset+firstRunYAdjust;
+    float yPos = pos.y+yOffsets;
     
-    ofDrawCircle(pos.x, yPos, curSize * curScale);
+    if (arcadeMode){
+        xPos = pos.x + cos(arcadeAngle) * yOffsets;
+        yPos = pos.y + sin(arcadeAngle) * yOffsets;
+    }
+    
+    ofDrawCircle(xPos, yPos, curSize * curScale);
     
     //if it has a sound but we're not recording, draw a smaller circle inside
     if ( (hasSound && !isRecording) || hasOtherStepModeSound){

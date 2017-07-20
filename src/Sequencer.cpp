@@ -8,11 +8,17 @@
 
 #include "Sequencer.hpp"
 
+string versionText = "v0.2";
+
 //--------------------------------------------------------------
 void Sequencer::setup(){
     
+    arcadeMode = true;
+    arcadeOffset.set(0,0);
+    arcadeScale = 1;
     
-    publicRelease = true;
+    
+    publicRelease = false;
     
     useClickTrack = false;
     
@@ -81,9 +87,12 @@ void Sequencer::setup(){
         ofToggleFullscreen();
     }
     
-    logo.setup(whiteVal, usingIPad, &buttonFont, &buttonFontSmall);
+    logo.setup(whiteVal, usingIPad, &buttonFont, &buttonFontSmall, arcadeMode);
     
     showTouchButtons = true;
+    if (arcadeMode){
+        showTouchButtons = false;
+    }
     
     bpmValue = 160;
     bpmStartValue = bpmValue;
@@ -117,10 +126,10 @@ void Sequencer::setup(){
     aboutButtonIcon.load("questionmark.png");
 #endif
     
-    aboutScreen.setup(whiteVal, usingIPad, false);
+    aboutScreen.setup(whiteVal, usingIPad, false, versionText);
     
     if (!hasRunStepMode){
-        stepModeInstructions.setup(whiteVal, usingIPad, true);
+        stepModeInstructions.setup(whiteVal, usingIPad, true, versionText);
     }
     
     //set the markers
@@ -281,6 +290,13 @@ void Sequencer::update(){
 
 //--------------------------------------------------------------
 void Sequencer::draw(){
+    if (arcadeMode){
+        ofPushMatrix();
+        ofTranslate(arcadeOffset.x, arcadeOffset.y);
+        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+        ofScale(arcadeScale, arcadeScale);
+        ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2);
+    }
     
     
     //shader stuff
@@ -479,6 +495,10 @@ void Sequencer::draw(){
     
     //the logo
     logo.draw();
+    
+    if (arcadeMode){
+        ofPopMatrix();
+    }
 }
 
 
@@ -739,6 +759,9 @@ void Sequencer::mouseMoved(int x, int y){
 //            curMouseOverSound = i;
 //        }
 //    }
+    
+    //arcadeOffset.x = ofMap(x, 0, ofGetWidth(), -100, 100);
+    //arcadeOffset.y = ofMap(y, 0, ofGetHeight(), -100, 100);
 }
 
 
@@ -747,9 +770,9 @@ void Sequencer::windowResized(int w, int h){
     gameW = ofGetWidth();
     gameH = ofGetHeight();
     
-    aboutScreen.setup(whiteVal, usingIPad, false);
+    aboutScreen.setup(whiteVal, usingIPad, false, versionText);
     if (!hasRunStepMode){
-        stepModeInstructions.setup(whiteVal, usingIPad, true);
+        stepModeInstructions.setup(whiteVal, usingIPad, true, versionText);
     }
     
     setButtonPositions();
@@ -765,6 +788,9 @@ void Sequencer::setButtonPositions(){
         float normX = beatXPadding+beatXSpacing*i;
         float stepX = stepModeBeatSpacing/2 + stepModeBeatSpacing*i;
         beatMarkers[i].setup(normX, stepX, ofGetHeight()-beatYDistFromBottom, whiteVal, usingIPad);
+        if (arcadeMode){
+            beatMarkers[i].arcadeSetPos( (float)i / (float)NUM_BEATS);
+        }
     }
     
     int buttonW = ofGetWidth()/8;
@@ -866,7 +892,7 @@ void Sequencer::makeNewHit(int idNum){
         if (idNum == 13)     thisHit = new SlashHit();
         if (idNum == 14)     thisHit = new TrapezoidHit();
         
-        thisHit->setup(gameW, gameH, whiteVal, usingIPad);
+        thisHit->setup(gameW, gameH, whiteVal, usingIPad, arcadeMode);
         
         hits.push_back(thisHit);
     }

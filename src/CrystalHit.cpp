@@ -47,6 +47,10 @@ void CrystalHit::setupCustom(){
     
     pos.set( ofRandom(boxSize,gameW-boxSize), ofRandom(boxSize, gameH-boxSize));
     
+    if (arcadeMode){
+        pos = getArcadePoint(arcadeModeDist);
+    }
+    
     startAngle = ofRandom(TWO_PI);
     float angleAdjust = 180;
     if ( (int)pos.x % 2 == 0) angleAdjust *= -1;
@@ -56,7 +60,7 @@ void CrystalHit::setupCustom(){
     
     
     
-    //pop lines ot make it pop!
+    //pop lines to make it pop!
     numPopLines = 5;
     float angleStep = TWO_PI/(float)numPopLines;
     float popAngleStart = ofRandom(TWO_PI);

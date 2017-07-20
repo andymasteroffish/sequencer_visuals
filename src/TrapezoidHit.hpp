@@ -20,6 +20,7 @@ public:
     void draw();
     
     ofVec2f pos;
+    float drawAngle;
     
     float topY, bottomY;
     float topW, bottomW;

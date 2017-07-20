@@ -9,13 +9,15 @@
 #include "AboutScreen.hpp"
 
 
-void AboutScreen::setup(int _whiteVal, bool usingiPad, bool isStepModeInfo){
+void AboutScreen::setup(int _whiteVal, bool usingiPad, bool isStepModeInfo, string _versionText){
     
     words.clear();
     
     ipadAdjust = usingiPad ? 1.5 : 1;
     
     whiteVal = _whiteVal;
+    
+    versionText = _versionText;
     
     if (textFont.isLoaded() == false){
         if (!isStepModeInfo){
@@ -62,6 +64,8 @@ void AboutScreen::setupAbout(){
     float titleY = box.y+60*ipadAdjust;
     float titleX = box.x+box.width/2 - titleFont.stringWidth("Bleep Space")/2;
     createWordsFromLine("Bleep Space", titleX,titleY, &titleFont);
+    
+    createWordsFromLine(versionText, box.x+box.width -textFont.stringWidth(versionText)*2, titleY, &textFont);
     
     float byLine1X = box.x+box.width/2 - textFont.stringWidth("by Andy Wallace")/2;
     createWordsFromLine("by Andy Wallace", byLine1X, titleY + 40*ipadAdjust, &textFont);

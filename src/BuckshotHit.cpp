@@ -19,6 +19,12 @@ void BuckshotHit::setupCustom(){
     float centerX = ofRandom(padding, gameW-padding);
     float centerY = ofRandom(padding, gameH-padding);
     
+    if (arcadeMode){
+        ofVec2f newPos = getArcadePoint(arcadeModeDist);
+        centerX = newPos.x;
+        centerY = newPos.y;
+    }
+    
     shots.resize(numShots);
     for (int i=0; i<numShots; i++){
         float angle = ofRandom(TWO_PI);

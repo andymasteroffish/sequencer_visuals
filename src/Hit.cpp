@@ -9,7 +9,7 @@
 #include "Hit.hpp"
 
 
-void Hit::setup(int _gameW, int _gameH, int _whiteVal, bool usingiPad){
+void Hit::setup(int _gameW, int _gameH, int _whiteVal, bool usingiPad, bool _arcadeMode){
     gameW = _gameW;
     gameH = _gameH;
     
@@ -23,6 +23,9 @@ void Hit::setup(int _gameW, int _gameH, int _whiteVal, bool usingiPad){
     
     zVal = ofRandom(-400, 200);
     
+    arcadeMode = _arcadeMode;
+    arcadeModeDist = ofGetHeight() * 0.4;
+    
     setupCustom();
 }
 
@@ -34,3 +37,12 @@ void Hit::update(float _deltaTime){
     updateCustom();
 }
 
+
+ofVec2f Hit::getArcadePoint(float maxDist){
+    ofVec2f val;
+    float thisDist = ofRandom(0,maxDist);
+    float thisAngle = ofRandom(0,TWO_PI);
+    val.x = ofGetWidth()/2 + cos(thisAngle) * thisDist;
+    val.y = ofGetHeight()/2 + sin(thisAngle) * thisDist;
+    return val;
+}

@@ -190,6 +190,11 @@ public:
     
     //taking a screenshot for desktop mode
     bool takeScreenshot;
+    
+    //arcade console
+    bool arcadeMode;
+    ofVec2f arcadeOffset;
+    float arcadeScale;
 
 };
 

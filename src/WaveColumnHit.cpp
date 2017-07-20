@@ -17,6 +17,10 @@ void WaveColumnHit::setupCustom(){
     
     pos.set( ofRandom(boxW, gameW-boxW), ofRandom(boxH, gameH-boxH));
     
+    if (arcadeMode){
+        pos = getArcadePoint(arcadeModeDist);
+    }
+    
     angle = 45;
     if (ofRandomuf() > 0.5) angle *= -1;
     

@@ -17,6 +17,10 @@ void DrunkTriangleHit::setupCustom(){
     float padding = 100;
     startPos.set( ofRandom(padding, gameW-padding), ofRandom(padding, gameH-padding));
     
+    if (arcadeMode){
+        startPos = getArcadePoint(arcadeModeDist);
+    }
+    
     growTime = 0.2;
     normalizeTime = growTime + 0.2;
     pauseTime = normalizeTime + 1.2;

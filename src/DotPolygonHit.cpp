@@ -16,6 +16,10 @@ void DotPolygonHit::setupCustom(){
     float range = 100;
     ofVec2f centerPos(ofRandom(range,gameW-range), ofRandom(range,gameH-range));
     
+    if (arcadeMode){
+        centerPos = getArcadePoint(arcadeModeDist);
+    }
+    
     normalSize = 10;
     largeSize = normalSize * 1.2;
     startSize = 2;

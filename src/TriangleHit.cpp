@@ -16,6 +16,10 @@ void TriangleHit::setupCustom(){
     float padding = size + 20;
     centerPos.set( ofRandom(padding, gameW-padding), ofRandom(padding,gameH-padding));
     
+    if (arcadeMode){
+        centerPos = getArcadePoint(arcadeModeDist);
+    }
+    
     lines.resize(3);
     float angleStep = TWO_PI/3;
     

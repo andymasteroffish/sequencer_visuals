@@ -16,6 +16,10 @@ void TunnelHit::setupCustom(){
     pos.x = gameW/2 + ofRandom(-rangeX, rangeX);
     pos.y = gameH/2 + ofRandom(-rangeY, rangeY);
     
+    if (arcadeMode){
+        pos = getArcadePoint(arcadeModeDist);
+    }
+    
     startSize = 70;
     smallSize = 10;
     bigSize = gameW;

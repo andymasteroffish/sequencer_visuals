@@ -24,6 +24,10 @@ void ChaserHit::setupCustom(){
     pos.x = ofRandom(range, gameW-range);
     pos.y = ofRandom(range, gameH-range);
     
+    if (arcadeMode){
+        pos = getArcadePoint(arcadeModeDist);
+    }
+    
     float angleStep = TWO_PI/numPoints;
     
     for (int i=0; i<numPoints; i++){

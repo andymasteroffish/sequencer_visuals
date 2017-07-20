@@ -16,6 +16,10 @@ void SquareHit::setupCustom(){
     pos.x = ofRandom(size, gameW-size);
     pos.y = ofRandom(size, gameH-size);
     
+    if (arcadeMode){
+        pos = getArcadePoint(arcadeModeDist);;
+    }
+    
     float growTime = 0.1;
     float pauseTime = 0.35;
     float shrinkTime = 0.6;
