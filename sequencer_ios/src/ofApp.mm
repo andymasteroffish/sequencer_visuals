@@ -7,6 +7,7 @@
 #import <Foundation/NSDate.h>	/* for NSTimeInterval */
 #import <AvailabilityMacros.h>
 #import <CoreAudio/CoreAudioTypes.h>
+#import<AVFoundation/AVFoundation.h>    //this import is needed to fuck with AVAudioSession
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -30,6 +31,8 @@ void ofApp::setup(){
     ofSoundStreamSetup(2,0,this, sequencer.sampleRate, sequencer.bufferSize, 4);
     
     ofxiOSSoundStream::setMixWithOtherApps(true);
+    
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
 }
 
 //--------------------------------------------------------------
