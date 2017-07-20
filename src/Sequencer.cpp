@@ -11,30 +11,33 @@
 string versionText = "v0.3";
 
 //--------------------------------------------------------------
-void Sequencer::setup(){
-    
-    arcadeMode = false;
-    arcadeOffset.set(0,0);
-    arcadeScale = 1;
-    
-    
-    publicRelease = false;
-    
-    useClickTrack = false;
-    
+void Sequencer::setup() {
+
+	arcadeMode = false;
+	arcadeOffset.set(0, 0);
+	arcadeScale = 1;
+
+
+	publicRelease = true;
+
+	useClickTrack = false;
+
 #ifdef TARGET_OPENGLES
-    shader.load("shaders/shadersES2/shader");
+	shader.load("shaders/shadersES2/shader");
 #else
-    if(ofIsGLProgrammableRenderer()){
-        shader.load("shaders/shadersGL3/shader");
-    }else{
-        shader.load("shaders/shadersGL2/shader");
-        //this is the one my computer uses
-    }
+	if (ofIsGLProgrammableRenderer()) {
+		shader.load("shaders/shadersGL3/shader");
+	}
+	else {
+		shader.load("shaders/shadersGL2/shader");
+		//this is the one my computer uses
+	}
 #endif
-    
-    cout<<"running at "<<ofGetWidth()<<" x "<<ofGetHeight()<<endl;
-    
+
+	if (!publicRelease) {
+		cout << "running at " << ofGetWidth() << " x " << ofGetHeight() << endl;
+	}
+
     //maxim - https://github.com/micknoise/Maximilian
     sampleRate 	= 44100;
     bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
@@ -983,7 +986,9 @@ void Sequencer::loadSounds(string filePath){
         clickTrackSound2.load(ofToDataPath(files[1]));
         clickTrackSound2.setPosition(1);
         
-        cout<<"found "<<files.size()<<" sound files"<<endl;
+		if (!publicRelease) {
+			cout << "found " << files.size() << " sound files" << endl;
+		}
         
         for (int i=0; i<NUM_SOUNDS; i++){
 //#ifdef USING_IOS
@@ -1065,7 +1070,7 @@ bool Sequencer::checkIsFirstRun(){
     }
     
     else{
-        cout<<"First run!"<<endl;
+        cout<<"It's your first time here!"<<endl;
         //go ahead and make the file
         ofstream newFile;
         #ifdef USING_IOS

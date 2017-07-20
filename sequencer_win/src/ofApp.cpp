@@ -2,10 +2,19 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
+	cout << "Bleep Space by Andy Wallace & Dan Friel" << endl;
+
+	
 	sequencer.setup();
+
+	//on windows, it's nice to hide the console
+	if (sequencer.publicRelease) {
+		HWND handleWindow; AllocConsole(); handleWindow = FindWindowA("ConsoleWindowClass", NULL); ShowWindow(handleWindow, 0);
+	}
 
 	//for maxim
 	ofSoundStreamSetup(2, 0, this, sequencer.sampleRate, sequencer.bufferSize, 4);
+
 
 }
 
