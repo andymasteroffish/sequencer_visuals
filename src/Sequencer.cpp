@@ -1047,7 +1047,6 @@ bool Sequencer::checkIsFirstRun(){
 	//path on windows
 #ifdef USING_WIN
 	appPath = ofFilePath::getCurrentExeDir() + "data\\";
-	cout << "checking " << appPath << endl;
 #endif
    
 	//path on iOS
@@ -1070,7 +1069,7 @@ bool Sequencer::checkIsFirstRun(){
         //go ahead and make the file
         ofstream newFile;
         #ifdef USING_IOS
-        newFile.open(appPath+fileName);
+        newFile.open(fullPath);
 		#elif defined(USING_WIN)
 		newFile.open(fullPath);
         #else
@@ -1093,8 +1092,11 @@ bool Sequencer::checkIsFirstRun(){
 bool Sequencer::checkHasRunStepMode(){
     string fileName = "hasdonestep.txt";
     //getting the path on mac
-    string appPath = ofFilePath::getCurrentExeDir();
-    appPath+="../Resources/";
+    string appPath = ofFilePath::getCurrentExeDir()+"../Resources/";
+
+#ifdef USING_WIN
+	appPath = ofFilePath::getCurrentExeDir() + "data\\";
+#endif
     
 #ifdef USING_IOS
     appPath = iosDataPath;
@@ -1117,9 +1119,12 @@ void Sequencer::saveHasRunStepMode(){
     
     string fileName = "hasdonestep.txt";
     //getting the path on mac
-    string appPath = ofFilePath::getCurrentExeDir();
-    appPath+="../Resources/";
+    string appPath = ofFilePath::getCurrentExeDir()+"../Resources/";
     
+#ifdef USING_WIN
+	appPath = ofFilePath::getCurrentExeDir() + "data\\";
+#endif
+
 #ifdef USING_IOS
     appPath = iosDataPath;
 #endif
@@ -1128,12 +1133,14 @@ void Sequencer::saveHasRunStepMode(){
     ofstream newFile;
 #ifdef USING_IOS
     newFile.open(appPath+fileName);
+#elif defined(USING_WIN)
+	newFile.open(appPath + fileName);
 #else
     newFile.open(fileName);
 #endif
     
     if (newFile.is_open()){
-        newFile<<"you ran it";
+        newFile<<"you ran step mode";
     }else{
         cout<<"something bad hapenned"<<endl;
     }
