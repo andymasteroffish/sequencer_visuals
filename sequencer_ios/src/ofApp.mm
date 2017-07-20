@@ -32,6 +32,7 @@ void ofApp::setup(){
     
     ofxiOSSoundStream::setMixWithOtherApps(true);
     
+    //this needs to be set to allow bluetooth playback
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
 }
 
