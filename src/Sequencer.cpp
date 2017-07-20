@@ -8,12 +8,12 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v0.2";
+string versionText = "v0.3";
 
 //--------------------------------------------------------------
 void Sequencer::setup(){
     
-    arcadeMode = true;
+    arcadeMode = false;
     arcadeOffset.set(0,0);
     arcadeScale = 1;
     
@@ -1042,9 +1042,15 @@ bool Sequencer::checkIsFirstRun(){
     string fileName = "hasrun.txt";
     
     //getting the path on mac
-    string appPath = ofFilePath::getCurrentExeDir();
-    appPath+="../Resources/";
-    
+    string appPath = ofFilePath::getCurrentExeDir() + "../Resources/";
+
+	//path on windows
+#ifdef USING_WIN
+	appPath = ofFilePath::getCurrentExeDir() + "data\\";
+	cout << "checking " << appPath << endl;
+#endif
+   
+	//path on iOS
 #ifdef USING_IOS
     appPath = iosDataPath;
 #endif
@@ -1052,7 +1058,9 @@ bool Sequencer::checkIsFirstRun(){
     //cout<<appPath<<endl;
     
     //we're going to check if a specific file exists
-    ofFile checkFile(appPath+fileName);
+	string fullPath = appPath + fileName;
+	
+    ofFile checkFile(fullPath);
     if (checkFile.exists()){
         return false;
     }
@@ -1063,6 +1071,8 @@ bool Sequencer::checkIsFirstRun(){
         ofstream newFile;
         #ifdef USING_IOS
         newFile.open(appPath+fileName);
+		#elif defined(USING_WIN)
+		newFile.open(fullPath);
         #else
         newFile.open(fileName);
         #endif

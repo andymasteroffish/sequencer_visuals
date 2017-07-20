@@ -66,3 +66,8 @@ void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
 	}
 }
 
+//--------------------------------------------------------------
+void ofApp::exit() {
+	cout << "haha wut up dude" << endl;
+	ofSoundStreamClose();
+}
