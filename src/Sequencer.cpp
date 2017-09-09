@@ -18,7 +18,7 @@ void Sequencer::setup() {
 	arcadeScale = 1;
 
 
-	publicRelease = true;
+	publicRelease = false;
 
 	useClickTrack = false;
 
@@ -61,8 +61,8 @@ void Sequencer::setup() {
     isFirstRun = checkIsFirstRun();
     //testing
     if (!publicRelease){
-//        isFirstRun = true;
-//        hasRunStepMode = false;
+        isFirstRun = true;
+        hasRunStepMode = false;
     }
     firstRunTime = 30;
     firstRunTimer =  isFirstRun ? firstRunTime : -1;
