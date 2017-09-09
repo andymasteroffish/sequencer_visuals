@@ -121,6 +121,9 @@
     <ClCompile Include="..\ofxMaxim\libs\stb_vorbis.c">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\ArduinoManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -252,6 +255,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\SystemSpecificInfo.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ArduinoManager.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

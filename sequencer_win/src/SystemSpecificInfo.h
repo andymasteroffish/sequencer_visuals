@@ -11,5 +11,6 @@
 
 #define USING_WIN
 
+#define USING_ARCADE
 
 #endif /* SystemSpecificInfo_h */

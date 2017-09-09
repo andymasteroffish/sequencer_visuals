@@ -11,7 +11,14 @@
 
 void ArduinoManager::setup(){
 #ifdef USING_ARCADE
+
+	#ifdef USING_OSX
     ard.connect("/dev/tty.usbserial-A700fitl", 57600);
+	#endif
+
+	#ifdef USING_WIN
+	ard.connect("COM3", 57600);
+	#endif
     
     bSetupArduino	= false;
     

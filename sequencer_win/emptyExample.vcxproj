@@ -180,6 +180,7 @@
     <ClCompile Include="..\ofxMaxim\libs\maximilian.cpp" />
     <ClCompile Include="..\ofxMaxim\libs\stb_vorbis.c" />
     <ClCompile Include="..\src\AboutScreen.cpp" />
+    <ClCompile Include="..\src\ArduinoManager.cpp" />
     <ClCompile Include="..\src\BeatMarker.cpp" />
     <ClCompile Include="..\src\BounceWord.cpp" />
     <ClCompile Include="..\src\Bpm.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="..\ofxMaxim\libs\stb_vorbis.h" />
     <ClInclude Include="..\ofxMaxim\src\ofxMaxim.h" />
     <ClInclude Include="..\src\AboutScreen.hpp" />
+    <ClInclude Include="..\src\ArduinoManager.hpp" />
     <ClInclude Include="..\src\BeatMarker.hpp" />
     <ClInclude Include="..\src\BounceWord.hpp" />
     <ClInclude Include="..\src\Bpm.hpp" />
