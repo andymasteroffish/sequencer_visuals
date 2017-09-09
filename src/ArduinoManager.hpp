@@ -10,6 +10,7 @@
 #define ArduinoManager_hpp
 
 #include "ofMain.h"
+#include "SystemSpecificInfo.h"
 
 class ArduinoManager{
 public:
