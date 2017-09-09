@@ -8,12 +8,16 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v0.3";
+string versionText = "v0.4";
 
 //--------------------------------------------------------------
 void Sequencer::setup() {
-
-	arcadeMode = true;
+    //arcade toggle is in SystemSpecificInfo
+#ifdef USING_ARCADE
+    arcadeMode = true;
+#else
+    arcadeMode = false;
+#endif
 	arcadeOffset.set(0, 0);
 	arcadeScale = 1;
 

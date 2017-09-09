@@ -10,42 +10,26 @@
 
 
 void ArduinoManager::setup(){
+#ifdef USING_ARCADE
     ard.connect("/dev/tty.usbserial-A700fitl", 57600);
-    
     
     bSetupArduino	= false;
     
     // listen for EInitialized notification.
     ofAddListener(ard.EInitialized, this, &ArduinoManager::setupArduino);
     cout<<"setup arduino"<<endl;
+#endif
 }
 
 void ArduinoManager::update(){
-    //cout<<"init "<<ard.isInitialized()<<"  ready "<<ard.isArduinoReady()<<endl;
+#ifdef USING_ARCADE
     ard.update();
-    
-    /*
-    if (bSetupArduino){
-        
-        
-        int curLED = (ofGetFrameNum() / 10) % 16 + 4;
-        cout<<"cur LED "<<curLED<<endl;
-        
-        //int blinkSpeed = 400;
-        
-        // do not send anything until the arduino has been set up
-        if (bSetupArduino) {
-            for (int i=0; i<20; i++){
-                ard.sendDigital(i, curLED==i ? 1 : 0);
-            }
-        }
-    }
-     */
+#endif
 }
 
 
 void ArduinoManager::setupArduino(const int & version) {
-    cout<<"I found it I love it"<<endl;
+#ifdef USING_ARCADE
     // remove listener because we don't need it anymore
     ofRemoveListener(ard.EInitialized, this, &ArduinoManager::setupArduino);
     
@@ -65,6 +49,7 @@ void ArduinoManager::setupArduino(const int & version) {
     for (int i=0; i<20; i++){
         ard.sendDigitalPinMode(i, ARD_OUTPUT);
     }
+#endif
 }
 
 void ArduinoManager::clear(){
@@ -73,9 +58,11 @@ void ArduinoManager::clear(){
     }
 }
 void ArduinoManager::setSound(int soundID, bool isOn){
+#ifdef USING_ARCADE
     int pinID = soundID + 4;
     
     if (bSetupArduino){
         ard.sendDigital(pinID, isOn);
     }
+#endif
 }

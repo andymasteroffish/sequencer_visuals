@@ -22,7 +22,10 @@ public:
     void setSound(int soundID, bool isOn);
     
     bool bSetupArduino;
+
+#ifdef USING_ARCADE
     ofArduino	ard;
+#endif
     
 private:
     
