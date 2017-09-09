@@ -44,6 +44,9 @@
 #include "TouchGeneralButton.hpp"
 #include "SoundButton.hpp"
 
+//arcade
+#include "ArduinoManager.hpp"
+
 
 
 class Sequencer{
@@ -195,6 +198,9 @@ public:
     bool arcadeMode;
     ofVec2f arcadeOffset;
     float arcadeScale;
+    ArduinoManager arduino;
+    
+    
 
 };
 

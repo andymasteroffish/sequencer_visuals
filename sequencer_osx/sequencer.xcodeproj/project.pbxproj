@@ -42,6 +42,7 @@
 		575B12531D22BFDA00B0CAF6 /* TriangleHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12391D22BFDA00B0CAF6 /* TriangleHit.cpp */; };
 		575B12541D22BFDA00B0CAF6 /* TunnelHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B123B1D22BFDA00B0CAF6 /* TunnelHit.cpp */; };
 		575B12551D22BFDA00B0CAF6 /* WaveColumnHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B123D1D22BFDA00B0CAF6 /* WaveColumnHit.cpp */; };
+		577FC1EB1F64806400969FB9 /* ArduinoManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 577FC1E91F64806400969FB9 /* ArduinoManager.cpp */; };
 		579BAB951E74A4ED00A983B0 /* Logo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BAB931E74A4ED00A983B0 /* Logo.cpp */; };
 		57C9BA641D2C46DE006E20B3 /* Bpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57C9BA621D2C46DE006E20B3 /* Bpm.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -152,6 +153,8 @@
 		575B123C1D22BFDA00B0CAF6 /* TunnelHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TunnelHit.hpp; path = ../../src/TunnelHit.hpp; sourceTree = "<group>"; };
 		575B123D1D22BFDA00B0CAF6 /* WaveColumnHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaveColumnHit.cpp; path = ../../src/WaveColumnHit.cpp; sourceTree = "<group>"; };
 		575B123E1D22BFDA00B0CAF6 /* WaveColumnHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = WaveColumnHit.hpp; path = ../../src/WaveColumnHit.hpp; sourceTree = "<group>"; };
+		577FC1E91F64806400969FB9 /* ArduinoManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArduinoManager.cpp; path = ../../src/ArduinoManager.cpp; sourceTree = "<group>"; };
+		577FC1EA1F64806400969FB9 /* ArduinoManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ArduinoManager.hpp; path = ../../src/ArduinoManager.hpp; sourceTree = "<group>"; };
 		579BAB931E74A4ED00A983B0 /* Logo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logo.cpp; path = ../../src/Logo.cpp; sourceTree = "<group>"; };
 		579BAB941E74A4ED00A983B0 /* Logo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Logo.hpp; path = ../../src/Logo.hpp; sourceTree = "<group>"; };
 		57C9BA621D2C46DE006E20B3 /* Bpm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bpm.cpp; path = ../../src/Bpm.cpp; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				57C9BA621D2C46DE006E20B3 /* Bpm.cpp */,
 				579BAB941E74A4ED00A983B0 /* Logo.hpp */,
 				579BAB931E74A4ED00A983B0 /* Logo.cpp */,
+				577FC1EA1F64806400969FB9 /* ArduinoManager.hpp */,
+				577FC1E91F64806400969FB9 /* ArduinoManager.cpp */,
 			);
 			name = project;
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 				575B124C1D22BFDA00B0CAF6 /* Sequencer.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				575B12521D22BFDA00B0CAF6 /* TrapezoidHit.cpp in Sources */,
+				577FC1EB1F64806400969FB9 /* ArduinoManager.cpp in Sources */,
 				57C9BA641D2C46DE006E20B3 /* Bpm.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				573F77D51EE75F6A00C0ECC4 /* maximilian.cpp in Sources */,

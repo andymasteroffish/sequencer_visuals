@@ -12,10 +12,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    //cout<<"--FRAME "<<ofGetElapsedTimeMillis()<<" --"<<endl;
-    
     sequencer.update();
-    
 }
 
 //--------------------------------------------------------------

@@ -13,7 +13,7 @@ string versionText = "v0.3";
 //--------------------------------------------------------------
 void Sequencer::setup() {
 
-	arcadeMode = false;
+	arcadeMode = true;
 	arcadeOffset.set(0, 0);
 	arcadeScale = 1;
 
@@ -61,8 +61,8 @@ void Sequencer::setup() {
     isFirstRun = checkIsFirstRun();
     //testing
     if (!publicRelease){
-        isFirstRun = true;
-        hasRunStepMode = false;
+        //isFirstRun = true;
+        //hasRunStepMode = false;
     }
     firstRunTime = 30;
     firstRunTimer =  isFirstRun ? firstRunTime : -1;
@@ -95,6 +95,7 @@ void Sequencer::setup() {
     showTouchButtons = true;
     if (arcadeMode){
         showTouchButtons = false;
+        arduino.setup();
     }
     
     bpmValue = 160;
@@ -167,9 +168,7 @@ void Sequencer::setup() {
     }
     
     takeScreenshot = false;
-    
 }
-
 
 //--------------------------------------------------------------
 void Sequencer::hitBeat(void){
@@ -177,6 +176,11 @@ void Sequencer::hitBeat(void){
     thisBeat++;
     if (thisBeat >= NUM_BEATS){
         thisBeat = 0;
+    }
+    
+    //clear the LEDs in the arcade verison
+    if (arcadeMode){
+        arduino.clear();
     }
     
     //cout<<"hit beat "<<thisBeat<<" at "<<ofGetElapsedTimef()<<endl;
@@ -203,7 +207,9 @@ void Sequencer::hitBeat(void){
             clickTrackSound.trigger();
         }
     }
+    
 }
+
 
 //--------------------------------------------------------------
 void Sequencer::update(){
@@ -287,6 +293,10 @@ void Sequencer::update(){
             touchMenuButtons[i].box.x = menuX;
         }
         aboutButton.box.x = 0;
+    }
+    
+    if (arcadeMode){
+        arduino.update();
     }
     
 }
@@ -903,6 +913,11 @@ void Sequencer::makeNewHit(int idNum){
     //making the sound
     if (bPlaySound){
         playSound(idNum);
+    }
+    
+    //in arcade mode, turn the LED on
+    if (arcadeMode){
+        arduino.setSound(idNum, true);
     }
     
     hasAddedANote = true;
