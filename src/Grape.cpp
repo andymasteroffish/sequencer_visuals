@@ -9,10 +9,10 @@
 #include "Grape.hpp"
 
 
-void Grape::setup(ofVec2f _pos, float delayTime, float _lineWidthPrc){
+void Grape::setup(ofVec2f _pos, float delayTime){//, float _lineWidthPrc){
     pos = _pos;
     
-    lineWidthPrc = _lineWidthPrc;
+    //lineWidthPrc = _lineWidthPrc;
     
     growTime = 0.2;
     pauseTime = growTime+0.35;
@@ -97,7 +97,6 @@ void Grape::draw(){
     
     ofNoFill();
     ofSetColor(0);
-    ofSetLineWidth(1 * lineWidthPrc);
     ofSetCircleResolution(30);
     if (timer < popTime){
         ofDrawCircle(pos.x, pos.y, size);

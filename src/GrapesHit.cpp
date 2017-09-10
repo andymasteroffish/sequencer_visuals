@@ -17,7 +17,7 @@ void GrapesHit::setupCustom(){
     pos.y = ofRandom(padding, gameH-padding);
     
     if (arcadeMode){
-        pos = getArcadePoint(arcadeModeDist);;
+        pos = getArcadePoint(arcadeModeDist);
     }
     
     int numGrapes = 6;//ofRandom(4,7);
@@ -38,7 +38,7 @@ void GrapesHit::setupCustom(){
         pos.y += sin(curAngle) * dist;
         
         
-        grapes[i].setup(pos, timeSpacing*i, lineWidthPrc);
+        grapes[i].setup(pos, timeSpacing*i);
     }
     
 }
@@ -55,6 +55,7 @@ void GrapesHit::updateCustom(){
 }
 
 void GrapesHit::draw(){
+    setLineWidth(1);
     for (int i=0; i<grapes.size(); i++){
         grapes[i].draw();
     }

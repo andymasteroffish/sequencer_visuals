@@ -16,6 +16,7 @@ void TriangleHit::setupCustom(){
     float padding = size + 20;
     centerPos.set( ofRandom(padding, gameW-padding), ofRandom(padding,gameH-padding));
     
+    
     if (arcadeMode){
         centerPos = getArcadePoint(arcadeModeDist);
     }
@@ -79,7 +80,7 @@ void TriangleHit::updateCustom(){
 }
 void TriangleHit::draw(){
     ofSetColor(0);
-    ofSetLineWidth(2 * lineWidthPrc);
+    setLineWidth(2 );
     
     ofPushMatrix();
     

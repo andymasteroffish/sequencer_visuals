@@ -79,7 +79,7 @@ void SizzleHit::draw(){
     ofRotate(angle);
     
     ofSetColor(0);
-    ofSetLineWidth(1 * lineWidthPrc);
+    setLineWidth(1);
     
     if (timer <= pauseTime){
         for (int i=0; i<numPoints-1; i++){

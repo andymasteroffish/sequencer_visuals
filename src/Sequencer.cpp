@@ -19,7 +19,7 @@ void Sequencer::setup() {
     arcadeMode = false;
 #endif
 	arcadeOffset.set(0, 0);
-	arcadeScale = 1;
+    arcadeScale = 0.75;
 
 
 	publicRelease = false;
@@ -307,13 +307,6 @@ void Sequencer::update(){
 
 //--------------------------------------------------------------
 void Sequencer::draw(){
-    if (arcadeMode){
-        ofPushMatrix();
-        ofTranslate(arcadeOffset.x, arcadeOffset.y);
-        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-        ofScale(arcadeScale, arcadeScale);
-        ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2);
-    }
     
     
     //shader stuff
@@ -353,6 +346,14 @@ void Sequencer::draw(){
         ofScale(2, 2);
     }
     
+    //changing zoom for arcade
+    if (arcadeMode){
+        ofPushMatrix();
+        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+        ofScale(arcadeScale, arcadeScale);
+        ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2);
+    }
+    
     for (int i=0; i<hits.size(); i++){
         if (doCamMovement){
             ofPushMatrix();
@@ -366,7 +367,13 @@ void Sequencer::draw(){
         }
     }
     
+    //end blowing things up on iPad
     if (usingIPad){
+        ofPopMatrix();
+    }
+    
+    //end changing zoom on arcade
+    if (arcadeMode){
         ofPopMatrix();
     }
     
@@ -513,9 +520,6 @@ void Sequencer::draw(){
     //the logo
     logo.draw();
     
-    if (arcadeMode){
-        ofPopMatrix();
-    }
 }
 
 
@@ -910,7 +914,13 @@ void Sequencer::makeNewHit(int idNum){
         if (idNum == 13)     thisHit = new SlashHit();
         if (idNum == 14)     thisHit = new TrapezoidHit();
         
-        thisHit->setup(gameW, gameH, whiteVal, usingIPad, arcadeMode);
+        thisHit->setup(gameW, gameH, whiteVal, usingIPad, arcadeMode, arcadeScale);
+        /*
+        if (arcadeMode){
+            cout<<"now?"<<endl;
+            thisHit->setArcadeMode(arcadeScale);
+        }
+         */
         
         hits.push_back(thisHit);
     }

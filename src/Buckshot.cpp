@@ -9,11 +9,11 @@
 #include "Buckshot.hpp"
 
 
-void Buckshot::setup(float x, float y, float delayTime, float _lineWidthPrc){
+void Buckshot::setup(float x, float y, float delayTime){//, float _lineWidthPrc){
     pos.set(x,y);
     timer = -delayTime;
     
-    lineWidthPrc = _lineWidthPrc;
+    //lineWidthPrc = _lineWidthPrc;
     
     startTime = 0.3;
     pauseTime = startTime+0.6;
@@ -57,7 +57,6 @@ void Buckshot::draw(){
     }
     
     ofSetColor(0);
-    ofSetLineWidth(1 * lineWidthPrc);
     ofNoFill();
     ofSetCircleResolution(20);
     ofDrawCircle(pos.x, pos.y, size);

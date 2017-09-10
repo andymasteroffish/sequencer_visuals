@@ -15,13 +15,13 @@
 class Grape{
 public:
     
-    void setup(ofVec2f _pos, float delayTime, float _lineWidthPrc);
+    void setup(ofVec2f _pos, float delayTime);//, float _lineWidthPrc);
     void setCurve(float grow, float pop, float line);
     void update(float deltaTime);
     void draw();
     
     float timer;
-    float lineWidthPrc;
+    //float lineWidthPrc;
     
     ofVec2f pos;
     

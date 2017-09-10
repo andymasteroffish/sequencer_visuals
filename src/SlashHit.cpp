@@ -86,7 +86,7 @@ void SlashHit::updateCustom(){
 
 void SlashHit::draw(){
     
-    ofSetLineWidth(5 * lineWidthPrc);
+    setLineWidth(5 );
     ofSetColor(0);
     
     ofPushMatrix();
@@ -101,7 +101,7 @@ void SlashHit::draw(){
     lineB.draw();
     
     ofSetColor(whiteVal);
-    ofSetLineWidth(1 * lineWidthPrc);
+    setLineWidth(1 );
     lineA.draw();
     lineB.draw();
     

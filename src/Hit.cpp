@@ -9,13 +9,15 @@
 #include "Hit.hpp"
 
 
-void Hit::setup(int _gameW, int _gameH, int _whiteVal, bool usingiPad, bool _arcadeMode){
+void Hit::setup(int _gameW, int _gameH, int _whiteVal, bool _usingiPad, bool usingArcade, float _arcadeScale){
     gameW = _gameW;
     gameH = _gameH;
     
     whiteVal = _whiteVal;
     
-    lineWidthPrc = usingiPad ? 2 : 1;
+    usingiPad = _usingiPad;
+    
+    //lineWidthPrc = usingiPad ? 2 : 1;
     
     killMe = false;
     
@@ -23,11 +25,13 @@ void Hit::setup(int _gameW, int _gameH, int _whiteVal, bool usingiPad, bool _arc
     
     zVal = ofRandom(-400, 200);
     
-    arcadeMode = _arcadeMode;
-    arcadeModeDist = ofGetHeight() * 0.4;
+    arcadeMode = usingArcade;
+    arcadeScale = _arcadeScale;
+    arcadeModeDist = (ofGetHeight() * 0.4) / arcadeScale;
     
     setupCustom();
 }
+
 
 void Hit::update(float _deltaTime){
     deltaTime = _deltaTime;
@@ -45,4 +49,19 @@ ofVec2f Hit::getArcadePoint(float maxDist){
     val.x = ofGetWidth()/2 + cos(thisAngle) * thisDist;
     val.y = ofGetHeight()/2 + sin(thisAngle) * thisDist;
     return val;
+}
+
+void Hit::setLineWidth(float val){
+    float newVal = val;
+    if (!arcadeMode){
+        if (usingiPad){
+            newVal = val * 2;
+        }
+    }else{
+       newVal = val * arcadeScale;
+    }
+    
+    cout<<"was "<<val<<" is "<<newVal<<endl;
+    
+    ofSetLineWidth(newVal);
 }

@@ -89,7 +89,7 @@ void DrunkTriangleHit::updateCustom(){
 void DrunkTriangleHit::draw(){
     
     ofSetColor(0);
-    ofSetLineWidth(2 * lineWidthPrc);
+    setLineWidth(2);
     ofSetCircleResolution(3);
     
     ofNoFill();

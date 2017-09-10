@@ -16,7 +16,7 @@
 class Hit{
 public:
     
-    void setup(int _gameW, int _gameH, int _whiteVal, bool usingiPad, bool _arcadeMode);
+    void setup(int _gameW, int _gameH, int _whiteVal, bool _usingiPad, bool usingArcade, float _arcadeScale);
     virtual void setupCustom(){}
     void update(float _deltaTime);
     virtual void updateCustom(){}
@@ -27,6 +27,8 @@ public:
     
     ofVec2f getArcadePoint(float maxDist);
     
+    void setLineWidth(float val);
+    
     float deltaTime;
     
     int gameW, gameH;
@@ -36,14 +38,17 @@ public:
     
     float timer;
     
+    bool usingiPad;
+    
     //for messing with visuals
     float zVal;
     
-    float lineWidthPrc;
+    //float lineWidthPrc;
     
     
     //arcade shit
     bool arcadeMode;
+    float arcadeScale;
     float arcadeModeDist;
     
     

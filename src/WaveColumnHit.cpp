@@ -128,7 +128,7 @@ void WaveColumnHit::draw(){
     ofRotate(angle);
     
     ofSetColor(0);
-    ofSetLineWidth(2 * lineWidthPrc);
+    setLineWidth(2);
     for (int i=0; i<numPoints-1; i++){
         ofDrawLine(pnts[i], pnts[i+1]);
     }

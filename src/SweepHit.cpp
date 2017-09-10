@@ -50,9 +50,18 @@ void SweepHit::updateCustom(){
 void SweepHit::draw(){
     
     ofSetColor(0);
-    ofSetLineWidth(1 * lineWidthPrc);
+    setLineWidth(1);// * lineWidthPrc);
     
-    ofDrawLine(xPos, 0, xPos, gameH);
+    float padding = 10;
+    if (arcadeMode){
+        cout<<"love arcade"<<endl;
+        padding = 50 / arcadeScale;
+    }
+    cout<<"padd "<<padding<<endl;
+    float top = -padding;
+    float bottom = gameH+padding;
+    
+    ofDrawLine(xPos, top, xPos, bottom);
     
     for (int i=0; i<trailLength; i++){
         int thisX = xPos + i * 2 * -dir;
@@ -60,7 +69,7 @@ void SweepHit::draw(){
         
         for (int k=0; k<numDots; k++){
             float thisHeight = ofRandom(10, 100);
-            float thisY = ofRandom(-thisHeight,gameH+thisHeight);
+            float thisY = ofRandom(top-thisHeight,bottom+thisHeight);
             
             ofDrawLine(thisX, thisY, thisX, thisY+thisHeight);
         }

@@ -114,13 +114,13 @@ void ClapHit::draw(){
     
     //draw the lines
     ofSetColor(0);
-    ofSetLineWidth(3 * lineWidthPrc);
+    setLineWidth(3);
     ofDrawLine(0, 0, pntA.x, pntA.y);
     ofDrawLine(0, 0, pntB.x, pntB.y);
     
     //draw the pop circles
     ofNoFill();
-    ofSetLineWidth(2 * lineWidthPrc);
+    setLineWidth(2);
     ofSetCircleResolution(20);
     if (leftPopCircleSize > 0){
         ofDrawCircle(-popCircleDist, 0, leftPopCircleSize);

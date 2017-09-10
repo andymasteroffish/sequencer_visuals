@@ -91,7 +91,7 @@ void SquareHit::draw(){
     ofTranslate(0, -50);
     
     ofSetColor(0);
-    ofSetLineWidth(2 * lineWidthPrc);
+    setLineWidth(2 );
     
     for (int i=0; i<4; i++){
         lines[i].draw();
