@@ -12,13 +12,17 @@
 void ArduinoManager::setup(){
 #ifdef USING_ARCADE
 
+    couldConnect = false;
+    
 	#ifdef USING_OSX
-    ard.connect("/dev/tty.usbserial-A700fitl", 57600);
+    couldConnect = ard.connect("/dev/tty.usbserial-A700fitl", 57600);
 	#endif
 
 	#ifdef USING_WIN
-	ard.connect("COM3", 57600);
+	couldConnect = ard.connect("COM3", 57600);
 	#endif
+    
+    cout<<"test "<<couldConnect<<endl;
     
     bSetupArduino	= false;
     
@@ -30,7 +34,9 @@ void ArduinoManager::setup(){
 
 void ArduinoManager::update(){
 #ifdef USING_ARCADE
-    ard.update();
+    if (couldConnect){
+        ard.update();
+    }
 #endif
 }
 
