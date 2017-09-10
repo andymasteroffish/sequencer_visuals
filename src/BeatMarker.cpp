@@ -161,7 +161,7 @@ void BeatMarker::draw(bool hasSound, bool hasOtherStepModeSound, bool _isRecordi
     isRecording = _isRecording;
     
     ofSetColor(0);
-    ofSetLineWidth(1);
+    ofSetLineWidth(isOnTheOne ? 2 : 1);
     ofSetCircleResolution(20);
     
     if (beingCleared){
@@ -184,7 +184,12 @@ void BeatMarker::draw(bool hasSound, bool hasOtherStepModeSound, bool _isRecordi
         yPos = pos.y + sin(arcadeAngle) * yOffsets;
     }
     
-    ofDrawCircle(xPos, yPos, curSize * curScale);
+    float bonusWidth = 0;
+    if (isOnTheOne && hasSound && isRecording){
+        bonusWidth = curSize * 0.2f;
+    }
+    
+    ofDrawCircle(xPos, yPos, (curSize+bonusWidth) * curScale);
     
     //if it has a sound but we're not recording, draw a smaller circle inside
     if ( (hasSound && !isRecording) || hasOtherStepModeSound){

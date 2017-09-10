@@ -35,6 +35,8 @@ public:
     float pulseTime;
     float pulseTimer;
     
+    bool isOnTheOne;
+    
     //growing after being cleared
     bool beingCleared;
     bool hadSoundOnClear, hadOtherStepModeSoundOnClear;

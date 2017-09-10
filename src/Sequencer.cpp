@@ -805,6 +805,7 @@ void Sequencer::setButtonPositions(){
         float normX = beatXPadding+beatXSpacing*i;
         float stepX = stepModeBeatSpacing/2 + stepModeBeatSpacing*i;
         beatMarkers[i].setup(normX, stepX, ofGetHeight()-beatYDistFromBottom, whiteVal, usingIPad);
+        beatMarkers[i].isOnTheOne = i % 4 ==0;
         if (arcadeMode){
             beatMarkers[i].arcadeSetPos( (float)i / (float)NUM_BEATS);
         }
