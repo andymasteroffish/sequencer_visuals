@@ -61,7 +61,7 @@ void Hit::setLineWidth(float val){
        newVal = val * arcadeScale;
     }
     
-    cout<<"was "<<val<<" is "<<newVal<<endl;
+    //cout<<"was "<<val<<" is "<<newVal<<endl;
     
     ofSetLineWidth(newVal);
 }

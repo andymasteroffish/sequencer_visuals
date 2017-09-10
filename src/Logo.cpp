@@ -41,7 +41,7 @@ void Logo::setPos(){
     
     if (arcadeMode){
         masterScale = (float)ofGetHeight() / 1000.0f; // ~* MaGiC nUmBeR *~
-        cout<<"SET IT NOW "<<masterScale<<endl;
+        //cout<<"SET IT NOW "<<masterScale<<endl;
     }
 }
 
