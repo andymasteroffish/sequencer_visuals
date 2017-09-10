@@ -38,15 +38,18 @@ void Logo::setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueT
 
 void Logo::setPos(){
      logoPos.set(ofGetWidth()*0.5, ofGetHeight()*0.55);
+    
+    if (arcadeMode){
+        masterScale = (float)ofGetHeight() / 1000.0f;
+        cout<<"SET IT NOW "<<masterScale<<endl;
+    }
 }
 
 void Logo::update(float deltaTime){
     timer += deltaTime;
     
     if (timer < growTime){
-        //prcComplete = timer/growTime;
-        //trying out having the animaitons start fileld in so they can be on the load screen
-        prcComplete = 1;
+        prcComplete = timer/growTime;
     }else if (timer < growTime + pauseTime){
         prcComplete = 1;
     }
@@ -115,12 +118,19 @@ void Logo::drawHeadphoneMessage(){
     
     float prcToShrink = 0.75;
     
-    float headphoneY = 150;
-    float creditsY = 225;
+    float creditsY = 90;
+    float headphoneY = 180;
+    float dbaaY = 0;        //only for arcade mode
+    
+    if (arcadeMode){
+        creditsY = 80;
+        headphoneY = 150;
+        dbaaY = headphoneY + 90;
+    }
     
     if (usingiPad){
-        headphoneY = 175;
-        creditsY = 275;
+        creditsY = 175;
+        headphoneY = 275;
     }
     
     float curHeadphoneScale = 1.2 + sin(ofGetElapsedTimef()) * 0.1;
@@ -132,8 +142,19 @@ void Logo::drawHeadphoneMessage(){
         curHeadphoneScale *= prc;
     }
     
+    //by line
+    
+    ofSetColor(0, 100*prcComplete);
+    string creditsMessage = "by Andy Wallace & Dan Friel";
+    ofRectangle creditsRect = font->getStringBoundingBox(creditsMessage, 0, 0);
+    float creditTextW = creditsRect.width;
+    font->drawString(creditsMessage, -creditTextW/2, creditsY);
+    
+    
+    //headphone message
+    
     ofPushMatrix();
-    ofTranslate(0, headphoneY);//ofGetHeight()*0.2);
+    ofTranslate(0, headphoneY);
     ofScale(curHeadphoneScale, curHeadphoneScale);
     
     string headphoneMessage = "Headphones recommended";
@@ -146,12 +167,17 @@ void Logo::drawHeadphoneMessage(){
     
     ofPopMatrix();
     
+    if (arcadeMode){
+    //DBAA
     
-    ofSetColor(0, 100*prcComplete);
-    string creditsMessage = "by Andy Wallace & Dan Friel";
-    ofRectangle creditsRect = fontSmall->getStringBoundingBox(creditsMessage, 0, 0);
-    float creditTextW = creditsRect.width;
-    fontSmall->drawString(creditsMessage, -creditTextW/2, creditsY);//ofGetHeight()*0.3);
+        ofSetColor(0, 100*prcComplete);
+        string dbaaMessage = "Machine by Death By Audio Arcade";
+        ofRectangle dbaaRect = font->getStringBoundingBox(dbaaMessage, 0, 0);
+        float dbaaTextW = dbaaRect.width;
+        font->drawString(dbaaMessage, -dbaaTextW/2, dbaaY);
+    }
+    
+    
 }
 
 //void Logo::drawCredits(){

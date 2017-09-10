@@ -974,9 +974,12 @@ void Sequencer::clearBeats(){
         }
         beatMarkers[i].triggerClear();
     }
-//    if (turnOnRecordingWhenClearing){
-//        setRecording(true);
-//    }
+    
+    //do more of a reset in aracde mode
+    if (arcadeMode){
+        bpmValue = bpmStartValue;   //bpm back to defaul
+        logo.timer = -1;            //logo comes back in (after a slight delay)
+    }
 }
 
 
