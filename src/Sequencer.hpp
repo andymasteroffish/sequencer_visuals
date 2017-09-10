@@ -76,6 +76,8 @@ public:
     
     void loadSounds(string filePath);
     
+    void loadArcadeSettings(string filePath);
+    
     void setVisualEffect();
     
     bool checkIsFirstRun();
@@ -196,8 +198,8 @@ public:
     
     //arcade console
     bool arcadeMode;
-    ofVec2f arcadeOffset;
     float arcadeScale;
+    float arcadeBeatMarkerDistPrc;
     ArduinoManager arduino;
     
     

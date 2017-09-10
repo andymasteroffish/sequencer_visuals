@@ -50,9 +50,10 @@ void BeatMarker::setup(float x, float _stepModeX, float y, int _whiteVal, bool u
     arcadeMode = false;
 }
 
-void BeatMarker::arcadeSetPos(float prc){
+void BeatMarker::arcadeSetPos(float prc, float beatMarkerPrcDist){
     arcadeAngle = TWO_PI*prc;
-    float dist = ofGetHeight() * 0.45;
+    float dist = ofGetHeight() * beatMarkerPrcDist;
+    
     normX = ofGetWidth()/2 + cos(arcadeAngle) * dist;
     pos.x = normX;
     pos.y = ofGetHeight()/2 + sin(arcadeAngle) * dist;

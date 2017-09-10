@@ -18,9 +18,14 @@ void Sequencer::setup() {
 #else
     arcadeMode = false;
 #endif
-	arcadeOffset.set(0, 0);
-    arcadeScale = 0.75;
+    
+    //defalt arcade values
+    arcadeScale = 1;
+    arcadeBeatMarkerDistPrc = 0.45;
 
+    if (arcadeMode){
+        loadArcadeSettings("arcade_settings.txt");
+    }
 
 	publicRelease = false;
 
@@ -781,8 +786,6 @@ void Sequencer::mouseMoved(int x, int y){
 //        }
 //    }
     
-    //arcadeOffset.x = ofMap(x, 0, ofGetWidth(), -100, 100);
-    //arcadeOffset.y = ofMap(y, 0, ofGetHeight(), -100, 100);
 }
 
 
@@ -811,7 +814,7 @@ void Sequencer::setButtonPositions(){
         beatMarkers[i].setup(normX, stepX, ofGetHeight()-beatYDistFromBottom, whiteVal, usingIPad);
         beatMarkers[i].isOnTheOne = i % 4 ==0;
         if (arcadeMode){
-            beatMarkers[i].arcadeSetPos( (float)i / (float)NUM_BEATS);
+            beatMarkers[i].arcadeSetPos( (float)i / (float)NUM_BEATS, arcadeBeatMarkerDistPrc);
         }
     }
     
@@ -1038,6 +1041,34 @@ void Sequencer::loadSounds(string filePath){
     }else{
         cout<<"bad file"<<endl;
     }
+}
+
+//--------------------------------------------------------------
+void Sequencer::loadArcadeSettings(string filePath){
+    ofBuffer buffer = ofBufferFromFile(filePath);
+    vector<string> lines;
+    
+    if (buffer.size() > 0){
+        
+        for (ofBuffer::Line it = buffer.getLines().begin(), end = buffer.getLines().end(); it != end; ++it){
+            string line = *it;
+            if (line.size() > 0){
+                if (line[0] != ';'){
+                    lines.push_back(line);
+                }
+            }
+        }
+        
+        //1st value is scale
+        arcadeScale = stof(lines[0]);
+        
+        //2nd value is how far out to place the beat markers
+        arcadeBeatMarkerDistPrc = stof(lines[1]);
+        
+    }else{
+        cout<<"bad arcade settings file"<<endl;
+    }
+
 }
 
 //--------------------------------------------------------------

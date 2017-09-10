@@ -15,7 +15,7 @@ class BeatMarker{
 public:
     
     void setup(float x, float _stepModeX, float y, int _whiteVal, bool usingIpad);
-    void arcadeSetPos(float prc);
+    void arcadeSetPos(float prc, float beatMarkerPrcDist);
     void update(float deltaTime, bool stepModeOn, float firstRunTimer);
     bool checkHit(int x, int y);
     void triggerBeat();
