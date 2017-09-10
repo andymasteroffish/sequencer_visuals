@@ -44,7 +44,6 @@
 		575B12551D22BFDA00B0CAF6 /* WaveColumnHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B123D1D22BFDA00B0CAF6 /* WaveColumnHit.cpp */; };
 		577FC1EB1F64806400969FB9 /* ArduinoManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 577FC1E91F64806400969FB9 /* ArduinoManager.cpp */; };
 		579BAB951E74A4ED00A983B0 /* Logo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BAB931E74A4ED00A983B0 /* Logo.cpp */; };
-		57C9BA641D2C46DE006E20B3 /* Bpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57C9BA621D2C46DE006E20B3 /* Bpm.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
@@ -157,8 +156,6 @@
 		577FC1EA1F64806400969FB9 /* ArduinoManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ArduinoManager.hpp; path = ../../src/ArduinoManager.hpp; sourceTree = "<group>"; };
 		579BAB931E74A4ED00A983B0 /* Logo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logo.cpp; path = ../../src/Logo.cpp; sourceTree = "<group>"; };
 		579BAB941E74A4ED00A983B0 /* Logo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Logo.hpp; path = ../../src/Logo.hpp; sourceTree = "<group>"; };
-		57C9BA621D2C46DE006E20B3 /* Bpm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bpm.cpp; path = ../../src/Bpm.cpp; sourceTree = "<group>"; };
-		57C9BA631D2C46DE006E20B3 /* Bpm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Bpm.hpp; path = ../../src/Bpm.hpp; sourceTree = "<group>"; };
 		57EA200C1D2326EE008C0E46 /* SystemSpecificInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemSpecificInfo.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* sequencerDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sequencerDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,8 +244,6 @@
 				575B12581D22C02F00B0CAF6 /* Tools */,
 				575B12591D22C09400B0CAF6 /* Markers */,
 				570A787D1D3169F800180598 /* about */,
-				57C9BA631D2C46DE006E20B3 /* Bpm.hpp */,
-				57C9BA621D2C46DE006E20B3 /* Bpm.cpp */,
 				579BAB941E74A4ED00A983B0 /* Logo.hpp */,
 				579BAB931E74A4ED00A983B0 /* Logo.cpp */,
 				577FC1EA1F64806400969FB9 /* ArduinoManager.hpp */,
@@ -494,7 +489,6 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				575B12521D22BFDA00B0CAF6 /* TrapezoidHit.cpp in Sources */,
 				577FC1EB1F64806400969FB9 /* ArduinoManager.cpp in Sources */,
-				57C9BA641D2C46DE006E20B3 /* Bpm.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				573F77D51EE75F6A00C0ECC4 /* maximilian.cpp in Sources */,
 				570A78861D31759800180598 /* FillCircle.cpp in Sources */,
