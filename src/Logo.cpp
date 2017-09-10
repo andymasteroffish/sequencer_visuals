@@ -23,7 +23,7 @@ void Logo::setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueT
     fontSmall = _fontSmall;
     
     masterScale = 1;
-    if (usingiPad)  masterScale *= 1.5;
+    //if (usingiPad)  masterScale *= 1.5;
     
     timer = 0;
     
@@ -92,6 +92,11 @@ void Logo::drawLogoImages(){
     float noiseSpeed = 0.3;
     float noiseRange = 10;
     
+    float logoScale = 0.75;
+    if (usingiPad){
+        logoScale = 1.2;
+    }
+    
     for (int i=0; i<LOGO_SIZE; i++){
         ofVec2f pos;
         
@@ -104,7 +109,7 @@ void Logo::drawLogoImages(){
         ofPushMatrix();
         ofTranslate(0,generalYOffset);
         ofTranslate(pos.x*noiseScale, pos.y*noiseScale);
-        ofScale(0.75, 0.75);
+        ofScale(logoScale, logoScale);
         
         logoPics[i].draw(-logoPics[i].getWidth()/2, -logoPics[i].getHeight()/2);
     
@@ -129,8 +134,8 @@ void Logo::drawHeadphoneMessage(){
     }
     
     if (usingiPad){
-        creditsY = 175;
-        headphoneY = 275;
+        creditsY = 200;
+        headphoneY = 375;
     }
     
     float curHeadphoneScale = 1.2 + sin(ofGetElapsedTimef()) * 0.1;

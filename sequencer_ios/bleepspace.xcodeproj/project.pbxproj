@@ -16,7 +16,6 @@
 		5733E94D1D319A47002EC812 /* AboutScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5733E9471D319A47002EC812 /* AboutScreen.cpp */; };
 		5733E94E1D319A47002EC812 /* BounceWord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5733E9491D319A47002EC812 /* BounceWord.cpp */; };
 		5733E94F1D319A47002EC812 /* FillCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5733E94B1D319A47002EC812 /* FillCircle.cpp */; };
-		573FF8051EE5A16400A85A70 /* Bpm2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573FF8031EE5A16400A85A70 /* Bpm2.cpp */; };
 		57408B991D2F073300D545EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57408B981D2F073300D545EC /* Images.xcassets */; };
 		575AFCE81D26E8D10071366D /* SoundButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575AFCE61D26E8D10071366D /* SoundButton.cpp */; };
 		575B12891D22C40D00B0CAF6 /* BeatMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B125B1D22C40D00B0CAF6 /* BeatMarker.cpp */; };
@@ -44,7 +43,6 @@
 		575B12A91D230A3600B0CAF6 /* TouchGeneralButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B12A71D230A3600B0CAF6 /* TouchGeneralButton.cpp */; };
 		577FD6F91E74ACAC007E7E51 /* Logo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 577FD6F71E74ACAC007E7E51 /* Logo.cpp */; };
 		578023491F649D6200F0A014 /* ArduinoManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578023471F649D6200F0A014 /* ArduinoManager.cpp */; };
-		57C9BA5F1D2C3A61006E20B3 /* Bpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57C9BA5D1D2C3A61006E20B3 /* Bpm.cpp */; };
 		57F243A91EE5CC8900FE7F4E /* install.xml in Resources */ = {isa = PBXBuildFile; fileRef = 57F243941EE5CC8900FE7F4E /* install.xml */; };
 		57F243AA1EE5CC8900FE7F4E /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F243961EE5CC8900FE7F4E /* fft.cpp */; };
 		57F243AB1EE5CC8900FE7F4E /* maxiAtoms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F243981EE5CC8900FE7F4E /* maxiAtoms.cpp */; };
@@ -102,8 +100,6 @@
 		5733E94A1D319A47002EC812 /* BounceWord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BounceWord.hpp; path = ../../src/BounceWord.hpp; sourceTree = "<group>"; };
 		5733E94B1D319A47002EC812 /* FillCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FillCircle.cpp; path = ../../src/FillCircle.cpp; sourceTree = "<group>"; };
 		5733E94C1D319A47002EC812 /* FillCircle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FillCircle.hpp; path = ../../src/FillCircle.hpp; sourceTree = "<group>"; };
-		573FF8031EE5A16400A85A70 /* Bpm2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bpm2.cpp; path = ../../src/Bpm2.cpp; sourceTree = "<group>"; };
-		573FF8041EE5A16400A85A70 /* Bpm2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Bpm2.hpp; path = ../../src/Bpm2.hpp; sourceTree = "<group>"; };
 		57408B981D2F073300D545EC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = sequncer/Images.xcassets; sourceTree = "<group>"; };
 		575AFCE61D26E8D10071366D /* SoundButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundButton.cpp; path = ../../src/SoundButton.cpp; sourceTree = "<group>"; };
 		575AFCE71D26E8D10071366D /* SoundButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SoundButton.hpp; path = ../../src/SoundButton.hpp; sourceTree = "<group>"; };
@@ -158,8 +154,6 @@
 		577FD6F81E74ACAC007E7E51 /* Logo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Logo.hpp; path = ../../src/Logo.hpp; sourceTree = "<group>"; };
 		578023471F649D6200F0A014 /* ArduinoManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArduinoManager.cpp; path = ../../src/ArduinoManager.cpp; sourceTree = "<group>"; };
 		578023481F649D6200F0A014 /* ArduinoManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ArduinoManager.hpp; path = ../../src/ArduinoManager.hpp; sourceTree = "<group>"; };
-		57C9BA5D1D2C3A61006E20B3 /* Bpm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bpm.cpp; path = ../../src/Bpm.cpp; sourceTree = "<group>"; };
-		57C9BA5E1D2C3A61006E20B3 /* Bpm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Bpm.hpp; path = ../../src/Bpm.hpp; sourceTree = "<group>"; };
 		57F243941EE5CC8900FE7F4E /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		57F243961EE5CC8900FE7F4E /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
 		57F243971EE5CC8900FE7F4E /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
@@ -467,10 +461,6 @@
 				E4D8936C11527B74007E1F53 /* ofApp.h */,
 				E4D8936D11527B74007E1F53 /* ofApp.mm */,
 				575B12A01D22C41300B0CAF6 /* project */,
-				57C9BA5E1D2C3A61006E20B3 /* Bpm.hpp */,
-				57C9BA5D1D2C3A61006E20B3 /* Bpm.cpp */,
-				573FF8041EE5A16400A85A70 /* Bpm2.hpp */,
-				573FF8031EE5A16400A85A70 /* Bpm2.cpp */,
 				577FD6F81E74ACAC007E7E51 /* Logo.hpp */,
 				577FD6F71E74ACAC007E7E51 /* Logo.cpp */,
 				578023481F649D6200F0A014 /* ArduinoManager.hpp */,
@@ -606,7 +596,6 @@
 				575B128A1D22C40D00B0CAF6 /* Buckshot.cpp in Sources */,
 				5733E94E1D319A47002EC812 /* BounceWord.cpp in Sources */,
 				57F243AC1EE5CC8900FE7F4E /* maxiBark.cpp in Sources */,
-				573FF8051EE5A16400A85A70 /* Bpm2.cpp in Sources */,
 				575B128F1D22C40D00B0CAF6 /* DotPolygonHit.cpp in Sources */,
 				575B12911D22C40D00B0CAF6 /* Grape.cpp in Sources */,
 				575B129F1D22C40D00B0CAF6 /* WaveColumnHit.cpp in Sources */,
@@ -619,7 +608,6 @@
 				575B12891D22C40D00B0CAF6 /* BeatMarker.cpp in Sources */,
 				575B12961D22C40D00B0CAF6 /* Sequencer.cpp in Sources */,
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
-				57C9BA5F1D2C3A61006E20B3 /* Bpm.cpp in Sources */,
 				575B129C1D22C40D00B0CAF6 /* TrapezoidHit.cpp in Sources */,
 				5733E94F1D319A47002EC812 /* FillCircle.cpp in Sources */,
 				E4D8936F11527B74007E1F53 /* ofApp.mm in Sources */,
