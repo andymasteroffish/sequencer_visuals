@@ -25,6 +25,7 @@ void Sequencer::setup() {
 
     if (arcadeMode){
         loadArcadeSettings("arcade_settings.txt");
+		ofHideCursor();
     }
 
 	publicRelease = true;
