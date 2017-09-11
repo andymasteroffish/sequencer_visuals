@@ -183,8 +183,6 @@
     <ClCompile Include="..\src\ArduinoManager.cpp" />
     <ClCompile Include="..\src\BeatMarker.cpp" />
     <ClCompile Include="..\src\BounceWord.cpp" />
-    <ClCompile Include="..\src\Bpm.cpp" />
-    <ClCompile Include="..\src\Bpm2.cpp" />
     <ClCompile Include="..\src\Buckshot.cpp" />
     <ClCompile Include="..\src\BuckshotHit.cpp" />
     <ClCompile Include="..\src\ChaserHit.cpp" />
@@ -228,8 +226,6 @@
     <ClInclude Include="..\src\ArduinoManager.hpp" />
     <ClInclude Include="..\src\BeatMarker.hpp" />
     <ClInclude Include="..\src\BounceWord.hpp" />
-    <ClInclude Include="..\src\Bpm.hpp" />
-    <ClInclude Include="..\src\Bpm2.hpp" />
     <ClInclude Include="..\src\Buckshot.hpp" />
     <ClInclude Include="..\src\BuckshotHit.hpp" />
     <ClInclude Include="..\src\ChaserHit.hpp" />

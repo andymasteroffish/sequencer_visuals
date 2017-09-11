@@ -27,7 +27,7 @@ void Sequencer::setup() {
         loadArcadeSettings("arcade_settings.txt");
     }
 
-	publicRelease = false;
+	publicRelease = true;
 
 	useClickTrack = false;
 
@@ -1240,6 +1240,9 @@ void Sequencer::setMaximAudio(bool advanceAudioThisCycle){
     if (counterVal > preHitPrc && !onPreHit && usePreHitDetection){
         //cout<<"pre hit at "<<ofGetElapsedTimef()<<endl;
         onPreHit = true;
+		if (arcadeMode) {
+			arduino.clear();
+		}
     }
     
     //checking for full on beats!

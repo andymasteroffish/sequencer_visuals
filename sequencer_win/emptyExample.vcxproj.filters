@@ -13,12 +13,6 @@
     <ClCompile Include="..\src\BounceWord.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Bpm.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Bpm2.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Buckshot.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -138,12 +132,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\BounceWord.hpp">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Bpm.hpp">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Bpm2.hpp">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Buckshot.hpp">
