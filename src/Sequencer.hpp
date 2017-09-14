@@ -127,6 +127,9 @@ public:
     maxiSample clickTrackSound, clickTrackSound2;
     maxiOsc timer;
     
+    bool showWaveForm;
+    vector<double> soundData;
+    
     //tracking info
     bool useClickTrack;
     

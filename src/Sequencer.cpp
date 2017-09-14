@@ -31,6 +31,7 @@ void Sequencer::setup() {
 	publicRelease = false;
 
 	useClickTrack = false;
+    showWaveForm = false;
 
 #ifdef TARGET_OPENGLES
 	shader.load("shaders/shadersES2/shader");
@@ -318,6 +319,16 @@ void Sequencer::update(){
 //--------------------------------------------------------------
 void Sequencer::draw(){
     
+    //drawing out the wave form
+    if (showWaveForm && soundData.size() > 0){
+        ofSetColor(whiteVal - 40);
+        ofSetLineWidth(1);
+        float scaleX = 2;
+        float scaleY = 400;
+        for (int i=1; i<soundData.size(); i++){
+            ofDrawLine(i*scaleX, ofGetHeight()/2+soundData[i]*scaleY, (i-1)*scaleX, ofGetHeight()/2+soundData[i-1]*scaleY);
+        }
+    }
     
     //shader stuff
     shader.begin();
@@ -529,6 +540,8 @@ void Sequencer::draw(){
     
     //the logo
     logo.draw();
+    
+    
     
 }
 
@@ -1239,7 +1252,7 @@ void Sequencer::setMaximAudio(bool advanceAudioThisCycle){
      */
     
     double counterVal = timer.phasor(bpmValue/60.0f);   //this sets up a metronome
-    int currentCount=(int)counterVal;                   //currentCount will become 1 at the last tick of eahc cycle
+    int currentCount=(int)counterVal;                   //currentCount will become 1 at the last tick of each cycle
     
     //checking for pre-hits
     if (counterVal > preHitPrc && !onPreHit && usePreHitDetection){
@@ -1265,6 +1278,13 @@ void Sequencer::setMaximAudio(bool advanceAudioThisCycle){
         for (int i=0; i<NUM_SOUNDS; i++){
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
                 sampleOut += sounds[k][i].playOnce();
+            }
+        }
+        
+        if (showWaveForm){
+            soundData.push_back(sampleOut);
+            if (soundData.size() > ofGetWidth()/2){
+                soundData.erase(soundData.begin());
             }
         }
     }
