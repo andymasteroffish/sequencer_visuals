@@ -28,7 +28,7 @@ void Sequencer::setup() {
 		ofHideCursor();
     }
 
-	publicRelease = true;
+	publicRelease = false;
 
 	useClickTrack = false;
 
@@ -224,6 +224,10 @@ void Sequencer::hitBeat(void){
 //--------------------------------------------------------------
 void Sequencer::update(){
     
+    if (ofGetFrameNum() % 1000 == 0){
+        cout<<"frame "<<ofGetFrameNum()<<endl;
+    }
+    
     deltaTime = ofGetElapsedTimef() - prevFrameTime;
     prevFrameTime = ofGetElapsedTimef();
     
@@ -234,7 +238,7 @@ void Sequencer::update(){
     for (int i=hits.size()-1; i>=0; i--){
         hits[i]->update(deltaTime);
         if (hits[i]->killMe){
-            hits[i]->cleanUp();
+            //hits[i]->cleanUp();
             delete hits[i];
             hits.erase(hits.begin()+i);
         }

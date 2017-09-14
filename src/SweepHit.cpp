@@ -54,10 +54,10 @@ void SweepHit::draw(){
     
     float padding = 10;
     if (arcadeMode){
-        cout<<"love arcade"<<endl;
+        //cout<<"love arcade"<<endl;
         padding = 50 / arcadeScale;
     }
-    cout<<"padd "<<padding<<endl;
+    //cout<<"padd "<<padding<<endl;
     float top = -padding;
     float bottom = gameH+padding;
     

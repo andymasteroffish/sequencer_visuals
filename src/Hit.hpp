@@ -23,7 +23,7 @@ public:
     
     virtual void draw(){}
     
-    virtual void cleanUp(){}
+    //virtual void cleanUp(){}
     
     ofVec2f getArcadePoint(float maxDist);
     
