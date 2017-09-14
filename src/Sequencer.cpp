@@ -381,7 +381,7 @@ void Sequencer::draw(){
             ofTranslate(0,0, hits[i]->zVal);
         }
         
-        hits[i]->draw();
+        hits[i]->drawTest();
         
         if (doCamMovement){
             ofPopMatrix();

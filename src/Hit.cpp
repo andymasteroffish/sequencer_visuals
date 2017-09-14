@@ -42,6 +42,10 @@ void Hit::update(float _deltaTime){
     updateCustom();
 }
 
+void Hit::drawTest(){
+    cout<<"draw hit "<<idNum<<endl;
+    draw();
+}
 
 ofVec2f Hit::getArcadePoint(float maxDist){
     ofVec2f val;

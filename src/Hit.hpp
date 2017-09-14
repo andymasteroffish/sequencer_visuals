@@ -21,6 +21,7 @@ public:
     void update(float _deltaTime);
     virtual void updateCustom(){}
     
+    void drawTest();
     virtual void draw(){}
     
     //virtual void cleanUp(){}
