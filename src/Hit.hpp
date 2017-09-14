@@ -51,6 +51,8 @@ public:
     float arcadeScale;
     float arcadeModeDist;
     
+    //testing
+    int idNum;
     
 };
 

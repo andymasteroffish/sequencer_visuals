@@ -34,6 +34,7 @@ void Hit::setup(int _gameW, int _gameH, int _whiteVal, bool _usingiPad, bool usi
 
 
 void Hit::update(float _deltaTime){
+    cout<<"update hit "<<idNum<<endl;
     deltaTime = _deltaTime;
     
     timer += deltaTime;

@@ -936,12 +936,7 @@ void Sequencer::makeNewHit(int idNum){
         if (idNum == 14)     thisHit = new TrapezoidHit();
         
         thisHit->setup(gameW, gameH, whiteVal, usingIPad, arcadeMode, arcadeScale);
-        /*
-        if (arcadeMode){
-            cout<<"now?"<<endl;
-            thisHit->setArcadeMode(arcadeScale);
-        }
-         */
+        thisHit->idNum = idNum; //testing null reference problems
         
         hits.push_back(thisHit);
     }
