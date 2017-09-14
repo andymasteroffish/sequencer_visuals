@@ -842,7 +842,7 @@ void Sequencer::setButtonPositions(){
     //the menu buttons go in the top right
     menuButtonH = buttonH / 5;
     for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
-        float startY = -menuButtonH;    //if you ever full on remove live/record, you can rmeove this too. This is just being used to hide that button
+        float startY = -menuButtonH*2;    //live/record and click track on/off are the firts and second buttons. They can be hidden by pushing them off screen
         string oldText = touchMenuButtons[i].text;
         ofTrueTypeFont * oldFont = touchMenuButtons[i].font;
         if (i != MENU_BUTTON_TEMPO_DOWN && i != MENU_BUTTON_TEMPO_UP){
