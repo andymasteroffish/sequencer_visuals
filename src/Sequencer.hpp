@@ -65,6 +65,7 @@ public:
     void setButtonPositions();
     
     void makeNewHit(int idNum);
+    void generateHitObject(int idNum);
     void playSound(int idNum);
     
     void setStepMode(bool isOn);
@@ -111,6 +112,7 @@ public:
     
     //tracking hits
     vector<Hit *> hits;
+    vector<int> hitsToGenerate;
     
     //audio files
     #define NUM_BEATS 16

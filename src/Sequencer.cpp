@@ -236,6 +236,16 @@ void Sequencer::update(){
         firstRunTimer -= deltaTime;
     }
     
+    //check if we should generate a new hit
+    if (hitsToGenerate.size() > 0){
+        for (int i=0; i<hitsToGenerate.size(); i++){
+            generateHitObject(hitsToGenerate[i]);
+        }
+        hitsToGenerate.clear();
+    }
+    
+    
+    //update the hits
     for (int i=hits.size()-1; i>=0; i--){
         hits[i]->update(deltaTime);
         if (hits[i]->killMe){
@@ -917,28 +927,8 @@ void Sequencer::makeNewHit(int idNum){
     
     //Making the hit
     if (bPlaySound){
-        Hit * thisHit;
-        
-        if (idNum == 0)     thisHit = new DotPolygonHit();
-        if (idNum == 1)     thisHit = new SweepHit();
-        if (idNum == 2)     thisHit = new BuckshotHit();
-        if (idNum == 3)     thisHit = new ClapHit();
-        if (idNum == 4)     thisHit = new CrystalHit();
-        if (idNum == 5)     thisHit = new TriangleHit();
-        if (idNum == 6)     thisHit = new DrunkTriangleHit();
-        if (idNum == 7)     thisHit = new TunnelHit();
-        if (idNum == 8)     thisHit = new SizzleHit();
-        if (idNum == 9)     thisHit = new ChaserHit();
-        if (idNum == 10)     thisHit = new SquareHit();
-        if (idNum == 11)     thisHit = new WaveColumnHit();
-        if (idNum == 12)     thisHit = new GrapesHit();
-        if (idNum == 13)     thisHit = new SlashHit();
-        if (idNum == 14)     thisHit = new TrapezoidHit();
-        
-        thisHit->setup(gameW, gameH, whiteVal, usingIPad, arcadeMode, arcadeScale);
-        thisHit->idNum = idNum; //testing null reference problems
-        
-        hits.push_back(thisHit);
+        //previously I just made this hit here, but I think that because this function is called form the audio update it may have created threading issues. Not totally sure, but I'm trying out just storing what needs to be made so they can be created in update
+        hitsToGenerate.push_back(idNum);
     }
     
     //making the sound
@@ -953,6 +943,32 @@ void Sequencer::makeNewHit(int idNum){
     
     hasAddedANote = true;
     
+}
+
+//--------------------------------------------------------------
+void Sequencer::generateHitObject(int idNum){
+    Hit * thisHit;
+    
+    if (idNum == 0)     thisHit = new DotPolygonHit();
+    if (idNum == 1)     thisHit = new SweepHit();
+    if (idNum == 2)     thisHit = new BuckshotHit();
+    if (idNum == 3)     thisHit = new ClapHit();
+    if (idNum == 4)     thisHit = new CrystalHit();
+    if (idNum == 5)     thisHit = new TriangleHit();
+    if (idNum == 6)     thisHit = new DrunkTriangleHit();
+    if (idNum == 7)     thisHit = new TunnelHit();
+    if (idNum == 8)     thisHit = new SizzleHit();
+    if (idNum == 9)     thisHit = new ChaserHit();
+    if (idNum == 10)     thisHit = new SquareHit();
+    if (idNum == 11)     thisHit = new WaveColumnHit();
+    if (idNum == 12)     thisHit = new GrapesHit();
+    if (idNum == 13)     thisHit = new SlashHit();
+    if (idNum == 14)     thisHit = new TrapezoidHit();
+    
+    thisHit->setup(gameW, gameH, whiteVal, usingIPad, arcadeMode, arcadeScale);
+    thisHit->idNum = idNum; //testing null reference problems
+    
+    hits.push_back(thisHit);
 }
 
 //--------------------------------------------------------------
