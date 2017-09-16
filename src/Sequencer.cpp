@@ -28,7 +28,7 @@ void Sequencer::setup() {
 		ofHideCursor();
     }
 
-	publicRelease = false;
+	publicRelease = true;
 
 	useClickTrack = false;
     showWaveForm = false;
@@ -225,9 +225,9 @@ void Sequencer::hitBeat(void){
 //--------------------------------------------------------------
 void Sequencer::update(){
     
-    if (ofGetFrameNum() % 1000 == 0){
-        cout<<"frame "<<ofGetFrameNum()<<endl;
-    }
+//    if (ofGetFrameNum() % 1000 == 0){
+//        cout<<"frame "<<ofGetFrameNum()<<endl;
+//    }
     
     deltaTime = ofGetElapsedTimef() - prevFrameTime;
     prevFrameTime = ofGetElapsedTimef();
@@ -391,7 +391,7 @@ void Sequencer::draw(){
             ofTranslate(0,0, hits[i]->zVal);
         }
         
-        hits[i]->drawTest();
+        hits[i]->draw();
         
         if (doCamMovement){
             ofPopMatrix();
