@@ -755,12 +755,12 @@ void Sequencer::keyPressed(int key){
     }
     
     //tetsing exporting a beat for making a trailer
-    if (key == 'o'){    //O for Output
-        exportBeat();
-    }
-    if (key == 'l'){
-        loadBeat(demoBeat);
-    }
+//    if (key == 'o'){    //O for Output
+//        exportBeat();
+//    }
+//    if (key == 'l'){
+//        loadBeat(demoBeat);
+//    }
     
 }
 
