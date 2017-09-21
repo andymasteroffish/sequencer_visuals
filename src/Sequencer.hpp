@@ -207,7 +207,8 @@ public:
     float arcadeBeatMarkerDistPrc;
     ArduinoManager arduino;
     
-    
+    //arcade mode tests
+    float nextArcadeModeTestWrite;
 
 };
 

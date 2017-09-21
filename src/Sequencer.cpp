@@ -28,7 +28,7 @@ void Sequencer::setup() {
 		ofHideCursor();
     }
 
-	publicRelease = true;
+	publicRelease = false;
 
 	useClickTrack = false;
     showWaveForm = false;
@@ -179,6 +179,8 @@ void Sequencer::setup() {
     }
     
     takeScreenshot = false;
+    
+    nextArcadeModeTestWrite = 60;
 }
 
 //--------------------------------------------------------------
@@ -323,6 +325,17 @@ void Sequencer::update(){
     if (arcadeMode){
         arduino.update();
     }
+    
+    //WRITING OUT THE FUCKING TIME BECAUSE ARCADE MODE KEEPS CRASHING
+    if (arcadeMode && ofGetElapsedTimef() > nextArcadeModeTestWrite){
+        nextArcadeModeTestWrite += 60;
+        string timeString = "has run for "+ofToString(ofGetElapsedTimef())+" sec.\nThat's "+ofToString( (ofGetElapsedTimef()/60.0)/60.0)+" hours";
+        ofstream myfile;
+        myfile.open ("time_running.txt");
+        myfile << timeString;
+        myfile.close();
+    }
+    
     
 }
 
