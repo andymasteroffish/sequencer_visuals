@@ -51,6 +51,8 @@ public:
     vector<FillCircle> bgCircles;
     
     string versionText;
+    
+    ofRectangle sendBeatButton;
 };
 
 #endif /* AboutScreen_hpp */

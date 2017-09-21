@@ -90,6 +90,9 @@ public:
     
     void setMaximAudio(bool advanceAudioThisCycle);
     
+    void exportBeat();
+    void loadBeat(string raw);
+    
     //some generla stuff
     bool usingIPad;
     int gameW, gameH;

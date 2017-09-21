@@ -8,10 +8,16 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v0.4";
+string versionText = "v0.5";
+
+//this is only used for getting some beats for the trailer. Not in the release version
+string demoBeat = "";
 
 //--------------------------------------------------------------
 void Sequencer::setup() {
+    
+    publicRelease = false;
+    
     //arcade toggle is in SystemSpecificInfo
 #ifdef USING_ARCADE
     arcadeMode = true;
@@ -27,8 +33,6 @@ void Sequencer::setup() {
         loadArcadeSettings("arcade_settings.txt");
 		ofHideCursor();
     }
-
-	publicRelease = false;
 
 	useClickTrack = false;
     showWaveForm = false;
@@ -181,6 +185,12 @@ void Sequencer::setup() {
     takeScreenshot = false;
     
     nextArcadeModeTestWrite = 60;
+    
+    
+    //showing beats for the trailer
+    if (demoBeat != ""){
+        loadBeat(demoBeat);
+    }
 }
 
 //--------------------------------------------------------------
@@ -720,6 +730,13 @@ void Sequencer::keyPressed(int key){
         }
     }
     
+    //tetsing exporting a beat for making a trailer
+    if (key == 'o'){    //O for Output
+        exportBeat();
+    }
+    if (key == 'l'){
+        loadBeat(demoBeat);
+    }
     
 }
 
@@ -1315,6 +1332,64 @@ void Sequencer::setMaximAudio(bool advanceAudioThisCycle){
     
 }
 
+//--------------------------------------------------------------
+//Not for release. Just for getting some beats for the trailer
+void Sequencer::exportBeat(){
+    //generate  aquick name
+    string idName = "";
+    for (int i=0; i<5; i++){
+        idName += (char)((int)ofRandom(65,91));
+    }
+    cout<<"sending beat as "<<idName<<endl;
+    
+    //make a string out of the beat
+    string output = "";
+    for (int b=0; b<NUM_BEATS; b++){
+        for (int s=0; s<NUM_SOUNDS; s++){
+            output += beatsOn[b][s] ? "1" : "0";
+        }
+        if (b != NUM_BEATS-1){
+            output += "|";
+        }
+    }
+    output+=","+ofToString(bpmValue);
+    cout<<output<<endl;
+    
+    
+    //send that shit
+    string url = "http://andymakes.com/extras/bleepspace_work/bleep_space_beat_upload.php?&beat="+output+"&name="+idName;
+    ofHttpResponse resp = ofLoadURL(url);
+    cout<<resp.data.getText()<<endl;
+}
+
+//--------------------------------------------------------------
+//Not for release. Just for getting some beats for the trailer
+void Sequencer::loadBeat(string raw){
+    clearBeats();
+    
+    //string raw = beatText;
+    
+    string beatText = raw.substr(0,raw.find(","));
+    string bpmText  = raw.substr(raw.find(",")+1);
+    cout<<beatText<<endl;
+    cout<<bpmText<<endl;
+    
+    int curBeat = 0;
+    int curSound = 0;
+    
+    for (int i=0; i<beatText.size(); i++){
+        if (beatText[i] == '|'){
+            curBeat++;
+            curSound = 0;
+        }else{
+            beatsOn[curBeat][curSound] = beatText[i] == '1';
+            curSound++;
+        }
+    }
+    
+    bpmValue = ofToFloat(bpmText);
+    
+}
 
 
 
