@@ -212,6 +212,10 @@ public:
     
     //arcade mode tests
     float nextArcadeModeTestWrite;
+    
+    //uploading beats for making the trailer. not for release
+    ofRectangle sendBeatButton;
+    string sendBeatStatus;
 
 };
 

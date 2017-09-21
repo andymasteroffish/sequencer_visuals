@@ -52,7 +52,6 @@ public:
     
     string versionText;
     
-    ofRectangle sendBeatButton;
 };
 
 #endif /* AboutScreen_hpp */

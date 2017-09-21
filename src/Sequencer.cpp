@@ -191,6 +191,8 @@ void Sequencer::setup() {
     if (demoBeat != ""){
         loadBeat(demoBeat);
     }
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -575,7 +577,28 @@ void Sequencer::draw(){
     logo.draw();
     
     
-    
+    //drawing the send beat button when needed
+    if (!publicRelease && aboutScreen.isActive){
+        ofSetColor(255);
+        ofFill();
+        ofDrawRectangle(sendBeatButton);
+        ofSetColor(0);
+        ofNoFill();
+        ofDrawRectangle(sendBeatButton);
+        
+        ofSetColor(0);
+        string sendMessage = "";
+        if (sendBeatStatus == "ready"){
+            sendMessage = "Send Beat";
+        }
+        else if (sendBeatStatus == "fail"){
+            sendMessage = "Failed. Try again?";
+        }else{
+            sendMessage = "sent as " + sendBeatStatus;
+        }
+        float sendBeatMessageXPos = sendBeatButton.x + sendBeatButton.width/2 - buttonFontSmall.stringWidth(sendMessage)/2;
+        buttonFontSmall.drawString(sendMessage, sendBeatMessageXPos, sendBeatButton.y+sendBeatButton.height*0.6);
+    }
 }
 
 
@@ -600,6 +623,7 @@ void Sequencer::keyPressed(int key){
             logo.timer = logo.growTime+ logo.pauseTime;
         }
         aboutScreen.turnOn();
+        sendBeatStatus = "ready";
     }
     
     if (key == 's'){
@@ -749,6 +773,16 @@ void Sequencer::touchDown(int x, int y){
         return;
     }
     if (aboutScreen.isActive){
+        //if this is the build that lets testers export beat, check for that
+        if (!publicRelease){
+            if (sendBeatButton.inside(x,y)){
+                if (sendBeatStatus == "ready" || sendBeatStatus == "fail"){
+                    exportBeat();
+                }
+                return;
+            }
+        }
+        //otherwise just turn off the about screen
         aboutScreen.turnOff();
         return;
     }
@@ -759,6 +793,7 @@ void Sequencer::touchDown(int x, int y){
             logo.timer = logo.growTime+ logo.pauseTime;
         }
         aboutScreen.turnOn();
+        sendBeatStatus = "ready";
         return;
     }
     
@@ -831,6 +866,7 @@ void Sequencer::touchDown(int x, int y){
             }
         }
     }
+    
     
 }
 
@@ -937,6 +973,17 @@ void Sequencer::setButtonPositions(){
             yPos = ofGetHeight()/2 - menuButtonH;
         }
         touchStepButtons[i].setup(i*stepButtonW, yPos, stepButtonW, ofGetHeight());
+    }
+    
+    
+    //the button for uploading a beat (for making the trailer)
+    if (!publicRelease){
+        sendBeatButton.width = 170;
+        sendBeatButton.height = 70;
+        sendBeatButton.x= 10;
+        sendBeatButton.y = 10;
+    }else{
+        sendBeatButton.y = 100000;
     }
 }
 
@@ -1359,7 +1406,12 @@ void Sequencer::exportBeat(){
     //send that shit
     string url = "http://andymakes.com/extras/bleepspace_work/bleep_space_beat_upload.php?&beat="+output+"&name="+idName;
     ofHttpResponse resp = ofLoadURL(url);
-    cout<<resp.data.getText()<<endl;
+    
+    if (resp.data.getText().find("success") != string::npos){
+        sendBeatStatus = idName;
+    }else{
+        sendBeatStatus = "fail";
+    }
 }
 
 //--------------------------------------------------------------

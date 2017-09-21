@@ -101,6 +101,9 @@ void AboutScreen::setupAbout(){
     
     createWordsFromLine("Logo by Chris Hernandez. Maximilian library by micknoise", textX, textY+=textYSpacing, &textFont);
     createWordsFromLine("Created in NYC using openFrameworks.", textX, textY+=textYSpacing, &textFont);
+    
+    
+    
 }
 
 void AboutScreen::setupStepMode(){
