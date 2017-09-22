@@ -15,10 +15,11 @@ void SpokesHit::setupCustom(){
     rotTime = shrinkTime - 0.7;
     killTime = shrinkTime + 0.4;
     
-    float armLength = 40;
+    float armLength = 50;
     
     float padding = 20 + armLength;
     pos.set( ofRandom(padding, gameW-padding), ofRandom(padding,gameH-padding));
+    
     
     if (arcadeMode){
         pos = getArcadePoint(arcadeModeDist);
@@ -66,9 +67,17 @@ void SpokesHit::updateCustom(){
 void SpokesHit::draw(){
     ofPushMatrix();
     ofTranslate(pos.x, pos.y);
-    setLineWidth(1);
+   
+    ofSetLineWidth(1);
     for (int i=0; i<spokes.size(); i++){
-        spokes[i].draw();
+        spokes[i].drawLine();
+    }
+    
+    setLineWidth(2);
+    ofSetCircleResolution(5);
+    ofNoFill();
+    for (int i=0; i<spokes.size(); i++){
+        spokes[i].drawCircle();
     }
     ofPopMatrix();
 }

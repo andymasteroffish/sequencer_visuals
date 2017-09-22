@@ -1027,7 +1027,7 @@ void Sequencer::generateHitObject(int idNum){
     Hit * thisHit;
     
     if (idNum == 0)     thisHit = new DotPolygonHit();
-    if (idNum == 1)     thisHit = new SpokesHit();  //SweepHit();   PUT THIS BACK
+    if (idNum == 1)     thisHit = new SweepHit();
     if (idNum == 2)     thisHit = new BuckshotHit();
     if (idNum == 3)     thisHit = new ClapHit();
     if (idNum == 4)     thisHit = new CrystalHit();
@@ -1041,6 +1041,7 @@ void Sequencer::generateHitObject(int idNum){
     if (idNum == 12)     thisHit = new GrapesHit();
     if (idNum == 13)     thisHit = new SlashHit();
     if (idNum == 14)     thisHit = new TrapezoidHit();
+    if (idNum == 15)     thisHit = new SpokesHit();     //ARCADE ONLY
     
     thisHit->setup(gameW, gameH, whiteVal, usingIPad, arcadeMode, arcadeScale);
     thisHit->idNum = idNum; //testing null reference problems

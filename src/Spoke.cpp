@@ -14,6 +14,7 @@ void Spoke::setup(float _targetDist, float _angle){
     
     anchorPos.set(0,0);
     
+    circleSize = 5;
     
     frc = 0.10;
     
@@ -51,22 +52,18 @@ void Spoke::fixedUpdate(){
     nextUpdateTime += timeBetweenUpdates;
 }
 
-void Spoke::draw(){
-    
-    float circleSize = 5;
+void Spoke::drawLine(){
     float lineLength = curDist > 0 ? curDist-circleSize : curDist+circleSize;
-    
-    ofVec2f circPos;
-    circPos.x = anchorPos.x + cos(angle) * curDist;
-    circPos.y = anchorPos.y + sin(angle) * curDist;
-    ofDrawCircle(circPos.x, circPos.y, circleSize);
-    
     if (abs(lineLength) > circleSize){
         ofVec2f linePos;
         linePos.x = anchorPos.x + cos(angle) * lineLength;
         linePos.y = anchorPos.y + sin(angle) * lineLength;
         ofDrawLine(anchorPos, linePos);
     }
-    
-    
+}
+void Spoke::drawCircle(){
+    ofVec2f circPos;
+    circPos.x = anchorPos.x + cos(angle) * curDist;
+    circPos.y = anchorPos.y + sin(angle) * curDist;
+    ofDrawCircle(circPos.x, circPos.y, circleSize);
 }

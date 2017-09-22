@@ -19,7 +19,8 @@ public:
     
     void update(float time);
     void fixedUpdate();
-    void draw();
+    void drawLine();
+    void drawCircle();
     
     ofVec2f anchorPos;
     float angle;
@@ -33,6 +34,8 @@ public:
     
     float timeBetweenUpdates;
     float nextUpdateTime;
+    
+    float circleSize;
     
 };
 
