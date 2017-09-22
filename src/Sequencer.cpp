@@ -126,6 +126,8 @@ void Sequencer::setup() {
     prevFrameTime = ofGetElapsedTimef();
     deltaTime = 0;
     
+    inactivityTimer = 0;
+    
     //set the sounds
     loadSounds("sound_source.txt");
     
@@ -248,6 +250,8 @@ void Sequencer::update(){
     deltaTime = ofGetElapsedTimef() - prevFrameTime;
     prevFrameTime = ofGetElapsedTimef();
     
+    inactivityTimer += deltaTime;
+    
     if (!aboutScreen.isActive && hasAddedANote){
         firstRunTimer -= deltaTime;
     }
@@ -338,6 +342,11 @@ void Sequencer::update(){
     
     if (arcadeMode){
         arduino.update();
+        //inactivity timer can be turned off by setting the max time as 0 or negative
+        if (inactiveTimeBeforeReset > 0 && inactivityTimer > inactiveTimeBeforeReset){
+            clearBeats();
+            inactivityTimer = 0;
+        }
     }
     
     //WRITING OUT THE FUCKING TIME BECAUSE ARCADE MODE KEEPS CRASHING
@@ -606,6 +615,8 @@ void Sequencer::draw(){
 
 //--------------------------------------------------------------
 void Sequencer::keyPressed(int key){
+    inactivityTimer = 0;
+    
     if (stepModeInstructions.isActive){
         stepModeInstructions.turnOff();
         return;
@@ -757,18 +768,28 @@ void Sequencer::keyPressed(int key){
         }
     }
     
-    //testing exporting a beat for making a trailer
-//    if (key == 'o'){    //O for Output
-//        exportBeat();
-//    }
-//    if (key == 'l'){
-//        loadBeat(demoBeat);
-//    }
-    
+    //special controls for arcade mode
+    if (arcadeMode){
+        if (key == 'u'){
+            arcadeScale -= 0.02;
+        }
+        if (key == 'i'){
+            arcadeScale += 0.02;
+        }
+        if (key == 'j'){
+            arcadeBeatMarkerDistPrc -= 0.01;
+            setButtonPositions();
+        }
+        if (key == 'k'){
+            arcadeBeatMarkerDistPrc += 0.01;
+            setButtonPositions();
+        }
+    }
 }
 
 //--------------------------------------------------------------
 void Sequencer::touchDown(int x, int y){
+    inactivityTimer = 0;
     
     //if the about screen is on, any touch should dismiss it
     if (stepModeInstructions.isActive){
@@ -1169,6 +1190,9 @@ void Sequencer::loadArcadeSettings(string filePath){
         
         //2nd value is how far out to place the beat markers
         arcadeBeatMarkerDistPrc = stof(lines[1]);
+        
+        //3rd is inactivity timer
+        inactiveTimeBeforeReset = stof(lines[2]);
         
     }else{
         cout<<"bad arcade settings file"<<endl;

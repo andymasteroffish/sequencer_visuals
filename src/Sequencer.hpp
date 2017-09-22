@@ -216,6 +216,9 @@ public:
     float arcadeBeatMarkerDistPrc;
     ArduinoManager arduino;
     
+    float inactivityTimer;
+    float inactiveTimeBeforeReset;
+    
     //arcade mode tests
     float nextArcadeModeTestWrite;
     
