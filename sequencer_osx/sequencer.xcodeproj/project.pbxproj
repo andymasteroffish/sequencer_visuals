@@ -12,6 +12,8 @@
 		570A78801D316A1100180598 /* BounceWord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570A787E1D316A1100180598 /* BounceWord.cpp */; };
 		570A78831D316C1700180598 /* AboutScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570A78811D316C1700180598 /* AboutScreen.cpp */; };
 		570A78861D31759800180598 /* FillCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570A78841D31759800180598 /* FillCircle.cpp */; };
+		572EA9581F75930300D05E1F /* SpokesHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572EA9561F75930300D05E1F /* SpokesHit.cpp */; };
+		572EA95E1F75933D00D05E1F /* Spoke.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572EA95C1F75933D00D05E1F /* Spoke.cpp */; };
 		573F77CF1EE75F6A00C0ECC4 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573F77BC1EE75F6A00C0ECC4 /* fft.cpp */; };
 		573F77D01EE75F6A00C0ECC4 /* maxiAtoms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573F77BE1EE75F6A00C0ECC4 /* maxiAtoms.cpp */; };
 		573F77D11EE75F6A00C0ECC4 /* maxiBark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573F77C01EE75F6A00C0ECC4 /* maxiBark.cpp */; };
@@ -89,6 +91,10 @@
 		570A78821D316C1700180598 /* AboutScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AboutScreen.hpp; path = ../../src/AboutScreen.hpp; sourceTree = "<group>"; };
 		570A78841D31759800180598 /* FillCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FillCircle.cpp; path = ../../src/FillCircle.cpp; sourceTree = "<group>"; };
 		570A78851D31759800180598 /* FillCircle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FillCircle.hpp; path = ../../src/FillCircle.hpp; sourceTree = "<group>"; };
+		572EA9561F75930300D05E1F /* SpokesHit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SpokesHit.cpp; path = ../../src/SpokesHit.cpp; sourceTree = "<group>"; };
+		572EA9571F75930300D05E1F /* SpokesHit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SpokesHit.hpp; path = ../../src/SpokesHit.hpp; sourceTree = "<group>"; };
+		572EA95C1F75933D00D05E1F /* Spoke.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Spoke.cpp; path = ../../src/Spoke.cpp; sourceTree = "<group>"; };
+		572EA95D1F75933D00D05E1F /* Spoke.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Spoke.hpp; path = ../../src/Spoke.hpp; sourceTree = "<group>"; };
 		573F77BA1EE75F6A00C0ECC4 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		573F77BC1EE75F6A00C0ECC4 /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
 		573F77BD1EE75F6A00C0ECC4 /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
@@ -287,6 +293,8 @@
 				575B123B1D22BFDA00B0CAF6 /* TunnelHit.cpp */,
 				575B123E1D22BFDA00B0CAF6 /* WaveColumnHit.hpp */,
 				575B123D1D22BFDA00B0CAF6 /* WaveColumnHit.cpp */,
+				572EA9571F75930300D05E1F /* SpokesHit.hpp */,
+				572EA9561F75930300D05E1F /* SpokesHit.cpp */,
 			);
 			name = Hits;
 			sourceTree = "<group>";
@@ -300,6 +308,8 @@
 				575B12211D22BFDA00B0CAF6 /* Grape.cpp */,
 				575B122A1D22BFDA00B0CAF6 /* QuickLine.hpp */,
 				575B12291D22BFDA00B0CAF6 /* QuickLine.cpp */,
+				572EA95D1F75933D00D05E1F /* Spoke.hpp */,
+				572EA95C1F75933D00D05E1F /* Spoke.cpp */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -469,6 +479,7 @@
 				575B124B1D22BFDA00B0CAF6 /* QuickLine.cpp in Sources */,
 				575B12481D22BFDA00B0CAF6 /* GrapesHit.cpp in Sources */,
 				573F77D01EE75F6A00C0ECC4 /* maxiAtoms.cpp in Sources */,
+				572EA95E1F75933D00D05E1F /* Spoke.cpp in Sources */,
 				575B12501D22BFDA00B0CAF6 /* StepModeIcons.cpp in Sources */,
 				575B12401D22BFDA00B0CAF6 /* Buckshot.cpp in Sources */,
 				575B12451D22BFDA00B0CAF6 /* DotPolygonHit.cpp in Sources */,
@@ -480,6 +491,7 @@
 				575B12541D22BFDA00B0CAF6 /* TunnelHit.cpp in Sources */,
 				573F77D41EE75F6A00C0ECC4 /* maxiMFCC.cpp in Sources */,
 				5706279D1D26FFFF00136FF1 /* SoundButton.cpp in Sources */,
+				572EA9581F75930300D05E1F /* SpokesHit.cpp in Sources */,
 				570A78831D316C1700180598 /* AboutScreen.cpp in Sources */,
 				575B124F1D22BFDA00B0CAF6 /* SquareHit.cpp in Sources */,
 				575B12531D22BFDA00B0CAF6 /* TriangleHit.cpp in Sources */,

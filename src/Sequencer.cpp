@@ -1027,7 +1027,7 @@ void Sequencer::generateHitObject(int idNum){
     Hit * thisHit;
     
     if (idNum == 0)     thisHit = new DotPolygonHit();
-    if (idNum == 1)     thisHit = new SweepHit();
+    if (idNum == 1)     thisHit = new SpokesHit();  //SweepHit();   PUT THIS BACK
     if (idNum == 2)     thisHit = new BuckshotHit();
     if (idNum == 3)     thisHit = new ClapHit();
     if (idNum == 4)     thisHit = new CrystalHit();

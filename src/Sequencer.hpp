@@ -39,6 +39,7 @@
 #include "CrystalHit.hpp"
 #include "ClapHit.hpp"
 #include "WaveColumnHit.hpp"
+#include "SpokesHit.hpp"    //for the arcade machine only
 
 //ios
 #include "TouchGeneralButton.hpp"
