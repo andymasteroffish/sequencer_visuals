@@ -119,8 +119,13 @@ public:
     vector<int> hitsToGenerate;
     
     //audio files
-    #define NUM_BEATS 16
+#ifdef USING_ARCADE
+    #define NUM_SOUNDS 16
+#else
     #define NUM_SOUNDS 15
+#endif
+    
+    #define NUM_BEATS 16
     #define NUM_IOS_BEATS_PER_SOUND 8   //this must be a perfect multiple of NUM_BEATS
     
     //maxim stuff

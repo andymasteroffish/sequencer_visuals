@@ -60,3 +60,6 @@ sounds/705kbps/Blorp.wav
 
 ;Wave Column
 sounds/705kbps/Blorp2.1.wav
+
+;Arcade Only
+sounds/korg/clap.wav

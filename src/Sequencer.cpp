@@ -25,6 +25,8 @@ void Sequencer::setup() {
     arcadeMode = false;
 #endif
     
+    cout<<"love to play "<<NUM_SOUNDS<<" sounds"<<endl;
+    
     //defalt arcade values
     arcadeScale = 1;
     arcadeBeatMarkerDistPrc = 0.45;
@@ -113,7 +115,7 @@ void Sequencer::setup() {
         arduino.setup();
     }
     
-    bpmValue = 160;
+    bpmValue = 180;
     bpmStartValue = bpmValue;
     
     preHitPrc = 0.85f;   //how far through do we have to be for it tocount as a prehit for the next beat
@@ -721,6 +723,7 @@ void Sequencer::keyPressed(int key){
             if (key == 'e')     makeNewHit(12);
             if (key == 'r')     makeNewHit(13);
             if (key == 't')     makeNewHit(14);
+            if (key == 'y' && arcadeMode)   makeNewHit(15);
         }else{
             if (key == '1')     stepModePress(0);
             if (key == '2')     stepModePress(1);
@@ -1134,15 +1137,10 @@ void Sequencer::loadSounds(string filePath){
 		}
         
         for (int i=0; i<NUM_SOUNDS; i++){
-//#ifdef USING_IOS
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
                 sounds[k][i].load(ofToDataPath(files[i+2]));
                 sounds[k][i].setPosition(1);    //put it at the end
             }
-//#else
-            //sounds[0][i].load(ofToDataPath(files[i+2]));    //TESTING
-            //sounds[0][i].setMultiPlay(true);
-//#endif
         }
         
     }else{
