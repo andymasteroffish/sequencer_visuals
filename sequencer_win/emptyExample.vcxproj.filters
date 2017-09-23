@@ -118,6 +118,12 @@
     <ClCompile Include="..\src\ArduinoManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Spoke.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SpokesHit.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -246,6 +252,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ArduinoManager.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Spoke.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SpokesHit.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

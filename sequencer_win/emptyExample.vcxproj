@@ -200,6 +200,8 @@
     <ClCompile Include="..\src\SizzleHit.cpp" />
     <ClCompile Include="..\src\SlashHit.cpp" />
     <ClCompile Include="..\src\SoundButton.cpp" />
+    <ClCompile Include="..\src\Spoke.cpp" />
+    <ClCompile Include="..\src\SpokesHit.cpp" />
     <ClCompile Include="..\src\SquareHit.cpp" />
     <ClCompile Include="..\src\StepModeIcons.cpp" />
     <ClCompile Include="..\src\SweepHit.cpp" />
@@ -243,6 +245,8 @@
     <ClInclude Include="..\src\SizzleHit.hpp" />
     <ClInclude Include="..\src\SlashHit.hpp" />
     <ClInclude Include="..\src\SoundButton.hpp" />
+    <ClInclude Include="..\src\Spoke.hpp" />
+    <ClInclude Include="..\src\SpokesHit.hpp" />
     <ClInclude Include="..\src\SquareHit.hpp" />
     <ClInclude Include="..\src\StepModeIcons.hpp" />
     <ClInclude Include="..\src\SweepHit.hpp" />

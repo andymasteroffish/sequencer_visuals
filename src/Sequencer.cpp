@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = false;
+    publicRelease = true;
     
     //arcade toggle is in SystemSpecificInfo
 #ifdef USING_ARCADE
@@ -1139,8 +1139,9 @@ void Sequencer::loadSounds(string filePath){
             
             string line = *it;
             
-            if (line.size() > 0){
+            if (line.size() > 4){
                 if (line[0] != ';'){
+					//cout << "add:" << line << endl;
                     files.push_back(line);
                 }
             }
@@ -1158,6 +1159,7 @@ void Sequencer::loadSounds(string filePath){
 		}
         
         for (int i=0; i<NUM_SOUNDS; i++){
+			//cout << i << ": " << ofToDataPath(files[i + 2]) << endl;
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
                 sounds[k][i].load(ofToDataPath(files[i+2]));
                 sounds[k][i].setPosition(1);    //put it at the end
