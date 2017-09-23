@@ -16,47 +16,50 @@
 sounds/705kbps/click/BoopHatShort1_soft.wav
 sounds/705kbps/click/BoopHatShort2_soft.wav
 
-;Tunnel
+;Dot Polygon
 sounds/705kbps/Lead6.wav
 
 ;Sweep
 sounds/705kbps/Chug160Short.wav
 
-;Triangle
+;Buckshot
 sounds/705kbps/ToyKick2.wav
 
-;Grapes
+;Clap
 sounds/705kbps/ToySnare.wav
 
-;Buckshot
+;Crystal
 sounds/705kbps/NoiseKick2.wav
 
-;Chaser
+;Triangle
 sounds/705kbps/Snare.wav
 
-;Slash
+;Drunk Triangle Snake
 sounds/705kbps/LowNoise.wav
 
-;Square
+;Tunnel
 sounds/705kbps/Boop.wav
 
-;Trapezoid 
+;Sizzle 
 sounds/705kbps/Bend.wav
 
-;Dot Polygon
+;Chaser
 sounds/705kbps/Lead8.wav
 
-;Sizzle
+;Square
 sounds/705kbps/Glass.wav
 
-;Drunk Triangle
+;Wave Column
 sounds/705kbps/Whistle3.wav
 
-;Crystal
+;Grapes
 sounds/705kbps/Feedback.wav
 
-;Clap
+;Slash
 sounds/705kbps/Blorp.wav
 
-;Wave Column
+;Trapazoid
 sounds/705kbps/Blorp2.1.wav
+
+;Arcade Only
+sounds/korg/clap.wav

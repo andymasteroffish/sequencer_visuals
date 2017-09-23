@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = true;
+    publicRelease = false;
     
     //arcade toggle is in SystemSpecificInfo
 #ifdef USING_ARCADE
