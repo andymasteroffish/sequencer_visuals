@@ -672,11 +672,17 @@ void Sequencer::keyPressed(int key){
     
     if (key == OF_KEY_UP){
         bpmValue += 10;
+        if (arcadeMode){    //buttons should have greater effect in arcade mode
+            bpmValue += 20;
+        }
         bpmValue = MIN(bpmValue, 500);
-        //bpm.setBpm(bpmValue);
+        
     }
     if (key == OF_KEY_DOWN){
         bpmValue -= 10;
+        if (arcadeMode){    //buttons should have greater effect in arcade mode
+            bpmValue -= 20;
+        }
         bpmValue = MAX(bpmValue, 50);
     }
     if (key == 'b'){
