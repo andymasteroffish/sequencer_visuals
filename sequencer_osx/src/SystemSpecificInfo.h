@@ -10,7 +10,7 @@
 #define SystemSpecificInfo_h
 
 #define USING_OSX
-#define USING_ARCADE
+//#define USING_ARCADE
 
 
 #endif /* SystemSpecificInfo_h */

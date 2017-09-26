@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = false;
+    publicRelease = true;
     
     //arcade toggle is in SystemSpecificInfo
 #ifdef USING_ARCADE
@@ -79,7 +79,7 @@ void Sequencer::setup() {
     //testing
     if (!publicRelease){
         //isFirstRun = true;
-        //hasRunStepMode = false;
+        hasRunStepMode = false;
     }
     firstRunTime = 30;
     firstRunTimer =  isFirstRun ? firstRunTime : -1;
@@ -115,7 +115,7 @@ void Sequencer::setup() {
         arduino.setup();
     }
     
-    bpmValue = 180;
+    bpmValue = 200;
     bpmStartValue = bpmValue;
     
     preHitPrc = 0.85f;   //how far through do we have to be for it tocount as a prehit for the next beat
@@ -196,7 +196,11 @@ void Sequencer::setup() {
         loadBeat(demoBeat);
     }
     
-    
+    //RECORDING DEMO FOOTAGE - KILL ME
+    //useNumpadKeys = true;
+    //showTouchButtons = false;
+    //firstRunTimer = 1000;
+    //logo.update(1000);
 }
 
 //--------------------------------------------------------------
@@ -242,7 +246,7 @@ void Sequencer::hitBeat(void){
 
 //--------------------------------------------------------------
 void Sequencer::update(){
-    
+    //cout << "running at " << ofGetWidth() << " x " << ofGetHeight() << endl;
 //    if (ofGetFrameNum() % 1000 == 0){
 //        cout<<"frame "<<ofGetFrameNum()<<endl;
 //    }
