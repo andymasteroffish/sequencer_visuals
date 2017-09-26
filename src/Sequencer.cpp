@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = false;
+    publicRelease = true;
     
     //arcade toggle is in SystemSpecificInfo
 #ifdef USING_ARCADE
@@ -947,7 +947,6 @@ void Sequencer::setButtonPositions(){
     }
     
     int buttonW = round( (float)ofGetWidth()/8.0f);
-    cout<<"bwid "<<buttonW<<endl;
     int buttonH = ofGetHeight()/2;
     for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
         //doing one less horizontal slot than we have to make room for the menu buttons
