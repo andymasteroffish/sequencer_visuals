@@ -8,7 +8,7 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v0.5";
+string versionText = "v1.0";
 
 //this is only used for getting some beats for the trailer. Not in the release version
 string demoBeat = "";
@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = true;
+    publicRelease = false;
     
     //arcade toggle is in SystemSpecificInfo
 #ifdef USING_ARCADE
@@ -946,7 +946,8 @@ void Sequencer::setButtonPositions(){
         }
     }
     
-    int buttonW = ofGetWidth()/8;
+    int buttonW = round( (float)ofGetWidth()/8.0f);
+    cout<<"bwid "<<buttonW<<endl;
     int buttonH = ofGetHeight()/2;
     for (int i=0; i<NUM_TOUCH_BUTTONS; i++){
         //doing one less horizontal slot than we have to make room for the menu buttons
@@ -970,9 +971,9 @@ void Sequencer::setButtonPositions(){
         ofTrueTypeFont * oldFont = touchMenuButtons[i].font;
         if (i != MENU_BUTTON_TEMPO_DOWN && i != MENU_BUTTON_TEMPO_UP){
             float thisY =  startY + i * menuButtonH;
-            touchMenuButtons[i].setup(ofGetWidth() - buttonW, thisY, buttonW, menuButtonH);
+            touchMenuButtons[i].setup(7 * buttonW, thisY, buttonW, menuButtonH);
         }else{
-            float tempoX = i==MENU_BUTTON_TEMPO_DOWN ? ofGetWidth() - buttonW : ofGetWidth() - buttonW/2;
+            float tempoX = i==MENU_BUTTON_TEMPO_DOWN ? (7 * buttonW) : (8 * buttonW) - buttonW/2;
             touchMenuButtons[i].setup(tempoX, startY + MENU_BUTTON_TEMPO_DOWN * menuButtonH, buttonW/2, menuButtonH);
         }
         touchMenuButtons[i].setText(oldText, oldFont);
