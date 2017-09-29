@@ -1213,6 +1213,10 @@ void Sequencer::loadArcadeSettings(string filePath){
         //3rd is inactivity timer
         inactiveTimeBeforeReset = stof(lines[2]);
         
+        //4th and 5th are messages for the logo
+        logo.arcadeMessage[0] = lines[3];
+        logo.arcadeMessage[1] = lines[4];
+        
     }else{
         cout<<"bad arcade settings file"<<endl;
     }

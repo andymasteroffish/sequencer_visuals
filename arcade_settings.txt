@@ -1,0 +1,16 @@
+;arcade scale
+;U and I to adjust at run time
+0.75
+
+;percentage of the way in for the beat markers
+;J and k to adjust at run time
+0.45
+
+;inactivity timeout. Set to negative to turn off
+600
+
+;Pulse message
+Free for iOS, PC & Mac at bleepspace.com
+
+;static message
+Machine by Death By Audio Arcade

@@ -47,6 +47,8 @@ public:
     #define LOGO_SIZE 9
     ofImage logoPics[LOGO_SIZE];
     float picW, picH;
+    
+    string arcadeMessage[2];
 };
 
 #endif /* Logo_hpp */

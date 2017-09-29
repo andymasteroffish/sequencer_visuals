@@ -125,12 +125,10 @@ void Logo::drawHeadphoneMessage(){
     
     float creditsY = 90;
     float headphoneY = 180;
-    float dbaaY = 0;        //only for arcade mode
     
     if (arcadeMode){
         creditsY = 80;
-        headphoneY = 150;
-        dbaaY = headphoneY + 90;
+        headphoneY = 180;
     }
     
     if (usingiPad){
@@ -158,28 +156,31 @@ void Logo::drawHeadphoneMessage(){
     
     //headphone message
     
-    ofPushMatrix();
-    ofTranslate(0, headphoneY);
-    ofScale(curHeadphoneScale, curHeadphoneScale);
-    
-    string headphoneMessage = "Headphones recommended";
-    if (arcadeMode) headphoneMessage = "available for free at bleepspace.com";
-    ofRectangle headphoneRect = font->getStringBoundingBox(headphoneMessage, 0, 0);
-    float headphoneTextW = headphoneRect.width;
-    float headphoneTextH = headphoneRect.height;
-    ofSetColor(0, 100);
-    font->drawString(headphoneMessage, -headphoneTextW/2, headphoneTextH/4);
-    
-    ofPopMatrix();
+    if (!arcadeMode){
+        ofPushMatrix();
+        ofTranslate(0, headphoneY);
+        ofScale(curHeadphoneScale, curHeadphoneScale);
+        
+        string headphoneMessage = "Headphones recommended";
+        if (arcadeMode) headphoneMessage = "available for free at bleepspace.com";
+        ofRectangle headphoneRect = font->getStringBoundingBox(headphoneMessage, 0, 0);
+        float headphoneTextW = headphoneRect.width;
+        float headphoneTextH = headphoneRect.height;
+        ofSetColor(0, 100);
+        font->drawString(headphoneMessage, -headphoneTextW/2, headphoneTextH/4);
+        
+        ofPopMatrix();
+    }
     
     if (arcadeMode){
-    //DBAA
-    
-        ofSetColor(0, 100*prcComplete);
-        string dbaaMessage = "Machine by Death By Audio Arcade";
-        ofRectangle dbaaRect = font->getStringBoundingBox(dbaaMessage, 0, 0);
-        float dbaaTextW = dbaaRect.width;
-        font->drawString(dbaaMessage, -dbaaTextW/2, dbaaY);
+        
+        for (int i=0; i<2; i++){
+            ofSetColor(0, 100*prcComplete);
+            
+            ofRectangle textRect = font->getStringBoundingBox(arcadeMessage[i], 0, 0);
+            float textW = textRect.width;
+            font->drawString(arcadeMessage[i], -textW/2, headphoneY + 50*i);
+        }
     }
 }
 
