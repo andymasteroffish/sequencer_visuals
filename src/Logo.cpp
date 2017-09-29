@@ -156,7 +156,6 @@ void Logo::drawHeadphoneMessage(){
     font->drawString(creditsMessage, -creditTextW/2, creditsY);
     
     
-    /*
     //headphone message
     
     ofPushMatrix();
@@ -182,8 +181,6 @@ void Logo::drawHeadphoneMessage(){
         float dbaaTextW = dbaaRect.width;
         font->drawString(dbaaMessage, -dbaaTextW/2, dbaaY);
     }
-    
-    */
 }
 
 //void Logo::drawCredits(){

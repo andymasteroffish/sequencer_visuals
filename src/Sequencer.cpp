@@ -8,7 +8,7 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v1.0";
+string versionText = "v1.51";
 
 //this is only used for getting some beats for the trailer. Not in the release version
 string demoBeat = "";
@@ -590,6 +590,13 @@ void Sequencer::draw(){
     
     //the logo
     logo.draw();
+    
+    
+    //verison number for arcade
+    if (arcadeMode && ofGetElapsedTimef() < 15){
+        ofSetColor(0);
+        ofDrawBitmapString("version "+versionText, ofGetWidth()/2-50, ofGetHeight()*0.15);
+    }
     
     
     //drawing the send beat button when needed
