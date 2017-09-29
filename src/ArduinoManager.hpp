@@ -29,6 +29,8 @@ public:
     ofArduino	ard;
 #endif
     
+    int pinIDs[16];
+    
 private:
     
     void setupArduino(const int & version);

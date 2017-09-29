@@ -25,7 +25,7 @@ void Sequencer::setup() {
     arcadeMode = false;
 #endif
     
-    cout<<"love to play "<<NUM_SOUNDS<<" sounds"<<endl;
+    //cout<<"love to play "<<NUM_SOUNDS<<" sounds"<<endl;
     
     //defalt arcade values
     arcadeScale = 1;

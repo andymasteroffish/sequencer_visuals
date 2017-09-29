@@ -30,6 +30,24 @@ void ArduinoManager::setup(){
     ofAddListener(ard.EInitialized, this, &ArduinoManager::setupArduino);
     cout<<"setup arduino"<<endl;
 #endif
+    
+    //set the pin IDs since a few of them aren't in exact order
+    pinIDs[0] = 4;
+    pinIDs[1] = 5;
+    pinIDs[2] = 6;
+    pinIDs[3] = 7;
+    pinIDs[4] = 8;
+    pinIDs[5] = 9;
+    pinIDs[6] = 10;
+    pinIDs[7] = 11;
+    pinIDs[8] = 12;
+    pinIDs[9] = 13;
+    pinIDs[10] = 14;
+    pinIDs[11] = 15;
+    pinIDs[12] = 16;
+    pinIDs[13] = 17;
+    pinIDs[14] = 18;
+    pinIDs[15] = 19;
 }
 
 void ArduinoManager::update(){
@@ -72,10 +90,10 @@ void ArduinoManager::clear(){
 }
 void ArduinoManager::setSound(int soundID, bool isOn){
 #ifdef USING_ARCADE
-    int pinID = soundID + 4;
+    //int pinID = soundID + 4;
     
     if (bSetupArduino){
-        ard.sendDigital(pinID, isOn);
+        ard.sendDigital(pinIDs[soundID], isOn);
     }
 #endif
 }

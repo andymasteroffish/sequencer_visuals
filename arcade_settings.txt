@@ -9,8 +9,7 @@
 ;inactivity timeout. Set to negative to turn off
 600
 
-;Pulse message
+;arcade message 1
 Free for iOS, PC & Mac at bleepspace.com
-
-;static message
+;arcade message 2
 Machine by Death By Audio Arcade
