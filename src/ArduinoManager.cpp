@@ -32,22 +32,25 @@ void ArduinoManager::setup(){
 #endif
     
     //set the pin IDs since a few of them aren't in exact order
-    pinIDs[0] = 4;
-    pinIDs[1] = 5;
-    pinIDs[2] = 6;
-    pinIDs[3] = 7;
-    pinIDs[4] = 8;
-    pinIDs[5] = 9;
-    pinIDs[6] = 10;
-    pinIDs[7] = 11;
-    pinIDs[8] = 12;
-    pinIDs[9] = 13;
-    pinIDs[10] = 14;
-    pinIDs[11] = 15;
-    pinIDs[12] = 16;
-    pinIDs[13] = 17;
-    pinIDs[14] = 18;
-    pinIDs[15] = 19;
+    pinIDs[0] = 7;		//dot polygon
+    pinIDs[1] = 6;		//sweep
+    pinIDs[2] = 5;		//buckshot
+    pinIDs[3] = 4;		//clap
+
+    pinIDs[4] = 14;		//crystal
+    pinIDs[5] = 11;		//triangle
+    pinIDs[6] = 16;		//drunk snake
+    pinIDs[7] = 17;		//tunnel
+
+    pinIDs[8] = 18;		//sizzle
+    pinIDs[9] = 19;		//chaser
+    pinIDs[10] = 13;	//square
+    pinIDs[11] = 12;	//wave column
+
+    pinIDs[12] = 15;	//grapes
+    pinIDs[13] = 10;	//slash	
+    pinIDs[14] = 9;		//trapazoid
+    pinIDs[15] = 8;		//spokes
 }
 
 void ArduinoManager::update(){

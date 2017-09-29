@@ -736,22 +736,22 @@ void Sequencer::keyPressed(int key){
     //laptop control
     if (!useNumpadKeys){
         if (!stepMode){
-            if (key == '0')     makeNewHit(0);
-            if (key == '1')     makeNewHit(1);
-            if (key == '2')     makeNewHit(2);
-            if (key == '3')     makeNewHit(3);
-            if (key == '4')     makeNewHit(4);
-            if (key == '5')     makeNewHit(5);
-            if (key == '6')     makeNewHit(6);
-            if (key == '7')     makeNewHit(7);
-            if (key == '8')     makeNewHit(8);
-            if (key == '9')     makeNewHit(9);
-            if (key == 'q')     makeNewHit(10);
-            if (key == 'w')     makeNewHit(11);
-            if (key == 'e')     makeNewHit(12);
-            if (key == 'r')     makeNewHit(13);
-            if (key == 't')     makeNewHit(14);
-            if (key == 'y' && arcadeMode)   makeNewHit(15);
+            if (key == '0')     makeNewHit(0);	//dot polygon
+            if (key == '1')     makeNewHit(1);	//sweep
+            if (key == '2')     makeNewHit(2);	//buckshot
+            if (key == '3')     makeNewHit(3);	//clap
+            if (key == '4')     makeNewHit(4);	//crystal
+            if (key == '5')     makeNewHit(5);	//triangle
+            if (key == '6')     makeNewHit(6);	//drunk snake
+            if (key == '7')     makeNewHit(7);	//tunnel
+            if (key == '8')     makeNewHit(8);	//sizzle
+            if (key == '9')     makeNewHit(9);	//chaser
+            if (key == 'q')     makeNewHit(10);	//square
+            if (key == 'w')     makeNewHit(11);	//wave column
+            if (key == 'e')     makeNewHit(12);	//grapes
+            if (key == 'r')     makeNewHit(13);	//slash
+            if (key == 't')     makeNewHit(14);	//trapazoid
+            if (key == 'y' && arcadeMode)   makeNewHit(15);	//spokes
         }else{
             if (key == '1')     stepModePress(0);
             if (key == '2')     stepModePress(1);
