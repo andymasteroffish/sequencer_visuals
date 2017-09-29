@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = false;
+    publicRelease = true;
     
     //arcade toggle is in SystemSpecificInfo
 #ifdef USING_ARCADE
@@ -1139,7 +1139,7 @@ void Sequencer::clearBeats(){
     //do more of a reset in aracde mode
     if (arcadeMode){
         bpmValue = bpmStartValue;   //bpm back to defaul
-        logo.timer = -1;            //logo comes back in (after a slight delay)
+        logo.arcadeReset();            //logo comes back in (after a slight delay)
     }
 }
 

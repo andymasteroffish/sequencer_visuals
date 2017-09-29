@@ -16,7 +16,8 @@ public:
     
     void setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueTypeFont * _fontSmall, bool _arcadeMode);
     void setPos();
-    void update(float deltaTime);
+	void arcadeReset();
+	void update(float deltaTime);
     
     void draw();
     
@@ -49,6 +50,7 @@ public:
     float picW, picH;
     
     string arcadeMessage[2];
+	float arcadeAngle;
 };
 
 #endif /* Logo_hpp */

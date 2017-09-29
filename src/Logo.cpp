@@ -16,6 +16,8 @@ void Logo::setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueT
     growTime = 1.5;
     pauseTime = 7;
     fadeTime = 0.4;
+
+	arcadeAngle = 0;
     
     whiteVal = _whiteVal;
     
@@ -43,6 +45,11 @@ void Logo::setPos(){
         masterScale = (float)ofGetHeight() / 1000.0f; // ~* MaGiC nUmBeR *~
         //cout<<"SET IT NOW "<<masterScale<<endl;
     }
+}
+
+void Logo::arcadeReset() {
+	timer = -1;
+	arcadeAngle = ((int)ofRandom(0, 4)) * 90;
 }
 
 void Logo::update(float deltaTime){
@@ -73,6 +80,10 @@ void Logo::draw(){
     ofTranslate(logoPos.x, logoPos.y);
     
     ofScale(masterScale, masterScale);
+
+	if (arcadeMode) {
+		ofRotate(arcadeAngle);
+	}
     
     drawLogoImages();
     
