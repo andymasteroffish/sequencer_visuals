@@ -8,7 +8,7 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v1.51";
+string versionText = "v1.52";
 
 //this is only used for getting some beats for the trailer. Not in the release version
 string demoBeat = "";
@@ -115,7 +115,7 @@ void Sequencer::setup() {
         arduino.setup();
     }
     
-    bpmValue = 200;
+    bpmValue = 180;
     bpmStartValue = bpmValue;
     
     preHitPrc = 0.85f;   //how far through do we have to be for it tocount as a prehit for the next beat
