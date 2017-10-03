@@ -16,8 +16,10 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = true;
-    
+    publicRelease = false;
+
+	bpmStartValue = 180;
+	
     //arcade toggle is in SystemSpecificInfo
 #ifdef USING_ARCADE
     arcadeMode = true;
@@ -54,6 +56,8 @@ void Sequencer::setup() {
 	if (!publicRelease) {
 		cout << "running at " << ofGetWidth() << " x " << ofGetHeight() << endl;
 	}
+
+	bpmValue = bpmStartValue;
 
     //maxim - https://github.com/micknoise/Maximilian
     sampleRate 	= 44100;
@@ -114,9 +118,6 @@ void Sequencer::setup() {
         showTouchButtons = false;
         arduino.setup();
     }
-    
-    bpmValue = 180;
-    bpmStartValue = bpmValue;
     
     preHitPrc = 0.85f;   //how far through do we have to be for it tocount as a prehit for the next beat
     
@@ -256,6 +257,8 @@ void Sequencer::update(){
 //    if (ofGetFrameNum() % 1000 == 0){
 //        cout<<"frame "<<ofGetFrameNum()<<endl;
 //    }
+
+	cout << "bpm: " << bpmValue << endl;
     
     deltaTime = ofGetElapsedTimef() - prevFrameTime;
     prevFrameTime = ofGetElapsedTimef();
@@ -374,6 +377,12 @@ void Sequencer::update(){
 
 //--------------------------------------------------------------
 void Sequencer::draw(){
+
+	//moving everything in arcade mode
+	if (arcadeMode) {
+		ofPushMatrix();
+		ofTranslate(arcadeOffset.x, arcadeOffset.y);
+	}
     
     //drawing out the wave form
     if (showWaveForm && soundData.size() > 0){
@@ -627,6 +636,11 @@ void Sequencer::draw(){
         float sendBeatMessageXPos = sendBeatButton.x + sendBeatButton.width/2 - buttonFontSmall.stringWidth(sendMessage)/2;
         buttonFontSmall.drawString(sendMessage, sendBeatMessageXPos, sendBeatButton.y+sendBeatButton.height*0.6);
     }
+
+	//ending the arcade mode offset
+	if (arcadeMode) {
+		ofPopMatrix();
+	}
 }
 
 
@@ -690,15 +704,15 @@ void Sequencer::keyPressed(int key){
     if (key == OF_KEY_UP){
         bpmValue += 10;
         if (arcadeMode){    //buttons should have greater effect in arcade mode
-            bpmValue += 20;
+            bpmValue += 30;
         }
-        bpmValue = MIN(bpmValue, 500);
+        bpmValue = MIN(bpmValue, 700);
         
     }
     if (key == OF_KEY_DOWN){
         bpmValue -= 10;
         if (arcadeMode){    //buttons should have greater effect in arcade mode
-            bpmValue -= 20;
+            bpmValue -= 30;
         }
         bpmValue = MAX(bpmValue, 50);
     }
@@ -807,6 +821,24 @@ void Sequencer::keyPressed(int key){
             arcadeBeatMarkerDistPrc += 0.01;
             setButtonPositions();
         }
+
+		if (key == OF_KEY_LEFT) {
+			arcadeOffset.x -= 1;
+			cout << "offset " << arcadeOffset.x << " , " << arcadeOffset.y << endl;
+		}
+		if (key == OF_KEY_RIGHT) {
+			arcadeOffset.x += 1;
+			cout << "offset " << arcadeOffset.x << " , " << arcadeOffset.y << endl;
+		}
+		if (key == ',') {
+			arcadeOffset.y -= 1;
+			cout << "offset " << arcadeOffset.x << " , " << arcadeOffset.y << endl;
+		}
+		if (key == '.') {
+			arcadeOffset.y += 1;
+			cout << "offset " << arcadeOffset.x << " , " << arcadeOffset.y << endl;
+		}
+		
     }
 }
 
@@ -1215,13 +1247,20 @@ void Sequencer::loadArcadeSettings(string filePath){
         
         //2nd value is how far out to place the beat markers
         arcadeBeatMarkerDistPrc = stof(lines[1]);
+
+		//3rd and 4th are offste distances
+		arcadeOffset.x = stof(lines[2]);
+		arcadeOffset.y = stof(lines[3]);
         
-        //3rd is inactivity timer
-        inactiveTimeBeforeReset = stof(lines[2]);
+        //5th is inactivity timer
+        inactiveTimeBeforeReset = stof(lines[4]);
+
+		//6th is starting bpm
+		bpmStartValue = stof(lines[5]);
         
-        //4th and 5th are messages for the logo
-        logo.arcadeMessage[0] = lines[3];
-        logo.arcadeMessage[1] = lines[4];
+        //7th and 8th are messages for the logo
+        logo.arcadeMessage[0] = lines[6];
+        logo.arcadeMessage[1] = lines[7];
         
     }else{
         cout<<"bad arcade settings file"<<endl;

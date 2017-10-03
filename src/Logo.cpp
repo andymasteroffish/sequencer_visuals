@@ -42,7 +42,8 @@ void Logo::setPos(){
      logoPos.set(ofGetWidth()*0.5, ofGetHeight()*0.55);
     
     if (arcadeMode){
-        masterScale = (float)ofGetHeight() / 1000.0f; // ~* MaGiC nUmBeR *~
+		logoPos.set(ofGetWidth()*0.5, ofGetHeight()*0.5);
+        masterScale = (float)ofGetHeight() / 1100.0f; // ~* MaGiC nUmBeR *~
         //cout<<"SET IT NOW "<<masterScale<<endl;
     }
 }
@@ -76,11 +77,8 @@ void Logo::draw(){
     ofEnableAlphaBlending();
     
     ofPushMatrix();
-    
     ofTranslate(logoPos.x, logoPos.y);
-    
     ofScale(masterScale, masterScale);
-
 	if (arcadeMode) {
 		ofRotate(arcadeAngle);
 	}
@@ -92,6 +90,7 @@ void Logo::draw(){
     ofPopMatrix();
     
     ofDisableAlphaBlending();
+
 }
 
 void Logo::drawLogoImages(){

@@ -4,10 +4,18 @@
 
 ;percentage of the way in for the beat markers
 ;J and k to adjust at run time
-0.45
+0.41
+
+;x offset
+-4
+;y offset
+-18
 
 ;inactivity timeout. Set to negative to turn off
 600
+
+;starting bpm
+240
 
 ;arcade message 1
 Free for iOS, PC & Mac at bleepspace.com

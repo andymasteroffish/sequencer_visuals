@@ -214,6 +214,7 @@ public:
     bool arcadeMode;
     float arcadeScale;
     float arcadeBeatMarkerDistPrc;
+	ofVec2f arcadeOffset;
     ArduinoManager arduino;
     
     float inactivityTimer;
