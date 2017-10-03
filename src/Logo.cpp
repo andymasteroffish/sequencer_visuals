@@ -115,8 +115,6 @@ void Logo::drawLogoImages(){
         pos.y = ofNoise(ofGetElapsedTimef()*noiseSpeed, i, 100) * noiseRange;
         float noiseScale = MIN(1,timer/growTime);
         
-        //noiseScale = 0; //KILL ME
-        
         ofPushMatrix();
         ofTranslate(0,generalYOffset);
         ofTranslate(pos.x*noiseScale, pos.y*noiseScale);
@@ -149,7 +147,6 @@ void Logo::drawHeadphoneMessage(){
     }
     
     float curHeadphoneScale = 1.2 + sin(ofGetElapsedTimef()) * 0.1;
-    //curHeadphoneScale = 1.2 + sin(0) * 0.1;   //KILL ME
         
     if (prcComplete < prcToShrink){
         float prc = ofMap(prcComplete, 0, prcToShrink, 0, 1);
