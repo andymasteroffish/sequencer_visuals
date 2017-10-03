@@ -8,7 +8,7 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v1.52";
+string versionText = "v1.53";
 
 //this is only used for getting some beats for the trailer. Not in the release version
 string demoBeat = "";
@@ -197,10 +197,16 @@ void Sequencer::setup() {
     }
     
     //RECORDING DEMO FOOTAGE - KILL ME
-    //useNumpadKeys = true;
-    //showTouchButtons = false;
-    //firstRunTimer = 1000;
-    //logo.update(1000);
+    /*
+    if (demoBeat.length() > 10 || true){
+        useNumpadKeys = true;
+        showTouchButtons = false;
+        firstRunTimer = 1000;
+        //logo.update(1000);
+        bpmValue = 200;
+    }
+    */
+     
 }
 
 //--------------------------------------------------------------
@@ -1469,8 +1475,8 @@ void Sequencer::loadBeat(string raw){
     
     string beatText = raw.substr(0,raw.find(","));
     string bpmText  = raw.substr(raw.find(",")+1);
-    cout<<beatText<<endl;
-    cout<<bpmText<<endl;
+    //cout<<beatText<<endl;
+    //cout<<bpmText<<endl;
     
     int curBeat = 0;
     int curSound = 0;

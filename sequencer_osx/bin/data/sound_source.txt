@@ -62,4 +62,4 @@ sounds/705kbps/Blorp.wav
 sounds/705kbps/Blorp2.1.wav
 
 ;Arcade Only
-sounds/korg/clap.wav
+sounds/705kbps/NewKick_loud705kb.wav

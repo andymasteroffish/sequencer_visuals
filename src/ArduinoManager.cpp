@@ -22,7 +22,7 @@ void ArduinoManager::setup(){
 	couldConnect = ard.connect("COM3", 57600);
 	#endif
     
-    cout<<"test "<<couldConnect<<endl;
+    //cout<<"test "<<couldConnect<<endl;
     
     bSetupArduino	= false;
     

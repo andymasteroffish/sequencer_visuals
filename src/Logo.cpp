@@ -132,6 +132,7 @@ void Logo::drawLogoImages(){
 
 void Logo::drawHeadphoneMessage(){
     
+    
     float prcToShrink = 0.75;
     
     float creditsY = 90;
