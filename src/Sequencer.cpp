@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = false;
+    publicRelease = true;
 
 	bpmStartValue = 180;
 	
@@ -258,8 +258,6 @@ void Sequencer::update(){
 //        cout<<"frame "<<ofGetFrameNum()<<endl;
 //    }
 
-	cout << "bpm: " << bpmValue << endl;
-    
     deltaTime = ofGetElapsedTimef() - prevFrameTime;
     prevFrameTime = ofGetElapsedTimef();
     
