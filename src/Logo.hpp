@@ -50,7 +50,7 @@ public:
     float picW, picH;
     
     string arcadeMessage[2];
-	float arcadeAngle;
+	float arcadeAngle, nextArcadeAngle;
 };
 
 #endif /* Logo_hpp */

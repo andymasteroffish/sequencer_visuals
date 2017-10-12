@@ -770,6 +770,26 @@ void Sequencer::keyPressed(int key){
             if (key == 'r')     makeNewHit(13);	//slash
             if (key == 't')     makeNewHit(14);	//trapazoid
             if (key == 'y' && arcadeMode)   makeNewHit(15);	//spokes
+
+			//setting the logo direction in arcade mode
+			if (arcadeMode) {
+				if (key == '0')     logo.nextArcadeAngle = 180;	//dot polygon
+				if (key == '1')     logo.nextArcadeAngle = 180;	//sweep
+				if (key == '2')     logo.nextArcadeAngle = 180;	//buckshot
+				if (key == '3')     logo.nextArcadeAngle = 180;	//clap
+				if (key == '4')     logo.nextArcadeAngle = 90;	//crystal
+				if (key == '5')     logo.nextArcadeAngle = 270;	//triangle
+				if (key == '6')     logo.nextArcadeAngle = 90;	//drunk snake
+				if (key == '7')     logo.nextArcadeAngle = 90;	//tunnel
+				if (key == '8')     logo.nextArcadeAngle = 0;	//sizzle
+				if (key == '9')     logo.nextArcadeAngle = 0;	//chaser
+				if (key == 'q')     logo.nextArcadeAngle = 0;	//square
+				if (key == 'w')     logo.nextArcadeAngle = 0;	//wave column
+				if (key == 'e')     logo.nextArcadeAngle = 90;	//grapes
+				if (key == 'r')     logo.nextArcadeAngle = 270;	//slash
+				if (key == 't')     logo.nextArcadeAngle = 270;	//trapazoid
+				if (key == 'y')		logo.nextArcadeAngle = 270;	//spokes
+			}
         }else{
             if (key == '1')     stepModePress(0);
             if (key == '2')     stepModePress(1);

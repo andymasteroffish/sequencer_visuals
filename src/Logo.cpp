@@ -18,6 +18,7 @@ void Logo::setup(int _whiteVal, bool _usingiPad, ofTrueTypeFont * _font, ofTrueT
     fadeTime = 0.4;
 
 	arcadeAngle = 0;
+	nextArcadeAngle = 0;
     
     whiteVal = _whiteVal;
     
@@ -50,7 +51,7 @@ void Logo::setPos(){
 
 void Logo::arcadeReset() {
 	timer = -1;
-	arcadeAngle = ((int)ofRandom(0, 4)) * 90;
+	arcadeAngle = nextArcadeAngle;// ((int)ofRandom(0, 4)) * 90;
 }
 
 void Logo::update(float deltaTime){
