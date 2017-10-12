@@ -355,7 +355,17 @@ void Sequencer::update(){
         arduino.update();
         //inactivity timer can be turned off by setting the max time as 0 or negative
         if (inactiveTimeBeforeReset > 0 && inactivityTimer > inactiveTimeBeforeReset){
-            clearBeats();
+			bool anythingOn = false;
+			for (int i = 0; i<NUM_BEATS; i++) {
+				for (int k = 0; k<NUM_SOUNDS; k++) {
+					if (beatsOn[i][k]) {
+						anythingOn = true;
+					}
+				}
+			}
+			if (anythingOn) {
+				clearBeats();
+			}
             inactivityTimer = 0;
         }
     }
