@@ -43,14 +43,14 @@ void ArduinoManager::setup(){
     pinIDs[7] = 17;		//tunnel
 
     pinIDs[8] = 18;		//sizzle
-    pinIDs[9] = 19;		//chaser
+	pinIDs[9] = 8;		//spokes
     pinIDs[10] = 13;	//square
     pinIDs[11] = 12;	//wave column
 
     pinIDs[12] = 15;	//grapes
     pinIDs[13] = 10;	//slash	
     pinIDs[14] = 9;		//trapazoid
-    pinIDs[15] = 8;		//spokes
+	pinIDs[15] = 19;	//chaser
 }
 
 void ArduinoManager::update(){

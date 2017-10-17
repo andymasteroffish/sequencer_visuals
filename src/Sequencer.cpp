@@ -8,7 +8,7 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v1.53";
+string versionText = "v1.54";
 
 //this is only used for getting some beats for the trailer. Not in the release version
 string demoBeat = "";
@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = false;
+    publicRelease = true;
 
 	bpmStartValue = 180;
 	
