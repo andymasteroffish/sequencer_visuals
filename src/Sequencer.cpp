@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = true;
+    publicRelease = false;
 
 	bpmStartValue = 180;
 	
@@ -773,13 +773,13 @@ void Sequencer::keyPressed(int key){
             if (key == '6')     makeNewHit(6);	//drunk snake
             if (key == '7')     makeNewHit(7);	//tunnel
             if (key == '8')     makeNewHit(8);	//sizzle
-            if (key == '9')     makeNewHit(9);	//chaser
+            if (key == '9')     makeNewHit(9);	//spokes
             if (key == 'q')     makeNewHit(10);	//square
             if (key == 'w')     makeNewHit(11);	//wave column
             if (key == 'e')     makeNewHit(12);	//grapes
             if (key == 'r')     makeNewHit(13);	//slash
             if (key == 't')     makeNewHit(14);	//trapazoid
-            if (key == 'y' && arcadeMode)   makeNewHit(15);	//spokes
+            if (key == 'y' && arcadeMode)   makeNewHit(15);	//chaser
 
 			//setting the logo direction in arcade mode
 			if (arcadeMode) {
@@ -792,13 +792,13 @@ void Sequencer::keyPressed(int key){
 				if (key == '6')     logo.nextArcadeAngle = 90;	//drunk snake
 				if (key == '7')     logo.nextArcadeAngle = 90;	//tunnel
 				if (key == '8')     logo.nextArcadeAngle = 0;	//sizzle
-				if (key == '9')     logo.nextArcadeAngle = 0;	//chaser
+				if (key == '9')     logo.nextArcadeAngle = 270;	//spokes
 				if (key == 'q')     logo.nextArcadeAngle = 0;	//square
 				if (key == 'w')     logo.nextArcadeAngle = 0;	//wave column
 				if (key == 'e')     logo.nextArcadeAngle = 90;	//grapes
 				if (key == 'r')     logo.nextArcadeAngle = 270;	//slash
 				if (key == 't')     logo.nextArcadeAngle = 270;	//trapazoid
-				if (key == 'y')		logo.nextArcadeAngle = 270;	//spokes
+				if (key == 'y')		logo.nextArcadeAngle = 0;	//chaser
 			}
         }else{
             if (key == '1')     stepModePress(0);
@@ -1142,13 +1142,13 @@ void Sequencer::generateHitObject(int idNum){
     if (idNum == 6)     thisHit = new DrunkTriangleHit();
     if (idNum == 7)     thisHit = new TunnelHit();
     if (idNum == 8)     thisHit = new SizzleHit();
-    if (idNum == 9)     thisHit = new ChaserHit();
+    if (idNum == 9)     thisHit = new SpokesHit();
     if (idNum == 10)     thisHit = new SquareHit();
     if (idNum == 11)     thisHit = new WaveColumnHit();
     if (idNum == 12)     thisHit = new GrapesHit();
     if (idNum == 13)     thisHit = new SlashHit();
     if (idNum == 14)     thisHit = new TrapezoidHit();
-    if (idNum == 15)     thisHit = new SpokesHit();     //ARCADE ONLY
+    if (idNum == 15)     thisHit = new ChaserHit();     //ARCADE ONLY
     
     thisHit->setup(gameW, gameH, whiteVal, usingIPad, arcadeMode, arcadeScale);
     thisHit->idNum = idNum; //testing null reference problems

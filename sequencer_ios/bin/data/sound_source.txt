@@ -43,8 +43,8 @@ sounds/705kbps/Boop.wav
 ;Sizzle 
 sounds/705kbps/Bend.wav
 
-;Chaser
-sounds/705kbps/Lead8.wav
+;Spokes
+sounds/705kbps/NewKick_loud705kb.wav
 
 ;Square
 sounds/705kbps/Glass.wav
@@ -61,5 +61,5 @@ sounds/705kbps/Blorp.wav
 ;Trapazoid
 sounds/705kbps/Blorp2.1.wav
 
-;Arcade Only
-sounds/korg/clap.wav
+;Arcade Only - chaser
+sounds/705kbps/Lead8.wav
