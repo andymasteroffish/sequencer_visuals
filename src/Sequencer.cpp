@@ -740,13 +740,14 @@ void Sequencer::keyPressed(int key){
         if (key == '-')     makeNewHit(7);
         
         if (key == '4')     makeNewHit(8);
-        if (key == '5')     makeNewHit(9);
+        if (key == '5')     makeNewHit(15);
         if (key == '6')     makeNewHit(10);
         if (key == '+')     makeNewHit(11);
         
         if (key == '1')     makeNewHit(12);
         if (key == '2')     makeNewHit(13);
         if (key == '3')     makeNewHit(14);
+        if (key == '.')     makeNewHit(9);
         
         if (key == '0') {
             showTouchButtons = !showTouchButtons;
@@ -756,9 +757,11 @@ void Sequencer::keyPressed(int key){
             clearBeats();
         }
         
+        /*
         if (key == '.'){  //del
             setVisualEffect();
         }
+         */
     }
     
     //laptop control
