@@ -670,6 +670,7 @@ void Sequencer::keyPressed(int key){
     if (key == 'h' || key == 'H'){
         showTouchButtons = !showTouchButtons;
     }
+    /*
     if (key == 'z' || key == 'Z'){
         if (logo.timer < logo.growTime+ logo.pauseTime){
             logo.timer = logo.growTime+ logo.pauseTime;
@@ -677,6 +678,7 @@ void Sequencer::keyPressed(int key){
         aboutScreen.turnOn();
         sendBeatStatus = "ready";
     }
+     */
     
     if (key == 's'){
         setStepMode(!stepMode);
