@@ -23,6 +23,7 @@ public:
     void drawTriangle(float lineWidthPrc, int alpha);
     void drawGrapes(float lineWidthPrc, int alpha);
     void drawBuckshot(float lineWidthPrc, int alpha);
+    void drawSpokes(float lineWidthPrc, int alpha);
     void drawChaser(float lineWidthPrc, int alpha);
     void drawSlash(float lineWidthPrc, int alpha);
     void drawSquare(float lineWidthPrc, int alpha);

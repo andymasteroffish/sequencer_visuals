@@ -38,7 +38,7 @@ void StepModeIcons::draw(int idNum, float lineWidthPrc, int alpha){
     if (idNum == 6)    drawDrunkTrianlge(lineWidthPrc, alpha);
     if (idNum == 7)     drawTunnel(lineWidthPrc, alpha);
     if (idNum == 8)    drawSizzle(lineWidthPrc, alpha);
-    if (idNum == 9)     drawChaser(lineWidthPrc, alpha);
+    if (idNum == 9)     drawSpokes(lineWidthPrc, alpha);//drawChaser(lineWidthPrc, alpha);
     if (idNum == 10)     drawSquare(lineWidthPrc, alpha);
     if (idNum == 11)    drawWaveColumn(lineWidthPrc, alpha);
     if (idNum == 12)     drawGrapes(lineWidthPrc, alpha);
@@ -173,6 +173,30 @@ void StepModeIcons::drawBuckshot(float lineWidthPrc, int alpha){
         
         ofDrawCircle(xPos, yPos, thisSize);
         
+    }
+    
+}
+
+void StepModeIcons::drawSpokes(float lineWidthPrc, int alpha){
+    float startAngle = timer;
+    
+    float baseDist = w * 0.35f;
+    float circSize = 8;
+    
+    float angleStep = TWO_PI/5;
+    for (int i=0; i<5; i++){
+        float thisAngle = startAngle + angleStep * i;
+        
+        float dist = baseDist - ofNoise(timer, 0) * baseDist * 0.4;
+        
+        float x = cos(thisAngle) * dist;
+        float y = sin(thisAngle) * dist;
+        
+        float lineX = cos(thisAngle) * (dist - circSize/2);
+        float lineY = sin(thisAngle) * (dist - circSize/2);
+        
+        ofDrawCircle(x,y, circSize);
+        ofDrawLine(0, 0, lineX, lineY);
     }
     
 }

@@ -83,7 +83,7 @@ void Sequencer::setup() {
     //testing
     if (!publicRelease){
         //isFirstRun = true;
-        hasRunStepMode = false;
+        //hasRunStepMode = false;
     }
     firstRunTime = 30;
     firstRunTimer =  isFirstRun ? firstRunTime : -1;
