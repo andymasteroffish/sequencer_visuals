@@ -8,7 +8,7 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v1.54";
+string versionText = "v1.55";
 
 //this is only used for getting some beats for the trailer. Not in the release version
 string demoBeat = "";
@@ -16,9 +16,9 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = true;
+    publicRelease = false;
 
-	bpmStartValue = 180;
+	bpmStartValue = 210;
 	
     //arcade toggle is in SystemSpecificInfo
 #ifdef USING_ARCADE
@@ -333,7 +333,7 @@ void Sequencer::update(){
         
         for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
             float       targetMenuX = ofGetWidth() - touchMenuButtons[0].box.width;
-            if (i==4)   targetMenuX =   ofGetWidth() - touchMenuButtons[0].box.width/2;
+            if (i==MENU_BUTTON_TEMPO_UP)   targetMenuX =   ofGetWidth() - touchMenuButtons[0].box.width/2;
             
             touchMenuButtons[i].box.x = prc * startMenuX + (1.0f-prc) * targetMenuX;
         }
@@ -344,7 +344,7 @@ void Sequencer::update(){
     else{
         for (int i=0; i<NUM_TOUCH_MENU_BUTTONS; i++){
             float       menuX = ofGetWidth() - touchMenuButtons[0].box.width;
-            if (i==4)   menuX = ofGetWidth() - touchMenuButtons[0].box.width/2;
+            if (i==MENU_BUTTON_TEMPO_UP)   menuX = ofGetWidth() - touchMenuButtons[0].box.width/2;
             
             touchMenuButtons[i].box.x = menuX;
         }
@@ -585,8 +585,8 @@ void Sequencer::draw(){
         ofSetColor(0);
         string bpmText = ofToString( (int)bpmValue);
         
-        float bpmTextX = touchMenuButtons[MENU_BUTTON_TEMPO_UP].box.x+touchMenuButtons[MENU_BUTTON_TEMPO_UP].box.width - buttonFontSmall.stringWidth(bpmText)/2;
-        float bpmTextY = touchMenuButtons[MENU_BUTTON_TEMPO_UP].box.y+touchMenuButtons[MENU_BUTTON_TEMPO_UP].box.height-10;
+        float bpmTextX = touchMenuButtons[MENU_BUTTON_TEMPO_DOWN].box.x+touchMenuButtons[MENU_BUTTON_TEMPO_DOWN].box.width - buttonFontSmall.stringWidth(bpmText)/2;
+        float bpmTextY = touchMenuButtons[MENU_BUTTON_TEMPO_DOWN].box.y+touchMenuButtons[MENU_BUTTON_TEMPO_DOWN].box.height-10;
         buttonFontSmall.drawString(bpmText, bpmTextX, bpmTextY);
         
         //help button
@@ -1050,7 +1050,8 @@ void Sequencer::setButtonPositions(){
             float thisY =  startY + i * menuButtonH;
             touchMenuButtons[i].setup(7 * buttonW, thisY, buttonW, menuButtonH);
         }else{
-            float tempoX = i==MENU_BUTTON_TEMPO_DOWN ? (7 * buttonW) : (8 * buttonW) - buttonW/2;
+            //this doens't do anything. x position is set in update
+            float tempoX = i==MENU_BUTTON_TEMPO_UP ? (7 * buttonW) : (8 * buttonW) - buttonW/2;
             touchMenuButtons[i].setup(tempoX, startY + MENU_BUTTON_TEMPO_DOWN * menuButtonH, buttonW/2, menuButtonH);
         }
         touchMenuButtons[i].setText(oldText, oldFont);
@@ -1200,6 +1201,19 @@ void Sequencer::setRecording(bool isOn){
 
 //--------------------------------------------------------------
 void Sequencer::clearBeats(){
+    //don't clear if nothing is active
+    bool anythingOn = false;
+    for (int i = 0; i<NUM_BEATS; i++) {
+        for (int k = 0; k<NUM_SOUNDS; k++) {
+            if (beatsOn[i][k]) {
+                anythingOn = true;
+            }
+        }
+    }
+    if (!anythingOn){
+        return;
+    }
+    
     for (int i=0; i<NUM_BEATS; i++){
         for (int k=0; k<NUM_SOUNDS; k++){
             beatsOn[i][k] = false;
