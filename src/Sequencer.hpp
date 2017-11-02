@@ -76,6 +76,8 @@ public:
     
     void clearBeats();
     
+    void toggleHideHud();
+    
     void loadSounds(string filePath);
     
     void loadArcadeSettings(string filePath);

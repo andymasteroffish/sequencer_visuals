@@ -668,7 +668,7 @@ void Sequencer::keyPressed(int key){
     
     //cout<<"key "<<key<<endl;
     if (key == 'h' || key == 'H'){
-        showTouchButtons = !showTouchButtons;
+        toggleHideHud();
     }
     /*
     if (key == 'z' || key == 'Z'){
@@ -752,7 +752,7 @@ void Sequencer::keyPressed(int key){
         if (key == '.')     makeNewHit(9);
         
         if (key == '0') {
-            showTouchButtons = !showTouchButtons;
+            toggleHideHud();
         }
         
         if (key == 13){  //Enter
@@ -1228,6 +1228,16 @@ void Sequencer::clearBeats(){
     }
 }
 
+
+//--------------------------------------------------------------
+void Sequencer::toggleHideHud(){
+    showTouchButtons = !showTouchButtons;
+    if (showTouchButtons){
+        ofShowCursor();
+    }else{
+        ofHideCursor();
+    }
+}
 
 //--------------------------------------------------------------
 void Sequencer::loadSounds(string filePath){
