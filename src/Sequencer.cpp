@@ -18,7 +18,7 @@ void Sequencer::setup() {
     
     publicRelease = false;
 
-	bpmStartValue = 210;
+	bpmStartValue = 200;
 	
     //arcade toggle is in SystemSpecificInfo
 #ifdef USING_ARCADE
@@ -38,8 +38,10 @@ void Sequencer::setup() {
 		ofHideCursor();
     }
 
-	useClickTrack = false;
+	useClickTrack = true;
     showWaveForm = false;
+    
+    maxSoundsForCLickTrack = 8;
 
 #ifdef TARGET_OPENGLES
 	shader.load("shaders/shadersES2/shader");
@@ -240,7 +242,7 @@ void Sequencer::hitBeat(void){
         makeNewHit(ofRandom(15));
     }
     
-    if (useClickTrack && !playedSound){
+    if (useClickTrack){// && !playedSound){
         if (thisBeat % 4 == 0){
             clickTrackSound2.trigger();
         }else{
@@ -369,6 +371,17 @@ void Sequencer::update(){
             inactivityTimer = 0;
         }
     }
+    
+    //set the click track volume
+    int numSounds = 0;
+    for (int i = 0; i<NUM_BEATS; i++) {
+        for (int k = 0; k<NUM_SOUNDS; k++) {
+            if (beatsOn[i][k]) {
+                numSounds++;
+            }
+        }
+    }
+    clickTrackVol = ofMap(numSounds, 0, maxSoundsForCLickTrack, 0.75, 0, true);
     
     //WRITING OUT THE FUCKING TIME BECAUSE ARCADE MODE KEEPS CRASHING
     if (arcadeMode && ofGetElapsedTimef() > nextArcadeModeTestWrite){
@@ -1508,8 +1521,8 @@ void Sequencer::setMaximAudio(bool advanceAudioThisCycle){
     if (advanceAudioThisCycle){
         sampleOut = 0;
         
-        sampleOut+=clickTrackSound.playOnce();
-        sampleOut+=clickTrackSound2.playOnce();
+        sampleOut+=clickTrackSound.playOnce() * clickTrackVol;
+        sampleOut+=clickTrackSound2.playOnce() * clickTrackVol;
         
         for (int i=0; i<NUM_SOUNDS; i++){
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
