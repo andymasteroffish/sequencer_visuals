@@ -39,6 +39,9 @@ void Sequencer::setup() {
     }
 
 	useClickTrack = true;
+	if (arcadeMode) {
+		useClickTrack = false;
+	}
     showWaveForm = false;
     
     maxSoundsForCLickTrack = 8;
@@ -91,7 +94,7 @@ void Sequencer::setup() {
     firstRunTimer =  isFirstRun ? firstRunTime : -1;
     hasAddedANote = false;
     
-    useNumpadKeys = false;
+	useNumpadKeys = false;
     usePreHitDetection = true;
     
     autoPlay = false;
@@ -668,7 +671,7 @@ void Sequencer::draw(){
 //--------------------------------------------------------------
 void Sequencer::keyPressed(int key){
     inactivityTimer = 0;
-    
+
     if (stepModeInstructions.isActive){
         stepModeInstructions.turnOff();
         return;
@@ -703,6 +706,7 @@ void Sequencer::keyPressed(int key){
 //        turnOnRecordingWhenClearing = !turnOnRecordingWhenClearing;
 //    }
     if (key == '\\'){
+		cout << "use num " << useNumpadKeys << endl;
         useNumpadKeys = !useNumpadKeys;
     }
     if (key == 'v'){
@@ -744,11 +748,18 @@ void Sequencer::keyPressed(int key){
     }
     
     if (useNumpadKeys){
-        if (key == 63289)   makeNewHit(0);  //num lock
+#ifdef USING_WIN
+		if (key == -1)   makeNewHit(0);  //num lock
+#else
+		if (key == 63289)   makeNewHit(0);  //num lock
+#endif 
         if (key == '/')     makeNewHit(1);
         if (key == '*')     makeNewHit(2);
-        if (key == 127)     makeNewHit(3);  //backspace
-        
+#ifdef USING_WIN
+		if (key == 8)     makeNewHit(3);  //backspace
+#else
+		if (key == 127)     makeNewHit(3);  //backspace
+#endif
         if (key == '7')     makeNewHit(4);
         if (key == '8')     makeNewHit(5);
         if (key == '9')     makeNewHit(6);
