@@ -13,8 +13,8 @@
 ;You’ll need to restart if you make changes
 
 ;Click Tracks
-sounds/705kbps/click/BoopHatShort1_soft.wav
-sounds/705kbps/click/BoopHatShort2_soft.wav
+sounds/705kbps/click/click2.wav
+sounds/705kbps/click/click3.wav
 
 ;Dot Polygon
 sounds/705kbps/Lead6.wav
