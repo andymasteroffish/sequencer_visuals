@@ -8,7 +8,7 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v1.55";
+string versionText = "v1.55 babycastles";
 
 //this is only used for getting some beats for the trailer. Not in the release version
 string demoBeat = "";
@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = true;
+    publicRelease = false;
 
 	bpmStartValue = 200;
 	
@@ -94,7 +94,7 @@ void Sequencer::setup() {
     firstRunTimer =  isFirstRun ? firstRunTime : -1;
     hasAddedANote = false;
     
-	useNumpadKeys = false;
+    useNumpadKeys = true;//false;   //PUT THIS BACK
     usePreHitDetection = true;
     
     autoPlay = false;
@@ -114,7 +114,11 @@ void Sequencer::setup() {
     //this feels suspicious for iOS. Shoud this only happen on computer?
     if (publicRelease){
         ofToggleFullscreen();
+        useNumpadKeys = false;
     }
+    
+    //for this babycastles build I want it to start full screen
+    ofToggleFullscreen();
     
     logo.setup(whiteVal, usingIPad, &buttonFont, &buttonFontSmall, arcadeMode);
     
