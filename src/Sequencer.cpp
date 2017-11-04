@@ -8,7 +8,7 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v1.55 babycastles";
+string versionText = "v1.55";
 
 //this is only used for getting some beats for the trailer. Not in the release version
 string demoBeat = "";
@@ -94,7 +94,7 @@ void Sequencer::setup() {
     firstRunTimer =  isFirstRun ? firstRunTime : -1;
     hasAddedANote = false;
     
-    useNumpadKeys = true;//false;   //PUT THIS BACK
+    useNumpadKeys = false;
     usePreHitDetection = true;
     
     autoPlay = false;
@@ -118,7 +118,8 @@ void Sequencer::setup() {
     }
     
     //for this babycastles build I want it to start full screen
-    ofToggleFullscreen();
+    //KILL THIS
+    //ofToggleFullscreen();
     
     logo.setup(whiteVal, usingIPad, &buttonFont, &buttonFontSmall, arcadeMode);
     
