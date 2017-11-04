@@ -60,6 +60,3 @@ sounds/705kbps/Blorp.wav
 
 ;Trapazoid
 sounds/705kbps/Blorp2.1.wav
-
-;Arcade Only - chaser
-sounds/705kbps/Lead8.wav
