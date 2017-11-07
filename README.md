@@ -5,4 +5,6 @@ available now for iOS, PC & Mac
 
 www.bleepspace.com
 
-uses ofMaxim for audio playback: https://github.com/micknoise/Maximilian
+Written in openFrameworks 0.9.3
+
+Uses ofMaxim for audio playback: https://github.com/micknoise/Maximilian
