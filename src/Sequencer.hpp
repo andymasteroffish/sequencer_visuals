@@ -137,7 +137,8 @@ public:
     double sampleOut;
     
     maxiSample sounds[NUM_IOS_BEATS_PER_SOUND][NUM_SOUNDS];    //on osx, only sounds[0][i] are used. There is no multiplay on iOS, so I am loading far more than needed. This may be a disaster.    PROBABLY DOING THE IOS STYLE ACROSS THE BOARD NOW!
-    maxiSample clickTrackSound, clickTrackSound2;
+	float volumes[NUM_SOUNDS];
+	maxiSample clickTrackSound, clickTrackSound2;
     maxiOsc timer;
     float clickTrackVol;
     int maxSoundsForCLickTrack;

@@ -8,7 +8,7 @@
 
 #include "Sequencer.hpp"
 
-string versionText = "v1.55";
+string versionText = "v1.56";
 
 //this is only used for getting some beats for the trailer. Not in the release version
 string demoBeat = "";
@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = false;
+    publicRelease = true;
 
 	bpmStartValue = 200;
 	
@@ -1273,6 +1273,7 @@ void Sequencer::loadSounds(string filePath){
     
     ofBuffer buffer = ofBufferFromFile(filePath);
     vector<string> files;
+	vector<float> allVolumes;
     
     if (buffer.size() > 0){
         
@@ -1282,8 +1283,30 @@ void Sequencer::loadSounds(string filePath){
             
             if (line.size() > 4){
                 if (line[0] != ';'){
-					//cout << "add:" << line << endl;
-                    files.push_back(line);
+
+					string fileName = "";
+					string volumeText = "1.0";
+					bool onVol = false;
+					for (int i = 0; i < line.size(); i++) {
+						if (line[i] == ',') {
+							onVol = true;
+							i++;	//skip the space
+							volumeText = ""; //clear the default
+						}
+						else {
+							if (!onVol) {
+								fileName += line[i];
+							}
+							else {
+								volumeText += line[i];
+							}
+						}
+					}
+
+					cout << "add:" << fileName<< " at "<< volumeText << endl;
+                    files.push_back(fileName);
+					allVolumes.push_back(stof(volumeText));
+					cout << "vol " << allVolumes[allVolumes.size() - 1] << endl;
                 }
             }
             
@@ -1305,6 +1328,7 @@ void Sequencer::loadSounds(string filePath){
                 sounds[k][i].load(ofToDataPath(files[i+2]));
                 sounds[k][i].setPosition(1);    //put it at the end
             }
+			volumes[i] = allVolumes[i + 2];
         }
         
     }else{
@@ -1542,7 +1566,7 @@ void Sequencer::setMaximAudio(bool advanceAudioThisCycle){
         
         for (int i=0; i<NUM_SOUNDS; i++){
             for (int k=0; k<NUM_IOS_BEATS_PER_SOUND; k++){
-                sampleOut += sounds[k][i].playOnce();
+				sampleOut += sounds[k][i].playOnce() * volumes[i];
             }
         }
         
