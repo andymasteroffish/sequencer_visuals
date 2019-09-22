@@ -13,53 +13,57 @@
 ;You’ll need to restart if you make changes
 
 ;Click Tracks
-sounds/705kbps/click/click2.wav
-sounds/705kbps/click/click3.wav
+sounds/705kbps/click/click2.wav, 0.15
+sounds/705kbps/click/click3.wav, 0.15
 
 ;Dot Polygon
-sounds/705kbps/Lead6.wav
+sounds/705kbps/Lead6.wav, 0.25
 
 ;Sweep
-sounds/705kbps/Chug160Short.wav
+sounds/705kbps/Chug160Short.wav, 0.4
 
 ;Buckshot
-sounds/705kbps/ToyKick2.wav
+;sounds/705kbps/ToyKick2.wav
+sounds/newbeeps22050/AuxiliariesBleep.wav, 1
 
 ;Clap
-sounds/705kbps/ToySnare.wav
+sounds/705kbps/ToySnare.wav, 0.6
 
 ;Crystal
-sounds/705kbps/NoiseKick2.wav
+sounds/705kbps/NoiseKick2.wav, 0.5
 
 ;Triangle
-sounds/705kbps/Snare.wav
+sounds/705kbps/Snare.wav, 0.3
 
 ;Drunk Triangle Snake
-sounds/705kbps/LowNoise.wav
+;sounds/705kbps/LowNoise.wav
+sounds/newbeeps22050/KillipedeBleep.wav, 1
 
 ;Tunnel
-sounds/705kbps/Boop.wav
+sounds/705kbps/Boop.wav, 0.5
 
 ;Sizzle 
-sounds/705kbps/Bend.wav
+;sounds/705kbps/Bend.wav
+sounds/newbeeps22050/FanfareBleep.wav, 1
 
 ;Spokes
-sounds/705kbps/NewKick_loud705kb.wav
+sounds/705kbps/NewKick_loud705kb.wav, 0.8
 
 ;Square
-sounds/705kbps/Glass.wav
+sounds/705kbps/Glass.wav, 0.85
 
 ;Wave Column
-sounds/705kbps/Whistle3.wav
+;sounds/705kbps/Whistle3.wav
+sounds/newbeeps22050/BeastsBleep.wav, 1
 
 ;Grapes
-sounds/705kbps/Feedback.wav
+sounds/705kbps/Feedback.wav, 0.2
 
 ;Slash
-sounds/705kbps/Blorp.wav
+sounds/705kbps/Blorp.wav, 0.3
 
 ;Trapazoid
-sounds/705kbps/Blorp2.1.wav
+sounds/705kbps/Blorp2.1.wav, 0.5
 
-;Arcade Only - chaser
-sounds/705kbps/Lead8.wav
+;CHASER
+sounds/705kbps/ToyKick2.wav, 0.65

@@ -124,7 +124,7 @@ public:
 #ifdef USING_ARCADE
     #define NUM_SOUNDS 16
 #else
-    #define NUM_SOUNDS 15
+    #define NUM_SOUNDS 16   //ANDY CHANGE FOR THE SHOW ON 2019-09-27
 #endif
     
     #define NUM_BEATS 16

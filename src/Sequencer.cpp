@@ -16,7 +16,7 @@ string demoBeat = "";
 //--------------------------------------------------------------
 void Sequencer::setup() {
     
-    publicRelease = true;
+    publicRelease = false;
 
 	bpmStartValue = 200;
 	
@@ -94,7 +94,7 @@ void Sequencer::setup() {
     firstRunTimer =  isFirstRun ? firstRunTime : -1;
     hasAddedANote = false;
     
-    useNumpadKeys = false;
+    useNumpadKeys = true;
     usePreHitDetection = true;
     
     autoPlay = false;
@@ -111,15 +111,11 @@ void Sequencer::setup() {
     whiteVal = 240;
     ofBackground(whiteVal);
     
-    //this feels suspicious for iOS. Shoud this only happen on computer?
+    //this feels suspicious for iOS. Shoud toggling full screen only happen on computer?
+    ofToggleFullscreen();
     if (publicRelease){
-        ofToggleFullscreen();
         useNumpadKeys = false;
     }
-    
-    //for this babycastles build I want it to start full screen
-    //KILL THIS
-    //ofToggleFullscreen();
     
     logo.setup(whiteVal, usingIPad, &buttonFont, &buttonFontSmall, arcadeMode);
     
@@ -686,8 +682,8 @@ void Sequencer::keyPressed(int key){
         return;
     }
     
-    
     //cout<<"key "<<key<<endl;
+    
     if (key == 'h' || key == 'H'){
         toggleHideHud();
     }
@@ -711,8 +707,8 @@ void Sequencer::keyPressed(int key){
 //        turnOnRecordingWhenClearing = !turnOnRecordingWhenClearing;
 //    }
     if (key == '\\'){
-		cout << "use num " << useNumpadKeys << endl;
-        useNumpadKeys = !useNumpadKeys;
+		useNumpadKeys = !useNumpadKeys;
+        cout << "use num " << useNumpadKeys << endl;
     }
     if (key == 'v'){
         setVisualEffect();
@@ -756,7 +752,7 @@ void Sequencer::keyPressed(int key){
 #ifdef USING_WIN
 		if (key == -1)   makeNewHit(0);  //num lock
 #else
-		if (key == 63289)   makeNewHit(0);  //num lock
+        if (key == 63289){ makeNewHit(0); }  //num lock
 #endif 
         if (key == '/')     makeNewHit(1);
         if (key == '*')     makeNewHit(2);
